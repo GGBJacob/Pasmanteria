@@ -1,4 +1,5 @@
 # Python environment
 **/.idea
 **/.venv
-/scraper/scrapedData/
+/scraper/scrapedData/images/
+/scraper/scrapedData/data/
