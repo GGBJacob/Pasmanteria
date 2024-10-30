@@ -4,12 +4,41 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
-
-PRODUCT_IMAGE_DIRECTORY = './scrapedData/images'
-PRODUCT_DATA_DIRECTORY = './scrapedData/data'
-WEBSITES_DIRECTORY = './scrapedData/websites.json'
+PRODUCT_IMAGE_DIRECTORY = '../scrapedData/images'
+PRODUCT_DATA_DIRECTORY = '../scrapedData/data'
+WEBSITES_DIRECTORY = '../scrapedData/websites.json'
+CATEGORIES_DIRECTORY = '../scrapedData/categories.json'
 MAIN_PAGE = 'https://nadodatek.pl/'
 SESSION = requests.Session()
+
+
+def add_to_nested_dict(nested_dict, path):
+    current_level = nested_dict  # Startujemy od głównej tablicy
+    parent = None  # Przechowuje referencję do rodzica
+    last_key = None  # Ostatni klucz użyty przez parent
+
+    for key in path[:-1]:  # Iterujemy przez wszystkie klucze oprócz ostatniego
+        if isinstance(current_level, list):  # Jeśli current_level jest listą
+            # Tworzymy nowy słownik i podmieniamy w rodzicu
+            new_dict = {item: [] for _, item in enumerate(current_level)}
+            if parent is not None:  # Jeśli mamy rodzica, aktualizujemy go
+                parent[last_key] = new_dict
+            else:  # Jeśli nie ma rodzica, oznacza to, że to główny poziom
+                nested_dict = new_dict
+            current_level = new_dict
+
+        # Jeśli klucz nie istnieje, dodajemy nową listę na poziomie słownika
+        if key not in current_level:
+            current_level[key] = []
+
+        # Ustawiamy parent i last_key na kolejny poziom
+        parent = current_level
+        last_key = key
+        current_level = current_level[key]  # Schodzimy głębiej
+    value = path[-1]
+    current_level.append(value)
+    return nested_dict
+
 
 class ProductPage:
     def __init__(self, category='', link=''):
@@ -47,8 +76,10 @@ def get_all_products_subpages(request):
 
     subpages = []
     stack = []
+    categories_dict = []
     for link in menu:  # dodajemy wszystkie główne strony, a potem je rozbijamy na głębsze podstrony
         category = link.text
+        categories_dict = add_to_nested_dict(categories_dict, category.split('/'))
         stack.append(ProductPage(category, link.get('href')))
 
     pageNo = 1
@@ -70,10 +101,21 @@ def get_all_products_subpages(request):
         for page in cardDeck.find_all('div', class_='card'):
             subcategory = page.find('span').text
             link = page.find('a').get('href')
-            stack.append(ProductPage(currentPage.category+'/'+subcategory, link))
+            categories_dict = add_to_nested_dict(categories_dict, (currentPage.category+'/'+subcategory).split('/'))
+            stack.append(ProductPage(currentPage.category + '/' + subcategory, link))
 
-    with open(WEBSITES_DIRECTORY, 'w', encoding='utf-8') as file:  # Serializacja tabeli, bo wyszukiwanie 150 stron trwa długo
-        json.dump([subpage.to_dict() for subpage in subpages], file)
+    if not os.path.exists(os.path.dirname(CATEGORIES_DIRECTORY)):
+        os.makedirs(os.path.dirname(CATEGORIES_DIRECTORY))
+
+    if not os.path.exists(os.path.dirname(WEBSITES_DIRECTORY)):
+        os.makedirs(os.path.dirname(WEBSITES_DIRECTORY))
+
+    with open(WEBSITES_DIRECTORY, 'w',
+              encoding='utf-8') as file:  # Serializacja tabeli, bo wyszukiwanie 150 stron trwa długo
+        json.dump([subpage.to_dict() for subpage in subpages], file, ensure_ascii=False)
+
+    with open(CATEGORIES_DIRECTORY, 'w', encoding='utf-8') as catFile:
+        json.dump(categories_dict, catFile, ensure_ascii=False, indent=4)
 
     return subpages
 
@@ -87,7 +129,8 @@ def save_product_photos(directory, productNo, imagePages):  # zwraca czy się ud
         if image.status_code != 200:
             return False
 
-        with open(f'{directory}/{str(productNo)}_{str(imageCount)}.jpg', 'wb') as file:  # zapis zdjęcia w formacie x_y (x- numer artykułu, y- numer zdjęcia x artykułu)
+        with open(f'{directory}/{str(productNo)}_{str(imageCount)}.jpg',
+                  'wb') as file:  # zapis zdjęcia w formacie x_y (x- numer artykułu, y- numer zdjęcia x artykułu)
             file.write(image.content)
             imageCount += 1
 
@@ -132,7 +175,7 @@ def scrape_subpages(subpages):
     productCount = 0
     pageCount = 1
     for subpage in subpages:
-        print(f'Scraping progress: {round(pageCount/len(subpages)*100, 2)}% ({pageCount}/{len(subpages)})')
+        print(f'Scraping progress: {round(pageCount / len(subpages) * 100, 2)}% ({pageCount}/{len(subpages)})')
         subpageRequest = SESSION.get(subpage.link)
         pageCount += 1
         if subpageRequest.status_code != 200:
@@ -144,7 +187,8 @@ def scrape_subpages(subpages):
         if not body:
             continue
 
-        products = body.find_all('a', href=True, id=False)  # wyciągamy linki produktów (produkty nie mają ustawionego ID, pdfy mają)
+        products = body.find_all('a', href=True,
+                                 id=False)  # wyciągamy linki produktów (produkty nie mają ustawionego ID, pdfy mają)
         for product in products:
 
             product = product.get('href')  # wyciągamy link do jednego produktu
@@ -166,4 +210,4 @@ if __name__ == '__main__':
     subpages = get_all_products_subpages(request)  # wyciągamy wszystkie podstrony z menu
     scrape_subpages(subpages)
     end = time.time()
-    print(f'Scraping finished in: {round(end-start, 2)}s')
+    print(f'Scraping finished in: {round(end - start, 2)}s')
