@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SeleniumTester {
 
@@ -65,6 +67,7 @@ public class SeleniumTester {
 
     public void testProductAdding()
     {
+        boolean success = true;
         try{
         driver.get("http://localhost:8080/en/");
 
@@ -93,6 +96,12 @@ public class SeleniumTester {
                 WebElement product = productList.get(j);
                 product.click();
 
+                // Add random count
+                WebElement quantityField = driver.findElement(By.id("quantity_wanted"));
+                int quantity = new Random().nextInt(3) + 1;
+                quantityField.sendKeys(Keys.CONTROL + "a");
+                quantityField.sendKeys(String.valueOf(quantity));
+
                 // Wait for add to cart button to load
                 WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("add-to-cart")));
                 addToCartButton.click();
@@ -109,10 +118,19 @@ public class SeleniumTester {
             }
         }}
         catch(Exception e){
-            e.printStackTrace();
+            success = false;
+            //e.printStackTrace();
         }
-
-        // TODO: Add 10 products (different counts) from different categories to cart
+        finally {
+            if (success)
+            {
+                System.out.println("\033[32m" + "Successfully added 10 products!" + "\033[0m");
+            }
+            else
+            {
+                System.out.println("\033[31m" + "Failed to add 10 products!" + "\033[0m");
+            }
+        }
     }
 
     public void testProductSearch()
@@ -122,7 +140,30 @@ public class SeleniumTester {
 
     public void testProductRemoval()
     {
-        // TODO: Remove 3 products from cart
+        driver.get("http://localhost:8080/en/cart");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        boolean success = true;
+        try {
+            List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
+            for (int i = 0; i < 3; i++) {
+                WebElement removeButton = buttons.get(i);
+                removeButton.click();
+            }
+        }
+        catch (Exception e)
+        {
+            success = false;
+        }
+        finally {
+            if (success)
+            {
+                System.out.println("\033[32m" + "Successfully removed 3 products!" + "\033[0m");
+            }
+            else
+            {
+                System.out.println("\033[31m" + "Failed to remove 3 products!" + "\033[0m");
+            }
+        }
     }
 
     public void testOrder()

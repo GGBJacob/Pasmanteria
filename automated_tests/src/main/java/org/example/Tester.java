@@ -5,5 +5,6 @@ public class Tester {
         SeleniumTester tester = new SeleniumTester();
         // tester.testSignUp();
         tester.testProductAdding();
+        tester.testProductRemoval();
     }
 }
