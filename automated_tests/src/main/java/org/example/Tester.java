@@ -6,5 +6,7 @@ public class Tester {
         // tester.testSignUp();
         tester.testProductAdding();
         tester.testProductRemoval();
+        tester.testProductSearch();
+        tester.testProductRemoval();
     }
 }

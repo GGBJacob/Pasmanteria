@@ -12,16 +12,36 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class SeleniumTester {
 
     private final WebDriver driver;
+    private final WebDriverWait wait;
 
     public SeleniumTester() {
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    }
+
+    private void addProduct() throws Exception // function called from a product page
+    {
+        // Add random count
+        WebElement quantityField = driver.findElement(By.id("quantity_wanted"));
+        int quantity = new Random().nextInt(3) + 1;
+        quantityField.sendKeys(Keys.CONTROL + "a");
+        quantityField.sendKeys(String.valueOf(quantity));
+
+        // Wait for add to cart button to load
+        WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("add-to-cart")));
+        addToCartButton.click();
+
+        // Wait for continue button to load
+        WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cart-content-btn .btn-secondary")));
+        continueButton.click();
     }
 
     public void testSignUp()
@@ -96,8 +116,6 @@ public class SeleniumTester {
 
             driver.get(categoryUrls.get(i));
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Component waiting x seconds before returning an error
-
             List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
 
             for (int j =0; j<productList.size() && addedProducts < 10; j++) {
@@ -108,19 +126,7 @@ public class SeleniumTester {
                 WebElement product = productList.get(j);
                 product.click();
 
-                // Add random count
-                WebElement quantityField = driver.findElement(By.id("quantity_wanted"));
-                int quantity = new Random().nextInt(3) + 1;
-                quantityField.sendKeys(Keys.CONTROL + "a");
-                quantityField.sendKeys(String.valueOf(quantity));
-
-                // Wait for add to cart button to load
-                WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("add-to-cart")));
-                addToCartButton.click();
-
-                // Wait for continue button to load
-                WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cart-content-btn .btn-secondary")));
-                continueButton.click();
+                addProduct();
 
                 // Return to category page
                 driver.get(categoryUrls.get(i));
@@ -147,13 +153,56 @@ public class SeleniumTester {
 
     public void testProductSearch()
     {
+        driver.get("http://localhost:8080/");
+        boolean success = true;
+        try {
+            List<WebElement> products = driver.findElements(By.className("product-title"));
+            List<String> productNames = new ArrayList<>();
+            // Add all product words (e.g. T-Shirt) to array
+            for (WebElement product : products) {
+                productNames.addAll(Arrays.asList(product.getText().strip().split(" ")));
+            }
+            // Select a random word to search
+            String selectedWord = productNames.get(new Random().nextInt(productNames.size()));
+
+            // Enter the word into the search bar
+            WebElement searchBar = wait.until(ExpectedConditions.elementToBeClickable(By.className("ui-autocomplete-input")));
+            searchBar.click();
+            searchBar.sendKeys(selectedWord);
+            searchBar.sendKeys(Keys.ENTER);
+
+            // Find all products on the search result page
+            products = driver.findElements(By.className("product-title"));
+
+            // Select random one and enter its page
+            WebElement product = products.get(new Random().nextInt(products.size()));
+            product.click();
+
+            addProduct();
+
+        }
+        catch(Exception e){
+            success = false;
+            e.printStackTrace();
+        }
+        finally {
+            if (success)
+            {
+                System.out.println("\033[32m" + "Successfully added a searched product to card!" + "\033[0m");
+            }
+            else
+            {
+                System.out.println("\033[31m" + "Failed to search and add a product!" + "\033[0m");
+            }
+        }
+
+
         // TODO: Search for a product and add random from result
     }
 
     public void testProductRemoval()
     {
         driver.get("http://localhost:8080/en/cart");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         boolean success = true;
         try {
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
