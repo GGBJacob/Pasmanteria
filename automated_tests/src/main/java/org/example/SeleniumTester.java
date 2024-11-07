@@ -26,6 +26,7 @@ public class SeleniumTester {
 
     public void testSignUp()
     {
+        boolean success = true;
         try{
             driver.get("http://localhost:8080/en/login?create_account");
 
@@ -61,7 +62,18 @@ public class SeleniumTester {
             }
         }
         catch(Exception e){
+            success = false;
             e.printStackTrace();
+        }
+        finally {
+            if (success)
+            {
+                System.out.println("\033[32m" + "Successfully registered!" + "\033[0m");
+            }
+            else
+            {
+                System.out.println("\033[31m" + "Failed to register!" + "\033[0m");
+            }
         }
     }
 
