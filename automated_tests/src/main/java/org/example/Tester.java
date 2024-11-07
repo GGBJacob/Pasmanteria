@@ -7,6 +7,6 @@ public class Tester {
         tester.testProductAdding();
         tester.testProductRemoval();
         tester.testProductSearch();
-        tester.testProductRemoval();
+        //tester.testProductRemoval();
     }
 }

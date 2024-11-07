@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +19,32 @@ public class SeleniumTester {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
+
+    private static final String RED = "\033[31m"; // Used for errors
+    public static final String YELLOW = "\u001B[33m"; // Used for warnings
+    private static final String GREEN = "\033[32m"; // Used for successful operations
+    public static final String BLUE = "\u001B[34m"; // Used for info
+    private static final String RESET = "\033[0m";
+
+    private static void printError(String message)
+    {
+        System.out.println(RED + message + RESET);
+    }
+
+    private static void printWarning(String message)
+    {
+        System.out.println(YELLOW + message + RESET);
+    }
+
+    private static void printSuccess(String message)
+    {
+        System.out.println(GREEN + message + RESET);
+    }
+
+    private static void printInfo(String message)
+    {
+        System.out.println(BLUE + message + RESET);
+    }
 
     public SeleniumTester() {
         WebDriverManager.chromedriver().setup();
@@ -76,9 +101,9 @@ public class SeleniumTester {
 
 
             if (loggedInElement.isDisplayed()) {
-                System.out.println("Successfully registered!");
+                printSuccess("Successfully registered!");
             } else {
-                System.out.println("Failed to register!");
+                printError("Failed to register!");
             }
         }
         catch(Exception e){
@@ -88,11 +113,11 @@ public class SeleniumTester {
         finally {
             if (success)
             {
-                System.out.println("\033[32m" + "Successfully registered!" + "\033[0m");
+                printSuccess("Successfully registered!");
             }
             else
             {
-                System.out.println("\033[31m" + "Failed to register!" + "\033[0m");
+                printError("Failed to register!");
             }
         }
     }
@@ -102,6 +127,7 @@ public class SeleniumTester {
         boolean success = true;
         try{
         driver.get("http://localhost:8080/en/");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
 
         List<WebElement> categories = driver.findElements(By.cssSelector("ul#top-menu > li.category a.dropdown-submenu"));
 
@@ -127,6 +153,7 @@ public class SeleniumTester {
                 product.click();
 
                 addProduct();
+                printInfo("Added product #" + (addedProducts + 1));
 
                 // Return to category page
                 driver.get(categoryUrls.get(i));
@@ -142,11 +169,11 @@ public class SeleniumTester {
         finally {
             if (success)
             {
-                System.out.println("\033[32m" + "Successfully added 10 products!" + "\033[0m");
+                printSuccess("Successfully added 10 products!");
             }
             else
             {
-                System.out.println("\033[31m" + "Failed to add 10 products!" + "\033[0m");
+                printError("Failed to add 10 products!");
             }
         }
     }
@@ -162,42 +189,62 @@ public class SeleniumTester {
             for (WebElement product : products) {
                 productNames.addAll(Arrays.asList(product.getText().strip().split(" ")));
             }
-            // Select a random word to search
-            String selectedWord = productNames.get(new Random().nextInt(productNames.size()));
 
-            // Enter the word into the search bar
-            WebElement searchBar = wait.until(ExpectedConditions.elementToBeClickable(By.className("ui-autocomplete-input")));
-            searchBar.click();
-            searchBar.sendKeys(selectedWord);
-            searchBar.sendKeys(Keys.ENTER);
+            boolean foundProducts = false;
+            while (!foundProducts) {
+                // Select a random word to search
+                int randomIndex = (new Random()).nextInt(productNames.size());
+                String selectedWord = productNames.get(randomIndex);
+                productNames.remove(randomIndex);
 
-            // Find all products on the search result page
-            products = driver.findElements(By.className("product-title"));
+                // Enter the word into the search bar
+                WebElement searchBar = wait.until(ExpectedConditions.elementToBeClickable(By.className("ui-autocomplete-input")));
+                searchBar.click();
+                searchBar.clear();
+                searchBar.sendKeys(selectedWord);
+                searchBar.sendKeys(Keys.ENTER);
 
-            // Select random one and enter its page
-            WebElement product = products.get(new Random().nextInt(products.size()));
-            product.click();
-
-            addProduct();
+                // Find all products on the search result page
+                products = driver.findElements(By.className("product-title"));
+                if (!products.isEmpty()){
+                    printInfo("Found products for: " + selectedWord);
+                    foundProducts = true;
+                }
+                else {
+                    printWarning("No products found for: " + selectedWord);
+                    if (productNames.isEmpty())
+                    {
+                        printError("Couldn't find any products! Product names list is empty!");
+                        success = false;
+                        break;
+                    }
+                    continue;
+                }
+                // Select random one and enter its page
+                WebElement product = products.get(new Random().nextInt(products.size()));
+                product.click();
+            }
+            if (productNames.isEmpty())
+                success = false;
+            else
+                addProduct();
 
         }
         catch(Exception e){
             success = false;
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         finally {
             if (success)
             {
-                System.out.println("\033[32m" + "Successfully added a searched product to card!" + "\033[0m");
+                printSuccess("Successfully added a searched product to cart!");
             }
             else
             {
-                System.out.println("\033[31m" + "Failed to search and add a product!" + "\033[0m");
+                printError("Failed to search and add a product!");
             }
         }
 
-
-        // TODO: Search for a product and add random from result
     }
 
     public void testProductRemoval()
@@ -209,6 +256,7 @@ public class SeleniumTester {
             for (int i = 0; i < 3; i++) {
                 WebElement removeButton = buttons.get(i);
                 removeButton.click();
+                printInfo("Removed product #" + (i+1));
             }
         }
         catch (Exception e)
@@ -218,11 +266,11 @@ public class SeleniumTester {
         finally {
             if (success)
             {
-                System.out.println("\033[32m" + "Successfully removed 3 products!" + "\033[0m");
+                printSuccess("Successfully removed 3 products!");
             }
             else
             {
-                System.out.println("\033[31m" + "Failed to remove 3 products!" + "\033[0m");
+                printError("Failed to remove 3 products!");
             }
         }
     }
