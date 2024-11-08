@@ -75,29 +75,41 @@ public class SeleniumTester {
         try{
             driver.get("http://localhost:8080/en/login?create_account");
 
-            // Register new user
-            WebElement genderRadioButton = driver.findElement(By.id("field-id_gender-1"));
-            WebElement firstNameField = driver.findElement(By.name("field-firstname"));
-            WebElement lastNameField = driver.findElement(By.name("field-lastname"));
-            WebElement emailField = driver.findElement(By.id("field-email"));
-            WebElement passwordField = driver.findElement(By.id("field-password"));
-            WebElement loginButton = driver.findElement(By.id("submit-login"));
-            WebElement termsAndConditionsCheckbox = driver.findElement(By.name("psgdpr"));
-
+            // Select gender
+            WebElement genderRadioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for='field-id_gender-1']")));
             genderRadioButton.click();
+
+            // Enter name
+            WebElement firstNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-firstname")));
             firstNameField.sendKeys("John");
+
+            // Enter surname
+            WebElement lastNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-lastname")));
             lastNameField.sendKeys("Smith");
+
+            // Enter email
+            WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
             emailField.sendKeys("user@gmail.com");
+
+            // Enter password
+            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
             passwordField.sendKeys("secretPassword123");
+
+            // Accept privacy terms
+            WebElement privacyCheckbox = driver.findElement(By.name("customer_privacy"));
+            privacyCheckbox.click();
+
+            // Accept terms and conditions
+            WebElement termsAndConditionsCheckbox = driver.findElement(By.name("psgdpr"));
             if(!termsAndConditionsCheckbox.isSelected())
                 termsAndConditionsCheckbox.click();
-            loginButton.click();
+
+            // Submit login
+            WebElement registerButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("footer.form-footer .btn.btn-primary.form-control-submit")));
+            //registerButton.click();
 
             // Set driver wait time for expected elements
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            WebElement loggedInElement = wait.until(
-                    ExpectedConditions.presenceOfElementLocated(By.id("logged-in-element")  // TODO: Find apropriate ID
-                    ));
+            WebElement loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("account")));
 
 
             if (loggedInElement.isDisplayed()) {
@@ -108,17 +120,11 @@ public class SeleniumTester {
         }
         catch(Exception e){
             success = false;
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         finally {
-            if (success)
-            {
-                printSuccess("Successfully registered!");
-            }
-            else
-            {
+            if(!success)
                 printError("Failed to register!");
-            }
         }
     }
 
