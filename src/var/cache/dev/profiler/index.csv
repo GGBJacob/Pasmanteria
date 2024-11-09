@@ -1,0 +1,3 @@
+cb3dad,172.18.0.1,POST,http://localhost:8080/admin909ou36bj/index.php/common/notifications?_token=_tJJMOGmMoxUbvx2zpVk2e3-VKVrH7QLj-tcT5s17Yg&rand=1731169850900,1731169853,,200
+5f64fc,172.18.0.1,GET,http://localhost:8080/admin909ou36bj/index.php/modules/metrics/api/getShopData?_token=_tJJMOGmMoxUbvx2zpVk2e3-VKVrH7QLj-tcT5s17Yg,1731169853,,200
+532397,172.18.0.1,POST,http://localhost:8080/admin909ou36bj/index.php/common/notifications?_token=_tJJMOGmMoxUbvx2zpVk2e3-VKVrH7QLj-tcT5s17Yg&rand=1731169850964,1731169854,,200
