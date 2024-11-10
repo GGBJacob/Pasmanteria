@@ -84,4 +84,14 @@
     </div>
   </div>
   {hook h='displayNavFullWidth'}
+
+  {block name='custom_js'}
+    <script src="{$smarty.const.__PS_BASE_URI__}themes/classic/assets/js/custom.js"></script>
+  {/block}
+
+  {block name='custom_css'}
+    <link rel="stylesheet" href="{$smarty.const.__PS_BASE_URI__}themes/classic/assets/css/custom.css" type="text/css" media="all">
+  {/block}
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 {/block}

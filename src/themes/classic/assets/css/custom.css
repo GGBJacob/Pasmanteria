@@ -1,0 +1,100 @@
+/* ps_customersignin.tpl */
+/* Style for dropdown */
+/*.dropdown {
+    position: relative;
+    display: inline-block;
+}*/
+
+#_desktop_user_info .dropdown a div.my-account-nav {
+    color:rgb(142, 142, 142);
+    display: flex;
+    align-items: center;
+    text-decoration: none !important; 
+}
+
+#_desktop_user_info .dropdown a div.my-account-nav i.icons-navigation-bar {
+    color: rgb(142, 142, 142);
+    text-decoration: none !important; 
+}
+
+/* Kolor czarny po najechaniu na my-account-nav */
+#_desktop_user_info .dropdown:hover a div.my-account-nav,
+#_desktop_user_info .dropdown:active a div.my-account-nav,
+#_desktop_user_info .dropdown:hover a div.my-account-nav i.icons-navigation-bar,
+#_desktop_user_info .dropdown:active a div.my-account-nav i.icons-navigation-bar {
+    color: black;
+    text-decoration: none !important; 
+}
+
+/*
+#_desktop_user_info .dropdown a span.text-navigation-bar{
+    text-decoration: none;
+    color:rgb(142, 142, 142);
+}
+
+#_desktop_user_info .dropdown a i.icons-navigation-bar {
+    color:rgb(142, 142, 142);
+}
+
+#_desktop_user_info .dropdown:hover span {
+    text-decoration: none;
+    color:black;
+}   
+*/
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown {
+    position: relative;
+    font-weight: bold !important;
+    text-decoration: none; 
+    font-family: Helvetica, Verdana, sans-serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: hsl(0, 0%, 100%);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 89%);
+    text-decoration: none;
+}
+
+.dropdown-content a img {
+    width: 16px;  /* Wymiar ikony */
+    height: 16px;  /* Wymiar ikony */
+    margin-right: 8px;  /* Odstęp między obrazkiem a tekstem */
+    vertical-align: middle;  /* Wyrównanie obrazu do środka tekstu */
+}
+
+.dropdown-content a:nth-child(2) {
+    border-bottom: 1px solid hsl(0, 0%, 89%); /* Cienka czarna linia */
+}
+
+.dropdown-content a:hover {
+    background-color:hsl(0, 0%, 94%);
+    color: black !important;
+    border-radius: 5px;
+}
+  
+  /* Show dropdown when active */
+.dropdown.active .dropdown-content {
+    display: block !important;
+}
+
+.material-icons {
+    vertical-align: middle; /* Dostosowanie do tekstu */
+    color: black; /* Upewnij się, że ikona jest widoczna */
+    visibility: visible;
+}

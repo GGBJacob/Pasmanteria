@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-07 10:51:07
+/* Smarty version 3.1.48, created on 2024-11-10 19:28:12
   from 'module:blockwishlistviewstemplat' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_672c8d8b277ae7_22750236',
+  'unifunc' => 'content_6730fb3c0d31d0_28096797',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672c8d8b277ae7_22750236 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6730fb3c0d31d0_28096797 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- begin /var/www/html/modules/blockwishlist/views/templates/components/modals/create.tpl -->
 <div
   class="wishlist-create"

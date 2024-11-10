@@ -10,7 +10,6 @@ services:
             - ./db:/var/lib/mysql
         networks:
             - psnet
-        platform: linux/x86_64 # Apple Silicon Macs only
     ps: # PrestaShop container
         container_name: ps
         image: prestashop/prestashop:1.7.8
@@ -30,7 +29,6 @@ services:
             - psnet
         depends_on:
             - db
-        platform: linux/x86_64 # Apple Silicon Macs only
     pma: # phpMyAdmin container
         container_name: pma
         image: phpmyadmin/phpmyadmin:5.2.1
@@ -44,6 +42,5 @@ services:
             - 8081:80
         networks:
             - psnet
-        platform: linux/x86_64 # Apple Silicon Macs only
 networks:
     psnet:
