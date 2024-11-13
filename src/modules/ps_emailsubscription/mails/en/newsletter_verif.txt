@@ -1,12 +1,13 @@
- 
 
-{shop_url}
+[{shop_url}] 
 
-Hi,
+Hi, 
 
-Thank you for subscribing to our newsletter. Please click on the following link to confirm your request:
-{verif_url}
+Thank you for subscribing to our newsletter, please confirm your
+request by clicking the link below :
 
-[{shop_name}]({shop_url})
+{verif_url} [{verif_url}] 		 
 
-Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

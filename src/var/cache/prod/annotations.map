@@ -202,4 +202,8 @@
   202 => 'PrestaShop\\Module\\Mbo\\Controller\\Admin\\ThemeCatalogController',
   203 => 'PrestaShop\\Module\\PrestashopCheckout\\Controller\\AbstractFrontController',
   204 => 'PrestaShop\\Module\\PrestashopCheckout\\Entity\\PsAccount',
+  205 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsController',
+  206 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsLegacyStatsController',
+  207 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsOauthController',
+  208 => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsResolverController',
 );
