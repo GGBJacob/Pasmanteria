@@ -111,7 +111,7 @@ def add_categories(data, parent_id=2):
 
 if __name__ == "__main__":
     # Wczytanie danych z pliku JSON
-    with open(r"C:\Users\micha\PycharmProjects\BE\scrapedData\categories.json", 'r', encoding='utf-8') as f:
+    with open(r"C:\Users\micha\PycharmProjects\BE\data_loader\categories.json", 'r', encoding='utf-8') as f:
         categories_data = json.load(f)
 
     # Dodawanie kategorii do PrestaShop
