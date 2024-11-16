@@ -61,26 +61,17 @@ def add_product(name, price, description, category_name, image_path):
         root = ET.fromstring(response.text)
         product_id = root.find('.//id').text
         print("Sukces: Produkt dodany.")
-        upload_product_image(API_URL, API_TOKEN, product_id, image_path)
+        upload_product_image(API_URL, product_id, image_path)
     else:
         print(f"Błąd: {response.status_code} - {response.text}")
         print("Nagłówki żądania:", response.request.headers)
         print("Dane wysłane:", product_data)
 
 
-def upload_product_image(prestashop_url, api_key, product_id, image_path):
-    """
-    Uploads an image to a specific product in PrestaShop.
-
-    :param prestashop_url: Base URL of the PrestaShop instance (e.g., 'https://your-shop.com').
-    :param api_key: API key for authentication.
-    :param product_id: ID of the product to which the image will be uploaded.
-    :param image_path: Path to the image file on your local system.
-    :return: Response object from the API.
-    """
-    endpoint = f"{prestashop_url}/api/images/products/{product_id}"
+def upload_product_image(prestashop_url, product_id, image_path):
+    endpoint = f"{prestashop_url}/images/products/{product_id}"
     headers = {
-        'Authorization': f'Basic {api_key}'
+        'Authorization': f'Basic {base64.b64encode(f"{API_TOKEN}:".encode()).decode()}'
     }
     try:
         with open(image_path, 'rb') as image_file:
@@ -90,7 +81,7 @@ def upload_product_image(prestashop_url, api_key, product_id, image_path):
             response = requests.post(endpoint, headers=headers, files=files)
 
         # Check for success
-        if response.status_code == 201:
+        if response.status_code < 300:
             print("Image uploaded successfully.")
         else:
             print(f"Failed to upload image: {response.status_code} - {response.text}")
