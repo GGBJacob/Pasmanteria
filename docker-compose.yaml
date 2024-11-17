@@ -1,0 +1,49 @@
+services:
+    db: # MariaDB container
+        container_name: db
+        image: mariadb:11.5.2
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: prestashop
+        volumes:
+            - ./db:/var/lib/mysql
+        networks:
+            - psnet
+        platform: linux/x86_64 # Apple Silicon Macs only
+    ps: # PrestaShop container
+        container_name: ps
+        image: prestashop/prestashop:1.7.8
+        restart: unless-stopped
+        environment:
+            PS_DEV_MODE: 1
+            DB_SERVER: db
+            DB_NAME: prestashop
+            DB_USER: root
+            DB_PASSWD: root
+            PS_INSTALL_AUTO: 0
+        ports:
+            - 8080:80
+        volumes:
+            - ./src:/var/www/html
+        networks:
+            - psnet
+        depends_on:
+            - db
+        platform: linux/x86_64 # Apple Silicon Macs only
+    pma: # phpMyAdmin container
+        container_name: pma
+        image: phpmyadmin/phpmyadmin:5.2.1
+        restart: unless-stopped
+        environment:
+            PMA_HOST: db
+            PMA_USER: root
+            PMA_PASSWORD: root
+            PMA_PORT: 3306
+        ports:
+            - 8081:80
+        networks:
+            - psnet
+        platform: linux/x86_64 # Apple Silicon Macs only
+networks:
+    psnet:
