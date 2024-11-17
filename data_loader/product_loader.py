@@ -52,7 +52,7 @@ def add_product(name, price, description, category_name, image_path):
     encoded_key = base64.b64encode(f"{API_TOKEN}:".encode()).decode()
 
     headers = {
-        'Authorization': f'Basic {encoded_key}',  # Klucz API w Base64 w nagłówku
+        'Authorization': f'Basic {encoded_key}',
         'Content-Type': 'application/xml'
     }
     response = requests.post(API_URL+"/products", headers=headers, data=product_data)
