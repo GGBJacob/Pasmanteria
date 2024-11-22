@@ -1,3 +1,5 @@
+import random
+
 import requests
 from requests.auth import HTTPBasicAuth
 import xml.etree.ElementTree as ET
@@ -12,30 +14,30 @@ API_URL_IMAGES = "http://localhost:8080/api/images/products"
 API_TOKEN = "VQPNJWXPSYG3G2SWJWPBGNXVBVE3CAXS"
 
 
-def add_product(name, price, description, category_name, image_path):
+def add_product(name, price, description, category_name, image_path, lang="1"):
     category_id = categories[category_name]
     prestashop = ET.Element("prestashop", {"xmlns:xlink": "http://www.w3.org/1999/xlink"})
     product = ET.SubElement(prestashop, "product")
 
     name_elem = ET.SubElement(product, "name")
-    name_lang = ET.SubElement(name_elem, "language", {"id": "1"})
+    name_lang = ET.SubElement(name_elem, "language", {"id": lang})
     name_lang.text = name
     ET.SubElement(product, "price").text = str(price)
 
     description_elem = ET.SubElement(product, "description")
-    description_lang = ET.SubElement(description_elem, "language", {"id": "1"})
+    description_lang = ET.SubElement(description_elem, "language", {"id": lang})
     description_lang.text = description
 
     meta_description_elem = ET.SubElement(product, "meta_description")
-    meta_description_lang = ET.SubElement(meta_description_elem, "language", {"id": "1"})
+    meta_description_lang = ET.SubElement(meta_description_elem, "language", {"id": lang})
     meta_description_lang.text = description
 
     meta_keywords_elem = ET.SubElement(product, "meta_keywords")
-    meta_keywords_lang = ET.SubElement(meta_keywords_elem, "language", {"id": "1"})
+    meta_keywords_lang = ET.SubElement(meta_keywords_elem, "language", {"id": lang})
     meta_keywords_lang.text = "tag"
 
     meta_title_elem = ET.SubElement(product, "meta_title")
-    meta_title_lang = ET.SubElement(meta_title_elem, "language", {"id": "1"})
+    meta_title_lang = ET.SubElement(meta_title_elem, "language", {"id": lang})
     meta_title_lang.text = "title"
 
     ET.SubElement(product, "id_category_default").text = str(category_id)
@@ -47,6 +49,11 @@ def add_product(name, price, description, category_name, image_path):
     ET.SubElement(product, "active").text = "1"
     ET.SubElement(product, "visibility").text = "both"
 
+    ET.SubElement(product, "available_for_order").text = "1"
+    ET.SubElement(product, "minimal_quantity").text = "1"
+    ET.SubElement(product, "reference").text = name.replace(" ", "_")
+    ET.SubElement(product, "id_tax_rules_group").text = "1"
+    ET.SubElement(product, "indexed").text = "1"
     product_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
 
     encoded_key = base64.b64encode(f"{API_TOKEN}:".encode()).decode()
@@ -55,17 +62,79 @@ def add_product(name, price, description, category_name, image_path):
         'Authorization': f'Basic {encoded_key}',
         'Content-Type': 'application/xml'
     }
-    response = requests.post(API_URL+"/products", headers=headers, data=product_data)
+    response = requests.post(API_URL + "/products", headers=headers, data=product_data)
 
     if response.status_code == 201:
         root = ET.fromstring(response.text)
         product_id = root.find('.//id').text
         print("Sukces: Produkt dodany.")
         upload_product_image(API_URL, product_id, image_path)
+        set_product_stock(API_URL, API_TOKEN, product_id, random.randint(1, 10))
     else:
         print(f"Błąd: {response.status_code} - {response.text}")
         print("Nagłówki żądania:", response.request.headers)
         print("Dane wysłane:", product_data)
+
+
+
+def set_product_stock(api_url, api_key, product_id, new_quantity):
+    encoded_key = base64.b64encode(api_key.encode()).decode()
+    headers = {
+        'Authorization': f'Basic {encoded_key}',
+        'Content-Type': 'application/xml'
+    }
+
+    stock_url = f"{api_url}/stock_availables"
+
+    # Parametry do filtrowania rekordu stock_available
+    params = {
+        "filter[id_product]": product_id,
+        "display": "full"
+    }
+
+    # Użycie HTTP Basic Auth
+    response = requests.get(stock_url, params=params, auth=(api_key, ''))
+
+    if response.status_code != 200:
+        raise Exception(f"Błąd podczas pobierania stock_available: {response.status_code}, {response.text}")
+
+    # Parsowanie odpowiedzi XML
+    root = ET.fromstring(response.content)
+    stock_id = root.find(".//stock_available/id").text
+    id_shop = root.find(".//stock_available/id_shop").text
+    id_product_attribute = root.find(".//stock_available/id_product_attribute").text
+    id_shop_group = root.find(".//stock_available/id_shop_group").text
+    depends_on_stock = root.find(".//stock_available/depends_on_stock").text
+    location = root.find(".//stock_available/location").text
+    if not stock_id:
+        raise Exception(f"Nie znaleziono stock_available dla produktu o ID {product_id}")
+
+    # Krok 2: Zaktualizuj ilość w magazynie
+    update_url = f"{api_url}/stock_availables/{stock_id}"
+
+    # Tworzenie XML do aktualizacji
+    prestashop = ET.Element("prestashop", {"xmlns:xlink": "http://www.w3.org/1999/xlink"})
+    stock_available = ET.SubElement(prestashop, "stock_available")
+    ET.SubElement(stock_available, "id").text = str(stock_id)
+    ET.SubElement(stock_available, "id_product").text = str(product_id)
+    ET.SubElement(stock_available, "id_product_attribute").text = str(id_product_attribute)
+    ET.SubElement(stock_available, "id_shop").text = str(id_shop)
+    ET.SubElement(stock_available, "quantity").text = str(new_quantity)
+    ET.SubElement(stock_available, "id_shop_group").text = str(id_shop_group)
+    ET.SubElement(stock_available, "depends_on_stock").text = str(depends_on_stock)
+    ET.SubElement(stock_available, "out_of_stock").text = "0"
+    ET.SubElement(stock_available, "location").text = str(location)
+
+    # Serializacja XML
+    update_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
+
+    update_response = requests.put(update_url, headers=headers, data=update_data, auth=(api_key, ''))
+
+    if update_response.status_code not in [200, 204]:
+        raise Exception(
+            f"Błąd podczas aktualizacji stock_available: {update_response.status_code}, {update_response.text}")
+
+    return {"status": "success", "stock_id": stock_id, "new_quantity": new_quantity}
 
 
 def upload_product_image(prestashop_url, product_id, image_path):
@@ -111,7 +180,7 @@ def add_products(directory, images_directory):
             image_name = file_name.replace('.txt', '_0.jpg')
             image_directory = os.path.join(images_directory, image_name)
             category_name = os.path.basename(directory)
-            add_product(product_name, price, description, category_name, image_directory)
+            add_product(product_name, price, description, category_name, image_directory, "1")
     sub_directories = [f for f in os.listdir(directory) if os.path.isdir(os.path.join(directory, f))]
     for sub_directory in sub_directories:
         sub_directory_path = os.path.join(directory, sub_directory)
@@ -119,7 +188,7 @@ def add_products(directory, images_directory):
         add_products(sub_directory_path, images_sub_directory_path)
 
 
-base_data_dir = r"C:\Users\micha\PycharmProjects\BE\scrapedData\data"
-base_images_dir = r"C:\Users\micha\PycharmProjects\BE\scrapedData\images"
+base_data_dir = r"..\scrapedData\data"
+base_images_dir = r"..\scrapedData\images"
 categories = get_categories()
 add_products(base_data_dir, base_images_dir)

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'prestashopcorp/psxmarketingwithgoogle',
-        'pretty_version' => 'v1.74.9',
-        'version' => '1.74.9.0',
-        'reference' => 'b72c5d27a1488c4aab703a5ce2e5e63ed7cddf23',
+        'pretty_version' => 'v1.74.10',
+        'version' => '1.74.10.0',
+        'reference' => '11baaa97dcd05d3c842768d5598fe9c601bfb22c',
         'type' => 'prestashop-module',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -160,9 +160,9 @@
             'dev_requirement' => false,
         ),
         'prestashopcorp/psxmarketingwithgoogle' => array(
-            'pretty_version' => 'v1.74.9',
-            'version' => '1.74.9.0',
-            'reference' => 'b72c5d27a1488c4aab703a5ce2e5e63ed7cddf23',
+            'pretty_version' => 'v1.74.10',
+            'version' => '1.74.10.0',
+            'reference' => '11baaa97dcd05d3c842768d5598fe9c601bfb22c',
             'type' => 'prestashop-module',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

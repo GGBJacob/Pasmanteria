@@ -17,12 +17,13 @@ def get_categories():
     response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
     if response.status_code == 200:
         ids = extract_category_ids(response.text)
-        return {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
+        categories = {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
+        return categories
     else:
         print(f"Failed to retrieve categories: {response.status_code}")
 
 
-def get_category_name(category_id, lang_id=2):
+def get_category_name(category_id, lang_id=1):
     try:
         url = f"{API_URL}/{category_id}"
         response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""))
@@ -111,7 +112,7 @@ def add_categories(data, parent_id=2):
 
 if __name__ == "__main__":
     # Wczytanie danych z pliku JSON
-    with open(r"C:\Users\micha\PycharmProjects\BE\data_loader\categories.json", 'r', encoding='utf-8') as f:
+    with open(r"categories.json", 'r', encoding='utf-8') as f:
         categories_data = json.load(f)
 
     # Dodawanie kategorii do PrestaShop
