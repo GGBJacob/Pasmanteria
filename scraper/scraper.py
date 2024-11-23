@@ -1,6 +1,9 @@
+import concurrent
 import os.path
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -79,6 +82,9 @@ def get_all_products_subpages(request):
     categories_dict = []
     for link in menu:  # dodajemy wszystkie główne strony, a potem je rozbijamy na głębsze podstrony
         category = link.text
+        if "WYPRZEDAŻ" in category:
+            continue
+        category = category[:-1] if category.endswith('.') else category  # Usuwanie zbędnych kropek na końcu
         categories_dict = add_to_nested_dict(categories_dict, category.split('/'))
         stack.append(ProductPage(category, link.get('href')))
 
@@ -100,6 +106,7 @@ def get_all_products_subpages(request):
 
         for page in cardDeck.find_all('div', class_='card'):
             subcategory = page.find('span').text
+            subcategory = subcategory[:-1] if subcategory.endswith('.') else subcategory  # Usuwanie zbędnych kropek na końcu
             link = page.find('a').get('href')
             categories_dict = add_to_nested_dict(categories_dict, (currentPage.category+'/'+subcategory).split('/'))
             stack.append(ProductPage(currentPage.category + '/' + subcategory, link))
@@ -136,6 +143,30 @@ def save_product_photos(directory, productNo, imagePages):  # zwraca czy się ud
 
     return True
 
+def remove_special_characters_from_end(text):
+    return text.rstrip(''.join([ch for ch in text if not ch.isalnum()]))
+
+
+def extract_weight(text):
+    words = text.split()
+
+    for i in range(len(words)):
+        # Sprawdzamy, czy słowo to liczba
+        if words[i].isdigit() and i + 1 < len(words):
+            # Oczyszczamy jednostki z niepotrzebnych znaków
+            unit = remove_special_characters_from_end(words[i + 1])
+            # Sprawdzamy jednostki "g", "gr", "gramów"
+            if unit in ["g", "gr", "gramów"]:
+                return words[i] + ' ' + unit  # Zwróć wagę z jednostką
+
+        # Sprawdzamy przypadki, gdy jednostka jest już częścią słowa
+        if words[i].endswith("g") or words[i].endswith("gr") or words[i].endswith("gramów"):
+            # Usuwamy jednostke, aby sprawdzić, czy przed nią znajduje się liczba
+            if words[i][:-1].isdigit() or words[i][:-2].isdigit() or words[i][:-5].isdigit():
+                return words[i]
+
+    return None
+
 
 def save_product_info(infoDir, productNo, productPage):  # zwraca czy się udało zapisać
     if not productPage.find('h1'):
@@ -143,11 +174,17 @@ def save_product_info(infoDir, productNo, productPage):  # zwraca czy się udał
     title = productPage.find('h1').text
     price = productPage.find('span', class_='productPrice').text
     description = productPage.find('div', class_='nadodatek-cm-full-content-description').text.strip()
+    weight = extract_weight(title) or extract_weight(description)
 
-    with open(f'{infoDir}/{productNo}.txt', 'w', encoding='utf-8') as file:
-        file.write(f"{title}\n\n")
-        file.write(f"{price}\n\n")
-        file.write(f"{description}\n\n")
+    product_data = {
+        "title": title,
+        "price": price,
+        "description": description,
+        "weight": weight
+    }
+
+    with open(f'{infoDir}/{productNo}.json', 'w', encoding='utf-8') as file:
+        json.dump(product_data, file, ensure_ascii=False, indent=4)
 
     return True
 
@@ -172,36 +209,91 @@ def save_product(category, productNo, productPage):  # zwraca czy się udało za
 
 def scrape_subpages(subpages):
     print('Starting scraping...')
+
     productCount = 0
-    pageCount = 1
-    for subpage in subpages:
-        print(f'Scraping progress: {round(pageCount / len(subpages) * 100, 2)}% ({pageCount}/{len(subpages)})')
-        subpageRequest = SESSION.get(subpage.link)
-        pageCount += 1
-        if subpageRequest.status_code != 200:
+    total_products_processed = 0
+
+    # Tworzymy wątek dla każdej podstrony
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        # Rozdzielamy na wątki
+        future_to_subpage = {
+            executor.submit(scrape_subpage, subpage, productCount): subpage
+            for subpage in subpages
+        }
+
+        # Czekamy na zakończenie wszystkich wątków
+        for future in concurrent.futures.as_completed(future_to_subpage):
+            processed = future.result()
+            total_products_processed += processed
+
+    print(f'Total products: {total_products_processed}')
+
+
+def scrape_subpage(subpage, productCount):
+    print(f'Scraping: {subpage.category}')
+
+    subpageRequest = SESSION.get(subpage.link)
+    if subpageRequest.status_code != 200:
+        return 0  # Jeśli strona nie została poprawnie załadowana
+
+    subpageParsed = BeautifulSoup(subpageRequest.content, 'html.parser')
+
+    body = subpageParsed.find('div', id='bodyContent')  # znajdujemy gdzie są produkty
+    if not body:
+        return 0  # Jeśli nie znaleziono produktów, zwróć 0
+
+    products = body.find_all('a', href=True, id=False)  # wyciągamy linki produktów
+    productProcessed = 0  # Zliczamy przetworzone produkty
+
+    for product in products:
+        productLink = product.get('href')  # wyciągamy link do jednego produktu
+
+        if MAIN_PAGE not in productLink:
             continue
 
-        subpageParsed = BeautifulSoup(subpageRequest.content, 'html.parser')
-
-        body = subpageParsed.find('div', id='bodyContent')  # znajdujemy gdzie są produkty
-        if not body:
+        productRequest = SESSION.get(productLink)
+        if productRequest.status_code != 200:
             continue
 
-        products = body.find_all('a', href=True,
-                                 id=False)  # wyciągamy linki produktów (produkty nie mają ustawionego ID, pdfy mają)
-        for product in products:
+        # Przetwarzamy i zapisujemy produkt
+        if save_product(subpage.category, productCount, productRequest):
+            productProcessed += 1  # Zliczamy przetworzone produkty
+            productCount += 1  # Zwiększamy globalny licznik produktów
 
-            product = product.get('href')  # wyciągamy link do jednego produktu
+    return productProcessed  # Zwracamy liczbę przetworzonych produktów
 
-            if MAIN_PAGE not in product:
-                continue
-
-            productRequest = SESSION.get(product)
-            if productRequest.status_code != 200:
-                continue
-
-            if save_product(subpage.category, productCount, productRequest):
-                productCount += 1  # zliczamy by zapisywać odpowiednio produkty
+# def scrape_subpages(subpages):
+#     print('Starting scraping...')
+#     productCount = 0
+#     pageCount = 1
+#     for subpage in subpages:
+#         print(f'Scraping progress: {round(pageCount / len(subpages) * 100, 2)}% ({pageCount}/{len(subpages)})')
+#         subpageRequest = SESSION.get(subpage.link)
+#         pageCount += 1
+#         if subpageRequest.status_code != 200:
+#             continue
+#
+#         subpageParsed = BeautifulSoup(subpageRequest.content, 'html.parser')
+#
+#         body = subpageParsed.find('div', id='bodyContent')  # znajdujemy gdzie są produkty
+#         if not body:
+#             continue
+#
+#         products = body.find_all('a', href=True,
+#                                  id=False)  # wyciągamy linki produktów (produkty nie mają ustawionego ID, pdfy mają)
+#         for product in products:
+#
+#             product = product.get('href')  # wyciągamy link do jednego produktu
+#
+#             if MAIN_PAGE not in product:
+#                 continue
+#
+#             productRequest = SESSION.get(product)
+#             if productRequest.status_code != 200:
+#                 continue
+#
+#             if save_product(subpage.category, productCount, productRequest):
+#                 productCount += 1  # zliczamy by zapisywać odpowiednio produkty
 
 
 if __name__ == '__main__':
