@@ -3,6 +3,6 @@
 **/.venv
 
 # Database
-db/
+/db/
 
 .DS_Store
