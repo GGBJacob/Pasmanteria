@@ -15,10 +15,9 @@ To restore the db execute `sh scripts/restore.sh`. This will take `dump.sql` fro
 ## SSL generation
 
 ```
-mkdir ssl &&
 cd ssl &&
-openssl req -x509 -out localhost.crt -keyout localhost.key \
+openssl req -x509 -out server.crt -keyout server.key \
   -newkey rsa:2048 -nodes -sha256 \
-  -subj '/CN=localhost' -extensions EXT -config <( \
+  -subj "/C=PL/ST=Pomerania/L=Gdansk/O=Gdansk Tech/OU=WETI/CN=localhost" -extensions EXT -config <( \
    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
