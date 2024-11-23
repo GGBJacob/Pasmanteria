@@ -157,7 +157,7 @@ def extract_weight(text):
             unit = remove_special_characters_from_end(words[i + 1])
             # Sprawdzamy jednostki "g", "gr", "gramów"
             if unit in ["g", "gr", "gramów"]:
-                return words[i] + ' ' + unit  # Zwróć wagę z jednostką
+                return words[i]
 
         # Sprawdzamy przypadki, gdy jednostka jest już częścią słowa
         if words[i].endswith("g") or words[i].endswith("gr") or words[i].endswith("gramów"):
