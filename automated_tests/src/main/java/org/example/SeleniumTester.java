@@ -10,10 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SeleniumTester {
 
@@ -50,6 +47,12 @@ public class SeleniumTester {
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver.get("https://localhost");
+        System.out.println("Ready to start tests, press enter to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        System.out.println("Tests are starting...");
+        scanner.close();
     }
 
     private void addProduct() throws Exception // function called from a product page
@@ -73,7 +76,7 @@ public class SeleniumTester {
     {
         boolean success = true;
         try{
-            driver.get("http://localhost:8080/en/login?create_account");
+            driver.get("https://localhost/logowanie?create_account");
 
             // Select gender
             WebElement genderRadioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for='field-id_gender-1']")));
@@ -99,14 +102,14 @@ public class SeleniumTester {
             WebElement privacyCheckbox = driver.findElement(By.name("customer_privacy"));
             privacyCheckbox.click();
 
-            // Accept terms and conditions
-            WebElement termsAndConditionsCheckbox = driver.findElement(By.name("psgdpr"));
-            if(!termsAndConditionsCheckbox.isSelected())
-                termsAndConditionsCheckbox.click();
+            // Accept terms and conditions (only english PrestaShop version)
+            //WebElement termsAndConditionsCheckbox = driver.findElement(By.name("psgdpr"));
+            //if(!termsAndConditionsCheckbox.isSelected())
+            //    termsAndConditionsCheckbox.click();
 
             // Submit login
             WebElement registerButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("footer.form-footer .btn.btn-primary.form-control-submit")));
-            //registerButton.click();
+            registerButton.click();
 
             // Set driver wait time for expected elements
             WebElement loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("account")));
@@ -132,7 +135,7 @@ public class SeleniumTester {
     {
         boolean success = true;
         try{
-        driver.get("http://localhost:8080/en/");
+        driver.get("https://localhost");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
 
         List<WebElement> categories = driver.findElements(By.cssSelector("ul#top-menu > li.category a.dropdown-submenu"));
@@ -186,7 +189,7 @@ public class SeleniumTester {
 
     public void testProductSearch()
     {
-        driver.get("http://localhost:8080/");
+        driver.get("https://localhost");
         boolean success = true;
         try {
             List<WebElement> products = driver.findElements(By.className("product-title"));
@@ -255,7 +258,7 @@ public class SeleniumTester {
 
     public void testProductRemoval()
     {
-        driver.get("http://localhost:8080/en/cart");
+        driver.get("https://localhost/koszyk");
         boolean success = true;
         try {
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
