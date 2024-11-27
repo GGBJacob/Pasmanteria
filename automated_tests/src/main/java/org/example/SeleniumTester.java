@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,15 +45,12 @@ public class SeleniumTester {
     }
 
     public SeleniumTester() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--ignore-certificate-errors");
         WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver(options);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://localhost");
-        System.out.println("Ready to start tests, press enter to continue...");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
-        System.out.println("Tests are starting...");
-        scanner.close();
     }
 
     private void addProduct() throws Exception // function called from a product page
