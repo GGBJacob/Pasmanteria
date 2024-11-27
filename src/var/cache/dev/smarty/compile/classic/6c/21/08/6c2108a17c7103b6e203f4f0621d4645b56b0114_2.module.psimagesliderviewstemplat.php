@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-10 19:28:11
+/* Smarty version 3.1.48, created on 2024-11-23 22:45:55
   from 'module:psimagesliderviewstemplat' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_6730fb3bc778a2_14424052',
+  'unifunc' => 'content_67424d131a9bb8_55677551',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c2108a17c7103b6e203f4f0621d4645b56b0114' => 
     array (
       0 => 'module:psimagesliderviewstemplat',
-      1 => 1702485415,
+      1 => 1732396049,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6730fb3bc778a2_14424052 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67424d131a9bb8_55677551 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- begin /var/www/html/themes/classic/modules/ps_imageslider/views/templates/hook/slider.tpl -->
 <?php if ($_smarty_tpl->tpl_vars['homeslider']->value['slides']) {?>
   <div id="carousel" data-ride="carousel" class="carousel slide" data-interval="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['homeslider']->value['speed'], ENT_QUOTES, 'UTF-8');?>
@@ -64,7 +64,7 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_homeslider']->value['first'] = !$_smart
             <figure>
               <img src="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['slide']->value['image_url'], ENT_QUOTES, 'UTF-8');?>
 " alt="<?php echo htmlspecialchars(call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['slide']->value['legend'] )), ENT_QUOTES, 'UTF-8');?>
-" loading="lazy" width="1110" height="340">
+" loading="lazy" width="100%" height="855">
               <?php if ($_smarty_tpl->tpl_vars['slide']->value['title'] || $_smarty_tpl->tpl_vars['slide']->value['description']) {?>
                 <figcaption class="caption">
                   <h2 class="display-1 text-uppercase"><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['slide']->value['title'], ENT_QUOTES, 'UTF-8');?>
@@ -80,21 +80,6 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_homeslider']->value['first'] = !$_smart
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
-    <div class="direction" aria-label="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Carousel buttons','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-">
-      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" aria-label="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Previous','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-">
-        <span class="icon-prev hidden-xs" aria-hidden="true">
-          <i class="material-icons">&#xE5CB;</i>
-        </span>
-      </a>
-      <a class="right carousel-control" href="#carousel" role="button" data-slide="next" aria-label="<?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Next','d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-">
-        <span class="icon-next" aria-hidden="true">
-          <i class="material-icons">&#xE5CC;</i>
-        </span>
-      </a>
-    </div>
   </div>
 <?php }?>
 <!-- end /var/www/html/themes/classic/modules/ps_imageslider/views/templates/hook/slider.tpl --><?php }
