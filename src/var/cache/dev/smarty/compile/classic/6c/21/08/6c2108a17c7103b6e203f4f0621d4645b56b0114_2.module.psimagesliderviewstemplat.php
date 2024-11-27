@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-23 22:45:55
+/* Smarty version 3.1.48, created on 2024-11-27 21:51:14
   from 'module:psimagesliderviewstemplat' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67424d131a9bb8_55677551',
+  'unifunc' => 'content_67478642f20b05_41444599',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6c2108a17c7103b6e203f4f0621d4645b56b0114' => 
     array (
       0 => 'module:psimagesliderviewstemplat',
-      1 => 1732396049,
+      1 => 1732740672,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67424d131a9bb8_55677551 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67478642f20b05_41444599 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- begin /var/www/html/themes/classic/modules/ps_imageslider/views/templates/hook/slider.tpl -->
 <?php if ($_smarty_tpl->tpl_vars['homeslider']->value['slides']) {?>
   <div id="carousel" data-ride="carousel" class="carousel slide" data-interval="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['homeslider']->value['speed'], ENT_QUOTES, 'UTF-8');?>
@@ -64,7 +64,7 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_homeslider']->value['first'] = !$_smart
             <figure>
               <img src="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['slide']->value['image_url'], ENT_QUOTES, 'UTF-8');?>
 " alt="<?php echo htmlspecialchars(call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['slide']->value['legend'] )), ENT_QUOTES, 'UTF-8');?>
-" loading="lazy" width="100%" height="855">
+" loading="lazy" width="100%" height="855" class="animate-right">
               <?php if ($_smarty_tpl->tpl_vars['slide']->value['title'] || $_smarty_tpl->tpl_vars['slide']->value['description']) {?>
                 <figcaption class="caption">
                   <h2 class="display-1 text-uppercase"><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['slide']->value['title'], ENT_QUOTES, 'UTF-8');?>

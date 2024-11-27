@@ -2,6 +2,29 @@
 
 
 /*ps_imageslider*/
+#wrapper {
+	padding: 0rem;
+}
+
+.carousel .carousel-inner {
+    height: auto;
+}
+
+.animate-right{
+	position: relative;
+	animation: animeright 1.8s;
+}
+
+@keyframes animeright {
+	0% {
+		right: -300px;
+		opacity: 0;
+	}
+	100% {
+		right: 0;
+		opacity: 1;
+	}
+}
 
 body.page-index #wrapper .container {
 	position: relative;
