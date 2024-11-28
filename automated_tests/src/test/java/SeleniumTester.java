@@ -1,9 +1,6 @@
-package org.example;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.example.MailGenerator;
+import org.junit.jupiter.params.aggregator.AggregateWith;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -12,11 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.*;
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class SeleniumTester {
 
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+    private static WebDriver driver;
+    private static WebDriverWait wait;
 
     private static final String RED = "\033[31m"; // Used for errors
     public static final String YELLOW = "\u001B[33m"; // Used for warnings
@@ -44,13 +48,23 @@ public class SeleniumTester {
         System.out.println(BLUE + message + RESET);
     }
 
-    public SeleniumTester() {
+    @BeforeAll
+    public static void setUp() {
+        // Initialize WebDriver only once before all tests
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors");
         WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver(options);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver = new ChromeDriver(options);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://localhost");
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        // Close the browser after all tests
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     private void addProduct() throws Exception // function called from a product page
@@ -63,18 +77,22 @@ public class SeleniumTester {
 
         // Wait for add to cart button to load
         WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("add-to-cart")));
+        assertNotNull(addToCartButton, "Add to cart button not found!");
         addToCartButton.click();
 
         // Wait for continue button to load
         WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cart-content-btn .btn-secondary")));
+        assertNotNull(continueButton, "Continue button not found!");
         continueButton.click();
     }
 
+    @Test
     public void testSignUp()
     {
-        boolean success = true;
         try{
             driver.get("https://localhost/logowanie?create_account");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("authentication")));
+            MailGenerator mailGenerator = new MailGenerator();
 
             // Select gender
             WebElement genderRadioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for='field-id_gender-1']")));
@@ -90,7 +108,7 @@ public class SeleniumTester {
 
             // Enter email
             WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
-            emailField.sendKeys("user@gmail.com");
+            emailField.sendKeys(mailGenerator.generateEmail());  // Enter next email
 
             // Enter password
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
@@ -112,26 +130,18 @@ public class SeleniumTester {
             // Set driver wait time for expected elements
             WebElement loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("account")));
 
-
-            if (loggedInElement.isDisplayed()) {
-                printSuccess("Successfully registered!");
-            } else {
-                printError("Failed to register!");
-            }
+            assertNotNull(loggedInElement, "Sign up failed! Account element is NULL!");
+            assertTrue(loggedInElement.isDisplayed(), "Sign up failed! Account element is not displayed!");
         }
         catch(Exception e){
-            success = false;
+            fail("Exception occured: " + e.getMessage());
             // e.printStackTrace();
-        }
-        finally {
-            if(!success)
-                printError("Failed to register!");
         }
     }
 
+    @Test
     public void testProductAdding()
     {
-        boolean success = true;
         try{
         driver.get("https://localhost");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
@@ -144,18 +154,21 @@ public class SeleniumTester {
         {
             categoryUrls.add(category.getAttribute("href"));
         }
+
         int addedProducts = 0;
+        int maxProductsToAdd = 10;
         for (int i =0; i<categoryUrls.size() && addedProducts < 10; i++) {
 
             driver.get(categoryUrls.get(i));
 
             List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
 
-            for (int j =0; j<productList.size() && addedProducts < 10; j++) {
+
+            for (int j =0; j<productList.size() && addedProducts <maxProductsToAdd; j++) {
 
                 // Open product page
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.product-thumbnail")));
-                productList = driver.findElements(By.cssSelector("a.product-thumbnail")); // TODO: Ogarnac co tu
+                productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
                 WebElement product = productList.get(j);
                 product.click();
 
@@ -168,27 +181,23 @@ public class SeleniumTester {
                 // Increment added product count
                 addedProducts++;
             }
-        }}
-        catch(Exception e){
-            success = false;
-            //e.printStackTrace();
         }
-        finally {
-            if (success)
-            {
-                printSuccess("Successfully added 10 products!");
-            }
-            else
-            {
-                printError("Failed to add 10 products!");
-            }
+
+        assertEquals(maxProductsToAdd, addedProducts, "The number of added products does not match the expected value!");
+
+        }
+        catch(Exception e) {
+            fail("Exception occured: " + e.getMessage());
+            //e.printStackTrace();
         }
     }
 
+    @Test
     public void testProductSearch()
     {
         driver.get("https://localhost");
-        boolean success = true;
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
+
         try {
             List<WebElement> products = driver.findElements(By.className("product-title"));
             List<String> productNames = new ArrayList<>();
@@ -196,6 +205,8 @@ public class SeleniumTester {
             for (WebElement product : products) {
                 productNames.addAll(Arrays.asList(product.getText().strip().split(" ")));
             }
+
+            assertFalse(productNames.isEmpty(), "Product names list is empty!");
 
             boolean foundProducts = false;
             while (!foundProducts) {
@@ -219,72 +230,94 @@ public class SeleniumTester {
                 }
                 else {
                     printWarning("No products found for: " + selectedWord);
-                    if (productNames.isEmpty())
-                    {
-                        printError("Couldn't find any products! Product names list is empty!");
-                        success = false;
-                        break;
-                    }
                     continue;
                 }
                 // Select random one and enter its page
                 WebElement product = products.get(new Random().nextInt(products.size()));
+                assertNotNull(product, "Product is null!");
                 product.click();
             }
-            if (productNames.isEmpty())
-                success = false;
-            else
-                addProduct();
+            addProduct();
 
         }
         catch(Exception e){
-            success = false;
+            fail("Exception occured: " + e.getMessage());
             //e.printStackTrace();
         }
-        finally {
-            if (success)
-            {
-                printSuccess("Successfully added a searched product to cart!");
-            }
-            else
-            {
-                printError("Failed to search and add a product!");
-            }
-        }
-
     }
 
+    @Test
     public void testProductRemoval()
     {
         driver.get("https://localhost/koszyk");
-        boolean success = true;
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart")));
         try {
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
-            for (int i = 0; i < 3; i++) {
+            int productsToRemove = 3, productsRemoved = 0;
+            for (int i = 0; i < productsToRemove; i++) {
                 WebElement removeButton = buttons.get(i);
                 removeButton.click();
+                productsRemoved++;
                 printInfo("Removed product #" + (i+1));
             }
+            assertEquals(productsRemoved, productsToRemove, "The number of products to remove does not match the expected value!");
         }
         catch (Exception e)
         {
-            success = false;
-        }
-        finally {
-            if (success)
-            {
-                printSuccess("Successfully removed 3 products!");
-            }
-            else
-            {
-                printError("Failed to remove 3 products!");
-            }
+            fail("Exception occured: " + e.getMessage());
         }
     }
 
+    public void logIn()
+    {
+        driver.get("https://localhost");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
+        WebElement loginButton;
+        try {
+             loginButton = driver.findElement(By.cssSelector("a[title='Zaloguj się do swojego konta klienta']"));
+        }
+        catch(Exception e)
+        {
+            System.out.println("Log in element not found!");
+            return;
+        }
+
+        loginButton.click();
+
+        // Enter email
+        WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
+        emailField.sendKeys("user@gmail.com");
+
+        // Enter password
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
+        passwordField.sendKeys("secretPassword123");
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("submit-login"))).click();
+    }
+
+
+    @Test
     public void testOrder()
     {
-        // TODO: Order, select payment method (on delivery), select one form of shipping @IVOBOT
+        logIn();
+        driver.get("https://localhost/koszyk?action=show");
+        try{
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart")));
+            List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
+            if (!disabledButton.isEmpty()) {
+                testProductSearch();
+                testOrder();
+            }
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='btn btn-primary' and contains(text(),'Przejdź do realizacji zamówienia')]"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirm-addresses"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirmDeliveryOption"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=payment-option-2]"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("condition-label"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='btn btn-primary center-block' and contains(text(),'Złóż zamówienie')]"))).click();
+        }
+        catch(Exception e){
+            fail("Exception occured: " + e.getMessage());
+        }
     }
 
     public void testOrderStatus()
