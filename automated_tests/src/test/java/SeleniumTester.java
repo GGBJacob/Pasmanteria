@@ -21,32 +21,29 @@ public class SeleniumTester {
 
     private static WebDriver driver;
     private static WebDriverWait wait;
+    private final String userMail;
 
-    private static final String RED = "\033[31m"; // Used for errors
+
     public static final String YELLOW = "\u001B[33m"; // Used for warnings
-    private static final String GREEN = "\033[32m"; // Used for successful operations
     public static final String BLUE = "\u001B[34m"; // Used for info
     private static final String RESET = "\033[0m";
-
-    private static void printError(String message)
-    {
-        System.out.println(RED + message + RESET);
-    }
 
     private static void printWarning(String message)
     {
         System.out.println(YELLOW + message + RESET);
     }
 
-    private static void printSuccess(String message)
-    {
-        System.out.println(GREEN + message + RESET);
-    }
-
     private static void printInfo(String message)
     {
         System.out.println(BLUE + message + RESET);
     }
+
+    public SeleniumTester()
+    {
+        MailGenerator mailGenerator = new MailGenerator();
+        userMail = mailGenerator.generateEmail();
+    }
+
 
     @BeforeAll
     public static void setUp() {
@@ -92,7 +89,6 @@ public class SeleniumTester {
         try{
             driver.get("https://localhost/logowanie?create_account");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("authentication")));
-            MailGenerator mailGenerator = new MailGenerator();
 
             // Select gender
             WebElement genderRadioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for='field-id_gender-1']")));
@@ -108,7 +104,7 @@ public class SeleniumTester {
 
             // Enter email
             WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
-            emailField.sendKeys(mailGenerator.generateEmail());  // Enter next email
+            emailField.sendKeys(this.userMail);  // Enter user email
 
             // Enter password
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
@@ -195,10 +191,9 @@ public class SeleniumTester {
     @Test
     public void testProductSearch()
     {
-        driver.get("https://localhost");
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
-
         try {
+            driver.get("https://localhost");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
             List<WebElement> products = driver.findElements(By.className("product-title"));
             List<String> productNames = new ArrayList<>();
             // Add all product words (e.g. T-Shirt) to array
@@ -249,9 +244,9 @@ public class SeleniumTester {
     @Test
     public void testProductRemoval()
     {
-        driver.get("https://localhost/koszyk");
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart")));
         try {
+            driver.get("https://localhost/koszyk");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
             int productsToRemove = 3, productsRemoved = 0;
             for (int i = 0; i < productsToRemove; i++) {
@@ -270,15 +265,22 @@ public class SeleniumTester {
 
     public void logIn()
     {
-        driver.get("https://localhost");
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
+        try {
+            driver.get("https://localhost");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to get website!");
+            return;
+        }
         WebElement loginButton;
         try {
              loginButton = driver.findElement(By.cssSelector("a[title='Zaloguj się do swojego konta klienta']"));
         }
         catch(Exception e)
         {
-            System.out.println("Log in element not found!");
+            System.out.println("Log in element not found! User already logged in?");
             return;
         }
 
@@ -300,9 +302,9 @@ public class SeleniumTester {
     public void testOrder()
     {
         logIn();
-        driver.get("https://localhost/koszyk?action=show");
         try{
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart")));
+            driver.get("https://localhost/koszyk?action=show");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
             List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
             if (!disabledButton.isEmpty()) {
                 testProductSearch();
@@ -320,9 +322,22 @@ public class SeleniumTester {
         }
     }
 
+    @Test
     public void testOrderStatus()
     {
-        // TODO: Check order status @IVOBOT
+        try{
+            driver.get("https://localhost/");
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            logIn();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
+            WebElement detailsPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("order-detail")));
+            assertNotNull(detailsPage, "Order details page is null!");
+        }catch (Exception e)
+        {
+            fail("Exception occured: " + e.getMessage());
+        }
     }
 
     public void testInvoice()
