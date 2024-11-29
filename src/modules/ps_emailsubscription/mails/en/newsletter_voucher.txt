@@ -1,13 +1,11 @@
- 
 
-{shop_url}
+[{shop_url}] 
 
-Hi,
+Hi, 
 
-Subscribing to newsletter
+Regarding your newsletter subscription, we are pleased to offer
+you the following voucher: {discount} 
 
-Thank you for subscribing to our newsletter. We are pleased to offer you the following voucher: {discount}
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
 
-[{shop_name}]({shop_url})
-
-Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)
