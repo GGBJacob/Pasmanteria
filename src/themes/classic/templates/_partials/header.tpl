@@ -111,9 +111,26 @@
             <li class="breadcrumb-item">
               <a class="a-breadcrumb" href="//localhost/">
                 <i class="fas fa-home">
-                  ::before
+                  <i class="material-icons violet-nav-icon">&#xe88a;</i>
                 </i>
                 <span class="sr-only">Home</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="col-sm-4 cm-header-phone text-right">
+      <div class="row-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item-right">
+              <a class="a-breadcrumb-right">
+                <i class="fas fa-home">
+                  <i class="material-icons violet-nav-icon">&#xe0b0;</i>
+                  <i class="violet-nav-icon phone-text">Zamówienia telefoniczne i pomoc: 739-963-582</i>
+                </i>
+                <span class="sr-only">Phone</span>
               </a>
             </li>
           </ol>
