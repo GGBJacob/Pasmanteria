@@ -24,9 +24,39 @@
  *}
 
 {capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
+<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+    <div class="product">
+        {foreach from=$products|@array_slice:0:3 item="product" key="position"}
+            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+        {/foreach}
+    </div>
+</div>
+
+<div class="col-sm-12 cm-i-customer-greeting">
+    <div class="text-center">
+      <h4 class="alert-heading">POLECAMY</h4>
+    </div>
+</div>
 
 <div class="products{if !empty($cssClass)} {$cssClass}{/if}">
-    {foreach from=$products item="product" key="position"}
-        {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
-    {/foreach}
+    <div class="product">
+
+        {foreach from=$products|@array_slice:3:6 item="product" key="position"}
+            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+        {/foreach}
+    </div>
+</div>
+
+<div class="col-sm-12 cm-i-customer-greeting">
+    <div class="text-center">
+      <h4 class="alert-heading">Tu szukaj inspiracji...</h4>
+    </div>
+</div>
+
+<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+    <div class="product">
+        {foreach from=$products|@array_slice:9:2 item="product" key="position"}
+            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+        {/foreach}
+    </div>
 </div>
