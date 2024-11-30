@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-30 15:25:56
+/* Smarty version 3.1.48, created on 2024-11-30 16:58:38
   from '/var/www/html/themes/classic/templates/_partials/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674b207476f627_87766415',
+  'unifunc' => 'content_674b362e83f3d2_62994686',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6eead84a7a0713719d5b8566271288962cc960f' => 
     array (
       0 => '/var/www/html/themes/classic/templates/_partials/header.tpl',
-      1 => 1732976755,
+      1 => 1732982316,
       2 => 'file',
     ),
   ),
@@ -20,35 +20,35 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b207476f627_87766415 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674b362e83f3d2_62994686 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_309058492674b20747654d7_17582372', 'header_banner');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_36114274674b362e83a744_09016650', 'header_banner');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_55731483674b2074769344_22287234', 'header_nav');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1378377894674b362e83ba37_66787766', 'header_nav');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1076505258674b207476b7f8_80149319', 'header_logo_search');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_960271227674b362e83c5a7_61750445', 'header_logo_search');
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1106231197674b207476e312_55988896', 'header_top');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_878406267674b362e83e897_59120980', 'header_top');
 ?>
 
 <?php }
 /* {block 'header_banner'} */
-class Block_309058492674b20747654d7_17582372 extends Smarty_Internal_Block
+class Block_36114274674b362e83a744_09016650 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header_banner' => 
   array (
-    0 => 'Block_309058492674b20747654d7_17582372',
+    0 => 'Block_36114274674b362e83a744_09016650',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -63,12 +63,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header_banner'} */
 /* {block 'header_nav'} */
-class Block_55731483674b2074769344_22287234 extends Smarty_Internal_Block
+class Block_1378377894674b362e83ba37_66787766 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header_nav' => 
   array (
-    0 => 'Block_55731483674b2074769344_22287234',
+    0 => 'Block_1378377894674b362e83ba37_66787766',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -104,12 +104,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header_nav'} */
 /* {block 'header_logo_search'} */
-class Block_1076505258674b207476b7f8_80149319 extends Smarty_Internal_Block
+class Block_960271227674b362e83c5a7_61750445 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header_logo_search' => 
   array (
-    0 => 'Block_1076505258674b207476b7f8_80149319',
+    0 => 'Block_960271227674b362e83c5a7_61750445',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -121,7 +121,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         <!-- PUSTY DIV LEWY -->
         <div class="col-sm-4 cm-header-logo"> &nbsp;</div>
         <!-- LOGO DIV ŚRODEK -->
-        <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
+        <div class="col-sm-4 hidden-sm-down" id="_desktop_logo">
           <?php if ($_smarty_tpl->tpl_vars['shop']->value['logo_details']) {?>
             <?php if ($_smarty_tpl->tpl_vars['page']->value['page_name'] == 'index') {?>
               <h1>
@@ -135,14 +135,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
           <?php }?>
         </div>
         <!-- SEARCH BAR DIV PRAWY -->
-        <div id="search_widget" class="search-widgets" data-search-controller-url="//localhost/szukaj">
-          <form method="get" action="//localhost/szukaj">
-            <input type="hidden" name="controller" value="search">
-            <i class="material-icons search" aria-hidden="true">search</i>
-            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-            <input type="text" name="s" value placeholder="Szukaj" aria-label="Szukaj" class="ui-autocomplete-input" autocomplete="off">
-            <i class="material-icons clear" aria-hidden="true">clear</i>
-          </form>
+        <div class="col-sm-4 cm-header-search">
+          <div class="cm-header-search-input">
+            <form name="quick_find" action="//localhost/szukaj" method="get">
+              <div class="input-group">
+                <input type="search" name="s" required aria-required="true" aria-label="Szukaj" placeholder="Szukaj" class="form-control">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-info">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -152,12 +157,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'header_logo_search'} */
 /* {block 'header_top'} */
-class Block_1106231197674b207476e312_55988896 extends Smarty_Internal_Block
+class Block_878406267674b362e83e897_59120980 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'header_top' => 
   array (
-    0 => 'Block_1106231197674b207476e312_55988896',
+    0 => 'Block_878406267674b362e83e897_59120980',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

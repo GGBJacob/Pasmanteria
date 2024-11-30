@@ -76,11 +76,101 @@ body.page-index #wrapper #custom-text {
 
 /*HEADER - src/themes/classic/templates/_partials/header.tpl*/
 
-  /* Hide all Font Awesome icons in the header */
-  .header_top i.material-icons {
+/* Hide all Font Awesome icons in the header */
+.header_top i.material-icons {
 	display: none !important;
-  }
+}
 
+/*HEADER LEFT EMPTY DIV*/
+.col-sm-4 {
+	position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/*HEADER SEARCH*/
+
+#search_widget {
+	padding: 30px;
+}
+
+.cm-header-search {
+    padding: 30px 0;
+}
+
+.cm-header-search-input {
+    width: 85%;
+    margin: auto;
+}
+
+.input-group {
+	width: 160%;
+}
+
+/* Ensure the search icon is aligned to the right */
+.cm-header-search .input-group {
+	display: flex; /* Use flexbox to align the input and button properly */
+	align-items: center; /* Vertically align the items */
+}
+  
+.cm-header-search .input-group input {
+	flex-grow: 1; /* This makes the input take up all available space */
+}
+  
+.cm-header-search .input-group .input-group-append {
+	order: 2; /* Push the button (with the icon) to the right */
+}
+  
+.cm-header-search .input-group button i {
+	font-size: 18px; 
+	color: #6b3454;
+	background-color: #e9ecef;
+	font-size: 18px;
+}
+
+.input-group-append .btn.btn-info {
+	background-color: #e9ecef;
+}
+
+/* Round the corners of the search submit button */
+.cm-header-search .input-group button {
+	border: 0px;
+    box-shadow: none;
+    outline: none;
+    outline-style: none;
+    outline-width: unset;
+    outline-color: unset;
+    border-radius: .25rem;
+    width: fit-content;
+    margin: auto;
+}
+
+.form-control {
+	display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus, .form-control:enabled, .form-control:visited, .form-control:active {
+    border-color: #e9ecef !important;
+    box-shadow: none;
+    border-radius: .25rem !important;
+}
+
+/*usuniecie search baru defaultowego z presty*/
+.search-widgets {
+	display: none;
+}
 
 /*LOGO STRONY W HEADERZE*/
 .logo.img-fluid {

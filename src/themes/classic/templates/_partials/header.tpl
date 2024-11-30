@@ -61,7 +61,7 @@
         <!-- PUSTY DIV LEWY -->
         <div class="col-sm-4 cm-header-logo"> &nbsp;</div>
         <!-- LOGO DIV ŚRODEK -->
-        <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
+        <div class="col-sm-4 hidden-sm-down" id="_desktop_logo">
           {if $shop.logo_details}
             {if $page.page_name == 'index'}
               <h1>
@@ -73,14 +73,19 @@
           {/if}
         </div>
         <!-- SEARCH BAR DIV PRAWY -->
-        <div id="search_widget" class="search-widgets" data-search-controller-url="//localhost/szukaj">
-          <form method="get" action="//localhost/szukaj">
-            <input type="hidden" name="controller" value="search">
-            <i class="material-icons search" aria-hidden="true">search</i>
-            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-            <input type="text" name="s" value placeholder="Szukaj" aria-label="Szukaj" class="ui-autocomplete-input" autocomplete="off">
-            <i class="material-icons clear" aria-hidden="true">clear</i>
-          </form>
+        <div class="col-sm-4 cm-header-search">
+          <div class="cm-header-search-input">
+            <form name="quick_find" action="//localhost/szukaj" method="get">
+              <div class="input-group">
+                <input type="search" name="s" required aria-required="true" aria-label="Szukaj" placeholder="Szukaj" class="form-control">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-info">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
