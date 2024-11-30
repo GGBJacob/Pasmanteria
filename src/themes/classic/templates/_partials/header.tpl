@@ -33,9 +33,9 @@
     <div class="container">
       <div class="row">
         <div class="hidden-sm-down">
-          <div class="col-md-5 col-xs-12">
+          <!--<div class="col-md-5 col-xs-12">
             {hook h='displayNav1'}
-          </div>
+          </div>-->
           <div class="col-md-7 right-nav">
               {hook h='displayNav2'}
           </div>
@@ -110,7 +110,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <a class="a-breadcrumb" href="//localhost/">
-                <i class="fas fa-home">
+                <i class="home">
                   <i class="material-icons violet-nav-icon">&#xe88a;</i>
                 </i>
                 <span class="sr-only">Home</span>
@@ -126,7 +126,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item-right">
               <a class="a-breadcrumb-right">
-                <i class="fas fa-home">
+                <i class="home">
                   <i class="material-icons violet-nav-icon">&#xe0b0;</i>
                   <i class="violet-nav-icon phone-text">Zamówienia telefoniczne i pomoc: 739-963-582</i>
                 </i>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-30 13:35:39
+/* Smarty version 3.1.48, created on 2024-11-30 15:23:16
   from '/var/www/html/themes/classic/templates/_partials/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674b069b111346_42544654',
+  'unifunc' => 'content_674b1fd466a618_36649429',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '00de71589090397295d207f2915f6624faaf939a' => 
     array (
       0 => '/var/www/html/themes/classic/templates/_partials/footer.tpl',
-      1 => 1732967997,
+      1 => 1732976585,
       2 => 'file',
     ),
   ),
@@ -20,117 +20,96 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b069b111346_42544654 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->_loadInheritance();
-$_smarty_tpl->inheritance->init($_smarty_tpl, false);
-?>
-<div class="container">
-  <div class="row">
-    <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_241628694674b069b10d1c7_00733494', 'hook_footer_before');
-?>
+function content_674b1fd466a618_36649429 (Smarty_Internal_Template $_smarty_tpl) {
+?><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  </div>
-</div>
+<!-- Główna stopka -->
 <div class="footer-container">
-  <div class="container">
-    <div class="row">
-      <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_991370320674b069b10df57_02632451', 'hook_footer');
-?>
+  <div class="container-fluid">
+    <!-- 1. Hooki stopki -->
+    <div class="footer-hooks">
+      <div class="row footer-row">
+        
+        <!-- Sekcja "Informacje" -->
+        <div class="col-sm-6 col-md-2 nadodatek-cm-footer-information-links">
+          <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbspinformacje</h4>
+          <hr class="footer-hr">
+          <nav class="nav nav-pills flex-column content-inside">
+            <a class="nav-link" href="https://nadodatek.pl/shipping.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
+            <a class="nav-link" href="https://nadodatek.pl/regulations.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
+            <a class="nav-link" href="https://nadodatek.pl/documents.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
+            <a class="nav-link" href="https://nadodatek.pl/cookies.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
+          </nav>
+        </div>
 
-    </div>
-    <div class="row">
-      <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1593662060674b069b10ea80_58454676', 'hook_footer_after');
-?>
+        <!-- Sekcja "O nas" -->
+        <div class="col-sm-6 col-md-2 nadodatek-cm-footer-about">
+          <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nadodatek.pl</h4>
+          <hr class="footer-hr">
+          <nav class="nav nav-pills flex-column content-inside">
+            <a class="nav-link" href="https://nadodatek.pl/about_us.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
+            <a class="nav-link" href="https://nadodatek.pl/address.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
+            <a class="nav-link" href="https://nadodatek.pl/eco.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
+          </nav>
+        </div>
 
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <p class="text-sm-center">
-          <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1213154447674b069b10f682_39064074', 'copyright_link');
-?>
+        <!-- Sekcja "Social Media" -->
+        <div class="col-sm-6 col-md-2 nadodatek-cm-footer-media">
+          <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;social media</h4>
+          <hr class="footer-hr">
+          <nav class="nav nav-pills flex-column content-inside">
+            <a class="nav-link" href="https://www.facebook.com/nadodatekpl-225441670823396" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facebook</a>
+            <a class="nav-link" href="https://www.instagram.com/manuki_embroidery/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instagram</a>
+            <a class="nav-link" href="https://blog-nadodatek.blogspot.com/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
+          <div class="nadodatek-footer-element nadodatek-footer-element-icon">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://www.facebook.com/nadodatekpl-225441670823396" class="fab fa-facebook nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Facebooku">&nbsp;</a>
+            <a href="https://www.instagram.com/manuki_embroidery/" class="fab fa-instagram nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Instagramie">&nbsp;</a>
+            <a href="https://blog-nadodatek.blogspot.com/" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
+            </div>
+          </nav>
+        </div>
 
-        </p>
+        <!-- Sekcja "Kontakt" -->
+        <div class="col-sm-6 col-md-2 nadodatek-cm-footer-contact-us">
+          <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kontakt</h4>
+          <hr class="footer-hr">
+          <nav class="nav nav-pills flex-column content-inside">
+            <a class="nav-link"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;nadodatek.pl</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ul. Polna 6 Otomin</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80-174 Gdańsk</a>
+            <a class="nav-link"><i class="fas fa-phone"></i>&nbsp;&nbsp;739-963-582</a>
+            <a class="nav-link"><i class="fas fa-envelope"></i>&nbsp;&nbsp;sklep@nadodatek.pl</a>
+            <a class="nav-link"><i class="fas fa-clock"></i>&nbsp;&nbsp;poniedziałek - sobota</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9:00 - 18:00</a>
+          </nav>
+        </div>
+
       </div>
     </div>
+
+    <!-- 2. Pasek płatności tpay -->
+    <div class="footer-payments">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6 text-center">
+          <a href="https://tpay.com/jak-to-dziala" target="_blank" title="Obsługujemy płatności online">
+            <img src="https://tpay.com/img/banners/tpay-820x45.svg" alt="Logo tpay.com" width="60%" height="60">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Copyright -->
+    <div class="footer-copyright">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="text-center">
+            Copyright © 2024 
+            <a href="https://nadodatek.pl" target="_blank" rel="noopener noreferrer nofollow">nadodatek.pl</a> 
+            Powered by 
+            <a href="https://www.oscommerce.com/" target="_blank" rel="noopener noreferrer nofollow">OSCOM CE Phoenix</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-<?php }
-/* {block 'hook_footer_before'} */
-class Block_241628694674b069b10d1c7_00733494 extends Smarty_Internal_Block
-{
-public $subBlocks = array (
-  'hook_footer_before' => 
-  array (
-    0 => 'Block_241628694674b069b10d1c7_00733494',
-  ),
-);
-public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-      <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['hook'][0], array( array('h'=>'displayFooterBefore'),$_smarty_tpl ) );?>
-
-    <?php
-}
-}
-/* {/block 'hook_footer_before'} */
-/* {block 'hook_footer'} */
-class Block_991370320674b069b10df57_02632451 extends Smarty_Internal_Block
-{
-public $subBlocks = array (
-  'hook_footer' => 
-  array (
-    0 => 'Block_991370320674b069b10df57_02632451',
-  ),
-);
-public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-        <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['hook'][0], array( array('h'=>'displayFooter'),$_smarty_tpl ) );?>
-
-      <?php
-}
-}
-/* {/block 'hook_footer'} */
-/* {block 'hook_footer_after'} */
-class Block_1593662060674b069b10ea80_58454676 extends Smarty_Internal_Block
-{
-public $subBlocks = array (
-  'hook_footer_after' => 
-  array (
-    0 => 'Block_1593662060674b069b10ea80_58454676',
-  ),
-);
-public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-        <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['hook'][0], array( array('h'=>'displayFooterAfter'),$_smarty_tpl ) );?>
-
-      <?php
-}
-}
-/* {/block 'hook_footer_after'} */
-/* {block 'copyright_link'} */
-class Block_1213154447674b069b10f682_39064074 extends Smarty_Internal_Block
-{
-public $subBlocks = array (
-  'copyright_link' => 
-  array (
-    0 => 'Block_1213154447674b069b10f682_39064074',
-  ),
-);
-public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
-?>
-
-            <a href="https://www.prestashop.com" target="_blank" rel="noopener noreferrer nofollow">
-              <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'%copyright% %year% - Ecommerce software by %prestashop%','sprintf'=>array('%prestashop%'=>'PrestaShop™','%year%'=>date('Y'),'%copyright%'=>'©'),'d'=>'Shop.Theme.Global'),$_smarty_tpl ) );?>
-
-            </a>
-          <?php
-}
-}
-/* {/block 'copyright_link'} */
+</div><?php }
 }
