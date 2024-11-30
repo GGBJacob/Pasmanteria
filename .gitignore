@@ -34,4 +34,3 @@ db/
 .DS_Store
 
 # Until there is a good DB snapshot
-# dump.sql
