@@ -315,7 +315,7 @@
 	font-style: normal;
 }
 
-/*TŁO STORNY*/
+/*TŁO STRONY*/
 #wrapper, .header-nav, #header, .header-top{
 	background-image: url(indeks.gif) !important;
 	background-repeat: repeat !important;
@@ -471,52 +471,49 @@ h4 {
     border: 1px solid #ddd; /* Opcjonalne obramowanie */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*STOPKA*/
-/* 1. Hooki stopki */
-#footer .footer-hooks {
-	padding: 20px 0px;
-	background-color: #86637b;
-	color: #fff !important; 
-	font-size: 1rem;
+/* Czcionka w całej stopce */
+#footer {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	color: #fff !important; /* Kolor tekstu na biały */
+	font-size: 1rem; /* Rozmiar czcionki */
 	font-weight: 400;
-	line-height: 1.5;
-	justify-content: center;
-  }
+	line-height: 1.5; /* Wysokość linii */
+  padding-top: 0rem;
+}
 
-  #footer .footer-row {
-    padding-left: 0px!important;
-    padding-right: 0px!important;
-    padding-top: 30px!important;
-    padding-bottom: 20px!important;
-    margin-left: 0px!important;
-    margin-right: 0px!important;
-    margin-top: 30px!important;
-    margin-bottom: 0px!important;
-    justify-content: center;
-	gap: 0;
-	display: flex;
+.footer-container {
+  padding-top: 0rem;
+  overflow: hidden;
+}
+  
+  /* 1. Hooki stopki */
+#footer .footer-hooks {
+padding: 20px 0px;
+background-color: #86637b; /* Tło dla hooków */
+color: #fff !important; /* Kolor tekstu na biały */
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+justify-content: center;
+}
+
+#footer .footer-row {
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+  padding-top: 30px!important;
+  padding-bottom: 20px!important;
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+  margin-top: 40px!important;
+  margin-bottom: 0px!important;
+  justify-content: center;
+gap: 0;
+display: flex;
 }
 
 .nadodatek-footer-element-icon {
-    margin-top: 16px;
+  margin-top: 16px;
 	color: #ffffff!important;
 	font-size: 24px;
 	padding-right: 10px;
@@ -524,12 +521,12 @@ h4 {
 }
   
 #footer .footer-column {
-	width: 20%; /* Adjust to have 4 columns equally spaced */
-	margin-right: 0; /* Remove right margin */
+width: 20%; /* Adjust to have 4 columns equally spaced */
+margin-right: 0; /* Remove right margin */
 }
-  
+
 #footer .footer-column:last-child {
-	margin-right: 0;
+margin-right: 0;
 }
 
 .cm-footer-information-links, .nadodatek-cm-footer-information-links, .nadodatek-cm-footer-about, .nadodatek-cm-footer-media, .cm-footer-contact-us, .nadodatek-cm-footer-contact-us {
@@ -542,147 +539,164 @@ h4 {
 .content-inside
 {
 	padding-left: 15px!important;
-    padding-right: 15px!important;
+  padding-right: 15px!important;
 }
 
 #footer .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
   
-  /* 2. Pasek płatności */
-  #footer .footer-payments {
-	background-color: #072653; /* Granatowe tło */
-	padding: 8px 0; /* Padding wokół obrazka */
-	width: 100%; /* Rozciąga na całą szerokość */
-  }
-  
-  #footer .footer-payments .row {
-	display: flex;
-	justify-content: center; /* Centrowanie */
-  }
-  
-  #footer .footer-payments .col-12 {
-	width: 100%;
-  }
-  
-  #footer .footer-payments .col-md-6 {
-	width: 60%; /* Ustawienie szerokości paska tpay na 60% */
-  }
-  
-  #footer .footer-payments img {
-	width: 100%; /* Szerokość obrazka na 100% */
-	height: auto; /* Wysokość proporcjonalna do szerokości */
-	border: 0;
-  }
-  
-  /* 3. Prawa autorskie */
-  #footer .footer-copyright {
-	padding-top: 10px;
-	background-color: #86637b; /* Tło dla praw autorskich */
-	text-align: center;
-	color: #fff; /* Kolor czcionki na biały */
-  }
-  
-  #footer .footer-copyright a {
-	color: #fff; /* Kolor linków na biały */
-	text-decoration: none; /* Usunięcie podkreślenia */
-  }
-  
-  #footer .footer-copyright a:hover {
-	text-decoration: underline; /* Podkreślenie linków po najechaniu */
-  }
-  
-  /* Dodatkowe style */
-  #footer .container-fluid {
-	max-width: 100%;
-	width: 100%;
-	box-sizing: border-box;
-	padding: 0;
-  }
-  
-  /* Wyśrodkowanie dla elementów w stopce */
-  #footer .footer-column {
-	text-align: center;
-	margin: 0;
-	padding: 0;
-  }
-  
-  /* Zmiana czcionki we wszystkich elementach */
-  #footer a {
-	color: #fff;
-	text-decoration: none;
-  }
-  
-  /* Przystosowanie stopki do różnych rozdzielczości */
-  @media (min-width: 768px) {
-	.footer-row {
-	  display: flex;
-	  justify-content: space-between;
-	}
-  
-	.footer-column {
-	  width: 22%;
-	  margin-right: 1%;
-	}
-  
-	.footer-column:last-child {
-	  margin-right: 0;
-	}
-  }
-  
-  @media (max-width: 767px) {
-	.footer-row {
-	  display: block;
-	}
-  
-	.footer-column {
-	  width: 100%;
-	}
-  }
-  
-  /* Zmieniamy kolor istniejącej linii (hr) na biały */
-  #footer hr {
-	border: 0.5px solid #fff; /* Biała linia pod nagłówkiem */
-	margin: 8px 0; /* Odstęp nad i pod linią */
-  }
-  
-  /* Stylizacja dla linków w stopce */
-  #footer .footer-links {
-	color: #fff; /* Biała czcionka */
-	text-transform: uppercase; /* Wielkie litery dla nagłówków */
-  }
-  
-  #footer .footer-links a {
-	color: #fff;
-	text-decoration: none;
-	font-size: 1rem;
-	font-weight: 400;
-	display: block;
-	margin-bottom: 8px;
-  }
-  
-  #footer .footer-links a:hover {
-	text-decoration: underline;
-  }
-  
-  /* Biała linia pod nagłówkami w stopce */
-  #footer h4 {
-	font-size: 1.5rem;
-	padding-bottom: 5px; /* Odstęp między tekstem a linią */
-	margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-	padding-left: 10px!important;
-    padding-right: 10px!important;
-  }
+/* 2. Pasek płatności */
+#footer .footer-payments {
+background-color: #072653; /* Granatowe tło */
+padding: 8px 0; /* Padding wokół obrazka */
+width: 100%; /* Rozciąga na całą szerokość */
+}
 
-  .text-center {
-	color:white;
-  }
+#footer .footer-payments .row {
+display: flex;
+justify-content: center; /* Centrowanie */
+}
 
+#footer .footer-payments .col-12 {
+width: 100%;
+}
 
+#footer .footer-payments .col-md-6 {
+width: 60%; /* Ustawienie szerokości paska tpay na 60% */
+}
+
+#footer .footer-payments img {
+width: 100%; /* Szerokość obrazka na 100% */
+height: auto; /* Wysokość proporcjonalna do szerokości */
+border: 0;
+}
+
+/* 3. Prawa autorskie */
+#footer .footer-copyright {
+padding-top: 10px;
+background-color: #86637b; /* Tło dla praw autorskich */
+text-align: center;
+color: #fff; /* Kolor czcionki na biały */
+}
+
+#footer .footer-copyright a {
+color: #fff; /* Kolor linków na biały */
+text-decoration: none; /* Usunięcie podkreślenia */
+}
+
+#footer .footer-copyright a:hover {
+text-decoration: underline; /* Podkreślenie linków po najechaniu */
+}
+
+/* Dodatkowe style */
+#footer .container-fluid {
+max-width: 100%;
+width: 100%;
+box-sizing: border-box;
+padding: 0;
+}
+
+/* Wyśrodkowanie dla elementów w stopce */
+#footer .footer-column {
+text-align: center;
+margin: 0;
+padding: 0;
+}
+
+/* Zmiana czcionki we wszystkich elementach */
+#footer a {
+color: #fff;
+text-decoration: none;
+}
+
+/* Przystosowanie stopki do różnych rozdzielczości */
+@media (min-width: 768px) {
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column {
+  width: 22%;
+  margin-right: 1%;
+}
+
+.footer-column:last-child {
+  margin-right: 0;
+}
+}
+
+@media (max-width: 767px) {
+.footer-row {
+  display: block;
+}
+
+.footer-column {
+  width: 100%;
+}
+}
+
+/* Zmieniamy kolor istniejącej linii (hr) na biały */
+#footer hr {
+border: 0.5px solid #fff; /* Biała linia pod nagłówkiem */
+margin: 8px 0; /* Odstęp nad i pod linią */
+}
+
+/* Stylizacja dla linków w stopce */
+#footer .footer-links {
+color: #fff; /* Biała czcionka */
+text-transform: uppercase; /* Wielkie litery dla nagłówków */
+}
+
+#footer .footer-links a {
+color: #fff;
+text-decoration: none;
+font-size: 1rem;
+font-weight: 400;
+display: block;
+margin-bottom: 8px;
+}
+
+#footer .footer-links a:hover {
+text-decoration: underline;
+}
+
+/* Biała linia pod nagłówkami w stopce */
+#footer h4 {
+font-size: 1.5rem;
+padding-bottom: 5px; /* Odstęp między tekstem a linią */
+margin-top: 20px;
+margin-bottom: 20px;
+font-weight: bold;
+padding-left: 10px!important;
+padding-right: 10px!important;
+}
+
+.footer-text {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin-top: 0px !important;
+  margin: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/*biały tekst na dole*/
+#footer p, #footer .page-content.page-cms ul{
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+	color: white;
+}
+
+/*STRONY DODATKOWE W STOPCE*/
+#content .page-content.page-cms {
+  padding: 1.25rem;
+  text-align: justify;
+  background: rgb(205, 46, 46) !important;
+}
