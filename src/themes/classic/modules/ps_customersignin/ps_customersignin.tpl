@@ -26,7 +26,7 @@
   <a
     href="#"
     title="{l s='Log in or Register' d='Shop.Theme.Customeraccount'}"
-    onclick="toggleDropdown_account(event, '#loginDropdown')"
+    onclick="toggleDropdown(event, '#loginDropdown')"
   >
   <div class="my-account-nav">
     {if $logged}

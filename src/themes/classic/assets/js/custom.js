@@ -1,5 +1,5 @@
-// ps_customerlogin
-function toggleDropdown_account(event, dropdown_name) {
+// ps_customerlogin, ps_shopppingcart
+function toggleDropdown(event, dropdown_name) {
     event.preventDefault();
     var dropdown = document.querySelector(dropdown_name);
     
@@ -10,20 +10,6 @@ function toggleDropdown_account(event, dropdown_name) {
       dropdown.style.display = "block";
     }
 }
-
-// ps_shopppingcart
-function toggleDropdown_shoppingCart(event, dropdownSelector) {
-    event.preventDefault();
-    
-    const dropdown = document.querySelector(dropdownSelector);
-  
-    if (!dropdown) {
-      console.error("Dropdown element not found:", dropdownSelector);
-      return;
-    }
-  
-    dropdown.classList.toggle('hidden');
-  }
 
 // ps_shoppingcart
 function updateCart() {
