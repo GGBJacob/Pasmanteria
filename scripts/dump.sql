@@ -39720,7 +39720,7 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39734,7 +39734,8 @@ INSERT INTO `ps_cart` VALUES
 (2,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (3,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (4,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
-(5,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL);
+(5,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
+(6,1,1,0,'',1,0,0,1,0,4,'',0,0,'',0,0,'2024-11-30 19:16:20','2024-11-30 19:16:20',NULL);
 /*!40000 ALTER TABLE `ps_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39797,7 +39798,8 @@ INSERT INTO `ps_cart_product` VALUES
 (2,8,3,1,0,0,1,'0000-00-00 00:00:00'),
 (3,16,3,1,28,0,1,'0000-00-00 00:00:00'),
 (4,16,3,1,29,0,1,'0000-00-00 00:00:00'),
-(5,10,3,1,25,0,1,'0000-00-00 00:00:00');
+(5,10,3,1,25,0,1,'0000-00-00 00:00:00'),
+(6,1,0,1,1,0,1,'2024-11-30 19:16:20');
 /*!40000 ALTER TABLE `ps_cart_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41128,7 +41130,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41154,7 +41156,14 @@ INSERT INTO `ps_connections` VALUES
 (14,1,1,4,3,2886926337,'2024-11-30 17:32:59',''),
 (15,1,1,4,2,2886926337,'2024-11-30 18:12:14',''),
 (16,1,1,6,1,2886926337,'2024-11-30 18:20:33',''),
-(17,1,1,4,2,2886926337,'2024-11-30 18:43:30','');
+(17,1,1,4,2,2886926337,'2024-11-30 18:43:30',''),
+(18,1,1,4,1,2886926337,'2024-11-30 19:14:08',''),
+(19,1,1,4,1,2886926337,'2024-11-30 19:46:25',''),
+(20,1,1,6,1,2886926337,'2024-11-30 19:46:31',''),
+(21,1,1,6,1,2886926337,'2024-11-30 20:20:15',''),
+(22,1,1,6,2,2886926337,'2024-11-30 20:51:49',''),
+(23,1,1,6,1,2886926337,'2024-11-30 21:24:40',''),
+(24,1,1,4,1,2886926337,'2024-11-30 21:51:54','');
 /*!40000 ALTER TABLE `ps_connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42790,7 +42799,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42800,7 +42809,7 @@ CREATE TABLE `ps_employee_session` (
 LOCK TABLES `ps_employee_session` WRITE;
 /*!40000 ALTER TABLE `ps_employee_session` DISABLE KEYS */;
 INSERT INTO `ps_employee_session` VALUES
-(4,1,'98817e009aca02acaf694deae480c5ffe7e152d2');
+(5,1,'c13bb90496ba407ad19f8e2be2a9787a18c2a781');
 /*!40000 ALTER TABLE `ps_employee_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45691,7 +45700,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45931,7 +45940,8 @@ INSERT INTO `ps_log` VALUES
 (228,1,0,'Module ps_searchbar has no vendor folder','',0,1,NULL,1,0,1,'2024-11-30 16:39:51','2024-11-30 16:39:51'),
 (229,1,0,'Protect vendor folder in module ps_searchbar','',0,1,NULL,1,0,1,'2024-11-30 16:40:17','2024-11-30 16:40:17'),
 (230,1,0,'Module ps_searchbar has no vendor folder','',0,1,NULL,1,0,1,'2024-11-30 16:40:17','2024-11-30 16:40:17'),
-(231,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:37:09','2024-11-30 17:37:09');
+(231,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:37:09','2024-11-30 17:37:09'),
+(232,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 19:46:52','2024-11-30 19:46:52');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51477,7 +51487,7 @@ CREATE TABLE `ps_statssearch` (
   `results` int(6) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_statssearch`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51520,7 +51530,8 @@ INSERT INTO `ps_statssearch` VALUES
 (31,1,1,'shirt',1,'2024-11-30 16:01:04'),
 (32,1,1,'shirt',1,'2024-11-30 16:01:21'),
 (33,1,1,'shirt',1,'2024-11-30 16:04:54'),
-(34,1,1,'shirt',1,'2024-11-30 16:05:34');
+(34,1,1,'shirt',1,'2024-11-30 16:05:34'),
+(35,1,1,'sweater',1,'2024-11-30 20:39:36');
 /*!40000 ALTER TABLE `ps_statssearch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53955,4 +53966,4 @@ USE `prestashop`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-30 17:56:40
+-- Dump completed on 2024-11-30 20:55:40
