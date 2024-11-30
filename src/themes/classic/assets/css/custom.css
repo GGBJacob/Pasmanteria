@@ -1,0 +1,109 @@
+/*BANNER - ps_imageslider*/
+#wrapper {
+	padding: 0rem;
+}
+
+.carousel .carousel-inner {
+    height: auto;
+}
+
+.animate-right {
+	position: relative;
+	animation: animeright 1.8s;
+}
+
+@keyframes animeright {
+	0% {
+		right: -300px;
+		opacity: 0;
+	}
+	100% {
+		right: 0;
+		opacity: 1;
+	}
+}
+
+body.page-index #wrapper .container {
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	min-height: 855;
+	min-width: 3314;
+	padding-left: 0;
+	padding-right: 0;
+	object-fit: cover;
+	object-position: center center;
+}
+
+body.page-index #wrapper .featured-products,
+body.page-index #wrapper .baner,
+body.page-index #wrapper #custom-text {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+@media (min-width: 992px) {
+	body.page-index #wrapper  .featured-products,
+	body.page-index #wrapper .baner,
+	body.page-index #wrapper  #custom-text {
+		max-width: 940px;
+	}
+}
+
+@media (min-width: 1200px) {
+	body.page-index #wrapper  .featured-products,
+	body.page-index #wrapper .baner,
+	body.page-index #wrapper  #custom-text {
+		max-width: 1140px;
+	}
+}
+
+@media (min-width: 991px) {
+	body .page-index #wrapper  .featured-products,
+	body .page-index #wrapper .baner,
+	body .page-index #wrapper  #custom-text {
+		max-width: 100%;
+		max-height: 100%;
+	}
+}
+
+/*HEADER - src/themes/classic/templates/_partials/header.tpl*/
+
+/*LOGO STRONY W HEADERZE*/
+.logo.img-fluid {
+    aspect-ratio: auto 100 / 100;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*FIOLOTOWY NAV BAR*/
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.col-sm-8.cm-header-breadcrumb .row-breadcrumb .breadcrumb,
+.cm-header-breadcrumb {
+    width: 100%;
+    background-color: #6b3454 !important;
+    font-size: 1rem;
+}
+
+
+.header-top .container .row .header-top-right{
+    width: 100%;
+    text-align: center !important;
+    font-weight: bold;
+}
