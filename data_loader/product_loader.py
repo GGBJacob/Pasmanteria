@@ -14,7 +14,7 @@ API_URL_IMAGES = "http://localhost:8080/api/images/products"
 
 
 def get_categories(API_TOKEN):
-    response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
+    response = requests.get(API_URL + '/categories', auth=HTTPBasicAuth(API_TOKEN, ''))
     if response.status_code == 200:
         ids = extract_category_ids(response.text)
         categories = {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
@@ -25,7 +25,7 @@ def get_categories(API_TOKEN):
 
 def get_category_name(category_id, lang_id=1):
     try:
-        url = f"{API_URL}/{category_id}"
+        url = f"{API_URL}/categories/{category_id}"
         response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""))
         if response.status_code == 200:
             root = ET.fromstring(response.text)
@@ -103,7 +103,7 @@ def add_product(name, price, description, category_name, image_path, weight, vat
         product_id = root.find('.//id').text
         print("Sukces: Produkt dodany.")
         upload_product_image(API_URL, product_id, image_path)
-        set_product_stock(API_URL, API_TOKEN, product_id, random.randint(1, 10))
+        set_product_stock(API_URL, API_TOKEN, product_id, random.randint(0, 10))
     else:
         print(f"Błąd: {response.status_code} - {response.text}")
         print("Nagłówki żądania:", response.request.headers)
