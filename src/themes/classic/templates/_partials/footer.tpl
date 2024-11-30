@@ -12,10 +12,10 @@
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbspinformacje</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://nadodatek.pl/shipping.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
-            <a class="nav-link" href="https://nadodatek.pl/regulations.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
-            <a class="nav-link" href="https://nadodatek.pl/documents.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
-            <a class="nav-link" href="https://nadodatek.pl/cookies.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
+            <a class="nav-link" href="https://localhost/content/1-wysylka">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
+            <a class="nav-link" href="https://localhost/content/3-regulamin">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
+            <a class="nav-link" href="https://localhost/content/5-zwroty-i-reklamacje">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
+            <a class="nav-link" href="https://localhost/content/2-rodo">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
           </nav>
         </div>
 
@@ -24,9 +24,9 @@
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nadodatek.pl</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://nadodatek.pl/about_us.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
-            <a class="nav-link" href="https://nadodatek.pl/address.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
-            <a class="nav-link" href="https://nadodatek.pl/eco.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
+            <a class="nav-link" href="https://localhost/content/4-o-nas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
+            <a class="nav-link" href="https://localhost/content/7-dane">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
+            <a class="nav-link" href="https://localhost/content/6-eco">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
           </nav>
         </div>
 

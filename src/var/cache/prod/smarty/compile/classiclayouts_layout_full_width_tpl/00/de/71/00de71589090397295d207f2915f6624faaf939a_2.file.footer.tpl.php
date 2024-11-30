@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-30 16:40:21
+/* Smarty version 3.1.48, created on 2024-11-30 21:19:09
   from '/var/www/html/themes/classic/templates/_partials/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674b31e59afec3_86083378',
+  'unifunc' => 'content_674b733d36b4f4_56401900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '00de71589090397295d207f2915f6624faaf939a' => 
     array (
       0 => '/var/www/html/themes/classic/templates/_partials/footer.tpl',
-      1 => 1732976585,
+      1 => 1732997922,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674b31e59afec3_86083378 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674b733d36b4f4_56401900 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <!-- Główna stopka -->
@@ -35,10 +35,10 @@ function content_674b31e59afec3_86083378 (Smarty_Internal_Template $_smarty_tpl)
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbspinformacje</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://nadodatek.pl/shipping.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
-            <a class="nav-link" href="https://nadodatek.pl/regulations.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
-            <a class="nav-link" href="https://nadodatek.pl/documents.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
-            <a class="nav-link" href="https://nadodatek.pl/cookies.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
+            <a class="nav-link" href="https://localhost/content/1-wysylka">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
+            <a class="nav-link" href="https://localhost/content/3-regulamin">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
+            <a class="nav-link" href="https://localhost/content/5-zwroty-i-reklamacje">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
+            <a class="nav-link" href="https://localhost/content/2-rodo">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
           </nav>
         </div>
 
@@ -47,9 +47,9 @@ function content_674b31e59afec3_86083378 (Smarty_Internal_Template $_smarty_tpl)
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nadodatek.pl</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://nadodatek.pl/about_us.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
-            <a class="nav-link" href="https://nadodatek.pl/address.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
-            <a class="nav-link" href="https://nadodatek.pl/eco.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
+            <a class="nav-link" href="https://localhost/content/4-o-nas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
+            <a class="nav-link" href="https://localhost/content/7-dane">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
+            <a class="nav-link" href="https://localhost/content/6-eco">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
           </nav>
         </div>
 

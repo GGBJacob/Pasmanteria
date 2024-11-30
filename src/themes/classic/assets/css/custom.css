@@ -308,7 +308,7 @@ h4 {
     border: 1px solid #ddd; /* Opcjonalne obramowanie */
 }
 
-/*FOOTER PART*/
+/*STOPKA*/
 /* Czcionka w całej stopce */
 #footer {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -524,11 +524,16 @@ padding-right: 10px!important;
 }
 
 /*biały tekst na dole*/
-#footer p, .page-content.page-cms ul {
+#footer p, #footer .page-content.page-cms ul{
   font-size: 1rem;
   margin-bottom: 0.6rem;
   font-weight: 400;
 	color: white;
 }
 
-
+/*STRONY DODATKOWE W STOPCE*/
+#content .page-content.page-cms {
+  padding: 1.25rem;
+  text-align: justify;
+  background: rgb(205, 46, 46) !important;
+}
