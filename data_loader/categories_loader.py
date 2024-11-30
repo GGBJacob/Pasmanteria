@@ -6,36 +6,7 @@ import re
 
 # Replace these variables with your API details
 API_URL = "http://localhost:8080/api/categories"
-API_TOKEN = "VQPNJWXPSYG3G2SWJWPBGNXVBVE3CAXS"
 
-
-def extract_category_ids(response_text):
-    root = ET.fromstring(response_text)
-    category_ids = [category.get('id') for category in root.findall('.//category')]
-    return category_ids
-def get_categories():
-    response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
-    if response.status_code == 200:
-        ids = extract_category_ids(response.text)
-        categories = {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
-        return categories
-    else:
-        print(f"Failed to retrieve categories: {response.status_code}")
-
-
-def get_category_name(category_id, lang_id=1):
-    try:
-        url = f"{API_URL}/{category_id}"
-        response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""))
-        if response.status_code == 200:
-            root = ET.fromstring(response.text)
-            for language in root.findall(".//category/name/language"):
-                if int(language.get("id")) == lang_id:
-                    text = language.text
-                    return text
-    except Exception as e:
-        print(f"Wystąpił błąd: {e}")
-        return None
 
 def get_highest_category_id():
     response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
@@ -44,7 +15,7 @@ def get_highest_category_id():
         try:
             root = ET.fromstring(response.content)
             categories = root.findall('.//category')
-            max_id=0
+            max_id = 0
             for category in categories:
                 category_id = int(category.get('id'))
                 if category_id > max_id:
@@ -99,7 +70,6 @@ def create_category(url, api_key, category_name, parent_category_id):
     else:
         print("Błąd przy tworzeniu kategorii:", response.status_code, response.text)
 
-
 def add_categories(data, parent_id=2):
     if isinstance(data, dict):
         for category_name, subcategories in data.items():
@@ -111,9 +81,7 @@ def add_categories(data, parent_id=2):
 
 
 if __name__ == "__main__":
-    # Wczytanie danych z pliku JSON
+    API_TOKEN = input("Enter the token:")
     with open(r"categories.json", 'r', encoding='utf-8') as f:
         categories_data = json.load(f)
-
-    # Dodawanie kategorii do PrestaShop
     add_categories(categories_data)

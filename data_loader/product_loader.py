@@ -7,14 +7,44 @@ import json
 import re
 import os
 import base64
-from categories_loader import *
+import json
 
 API_URL = "http://localhost:8080/api"
 API_URL_IMAGES = "http://localhost:8080/api/images/products"
-API_TOKEN = "VQPNJWXPSYG3G2SWJWPBGNXVBVE3CAXS"
 
 
-def add_product(name, price, description, category_name, image_path, lang="1"):
+def get_categories(API_TOKEN):
+    response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
+    if response.status_code == 200:
+        ids = extract_category_ids(response.text)
+        categories = {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
+        return categories
+    else:
+        print(f"Failed to retrieve categories: {response.status_code}")
+
+
+def get_category_name(category_id, lang_id=1):
+    try:
+        url = f"{API_URL}/{category_id}"
+        response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""))
+        if response.status_code == 200:
+            root = ET.fromstring(response.text)
+            for language in root.findall(".//category/name/language"):
+                if int(language.get("id")) == lang_id:
+                    text = language.text
+                    return text
+    except Exception as e:
+        print(f"Wystąpił błąd: {e}")
+        return None
+
+
+def extract_category_ids(response_text):
+    root = ET.fromstring(response_text)
+    category_ids = [category.get('id') for category in root.findall('.//category')]
+    return category_ids
+
+
+def add_product(name, price, description, category_name, image_path, weight, vat_category="1", lang="1"):
     category_id = categories[category_name]
     prestashop = ET.Element("prestashop", {"xmlns:xlink": "http://www.w3.org/1999/xlink"})
     product = ET.SubElement(prestashop, "product")
@@ -23,6 +53,9 @@ def add_product(name, price, description, category_name, image_path, lang="1"):
     name_lang = ET.SubElement(name_elem, "language", {"id": lang})
     name_lang.text = name
     ET.SubElement(product, "price").text = str(price)
+
+    if weight is not None:
+        ET.SubElement(product, "weight").text = weight
 
     description_elem = ET.SubElement(product, "description")
     description_lang = ET.SubElement(description_elem, "language", {"id": lang})
@@ -48,11 +81,12 @@ def add_product(name, price, description, category_name, image_path, lang="1"):
 
     ET.SubElement(product, "active").text = "1"
     ET.SubElement(product, "visibility").text = "both"
+    ET.SubElement(product, "state").text = "1"
 
     ET.SubElement(product, "available_for_order").text = "1"
     ET.SubElement(product, "minimal_quantity").text = "1"
     ET.SubElement(product, "reference").text = name.replace(" ", "_")
-    ET.SubElement(product, "id_tax_rules_group").text = "1"
+    ET.SubElement(product, "id_tax_rules_group").text = vat_category
     ET.SubElement(product, "indexed").text = "1"
     product_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
 
@@ -74,7 +108,6 @@ def add_product(name, price, description, category_name, image_path, lang="1"):
         print(f"Błąd: {response.status_code} - {response.text}")
         print("Nagłówki żądania:", response.request.headers)
         print("Dane wysłane:", product_data)
-
 
 
 def set_product_stock(api_url, api_key, product_id, new_quantity):
@@ -168,19 +201,45 @@ def add_products(directory, images_directory):
     for file_name in files:
         file_path = os.path.join(directory, file_name)
         with open(file_path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-            product_name = lines[0].strip()
-            price_str = lines[2].strip()
+            try:
+                data = json.load(file)
+            except json.JSONDecodeError as e:
+                print(f"Błąd dekodowania JSON w pliku {file_path}: {e}")
+                continue
+            # hardcoded vat conditions:
+            product_name = data.get("title", "").strip()
+            category_name = os.path.basename(directory)
+            vat_category = "1"
+            if category_name.startswith("książki"):
+                vat_category = "3"
+            if category_name == "książki i publikacje":
+                if product_name[0] == "M" or product_name[0] == "m":
+                    vat_category = "2"
+                if product_name[0] == "X" or product_name[0] == "x":
+                    vat_category = "1"
+            price_str = data.get("price", "").strip()
+            description = data.get("description", "").strip()
+
             try:
                 price = float(price_str.replace('zł', '').replace(',', '.').strip())
             except ValueError as e:
-                print(f'Błąd konwersji ceny w pliku {file_name}: {e}')
+                print(f'Błąd konwersji ceny w pliku {file_path}: {e}')
                 continue
-            description = lines[4].strip()  # Opis
-            image_name = file_name.replace('.txt', '_0.jpg')
+            if vat_category == "1":
+                price = price / 1.23
+            elif vat_category == "2":
+                price = price / 1.08
+            elif vat_category == "3":
+                price = price / 1.05
+            price = round(price, 2)
+            weight_str = data.get("weight")
+            if weight_str is not None:
+                weight = str(int(re.sub(r'\D', '', weight_str)) / 1000)
+            else:
+                weight = None
+            image_name = file_name.replace('.json', '_0.jpg')
             image_directory = os.path.join(images_directory, image_name)
-            category_name = os.path.basename(directory)
-            add_product(product_name, price, description, category_name, image_directory, "1")
+            add_product(product_name, price, description, category_name, image_directory, weight, vat_category, "1")
     sub_directories = [f for f in os.listdir(directory) if os.path.isdir(os.path.join(directory, f))]
     for sub_directory in sub_directories:
         sub_directory_path = os.path.join(directory, sub_directory)
@@ -190,5 +249,6 @@ def add_products(directory, images_directory):
 
 base_data_dir = r"..\scrapedData\data"
 base_images_dir = r"..\scrapedData\images"
-categories = get_categories()
+API_TOKEN = input("Enter the token:")
+categories = get_categories(API_TOKEN)
 add_products(base_data_dir, base_images_dir)
