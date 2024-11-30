@@ -24,7 +24,7 @@ services:
             DB_PASSWD: root
             PS_INSTALL_AUTO: 0
         ports:
-            - 80:80   # HTTP
+            - 8080:80   # HTTP
             - 443:443 # HTTPS
         volumes:
             - ./src:/var/www/html

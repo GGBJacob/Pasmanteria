@@ -54,10 +54,13 @@
   </nav>
 {/block}
 
-{block name='header_top'}
-  <div class="header-top">
+{block name='header_logo_search'}
+  <nav class="header_logo_search">
     <div class="container">
-       <div class="row">
+      <div class="row">
+        <!-- PUSTY DIV LEWY -->
+        <div class="col-sm-4 cm-header-logo"> &nbsp;</div>
+        <!-- LOGO DIV ŚRODEK -->
         <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
           {if $shop.logo_details}
             {if $page.page_name == 'index'}
@@ -69,6 +72,25 @@
             {/if}
           {/if}
         </div>
+        <!-- SEARCH BAR DIV PRAWY -->
+        <div id="search_widget" class="search-widgets" data-search-controller-url="//localhost/szukaj">
+          <form method="get" action="//localhost/szukaj">
+            <input type="hidden" name="controller" value="search">
+            <i class="material-icons search" aria-hidden="true">search</i>
+            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+            <input type="text" name="s" value placeholder="Szukaj" aria-label="Szukaj" class="ui-autocomplete-input" autocomplete="off">
+            <i class="material-icons clear" aria-hidden="true">clear</i>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+{/block}
+
+{block name='header_top'}
+  <div class="header-top">
+    <div class="container">
+       <div class="row">
         <div class="header-top-right col-md-10 col-sm-12 position-static">
           {hook h='displayTop'}
         </div>
@@ -82,6 +104,23 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-8 cm-header-breadcrumb">
+      <div class="row-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="a-breadcrumb" href="//localhost/">
+                <i class="fas fa-home">
+                  ::before
+                </i>
+                <span class="sr-only">Home</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+   </div>
   </div>
   {hook h='displayNavFullWidth'}
 {/block}
