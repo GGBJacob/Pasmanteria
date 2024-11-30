@@ -3,14 +3,39 @@
 .header-nav .container {
     display: flex; /* Ustawia elastyczny układ na kontenerze */
     justify-content: flex-end; /* Przesuwa całą zawartość nawigacji na prawą stronę */
+	width: 100%;
+}
+
+.header-nav .container .row{
+    width: 2rem;
+}
+
+.header-nav.navbar.bg-white.navbar-light.sticky-top.navbar-expand.cm-navbar {
+	text-align: right;
+}
+
+.container.container-fluid.navbar-container {
+	position: relative;
+	width: 100%;
+}
+
+.container.container-fluid.navbar-container .row {
+	width: 1rem;
+}
+
+/*zostaje przy scrollowaniu*/
+@supports ((position:-webkit-sticky) or (position:sticky)) {
+    .sticky-top {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+    }
 }
 
 
 /*SIGN IN/LOG IN*/
 /*/root/biznes/src/themes/classic/modules/ps_customersignin/ps_customersignin.tpl*/
-
-
-
 
 /* Style for dropdown */
 #_desktop_user_info .dropdown a div.my-account-nav {
@@ -131,6 +156,10 @@
 
 /*HEADER SEARCH*/
 
+.header-nav.navbar.bg-white.navbar-light.sticky-top.navbar-expand.cm-navbar .header_logo_search .container {
+	width: 2301px;
+}
+
 #search_widget {
 	padding: 30px;
 }
@@ -141,11 +170,27 @@
 
 .cm-header-search-input {
     width: 85%;
-    margin: auto;
+}
+
+.header_logo_search .container {
+	width: 100%;
+}
+
+.header_logo_search .container .row {
+	width: 102%;
+	align-items: center;
+	display: flex;
+
 }
 
 .input-group {
-	width: 160%;
+	width: 100%;
+}
+
+.col-sm-4.cm-header-search {
+	text-align: right;
+    max-width: 33.333333%;
+    flex: 0 0 33.333333%;
 }
 
 /* Ensure the search icon is aligned to the right */
