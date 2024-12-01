@@ -61,7 +61,7 @@
           </button>
         </div>
 
-        {hook h='displayProductActions' product=$product}
+  
       </div>
     {/block}
 
