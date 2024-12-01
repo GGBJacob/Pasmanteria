@@ -37706,6 +37706,90 @@ INSERT INTO `ps_access` VALUES
 (1,738),
 (1,739),
 (1,740),
+(1,749),
+(1,750),
+(1,751),
+(1,752),
+(1,753),
+(1,754),
+(1,755),
+(1,756),
+(1,757),
+(1,758),
+(1,759),
+(1,760),
+(1,761),
+(1,762),
+(1,763),
+(1,764),
+(1,773),
+(1,774),
+(1,775),
+(1,776),
+(1,777),
+(1,778),
+(1,779),
+(1,780),
+(1,781),
+(1,782),
+(1,783),
+(1,784),
+(1,785),
+(1,786),
+(1,787),
+(1,788),
+(1,789),
+(1,790),
+(1,791),
+(1,792),
+(1,793),
+(1,794),
+(1,795),
+(1,796),
+(1,801),
+(1,802),
+(1,803),
+(1,804),
+(1,805),
+(1,806),
+(1,807),
+(1,808),
+(1,809),
+(1,810),
+(1,811),
+(1,812),
+(1,813),
+(1,814),
+(1,815),
+(1,816),
+(1,817),
+(1,818),
+(1,819),
+(1,820),
+(1,821),
+(1,822),
+(1,823),
+(1,824),
+(1,829),
+(1,830),
+(1,831),
+(1,832),
+(1,833),
+(1,834),
+(1,835),
+(1,836),
+(1,837),
+(1,838),
+(1,839),
+(1,840),
+(1,841),
+(1,842),
+(1,843),
+(1,844),
+(1,845),
+(1,846),
+(1,847),
+(1,848),
 (2,9),
 (2,10),
 (2,11),
@@ -38030,7 +38114,7 @@ INSERT INTO `ps_address` VALUES
 (3,21,35,0,1,0,0,'manufacturer','Fashion','manufacturer','manufacturer','767 Fifth Ave.','','10154','New York','','(212) 336-1666','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
 (4,21,12,1,0,0,0,'My address','My Company','DOE','John','16, Main street','2nd floor','33133','Miami','','0102030405','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
 (5,8,0,0,0,2,0,'accessories_supplier','Accessories and Co','accessories','accessories','42 Avenue Maréchal Soult','','64990','Bayonne','','0102030405','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
-(6,14,0,2,0,0,0,'Mój adres','','aaa','aa','aaaaaaa','','45-444','sdf','','','','','','2024-11-30 20:31:01','2024-11-30 20:31:01',1,0);
+(6,14,0,3,0,0,0,'Mój adres','','test','test','Zwycięstwa','','80-219','Gdańsk','','','','','','2024-12-01 18:38:19','2024-12-01 18:38:19',1,0);
 /*!40000 ALTER TABLE `ps_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -38316,7 +38400,7 @@ CREATE TABLE `ps_admin_filter` (
   `filter_id` varchar(191) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_filter_search_id_idx` (`employee`,`shop`,`controller`,`action`,`filter_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38327,7 +38411,12 @@ LOCK TABLES `ps_admin_filter` WRITE;
 /*!40000 ALTER TABLE `ps_admin_filter` DISABLE KEYS */;
 INSERT INTO `ps_admin_filter` VALUES
 (1,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page_category'),
-(2,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page');
+(2,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page'),
+(3,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":\"2\"}}','category'),
+(4,1,1,'','','{\"limit\":50,\"orderBy\":\"date_add\",\"sortOrder\":\"DESC\",\"filters\":[]}','customer'),
+(5,1,1,'','','{\"limit\":50,\"orderBy\":\"id_meta\",\"sortOrder\":\"asc\",\"filters\":[]}','meta'),
+(6,1,1,'contacts','index','{\"limit\":10,\"orderBy\":\"id_contact\",\"sortOrder\":\"asc\",\"filters\":[]}',''),
+(7,1,1,'','','{\"limit\":50,\"orderBy\":\"id_order\",\"sortOrder\":\"DESC\",\"filters\":[]}','order');
 /*!40000 ALTER TABLE `ps_admin_filter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -38697,7 +38786,7 @@ CREATE TABLE `ps_authorization_role` (
   `slug` varchar(191) NOT NULL,
   PRIMARY KEY (`id_authorization_role`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=745 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=853 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38751,22 +38840,30 @@ INSERT INTO `ps_authorization_role` VALUES
 (540,'ROLE_MOD_MODULE_PAGESNOTFOUND_DELETE'),
 (538,'ROLE_MOD_MODULE_PAGESNOTFOUND_READ'),
 (539,'ROLE_MOD_MODULE_PAGESNOTFOUND_UPDATE'),
+(745,'ROLE_MOD_MODULE_PAYPAL_CREATE'),
+(748,'ROLE_MOD_MODULE_PAYPAL_DELETE'),
+(746,'ROLE_MOD_MODULE_PAYPAL_READ'),
+(747,'ROLE_MOD_MODULE_PAYPAL_UPDATE'),
 (541,'ROLE_MOD_MODULE_PRODUCTCOMMENTS_CREATE'),
 (544,'ROLE_MOD_MODULE_PRODUCTCOMMENTS_DELETE'),
 (542,'ROLE_MOD_MODULE_PRODUCTCOMMENTS_READ'),
 (543,'ROLE_MOD_MODULE_PRODUCTCOMMENTS_UPDATE'),
+(797,'ROLE_MOD_MODULE_PS_ACCOUNTS_CREATE'),
+(800,'ROLE_MOD_MODULE_PS_ACCOUNTS_DELETE'),
+(798,'ROLE_MOD_MODULE_PS_ACCOUNTS_READ'),
+(799,'ROLE_MOD_MODULE_PS_ACCOUNTS_UPDATE'),
 (545,'ROLE_MOD_MODULE_PS_BANNER_CREATE'),
 (548,'ROLE_MOD_MODULE_PS_BANNER_DELETE'),
 (546,'ROLE_MOD_MODULE_PS_BANNER_READ'),
 (547,'ROLE_MOD_MODULE_PS_BANNER_UPDATE'),
+(765,'ROLE_MOD_MODULE_PS_CASHONDELIVERY_CREATE'),
+(768,'ROLE_MOD_MODULE_PS_CASHONDELIVERY_DELETE'),
+(766,'ROLE_MOD_MODULE_PS_CASHONDELIVERY_READ'),
+(767,'ROLE_MOD_MODULE_PS_CASHONDELIVERY_UPDATE'),
 (549,'ROLE_MOD_MODULE_PS_CATEGORYTREE_CREATE'),
 (552,'ROLE_MOD_MODULE_PS_CATEGORYTREE_DELETE'),
 (550,'ROLE_MOD_MODULE_PS_CATEGORYTREE_READ'),
 (551,'ROLE_MOD_MODULE_PS_CATEGORYTREE_UPDATE'),
-(553,'ROLE_MOD_MODULE_PS_CHECKPAYMENT_CREATE'),
-(556,'ROLE_MOD_MODULE_PS_CHECKPAYMENT_DELETE'),
-(554,'ROLE_MOD_MODULE_PS_CHECKPAYMENT_READ'),
-(555,'ROLE_MOD_MODULE_PS_CHECKPAYMENT_UPDATE'),
 (557,'ROLE_MOD_MODULE_PS_CONTACTINFO_CREATE'),
 (560,'ROLE_MOD_MODULE_PS_CONTACTINFO_DELETE'),
 (558,'ROLE_MOD_MODULE_PS_CONTACTINFO_READ'),
@@ -38827,6 +38924,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (620,'ROLE_MOD_MODULE_PS_MAINMENU_DELETE'),
 (618,'ROLE_MOD_MODULE_PS_MAINMENU_READ'),
 (619,'ROLE_MOD_MODULE_PS_MAINMENU_UPDATE'),
+(849,'ROLE_MOD_MODULE_PS_MBO_CREATE'),
+(852,'ROLE_MOD_MODULE_PS_MBO_DELETE'),
+(850,'ROLE_MOD_MODULE_PS_MBO_READ'),
+(851,'ROLE_MOD_MODULE_PS_MBO_UPDATE'),
 (621,'ROLE_MOD_MODULE_PS_SEARCHBAR_CREATE'),
 (624,'ROLE_MOD_MODULE_PS_SEARCHBAR_DELETE'),
 (622,'ROLE_MOD_MODULE_PS_SEARCHBAR_READ'),
@@ -38943,6 +39044,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (20,'ROLE_MOD_TAB_ADMINADVANCEDPARAMETERS_DELETE'),
 (18,'ROLE_MOD_TAB_ADMINADVANCEDPARAMETERS_READ'),
 (19,'ROLE_MOD_TAB_ADMINADVANCEDPARAMETERS_UPDATE'),
+(781,'ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_CREATE'),
+(784,'ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_DELETE'),
+(782,'ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_READ'),
+(783,'ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_UPDATE'),
 (21,'ROLE_MOD_TAB_ADMINATTACHMENTS_CREATE'),
 (24,'ROLE_MOD_TAB_ADMINATTACHMENTS_DELETE'),
 (22,'ROLE_MOD_TAB_ADMINATTACHMENTS_READ'),
@@ -39019,6 +39124,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (516,'ROLE_MOD_TAB_ADMINDASHGOALS_DELETE'),
 (514,'ROLE_MOD_TAB_ADMINDASHGOALS_READ'),
 (515,'ROLE_MOD_TAB_ADMINDASHGOALS_UPDATE'),
+(785,'ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_CREATE'),
+(788,'ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_DELETE'),
+(786,'ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_READ'),
+(787,'ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_UPDATE'),
 (85,'ROLE_MOD_TAB_ADMINDELIVERYSLIP_CREATE'),
 (88,'ROLE_MOD_TAB_ADMINDELIVERYSLIP_DELETE'),
 (86,'ROLE_MOD_TAB_ADMINDELIVERYSLIP_READ'),
@@ -39083,6 +39192,14 @@ INSERT INTO `ps_authorization_role` VALUES
 (144,'ROLE_MOD_TAB_ADMINLOCALIZATION_DELETE'),
 (142,'ROLE_MOD_TAB_ADMINLOCALIZATION_READ'),
 (143,'ROLE_MOD_TAB_ADMINLOCALIZATION_UPDATE'),
+(801,'ROLE_MOD_TAB_ADMINLOGIN_CREATE'),
+(804,'ROLE_MOD_TAB_ADMINLOGIN_DELETE'),
+(802,'ROLE_MOD_TAB_ADMINLOGIN_READ'),
+(803,'ROLE_MOD_TAB_ADMINLOGIN_UPDATE'),
+(793,'ROLE_MOD_TAB_ADMINLOGINPSACCOUNTS_CREATE'),
+(796,'ROLE_MOD_TAB_ADMINLOGINPSACCOUNTS_DELETE'),
+(794,'ROLE_MOD_TAB_ADMINLOGINPSACCOUNTS_READ'),
+(795,'ROLE_MOD_TAB_ADMINLOGINPSACCOUNTS_UPDATE'),
 (145,'ROLE_MOD_TAB_ADMINLOGS_CREATE'),
 (148,'ROLE_MOD_TAB_ADMINLOGS_DELETE'),
 (146,'ROLE_MOD_TAB_ADMINLOGS_READ'),
@@ -39131,6 +39248,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (172,'ROLE_MOD_TAB_ADMINMODULESUPDATES_DELETE'),
 (170,'ROLE_MOD_TAB_ADMINMODULESUPDATES_READ'),
 (171,'ROLE_MOD_TAB_ADMINMODULESUPDATES_UPDATE'),
+(789,'ROLE_MOD_TAB_ADMINOAUTH2PSACCOUNTS_CREATE'),
+(792,'ROLE_MOD_TAB_ADMINOAUTH2PSACCOUNTS_DELETE'),
+(790,'ROLE_MOD_TAB_ADMINOAUTH2PSACCOUNTS_READ'),
+(791,'ROLE_MOD_TAB_ADMINOAUTH2PSACCOUNTS_UPDATE'),
 (181,'ROLE_MOD_TAB_ADMINORDERMESSAGE_CREATE'),
 (184,'ROLE_MOD_TAB_ADMINORDERMESSAGE_DELETE'),
 (182,'ROLE_MOD_TAB_ADMINORDERMESSAGE_READ'),
@@ -39255,6 +39376,18 @@ INSERT INTO `ps_authorization_role` VALUES
 (296,'ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_DELETE'),
 (294,'ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_READ'),
 (295,'ROLE_MOD_TAB_ADMINPAYMENTPREFERENCES_UPDATE'),
+(753,'ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_CREATE'),
+(756,'ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_DELETE'),
+(754,'ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_READ'),
+(755,'ROLE_MOD_TAB_ADMINPAYPALCONFIGURATION_UPDATE'),
+(761,'ROLE_MOD_TAB_ADMINPAYPALDIAGNOSTIC_CREATE'),
+(764,'ROLE_MOD_TAB_ADMINPAYPALDIAGNOSTIC_DELETE'),
+(762,'ROLE_MOD_TAB_ADMINPAYPALDIAGNOSTIC_READ'),
+(763,'ROLE_MOD_TAB_ADMINPAYPALDIAGNOSTIC_UPDATE'),
+(757,'ROLE_MOD_TAB_ADMINPAYPALPROCESSLOGGER_CREATE'),
+(760,'ROLE_MOD_TAB_ADMINPAYPALPROCESSLOGGER_DELETE'),
+(758,'ROLE_MOD_TAB_ADMINPAYPALPROCESSLOGGER_READ'),
+(759,'ROLE_MOD_TAB_ADMINPAYPALPROCESSLOGGER_UPDATE'),
 (297,'ROLE_MOD_TAB_ADMINPERFORMANCE_CREATE'),
 (300,'ROLE_MOD_TAB_ADMINPERFORMANCE_DELETE'),
 (298,'ROLE_MOD_TAB_ADMINPERFORMANCE_READ'),
@@ -39275,6 +39408,26 @@ INSERT INTO `ps_authorization_role` VALUES
 (316,'ROLE_MOD_TAB_ADMINPROFILES_DELETE'),
 (314,'ROLE_MOD_TAB_ADMINPROFILES_READ'),
 (315,'ROLE_MOD_TAB_ADMINPROFILES_UPDATE'),
+(833,'ROLE_MOD_TAB_ADMINPSMBOADDONS_CREATE'),
+(836,'ROLE_MOD_TAB_ADMINPSMBOADDONS_DELETE'),
+(834,'ROLE_MOD_TAB_ADMINPSMBOADDONS_READ'),
+(835,'ROLE_MOD_TAB_ADMINPSMBOADDONS_UPDATE'),
+(829,'ROLE_MOD_TAB_ADMINPSMBOMODULE_CREATE'),
+(832,'ROLE_MOD_TAB_ADMINPSMBOMODULE_DELETE'),
+(830,'ROLE_MOD_TAB_ADMINPSMBOMODULE_READ'),
+(831,'ROLE_MOD_TAB_ADMINPSMBOMODULE_UPDATE'),
+(837,'ROLE_MOD_TAB_ADMINPSMBORECOMMENDED_CREATE'),
+(840,'ROLE_MOD_TAB_ADMINPSMBORECOMMENDED_DELETE'),
+(838,'ROLE_MOD_TAB_ADMINPSMBORECOMMENDED_READ'),
+(839,'ROLE_MOD_TAB_ADMINPSMBORECOMMENDED_UPDATE'),
+(841,'ROLE_MOD_TAB_ADMINPSMBOTHEME_CREATE'),
+(844,'ROLE_MOD_TAB_ADMINPSMBOTHEME_DELETE'),
+(842,'ROLE_MOD_TAB_ADMINPSMBOTHEME_READ'),
+(843,'ROLE_MOD_TAB_ADMINPSMBOTHEME_UPDATE'),
+(845,'ROLE_MOD_TAB_ADMINPSMBOUNINSTALLEDMODULES_CREATE'),
+(848,'ROLE_MOD_TAB_ADMINPSMBOUNINSTALLEDMODULES_DELETE'),
+(846,'ROLE_MOD_TAB_ADMINPSMBOUNINSTALLEDMODULES_READ'),
+(847,'ROLE_MOD_TAB_ADMINPSMBOUNINSTALLEDMODULES_UPDATE'),
 (649,'ROLE_MOD_TAB_ADMINPSTHEMECUSTOADVANCED_CREATE'),
 (652,'ROLE_MOD_TAB_ADMINPSTHEMECUSTOADVANCED_DELETE'),
 (650,'ROLE_MOD_TAB_ADMINPSTHEMECUSTOADVANCED_READ'),
@@ -39427,6 +39580,10 @@ INSERT INTO `ps_authorization_role` VALUES
 (452,'ROLE_MOD_TAB_IMPROVE_DELETE'),
 (450,'ROLE_MOD_TAB_IMPROVE_READ'),
 (451,'ROLE_MOD_TAB_IMPROVE_UPDATE'),
+(749,'ROLE_MOD_TAB_PAYPAL_CREATE'),
+(752,'ROLE_MOD_TAB_PAYPAL_DELETE'),
+(750,'ROLE_MOD_TAB_PAYPAL_READ'),
+(751,'ROLE_MOD_TAB_PAYPAL_UPDATE'),
 (453,'ROLE_MOD_TAB_SELL_CREATE'),
 (456,'ROLE_MOD_TAB_SELL_DELETE'),
 (454,'ROLE_MOD_TAB_SELL_READ'),
@@ -39510,7 +39667,7 @@ CREATE TABLE `ps_carrier` (
   KEY `deleted` (`deleted`,`active`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `reference` (`id_reference`,`deleted`,`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39520,10 +39677,19 @@ CREATE TABLE `ps_carrier` (
 LOCK TABLES `ps_carrier` WRITE;
 /*!40000 ALTER TABLE `ps_carrier` DISABLE KEYS */;
 INSERT INTO `ps_carrier` VALUES
-(1,1,0,'0','',1,0,0,0,0,1,0,0,'',0,0,0,0,0,0.000000,0),
-(2,2,0,'My carrier','',1,0,1,0,0,0,0,0,'',0,1,0,0,0,0.000000,0),
-(3,3,0,'My cheap carrier','',0,0,1,0,0,0,0,0,'',2,2,0,0,0,0.000000,0),
-(4,4,0,'My light carrier','',0,0,1,0,0,0,0,0,'',1,3,0,0,0,0.000000,0);
+(1,1,0,'Pasmanteria','',1,1,0,0,0,1,0,0,'',1,0,0,0,0,0.000000,0),
+(2,2,0,'My carrier','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,0.000000,0),
+(3,3,0,'My cheap carrier','',0,1,1,0,0,0,0,0,'',2,2,0,0,0,0.000000,0),
+(4,4,0,'My light carrier','',0,1,1,0,0,0,0,0,'',1,3,0,0,0,0.000000,0),
+(5,1,0,'Pasmanteria','',1,0,0,0,0,1,0,0,'',1,0,0,0,0,50.000000,0),
+(6,2,0,'DHL','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,0.000000,0),
+(7,2,0,'DHL','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,50.000000,5),
+(8,3,0,'InPost','',1,1,1,0,0,0,0,0,'',1,2,0,0,0,50.000000,8),
+(9,2,0,'DHL','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,50.000000,5),
+(10,2,0,'DHL','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,50.000000,5),
+(11,2,0,'DHL','',1,1,1,0,0,0,0,0,'',1,1,0,0,0,50.000000,5),
+(12,2,0,'DHL','',1,0,1,0,0,0,0,0,'',1,1,0,0,0,50.000000,5),
+(13,3,0,'InPost','',1,0,1,0,0,0,0,0,'',1,2,0,0,0,50.000000,8);
 /*!40000 ALTER TABLE `ps_carrier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39559,7 +39725,34 @@ INSERT INTO `ps_carrier_group` VALUES
 (3,3),
 (4,1),
 (4,2),
-(4,3);
+(4,3),
+(5,1),
+(5,2),
+(5,3),
+(6,1),
+(6,2),
+(6,3),
+(7,1),
+(7,2),
+(7,3),
+(8,1),
+(8,2),
+(8,3),
+(9,1),
+(9,2),
+(9,3),
+(10,1),
+(10,2),
+(10,3),
+(11,1),
+(11,2),
+(11,3),
+(12,1),
+(12,2),
+(12,3),
+(13,1),
+(13,2),
+(13,3);
 /*!40000 ALTER TABLE `ps_carrier_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39589,7 +39782,16 @@ INSERT INTO `ps_carrier_lang` VALUES
 (1,1,1,'Odbiór w sklepie'),
 (2,1,1,'Dostawa następnego dnia!'),
 (3,1,1,'Buy more to pay less!'),
-(4,1,1,'The lighter the cheaper!');
+(4,1,1,'The lighter the cheaper!'),
+(5,1,1,'Odbiór w sklepie'),
+(6,1,1,'Dostawa następnego dnia!'),
+(7,1,1,'Kurier DHL'),
+(8,1,1,'Dostawa do paczkomatu'),
+(9,1,1,'Kurier DHL'),
+(10,1,1,'Kurier DHL'),
+(11,1,1,'Kurier DHL'),
+(12,1,1,'Kurier DHL'),
+(13,1,1,'Dostawa do paczkomatu');
 /*!40000 ALTER TABLE `ps_carrier_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39618,7 +39820,16 @@ INSERT INTO `ps_carrier_shop` VALUES
 (1,1),
 (2,1),
 (3,1),
-(4,1);
+(4,1),
+(5,1),
+(6,1),
+(7,1),
+(8,1),
+(9,1),
+(10,1),
+(11,1),
+(12,1),
+(13,1);
 /*!40000 ALTER TABLE `ps_carrier_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39647,7 +39858,16 @@ INSERT INTO `ps_carrier_tax_rules_group_shop` VALUES
 (1,1,1),
 (2,1,1),
 (3,1,1),
-(4,1,1);
+(4,1,1),
+(5,1,1),
+(6,1,1),
+(7,1,1),
+(8,1,1),
+(9,1,1),
+(10,1,1),
+(11,1,1),
+(12,1,1),
+(13,1,1);
 /*!40000 ALTER TABLE `ps_carrier_tax_rules_group_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39678,7 +39898,17 @@ INSERT INTO `ps_carrier_zone` VALUES
 (3,1),
 (3,2),
 (4,1),
-(4,2);
+(4,2),
+(5,1),
+(6,1),
+(6,2),
+(7,1),
+(8,1),
+(9,1),
+(10,1),
+(11,1),
+(12,1),
+(13,1);
 /*!40000 ALTER TABLE `ps_carrier_zone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39721,7 +39951,7 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39736,7 +39966,10 @@ INSERT INTO `ps_cart` VALUES
 (3,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (4,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (5,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
-(6,1,1,1,'{\"6\":\"1,\"}',1,6,6,1,2,5,'e0542d94774ef8b6744f7e7e900edbfe',0,0,'',0,0,'2024-11-30 20:30:21','2024-11-30 20:31:28','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"4b01a1212a59bd19cd301ffc4668b067d4073015\"}');
+(6,1,1,0,'',1,0,0,1,2,4,'b24937cafb3f85d3a16414b8ca5dc693',0,0,'',0,0,'2024-11-30 19:16:20','2024-12-01 17:27:31',NULL),
+(7,1,1,0,'',1,0,0,1,0,6,'',0,0,'',0,0,'2024-11-30 23:26:06','2024-11-30 23:26:19',NULL),
+(8,1,1,12,'{\"6\":\"12,\"}',1,6,6,1,3,9,'8e989466c1223b233093ccac9f65ab15',0,0,'',0,0,'2024-12-01 17:39:42','2024-12-01 18:55:11','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"edcb4cc5ac6ac5d9a0376ddd0bf4723b100821ff\"}'),
+(9,1,1,0,'',1,0,0,1,2,4,'b24937cafb3f85d3a16414b8ca5dc693',0,0,'',0,0,'2024-12-01 20:19:07','2024-12-01 20:45:25',NULL);
 /*!40000 ALTER TABLE `ps_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39800,7 +40033,13 @@ INSERT INTO `ps_cart_product` VALUES
 (3,16,3,1,28,0,1,'0000-00-00 00:00:00'),
 (4,16,3,1,29,0,1,'0000-00-00 00:00:00'),
 (5,10,3,1,25,0,1,'0000-00-00 00:00:00'),
-(6,1,6,1,1,0,1,'2024-11-30 20:30:21');
+(6,1,0,1,2,0,3,'2024-11-30 23:00:20'),
+(6,2,0,1,9,0,1,'2024-12-01 02:20:57'),
+(7,1,0,1,1,0,5,'2024-11-30 23:26:12'),
+(7,6,0,1,0,0,3,'2024-11-30 23:26:19'),
+(7,7,0,1,0,0,2,'2024-11-30 23:26:06'),
+(8,2,6,1,9,0,1,'2024-12-01 17:39:42'),
+(8,4,6,1,16,0,1,'2024-12-01 18:17:14');
 /*!40000 ALTER TABLE `ps_cart_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40102,7 +40341,7 @@ CREATE TABLE `ps_category` (
   KEY `nright` (`nright`),
   KEY `activenleft` (`active`,`nleft`),
   KEY `activenright` (`active`,`nright`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40112,15 +40351,16 @@ CREATE TABLE `ps_category` (
 LOCK TABLES `ps_category` WRITE;
 /*!40000 ALTER TABLE `ps_category` DISABLE KEYS */;
 INSERT INTO `ps_category` VALUES
-(1,0,1,0,1,18,1,'2024-11-23 21:27:32','2024-11-23 21:27:32',0,0),
-(2,1,1,1,2,17,1,'2024-11-23 21:27:32','2024-11-23 21:27:32',0,1),
-(3,2,1,2,3,8,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
-(4,3,1,3,4,5,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
-(5,3,1,3,6,7,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
-(6,2,1,2,9,14,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
-(7,6,1,3,10,11,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
-(8,6,1,3,12,13,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
-(9,2,1,2,15,16,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',2,0);
+(1,0,1,0,1,20,1,'2024-11-23 21:27:32','2024-11-23 21:27:32',0,0),
+(2,1,1,1,2,19,1,'2024-11-23 21:27:32','2024-11-23 21:27:32',0,1),
+(3,2,1,2,3,10,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
+(4,3,1,3,4,7,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
+(5,3,1,3,8,9,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
+(6,2,1,2,11,16,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
+(7,6,1,3,12,13,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',0,0),
+(8,6,1,3,14,15,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
+(9,2,1,2,17,18,1,'2024-11-23 21:27:58','2024-11-23 21:27:58',2,0),
+(10,4,1,4,5,6,1,'2024-12-01 16:58:12','2024-12-01 16:58:12',0,0);
 /*!40000 ALTER TABLE `ps_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40171,7 +40411,10 @@ INSERT INTO `ps_category_group` VALUES
 (8,3),
 (9,1),
 (9,2),
-(9,3);
+(9,3),
+(10,1),
+(10,2),
+(10,3);
 /*!40000 ALTER TABLE `ps_category_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40212,7 +40455,8 @@ INSERT INTO `ps_category_lang` VALUES
 (6,1,1,'Produkty powiązane','<p>Items and accessories for your desk, kitchen or living room. Make your house a home with our eye-catching designs. </p>','accessories','','',''),
 (7,1,1,'Stationery','<p>Notebooks, agendas, office accessories and more. Everything you need to combine the pleasant and the useful, either at work or at home. </p>','stationery','','',''),
 (8,1,1,'Home Accessories','<p>Details matter! Liven up your interior with our selection of home accessories. </p>','home-accessories','','',''),
-(9,1,1,'Art','<p>Framed poster and vector images, all you need to give personality to your walls or bring your creative projects to life.</p>','art','','','');
+(9,1,1,'Art','<p>Framed poster and vector images, all you need to give personality to your walls or bring your creative projects to life.</p>','art','','',''),
+(10,1,1,'test','','test','','','');
 /*!40000 ALTER TABLE `ps_category_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40325,7 +40569,8 @@ INSERT INTO `ps_category_shop` VALUES
 (6,1,1),
 (7,1,0),
 (8,1,1),
-(9,1,2);
+(9,1,2),
+(10,1,0);
 /*!40000 ALTER TABLE `ps_category_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40343,7 +40588,7 @@ CREATE TABLE `ps_cms` (
   `active` tinyint(1) unsigned NOT NULL DEFAULT 0,
   `indexation` tinyint(1) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_cms`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40358,8 +40603,12 @@ INSERT INTO `ps_cms` VALUES
 (3,1,2,1,0),
 (4,1,3,1,0),
 (5,1,4,1,0),
-(6,1,5,1,0),
-(7,1,6,1,0);
+(6,1,5,1,1),
+(7,1,6,1,1),
+(8,1,7,1,1),
+(9,1,8,1,1),
+(10,1,9,1,1),
+(11,1,10,1,1);
 /*!40000 ALTER TABLE `ps_cms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40481,13 +40730,17 @@ CREATE TABLE `ps_cms_lang` (
 LOCK TABLES `ps_cms_lang` WRITE;
 /*!40000 ALTER TABLE `ps_cms_lang` DISABLE KEYS */;
 INSERT INTO `ps_cms_lang` VALUES
-(1,1,1,'Wysyłka','','Nasze warunki dostawy','conditions, delivery, delay, shipment, pack','<p><span style=\"color:#000000;\"><b>DOSTĘPNE SPOSOBY DOSTAWY: </b></span></p>\n<ul>\n<li><span style=\"color:#000000;\">InPost Paczkomaty 24/7: <b>16,00 zł.</b></span></li>\n<li><span style=\"color:#000000;\">Pocztex Kurier 48 (Poczta Polska): <b>19,00 zł.</b></span></li>\n<li><span style=\"color:#000000;\">Pocztex Kurier 48 POBRANIE (Poczta Polska): <b>22,00 zł. </b></span></li>\n<li><span style=\"color:#000000;\">Przesyłka zagraniczna (Poczta Polska): <b>65.00 zł</b> do 2kg. Powyżej 2 kg cena ustalana indywidualnie telefonicznie lub e-mailem.</span></li>\n<li><span style=\"color:#000000;\">Zakupy powyżej <b>300.00 zł</b> wysyłamy GRATIS.</span></li>\n</ul>\n<p><span style=\"color:#000000;\">Jeśli <b>NIE wybierasz PRZESYŁKI POBRANIOWEJ</b>, należy dokonać przedpłaty na nasze konto. </span><br /><br /><span style=\"color:#000000;\">Można to zrobić na dwa sposoby:</span></p>\n<ul>\n<li><span style=\"color:#000000;\">PRZELEW TRADYCYJNY można zrealizować za pośrednictwem banku, poczty, internetu lub w inny, dogodny dla Ciebie sposób.</span></li>\n<li><span style=\"color:#000000;\">PRZELEW ON_LINE na naszej stronie, za pomocą płatności on-line <b>tpay.com</b>.</span></li>\n</ul>\n<p><br /><span style=\"color:#000000;\"><b>Nr konta:</b> 32 1140 2017 0000 4902 0849 4991</span><br /><br /><span style=\"color:#000000;\"><b>Nazwa konta:</b> Testcom - Dariusz Szyfelbein, ul. Polna 6, 80-174 Otomin </span><br /><br /><span style=\"color:#000000;\"><b>Nazwa banku:</b> mBank</span><br /><br /><span style=\"color:#000000;\"><b>Nr IBAN:</b> PL 32 1140 2017 0000 4902 0849 4991</span><br /><br /><span style=\"color:#000000;\"><b>Nr BIC:</b> BREXPLPWMUL</span><br /><br /><br /><span style=\"color:#000000;\">Po złożeniu zamówienia, otrzymasz od nas te dane na Twój adres mailowy. </span><br /><br /><span style=\"color:#000000;\">Towar wysyłamy dopiero po wpłynięciu należności na konto.</span><br /><br /><span style=\"color:#000000;\">Termin wysyłki - od momentu wpłynięcia pieniędzy na konto - do realizacji - wynosi około 3 dni roboczych. </span><br /><br /><br /><span style=\"color:#000000;\"><b>STATUSY ZAMÓWIEŃ:<br /><br /></b></span></p>\n<ul>\n<li><span style=\"color:#000000;\"><b>\"ZAMÓWIENIE PRZYJĘTE\"</b> takie potwierdzenie otrzymasz automatycznie po złożeniu zamówienia.</span></li>\n<li><span style=\"color:#000000;\"><b>\"W TRAKCIE REALIZACJI\"</b> taką informację otrzymasz po złożeniu zamówienia z przesyłką pobraniową.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"KWOTA WPŁYNĘŁA - REALIZACJA\"</b> taką informację otrzymasz po wpłynięciu należności na nasze konto.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"GOTOWA DO WYSYŁKI\"</b> taką informację otrzymasz, gdy Twoje zamówienie zostanie skompletowane.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"WYSŁANE\"</b> taką informację otrzymasz, gdy wyślemy do Ciebie przesyłkę.</span></li>\n</ul>','wysylka'),
-(2,1,1,'RODO, Polityka prywatności i polityka Cookies','','Przepisy ochrony danych','notice, legal, credits','<p><span style=\"color:#000000;\"><b> I. DEFINICJE </b></span><br /><span style=\"color:#000000;\">1. Administrator - Administratorem danych osobowych jest: Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk, Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. </span><br /><br /><span style=\"color:#000000;\">2. Użytkownik - osoba fizyczna odwiedzająca sklep internetowy <b>nadodatek.pl</b>.</span><br /><br /><span style=\"color:#000000;\">3. Sklep - sklep internetowy <b>nadodatek.pl</b>.</span><br /><br /><span style=\"color:#000000;\">4. Dane osobowe - wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej.</span><br /><br /><span style=\"color:#000000;\">5. Polityka - niniejsza Polityka prywatności i polityka Cookies. </span><br /><br /><span style=\"color:#000000;\"><b> II. PRZETWARZANIE DANYCH W SKLEPIE</b></span><br /><span style=\"color:#000000;\">1. Dane osobowe Użytkownika przetwarzane są w celach związanych z zawarciem, realizacją lub rozwiązania umowy sprzedaży opisanej w Regulaminie pomiędzy firmą Testcom Dariusz Szyfelbein a Użytkownikiem, w celach wynikających z prawnie uzasadnionych interesów realizowanych przez Administratora danych osobowych, a także na podstawie zgody Użytkownika w celach zgodnych z treścią udzielonej zgody. </span><br /><br /><span style=\"color:#000000;\">2. Podane dane są przetwarzane na podstawie art.6 ust. 1 lit. a), lit. b) i lit. f) Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenia o ochronie danych osobowych). </span><br /><br /><span style=\"color:#000000;\">3. Dane osobowe Użytkownika są przechowywane w czasie realizacji zamówienia, a także po zakończeniu jego realizacji na czas zgodny z przepisami prawa, a w przypadku prawnie usprawiedliwionych celów Administratora oraz na podstawie zgody udzielonej przez Użytkownika - do czasu wygaśniecia zgody. </span><br /><br /><span style=\"color:#000000;\">4. Użytkownikowi przysługuje prawo żądania od Administratora dostępu do danych osobowych dotyczących jego osoby, ich sprostowania, usunięcia lub ograniczenia przetwarzania. </span><br /><br /><span style=\"color:#000000;\">5. Użytkownikowi przysługuje prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem. </span><br /><br /><span style=\"color:#000000;\">6. Użytkownikowi przysługuje prawo wniesienia skargi do GIODO (od dnia 25 maja 2018 roku do Prezesa Urzędu Ochrony Danych Osobowych), gdy uzna, że przetrwarzanie danych osobowych jego dotyczących narusza przepisy prawa. </span><br /><br /><span style=\"color:#000000;\">7. Użytkownikowi przysługuje prawo do informacji o przetwarzaniu danych osobowych - na podstawie żądania osoby zgłaszającej Administrator danych osobowych przekazuje informację o przetwarzaniu danych osobowych, w tym przede wszystkim o celach i podstawach prawnych przetwarzania, zakresie posiadanych danych, podmiotach, którym dane osobowe są ujawniane i planowanym terminie ich usunięcia; </span><br /><br /><span style=\"color:#000000;\">8. Użytkownikowi przysługuje prawo uzyskania kopii danych - na podstawie żądania osoby zgłaszającej Administrator przekazuje kopię przetwarzanych danych, dotyczących osoby zgłaszającej żądanie; </span><br /><br /><span style=\"color:#000000;\">9. Użytkownikowi przysługuje prawo do przenoszenia danych - na podstawie żądania osoby zgłaszającej, w zakresie w jakim dane są przetwarzane w związku z zawartą umową lub wyrażoną zgodę, Administrator wydaje dane dostarczone przez osobę, której one dotyczą, w formacie pozwalającym na ich odczyt przez komputer. Możliwe jest także zażądanie przesłania tych danych innemu podmiotowi, jednak pod warunkiem, że istnieją w tym zakresie techniczne możliwości zarówno po stronie Administratora jak i tego innego podmiotu; </span><br /><br /><span style=\"color:#000000;\">10. Użytkownikowi przysługuje prawo sprzeciwu wobec przetwarzania danych w celach marketingowych - osoba, której dane dotyczą, może w każdym czasie sprzeciwią się przetwarzaniu danych osobowych w celach marketingowych, bez konieczności uzasadnienia takiego sprzeciwu; </span><br /><br /><span style=\"color:#000000;\">11. Użytkownikowi przysługuje prawo sprzeciwu wobec innych celów przetwarzania danych - osoba, której dane dotyczą, może w każdym czasie sprzeciwią się przetwarzaniu danych osobowych na podstawie uzasadnionego interesu Administratora (np. dla celów analitycznych lub statystycznych lub ze względów związanych z ochroną mienia). Sprzeciw w tym zakresie powinien zawierać uzasadnienie oraz podlega ocenie Administratora; </span><br /><br /><span style=\"color:#000000;\">12. Dane osobowe pochodzą od osoby, której dotyczą. </span><br /><br /><span style=\"color:#000000;\">13. Podanie danych osobowych przez Użytkownika Sklepu oraz zgoda na ich przetwarzanie są dobrowolne, lecz niezbędne do realizacji zamówienia. Brak podania danych osobowych uniemożliwia zrealizowanie złożonego w sklepie zamówienia. </span><br /><br /><span style=\"color:#000000;\">14. Możliwy jest kontakt z Administatorem danych telefonicznie 663-656-888 i drogą mailową e-mail: sklep@nadodatek.pl </span><br /><br /><span style=\"color:#000000;\">15. żądanie zmiany przetwarzania danych powinno zostać wysłane e-mailem na adres <b>sklep@nadodatek.pl</b>. </span><br /><br /><span style=\"color:#000000;\"><b>III. ODBIORCY DANYCH</b></span><br /><span style=\"color:#000000;\">1. Dane osobowe będą ujawniane zewnętrznym podmiotom, w zakresie niezbędnym w związku z realizacją usług. </span><br /><br /><span style=\"color:#000000;\">2. Do podmiotów tych należą:</span><br /><span style=\"color:#000000;\">  a) Dostawcy odpowiedzialni za obsługę systemów informatycznych w tym firma hostingowa,</span><br /><span style=\"color:#000000;\">  b) Podmioty dostarczające przesyłki: Poczta Polska oraz firmy kurierskie.</span><br /><br /><span style=\"color:#000000;\"><b>IV. RODZAJE ZBIERANYCH DANYCH </b></span><br /><span style=\"color:#000000;\">1. W celu rejetracji (założenia konta) Użytkownika zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  c) nr telefonu do kontaktu sklepu z Użytkownikiem - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  d) adres Użytkownika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  e) NIP w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  f) nazwa firmy w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe.</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu założenia konta Użytkownika, a ich niepodanie skutkuje brakiem możliwości założenia konta.</span><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi konta wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">2. W celu realizacji zamówienia zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  c) nr telefonu do kontaktu sklepu z Użytkownikiem - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  d) adres do wysyłki - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  e) adres płatnika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  f) NIP w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  g) nazwa firmy w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe.</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu realizacji zamówienia, a ich niepodanie skutkuje brakiem możliwości realizacji zamówienia.</span><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi realizacji zamówienia wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">3. W celu obsługi zapytania Użytkownika zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane niebowiązkowe,</span><br /><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi zapytania Użytkownika wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">4. W celu obsługi wysyłki newslettera oraz informacji o produktach zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) adres e-mail wysyłki newslettera oraz informacji o produktach - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) zgoda na wysyłkę - dane obowiązkowe,</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu wysyłki newslettera oraz informacji o produktach, a ich niepodanie skutkuje brakiem</span><br /><span style=\"color:#000000;\">  możliwości wysyłki newslettera oraz informacji o produktach.</span><br /><span style=\"color:#000000;\">  Zgoda na wysyłkę newslettera oraz informacji o produktach jest nieobowiązkowa i dobrowolna. Użytkownik może w każdej chwili cofnąć zgodę .</span><br /><br /><br /><span style=\"color:#000000;\"><b>V. POLITYKA COOKIES </b></span><br /><span style=\"color:#000000;\">1. Sklep nadodatek.pl nie zbiera w sposób automatyczny żadnych informacji, z wyjątkiem informacji zawartych w plikach cookies.</span><br /><br /><span style=\"color:#000000;\">2. Pliki cookies (tzw. \"ciasteczka\") stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika sklepu i przeznaczone są do korzystania ze stron internetowych sklepu. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer. </span><br /><br /><span style=\"color:#000000;\">3. Podmiotem zamieszczającym na urządzeniu końcowym Użytkownika sklepu pliki cookies oraz uzyskującym do nich dostęp jest operator sklepu nadodatek.pl z siedzibą pod adresem ul. Polna 6 Otomin, 80-174 Gdańsk.</span><br /><br /><span style=\"color:#000000;\">4. Pliki cookies wykorzystywane są w celu: </span><br /><span style=\"color:#000000;\">a) dostosowania zawartości stron internetowych sklepu do preferencji Użytkownika oraz optymalizacji korzystania ze stron internetowych; w szczególności pliki te pozwalają rozpoznać urządzenie Użytkownika sklepu i odpowiednio wyświetlić stronę internetowa, dostosowaną do jego indywidualnych potrzeb,</span><br /><span style=\"color:#000000;\">b) tworzenia statystyk, które pomagają zrozumieć, w jaki sposób Użytkownicy sklepu korzystają ze stron internetowych, co umożliwia ulepszanie ich struktury i zawartości,</span><br /><span style=\"color:#000000;\">c) utrzymanie sesji Użytkownika sklepu (po zalogowaniu), dzięki której Użytkownik nie musi na każdej podstronie sklepu ponownie wpisywać loginu i hasła,</span><br /><br /><span style=\"color:#000000;\">5. W ramach sklepu stosowane są dwa zasadnicze rodzaje plików cookies: \"sesyjne\" - (session cookies) oraz \"stałe\" - (persistent cookies). Cookies \"sesyjne\" są plikami tymczasowymi, które przechowywane są w urządzeniu końcowym Użytkownika do czasu wylogowania, opuszczenia strony internetowej lub wyłączenia oprogramowania (przeglądarki internetowej). \"Stałe\" pliki cookies przechowywane są w urządzeniu końcowym Użytkownika przez czas określony w parametrach plików cookies lub do czasu ich usunięcia przez Użytkownika, </span><br /><br /><span style=\"color:#000000;\">6. W wielu przypadkach oprogramowanie służące do przeglądania stron internetowych (przeglądarka internetowa) domyślnie dopuszcza przechowywanie plików cookies w urządzeniu końcowym Użytkownika. Użytkownicy sklepu mogą dokonać w każdym czasie zmiany ustawień dotyczących plików cookies. Ustawienia te mogą zostać zmienione w szczególności w taki sposób, aby blokować automatyczną obsługę plików cookies w ustawieniach przeglądarki internetowej będą informować o ich każdorazowym zamieszczeniu w urządzeniu Użytkownika sklepu. Szczegółowe informacje o możliwości i sposobach obsługi plików cookies dostępne są w ustawieniach oprogramowania (przeglądarki internetowej). </span><br /><br /><span style=\"color:#000000;\">7. Operator sklepu informuje, że ograniczenia stosowania plików cookies mogą wpłynąć na niektóre funkcjonalności dostępne na stronach internetowych sklepu.</span><br /><br /><br /><span style=\"color:#000000;\"><b>VI. ZMIANY POLITYKI</b></span><br /><span style=\"color:#000000;\">1. Polityka jest na bieżąco weryfikowana i w razie potrzeby aktualizowana .</span></p>','rodo'),
-(3,1,1,'Regulamin','','Regulamin sklepu','conditions, terms, use, sell','<div id=\"bodyContent\" class=\"col order-1 order-md-6\"><b>REGULAMIN Sklepu Internetowego nadodatek.pl</b><br />Regulamin wchodzący w życie w dniu 30.07.2019 dostępny jest poniżej.<br /><br /><b>Sklep internetowy nadodatek.pl jest prowadzony przez: </b><br />Firmę Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. <br /><br /><b>SŁOWNICZEK:</b><br /><br /><b>Firma</b> - Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska.<br /><br /><b>Sklep Internetowy nadodatek.pl</b> prowadzony przez firmę Testcom, dostępny pod domeną internetową www.nadodatek.pl<br /><br /><b>Klient</b> - osoba fizyczna posiadająca pełną lub ograniczona zdolność do czynności prawnych, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej ale posiadająca zdolność prawną, korzystająca ze Sklepu Internetowego nadodatek.pl, w tym w szczególności dokonująca zakupów.<br /><br /><b>Koszyk</b> - funkcjonalność Sklepu Internetowego nadodatek.pl, w której widoczne są wybrane przez Klienta produkty do zakupu oraz umożliwiająca ustalenie i modyfikację danych zamówienia, w szczególności: ilość produktów, adres dostawy, dane do faktury, sposób dostawy, formy płatności.<br /><br /><b>Strona produktowa</b> - strona w Sklepie Internetowym nadodatek.pl, na której przedstawione są informacje na temat produktu.<br /><br /><b>Centrum Wsparcia Klienta</b> - biuro obsługi Klienta dostępne pod numerem telefonu +48 697 61 57 53 oraz przez formularz kontakowy za pośrednictwem sieci Internet pod adresem http://nadodatek.pl/contact_us.php.<br /><br /><br /><b>§1 Postanowienia ogólne</b> <br /><br />1. Niniejszy regulamin określa zasady korzystania ze Sklepu Internetowego nadodatek.pl, składania zamówień na produkty dostępne w Sklepie Internetowym nadodatek.pl, dostarczania zamówionych produktów Klientowi, uiszczania przez Klienta ceny sprzedaży produktów, uprawnienia Klienta do anulowania zamówienia i odstąpienia od umowy oraz zasady składania i rozpatrywania reklamacji. <br /><br />2. Do korzystania ze Sklepu Internetowego nadodatek.pl, w tym przeglądania asortymentu Sklepu Internetowego nadodatek.pl oraz składania zamówień na produkty, niezbędny jest: a) komputer z dostępem do sieci Internet i przeglądarką internetową typu Internet Explorer, Google Chrome, Mozilla Firefox, Opera, Safari; b) aktywne konto poczty elektronicznej (e-mail). <br /><br />3. Klient uprawniony jest zobowiązany do korzystania ze Sklepu Internetowego nadodatek.pl zgodnie z jego przeznaczeniem. <br /><br />4. Klient zobowiązany jest do powstrzymywania się od jakiejkolwiek aktywnoąci, która mogłaby wpłynąć na prawidłowe funkcjonowanie Sklepu Internetowego nadodatek.pl, w tym w szczególności od jakiegokolwiek ingerowania w zawartość Sklepu Internetowego nadodatek.pl lub jego elementy techniczne, w tym od dostarczania treści o charakterze bezprawnym. Zabronione jest wykorzystywanie Sklepu Internetowego nadodatek.pl do celów innych niż jego przeznaczenie, w tym w szczególności rozsyłanie spamu, prowadzenie na stronach internetowych Sklepu Internetowego nadodatek.pl jakiejkolwiek działalności komercyjnej, reklamowej, promocyjnej itp. <br /><br />5. Firma Testcom w najszerszym dopuszczalnym przez prawo zakresie nie ponosi odpowiedzialności za zakłócenia, w tym przerwy, w funkcjonowaniu Sklepu Internetowego nadodatek.pl spowodowane siłą wyższą, niedozwolonym działaniem osób trzecich lub niekompatybilność Sklepu Internetowego nadodatek.pl z infrastrukturą techniczną Klienta. <br /><br />6. Przeglądanie asortymentu Sklep Internetowego nadodatek.pl nie wymaga rejestracji. Samodzielne składanie zamówień przez Klienta na produkty znajdujące się w asortymencie Sklepu Internetowego nadodatek.pl nie wymaga zarejestrowania się. Rejestracja jest możliwa i odbywa zgodnie z postanowieniami § 2 regulaminu. <br /><br /><b> § 2 Rejestracja</b> <br /><br />1. W celu rejestracji w Sklepie Internetowym nadodatek.pl (założenia konta Klienta) należy wypełnić formularz rejestracyjny, podając imię i nazwisko, adres, nr telefonu, adres e-mail oraz hasło, zaakceptował regulamin Sklepu Internetowego nadodatek.pl oraz wyrazić zgodę na przetwarzanie danych osobowych w zakresie niezbędnym do nawiązania, ukształtowania treści, zmiany, rozwiązania i prawidłowej realizacji zamówień Klienta. <br /><br />2. Rejestracja w Sklepie Internetowym nadodatek.pl, jak również korzystanie z funkcjonalności Sklepu Internetowego nadodatek.pl, są nieodpłatne. <br /><br />3. Po zarejestrowaniu się w Sklepie Internetowym nadodatek.pl każdorazowe logowanie odbywa się przy użyciu danych podanych w formularzu rejestracyjnym. <br /><br />4. W celu usunięcia konta Klienta ze Sklepu Internetowego nadodatek.pl należy wysłać wiadomość elektroniczną z prośbą o usunięcie konta za pośrednictwem Centrum Wsparcia Klienta wraz z podaniem adresu poczty elektronicznej, aktualnie zarejestrowanego w Sklepie Internetowym nadodatek.pl <br /><br /><b> § 3 Zasady korzystania ze Sklepu Internetowego nadodatek.pl</b> <br /><br />1. Logowanie do Sklepu Internetowego nadodatek.pl odbywa się poprzez wpisanie w formularzu logowania adresu e-mail oraz hasła podanych przy rejestracji konta Klienta. Dane podane przy rejestracji konta mogą został zmienione po zalogowaniu się na konto Klienta (zakładka \"Twoje konto\"). <br /><br />2. Klient, który zarejestrował konto, może korzystać ze wszystkich dostępnych funkcjonalności Sklepu Internetowego nadodatek.pl, w tym składać zamówienia na produkty dostępne w asortymencie Sklepu Internetowego nadodatek.pl . <br /><br />3. Firma uprawniona jest do zablokowania konta Klienta, jeżeli uzna jego działanie w ramach Sklepu Internetowego nadodatek.pl za naruszające powszechnie obowiązujące przepisy prawa lub postanowienia niniejszego regulaminu. O zamiarze zablokowania konta Klienta Klient zostanie powiadomiony na adres poczty elektronicznej aktualnie zarejestrowany w Sklepie Internetowym nadodatek.pl. Zablokowanie konta oznacza rozwiązanie umowy z Klientem o świadczenie usług drogą elektronicznej w trybie natychmiastowym. <br /><br />4. Wszelkie nieprawidłowości w działaniu Sklepu Internetowego nadodatek.pl mogą być zgłaszane Firmie za pośrednictwem Centrum Wsparcia Klienta. Reklamacje dotyczące produktów mogą być zgłaszane stosownie do postanowień § 9 regulaminu. <br /><br />5. Zgłoszenia, o których mowa w ust. 4 niniejszego paragrafu, będą rozpatrywane w terminie 14 dni od dnia zgłoszenia. <br /><br />6. Klient zobowiązany jest do zachowania w tajemnicy loginu i hasła do swojego konta w Sklepie Internetowym nadodatek.pl. W granicach wynikających z powszechnie obowiązujących przepisów prawa odpowiedzialnym za wszelkie działania związane z posługiwaniem się loginem i hasłem do danego konta w Sklepie Internetowym nadodatek.pl jest Klient, przy czym hasło stanowi informację poufną do wyłącznej wiadomości Klienta. <br /><br /><b> § 4 Informacje o produktach</b> <br /><br />1. Informacje o produktach dostępnych w asortymencie Sklepu Internetowego nadodatek.pl stanowią zaproszenie do zawarcia umowy w rozumieniu art. 71 Kodeksu cywilnego. <br /><br />2. Ceny produktów wskazanych na stronach internetowych Sklepu Internetowego nadodatek.pl: <br />a) zawierają podatek VAT i podawane są w złotych polskich;<br />b) nie zawierają kosztów dostawy. Koszty dostawy zależą od sposobu dostarczenia produktu do Klienta, od wartości oraz wielkości zamówienia i podawane są przy wyborze sposobu dostawy produktu przez Klienta. Całkowity koszt (tj. cena produktów wraz z kosztami dostawy) wskazany jest przed złożeniem zamówienia przez Klienta. <br /><br />3. Firma zastrzega sobie prawo do dokonywania na bieżąco zmian w cenach produktów oraz do przeprowadzania i odwoływania wszelkiego rodzaju akcji promocyjnych oraz wyprzedaży. Uprawnienie, o którym mowa w poprzednim zdaniu, nie ma wpływu na zamówienia złożone przed datą wejścia w życie zmiany ceny, warunków akcji promocyjnych lub wyprzedaży. <br /><br /><b> § 5 Warunki realizacji zamówień</b> <br /><br />1. Klient może składać zamówienia na produkty dostępne w asortymencie Sklepu Internetowego nadodatek.pl przez 7 (siedem) dni w tygodniu i 24 (dwadzieścia cztery) godziny na dobę. <br /><br />2. W celu złożenia zamówienia Klient zarejestrowany powinien:<br />a) zalogować się do Sklepu Internetowego nadodatek.pl;<br />b) wybrać produkt będący przedmiotem zamówienia, a następnie kliknąć przycisk \"Do koszyka\" (lub równoznaczny);<br />c) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />d) wpisać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />e) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />f) kliknąć przycisk \"Zakończ - złóż zamówienie\";<br /><br />3. W celu złożenia zamówienia Klient niezarejestrowany powinien: <br />a) wybrać produkt będący przedmiotem zamówienia, a następnie kliknąć przycisk \"Do koszyka\" (lub równoznaczny);<br />b) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />c) wpisać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />d) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />e) kliknąć przycisk \"Zakończ - złóż zamówienie\";<br /><br />4. W celu złożenia zamówienia drogą mailową na adres sklep@nadodatek.pl należy: <br />a) wypisać produkty będące przedmiotem zamówienia;<br />b) podać rodzaj przesyłki (sposób dostarczenia produktu);<br />c) podać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />d) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />e) wysłać maila;<br /><br />5. W celu złożenia zamówienia telefonicznie w godzinach 9-18 w dni robocze należy:<br />a) zadzwonić pod numer 69 761 57 53;<br />b) podać listę wybranych produktów;<br />c) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />d) podać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />e) podać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />f) dane do przelewu zostaną przesłane pocztą mailową zgodnie z ustaleniami;<br /><br />6. W przypadku płatności z góry - opłacić zamówienie w jeden z dostępnych sposobów płatności. Przedmiot zamówienia może być dostarczony Klientowi na adres wskazany przez Klienta w zamówieniu (kurierem, pocztą lub do paczkomatu).<br /><br />7. Złożenie zamówienia przez Klienta oznacza złożenie Firmie oferty zawarcia umowy sprzedaży (kupna) zamówionego produktu. <br /><br />8. Po złożeniu zamówienia na adres poczty elektronicznej Klienta wskazany w koncie Klienta zostanie wysłane potwierdzenie otrzymania przez Firmę zamówienia złożonego przez Klienta. Jeżeli realizacja zamówienia jest możliwa, na adres poczty elektronicznej Klienta wysłana zostanie wiadomość elektroniczna z potwierdzeniem przyjęcia zamówienia do realizacji. Potwierdzenie przyjęcia zamówienia jest oświadczeniem Firmy o przyjęciu oferty, o której mowa w ust. 4 powyżej. <br /><br />9. Firma zastrzega sobie prawo ograniczenia sposobów dostawy oraz form płatności w odniesieniu do danych produktów, kategorii produktowych lub liczby zamawianych produktów. <br /><br />10. Firma zastrzega sobie prawo do ograniczenia sposobów dostawy oraz form płatności w stosunku do Klienta, który: <br />a) co najmniej trzykrotnie nie odebrał przedmiotu zamówienia dostarczanego za pośrednictwem Poczty Polskiej, płatnego przy odbiorze, w terminie 14 dni od dnia dostarczenia go do właściwej placówki Poczty Polskiej;<br />b) co najmniej trzykrotnie nie odebrał przedmiotu zamówienia przesłanego przesyłkę kurierską.<br /><br />11. W przypadku braku w magazynie zamówionego produktu lub braku możliwości realizacji zamówienia Klienta z innych przyczyn, w tym także, jeśli zakup ich od dostawców Firmy nie będzie możliwy w czasie przewidzianym na realizację zamówienia, Firma poinformuje Klienta o zaistniałej sytuacji wysyłając wiadomość na wskazany przez Klienta adres e-mail lub przekaże informację drogą telefoniczną na numer wskazany przez Klienta, w terminie wynikającym z powszechnie obowiązujących przepisów prawa. <br /><br />12. W przypadku, gdy realizacja części zamówienia nie będzie możliwa, Firma może zaproponować Klientowi: <br />a) anulowanie całości zamówienia (w przypadku wyboru tej opcji przez Klienta Firma będzie zwolniona z obowiązku realizacji zamówienia); <br />b) anulowanie zamówienia w części, w której realizacja nie jest możliwa w wyznaczonym terminie (w przypadku wyboru tej opcji przez Klienta zamówienie zostanie zrealizowane w części, przy czym Firma będzie zwolniona z obowiązku jego realizacji w pozostałym zakresie);<br />c) podział zamówienia i wyznaczenie nowego terminu realizacji w odniesieniu do tej części zamówienia, której realizacja nie jest możliwa w pierwotnie wyznaczonym terminie (w przypadku wyboru tej opcji przez Klienta wysłanie składających się na zamówienie produktów zostanie dokonane w kilku odrębnych przesyłkach, zaś Klient nie będzie ponosił dodatkowych kosztów związanych z podziałem zamówienia na kilka wysyłek). <br />13. W przypadku gdy Klient nie wybierze żadnego ze sposobów realizacji zamówienia w sytuacji, o której mowa w ust. 9 niniejszego paragrafu (w tym również w przypadku braku możliwości nawiązania kontaktu z Klientem z przyczyn nie leżących po stronie Firmy), Firma dostarczy Klientowi produkty, co do których zamówienie może być zrealizowane w terminie, w pozostałym zakresie zamówienie zostanie anulowane, o czym Klient zostanie powiadomiony na adres poczty elektronicznej wskazany w koncie Klienta. Klient może odstąpić od umowy w zakresie, w jakim została zrealizowana, na zasadach określonych w § 11 regulaminu. <br /><br />14. W przypadku gdy Klient nie podejmie żadnej decyzji w sytuacji, o której mowa w ust. 9 niniejszego paragrafu (w tym również w przypadku braku możliwości nawiązania kontaktu z Klientem z przyczyn nieleżących po stronie Firmy), Firma może anulować zamówienie w całości. <br /><br />15. W przypadku anulowania zamówienia w sytuacji wskazanej w ust. 13-14 niniejszego paragrafu, jeśli zapłata za przedmiot zamówienia została dokonana z góry, Firma zwróci Klientowi zapłaconą kwotę (lub jej części w przypadku realizacji zamówienia w części) zgodnie z powszechnie obowiązującymi przepisami prawa. Zasady zwrotu należności zostały szczegółowo opisane w § 12 regulaminu. <br /><br />16. Pod pojęciem anulowania zamówienia przez Firmę, o którym mowa w ust. 14-15 niniejszego paragrafu, należy rozumieć przysługujące Firmie umowne prawo odstąpienia, z którego Firma może skorzystać w terminie odpowiadającym terminowi, o którym mowa w § 8 ust. 1 niniejszego regulaminu. W przypadku gdy termin, o którym mowa w § 8 ust. 1 niniejszego regulaminu, jest krótszy niż 30 dni, Firma może wykonać umowne prawo odstąpienia w terminie 30 dni od dnia zawarcia umowy z Klientem. <br /><br />17. W przypadku podania przez Klienta błędnych lub niedokładnych danych, w tym w szczególności błędnego lub niedokładnego adresu, Firma nie ponosi odpowiedzialności za niedostarczenie lub opóźnienie w dostarczeniu przedmiotu zamówienia w najszerszym dopuszczalnym przez prawo zakresie. <br /><br /><b> § 6 Modyfikacje zamówienia</b><br /><br />1. Klient może dokonywać zmian w zamówieniu aż do momentu nadania przez Firmę przesyłki z przedmiotem zamówienia do Klienta (status realizacji zamówienia widoczny jest w koncie Klienta w zakładce \"Twoje konto\"). Zmiany mogą dotyczyć rezygnacji z całości będą z części produktów składających się na zamówienie, zmiany w adresie dostawy lub zmiany danych na fakturze. W przypadku rezygnacji z zamówienia (zarówno w całości jak i w części), jeżeli zapłata została dokonana z góry, zwrot ceny sprzedaży (odpowiedniej części ceny sprzedaży) nastąpi w terminie 14 (czternaście) dni od dnia otrzymania rezygnacji Klienta przez Firmę. Zasady zwrotu należności Klientom zostały szczegółowo opisane w § 12 regulaminu. <br /><br />2. Zmian w zamówieniu można dokonywać kontaktując się z Centrum Wsparcia Klienta. <br /><br />3. Klient otrzyma potwierdzenie dokonania zmian lub anulowania zamówienia na adres poczty elektronicznej wskazany przez Klienta w procesie składania zamówienia. <br /><br /><b> § 7 Formy płatności i rozpoczęcie realizacji zamówienia</b><br /><br />1. W przypadku gdy przedmiot zamówienia ma być dostarczony na terenie Polski zapłaty można dokonać:<br />a) podczas odbioru przedmiotu zamówienia po dostarczeniu go przez Pocztę Polską - gotówkę. W tym przypadku realizacja zamówienia zostanie rozpoczęta po zakończeniu przez Klienta procesu składania zamówienia na stronie Sklepu Internetowego nadodatek.pl;<br />b) przed odbiorem przedmiotu zamówienia (płatność z góry) - przelewem bankowym lub za pomocą płatności tpay.com. W tym przypadku realizacja zamówienia nastąpi po otrzymaniu przez Firmę potwierdzenia wpłynięcia należności na podane konto. <br /><br />2. W przypadku gdy przedmiot zamówienia ma być dostarczony poza granicami Polski, zapłaty można dokonać przelewem bankowym. W tym przypadku realizacja zamówienia nastąpi po otrzymaniu przez Firmę potwierdzenia wpłynięcia należności na podane konto. <br /><br />3. Klient nie ma możliwości zapłacić za część zamówienia z góry a za część zamówienia przy odbiorze. Forma płatności może być uzależniona od rodzaju produktu i/lub miejsca odbioru zamówienia. <br /><br /><b> § 8 Czas realizacji zamówień</b><br /><br />1. 3 dni robocze ( tj. dni tygodnia od poniedziałku do piątku z wyłączeniem dni ustawowo wolnych od pracy, w ciągu których nastąpi nadanie przesyłki z przedmiotem zamówienia) to orientacyjny czas liczony od momentu przyjęcia zamówienia do realizacji do chwili wysłania przedmiotu zamówienia do Klienta za pośrednictwem Poczty Polskiej lub firmy kurierskiej. Czas realizacji zamówienia jest podawany z uwzględnieniem terminu skompletowania wszystkich zamówionych produktów. Czas realizacji zamówienia uzależniony jest od dostępności danego produktu. <br /><br />2. Na terenie Polski przedmiot zamówienia może być dostarczony za pośrednictwem Poczty Polskiej lub firmy kurierskiej pod wskazany przez Klienta adres. <br /><br />3. Poza terenem Polski przedmiot zamówienia jest dostarczany za pośrednictwem Poczty Polskiej. <br /><br />4. Firma nie ponosi odpowiedzialności za wydłużony czas dostawy lub brak dostawy z powodu podania przez Klienta nieprawidłowych lub niepełnych danych, w tym nieprawidłowego lub niepełnego adresu dostawy. <br /><br /><b> § 9 Warunki reklamacji</b><br /><br />1. Klient, nabywający produkt w celu niezwiązanym z działalnością zawodową lub gospodarczą, ma prawo do złożenia reklamacji w ciągu 2 (dwóch) lat od daty wydania mu danego towaru, o ile w terminie dwóch miesięcy od dnia, w którym stwierdził niezgodności dostarczonych produktów z umową, zawiadomi Firmę o stwierdzonej niezgodności. <br /><br />2. Firma w ciągu 14 (czternaście) dni kalendarzowych ustosunkuje się do reklamacji Klienta i powiadomi go o sposobie dalszego postępowania. <br /><br />3. Warunkiem koniecznym, aby Firma rozpatrzyła reklamację, jest dostarczenie jej przez Klienta reklamowanego produktu lub produktów wraz z dowodem zakupu tego produktu (produktów) od Firmy i opisem reklamacji (wzór dokumentu reklamacji znajduje się na stronie nadodatek.pl w zakładce \"Dokumenty\"). <br /><br />4. W przypadku gdy produkt być dostarczany za pośrednictwem Poczty Polskiej lub firmy kurierskiej, reklamację (tj. reklamowany produkt, dowód zakupu i opis reklamacji) należy odesłać na adres Firmy (rekomendujemy wysyłkę za pośrednictwem Poczty Polskiej listem poleconym lub paczką ekonomiczną). W przypadku dostarczenia Klientowi produktu przesyłkę opłacaną za pobraniem, zwrot kosztów zamówienia nastąpi zgodnie z zasadami opisanymi w § 12 poniżej. <br /><br />5. W przypadku rozpatrzenia reklamacji na korzyść Klienta Firma naprawi lub wymieni Klientowi reklamowany produkt na pełnowartościowy lub jeżeli wymiana nie będzie możliwa zwróci należność za reklamowany produkt w ciągu 14 (czternaście) dni od daty rozpatrzenia reklamacji. <br /><br />6. Klient nabywający produkt w celu związanym z działalnością zawodową lub gospodarczą (Klient nie będący konsumentem) ma prawo złożyć reklamację stosownie do obowiązujących w tej mierze przepisów prawa, przy czym odpowiedzialność Firmyz tytulu rękojmi za wady fizyczne produktów ogranicza się do kwoty, jaką Klient zapłacił Firmie za nabycie danego produktu. <br /><br /><b> § 10 Warunki gwarancji </b><br /><br />1. Produkty sprzedawane przez Firmę mogą być objęte gwarancję udzieloną przez producenta będą dystrybutora. Firma nie udziela żadnej gwarancji na jakiekolwiek sprzedawane produkty. <br /><br />2. W przypadku produktu, na który producent lub dystrybutor udzielił gwarancji, Klient może reklamować produkt posiadający wady: <br />a) korzystając z uprawnień wynikających z udzielonej gwarancji - w tym wypadku Klient reklamuje produkt bezpośrednio do gwaranta (podmiotu udzielającego gwarancji), a Firma może być tylko pośrednikiem przekazującym reklamację. Klient według swego wyboru może zgłosić się bezpośrednio do serwisu gwarancyjnego albo do Firmy; <br />b) korzystając z uprawnień przysługujących mu od sprzedawcy w związku z niezgodnością produktu z umową - w takim przypadku należy złożyć reklamację stosownie do postanowień § 9 regulaminu. <br /><br /><b> § 11 Rezygnacja z zamówienia oraz odstąpienie od umowy </b><br /><br />1. Klient może zrezygnować z zamówienia, jeśli składające się na nie produkty nie zostały jeszcze przygotowane do wysyłki: <br />a) kontaktując się z Centrum Wsparcia Klienta; <br />b) samodzielnie wysyłając e-maila na adres sklep@nadodatek.pl. <br /><br />2. Klient będący osobą fizyczn, dokonujący zakupów w Sklepie Internetowym nadodatek.pl w zakresie niezwiązanym z jego działalnością gospodarczą lub zawodową (konsument) może odstąpić od umowy sprzedaży produktu zakupionego w Sklepie Internetowym nadodatek.pl bez podawania przyczyny w ciągu 14 (czternastu) dni kalendarzowych od dnia otrzymania zrealizowanego zamówienia (wydania produktu), za wyjątkiem (stosownie do art. 10 ust. 3 ustawy z dnia 2 marca 2000 r. o ochronie niektórych praw konsumentów oraz odpowiedzialności za produkt niebezpieczny (tekst jednolity z dnia 14 września 2012 r., Dz. U. z 2012 r., poz. 1225): <br />a) prasy; <br />b) produktów, których stan po odbiorze przez Klienta uległ zmianie, chyba że zmiana konieczna była w granicach zwykłego zarządu. <br /><br />3. Odstąpienie od umowy zgodnie z ust. 2 powyżej wymaga złożenia oświadczenia na piśmie w terminie wskazanym w ust. 2 powyżej (Klient może skorzystać z wzoru oświadczenia znajdującego się na stronie nadodatek.pl w zakładce \"Dokumenty\"). W takim przypadku Klient zobowiązany jest do zwrotu Firmie produktu w stanie niezmienionym, chyba że zmiana była konieczna w granicach zwykłego zarządu, zgodnie z postanowieniami ust. 4 niniejszego paragrafu w terminie wynikającym z obwiązujących przepisów prawa. Koszt zwrotu produktu w wyniku odstąpienia ponosi Klient. Firma zwróci Klientowi w terminie 14 dni uiszczoną przez Klienta należność zgodnie z postanowieniami § 12 regulaminu. <br /><br />4. Klient, który odstąpił od umowy zgodnie z ust. 2 powyżej, może zwrócić przedmiot zamówienia w całości lub części po odebraniu przesyłki dostarczonej Pocztą Polską lub do paczkomatu w terminie wskazanym w ust. 3 powyżej. Wówczas produkty, co do których Klient odstąpił od umowy, należy odesłać do Firmy. <br /><br />5. Firma nie odbiera kierowanych do niej przesyłek odesłanych za pobraniem i nie odpowiada za koszty związane z takimi przesyłkami. <br /><br /><b> § 12 Zwrot należności Klientom </b><br /><br />1. Firma dokona zwrotu należności w ciągu 14 dni kalendarzowych w przypadku: <br />a) anulowania zamówienia lub części zamówienia (w takim przypadku zwrotowi podlega odpowiednia część ceny) opłaconego z góry przed jego realizacją; <br />b) zwrotu produktu (odstąpienia od umowy) z zamówienia, które zostało dostarczone za pośrednictwem Poczty Polskiej lub firmy kurierskiej;<br />c) uznania reklamacji i braku możliwości naprawy uszkodzonego produktu lub wymiany na nowy. <br /><br />2. Firma dokona zwrotu pieniędzy na: <br />a) rachunek bankowy Klienta, jeśli zamówienie było opłacone: <br />- z góry za pomocą przelewu lub za pomocą płatności tpay.com, <br />- przy odbiorze u kuriera lub na poczcie.<br />Klient może wyrazić zgodę na ekspresowy zwrot pieniędzy poprzez złożenie właściwej dyspozycji za pośrednictwem Centrum Wsparcia Klienta. W takim wypadku zwrot pieniędzy następuje jedynie bezpośrednio na rachunek bankowy Klienta. Z ekspresowego zwrotu pieniędzy mogą skorzystać tylko Klienci, którzy dokonali płatności za zamówienie z góry za pomocą przelewu lub za pomocą płatności tpay.com. <br /><br />3. W najszerszym dopuszczalnym przez prawo zakresie Firma nie ponosi odpowiedzialności za brak zwrotu wpłaconych kwot lub opóźnienie zwrotu, jeżeli pomimo skierowania do Klienta na podany przez niego adres mailowy wezwania do przesłania Firmie numeru rachunku bankowego Klienta, Klient nie prześle Firmie takiego numeru rachunku bankowego lub gdy odpowiedź nie będzie zawierać danych umożliwiających dokonanie zwrotu. Firma nie ponosi odpowiedzialności za brak zwrotu wpłaconych kwot lub opóźnienie zwrotu, jeżeli są one wynikiem podania przez Klienta błędnych danych adresowych, imiennych lub błędnego numeru rachunku bankowego. <br /><br />4. W przypadku gdy Klient dokonał płatności za zamówienie z nienależącego do niego rachunku bankowego zwrot nastąpi bezpośrednio na rzecz posiadacza tego rachunku bankowego. <br /><br /><b> § 13 Promocje </b><br /><br />1. Na stronach Sklepu Internetowego nadodatek.pl mogą znajdować się informacje o promocjach (zwanych dalej \"Promocjami\"). Promocje dzielą się na: <br />a) promocje produktowe - obniżające cenę produktu zgodnie z rabatem kwotowym lub procentowym, określonym każdorazowo na stronie produktu;<br />b) promocje wartościowe - obniżające cenę Koszyka zawierającego produkty objęte promocją o rabat kwotowy lub procentowy określony każdorazowo po dodaniu produktów do Koszyka i spełnieniu szczegółowych warunków promocji umieszczonych na stronie Promocji lub w newsletterze.<br /><br /><b> § 14 Dane osobowe </b><br /><br />1. Klient wyraża zgodą na przetwarzanie przez Firmę danych osobowych podanych przez niego w procesie rejestracji konta w Sklepie Internetowym nadodatek.pl jak również podczas korzystania ze Sklepu Internetowego nadodatek.pl, w tym dokonywania zakupów w Sklepie Internetowym nadodatek.pl. Podanie danych osobowych przez Klienta jest dobrowolne, jednakże brak zgody na przetwarzanie przez Firmę danych osobowych może uniemożliwiać dokonywanie przez Klienta zakupów w Sklepie Internetowym nadodatek.pl <br /><br />2. Dane osobowe przetwarzane są przez Firmę Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. <br /><br />3. Firma przetwarza dane osobowe w celu świadczenia usług zawierania z Klientem i wykonywania umów sprzedaży produktów zamówionych przez Klienta w Sklepie Internetowym nadodatek.pl, a w przypadku wyrażenia przez Klienta zgody, o której mowa w § 15 regulaminu, również w celach marketingowych, w tym w szczególności w celu przesyłania Klientowi informacji handlowych drogą elektroniczną. <br /><br />4. Klient ma prawo dostępu do swoich danych osobowych oraz do ich poprawiania i usunięcia. Dane osobowe mogą być poprawiane lub usuwane po zalogowaniu się na konto Klienta (zakładka \"Twoje konto\"). <br /><br />5. Klient oświadcza, iż podane przez niego dane osobowe są danymi Klienta. <br /><br />6. Szczegółowe postanowienia dotyczące ochrony danych osobowych Klienta znajdują się na stronie internetowej Sklepu Internetowego nadodatek.pl poświęconej polityce prywatności. <br /><br /><b> § 15 RODO </b><br /><br />1. Dane osobowe Klienta przetwarzane są w celach związanych z realizacją złożonego w sklepie zamówienia, w celach wynikających z prawnie uzasadnionych interesów realizowanych przez Administratora danych osobowych, a także na podstawie zgody Klienta w celach zgodnych z treścią udzielonej zgody. <br /><br />2. Podane dane są przetwarzane na podstawie art.6 ust. 1 lit. a), lit. b) i lit. f) Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenia o ochronie danych osobowych). <br /><br />3. Dane osobowe Klienta są przechowywane w czasie realizacji zamówienia, a także po zakończeniu jego realizacji na czas zgodny z przepisami prawa, a w przypadku prawnie usprawiedliwionych celów Administratora oraz na podstawie zgody udzielonej przez Klienta - do czasu wygaśniecia zgody. <br /><br />4. Klientowi przysługuje prawo żądania od Administratora dostępu do danych osobowych dotyczących jego osoby, ich sprostowania, usunięcia lub ograniczenia przetwarzania. <br /><br />5. Klientowi przysługuje prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem. <br /><br />6. Klientowi przysługuje prawo wniesienia skargi do GIODO (od dnia 25 maja 2018 roku do Prezesa Urzędu Ochrony Danych Osobowych), gdy uzna, że przetrwarzanie danych osobowych jego dotyczących narusza przepisy prawa. <br /><br />7. Dane osobowe pochodzą od osoby, której dotyczą. <br /><br />8. Podanie danych jest dobrowolne, lecz niezbędne do realizacji zamówienia. Brak podania danych osobowych uniemożliwia zrealizowanie złożonego w sklepie zamówienia. <br /><br />9. Możliwy jest kontakt z Administatorem danych telefonicznie 663-656-888 i drogą mailową e-mail: sklep@nadodatek.pl <br /><br /><b> § 16 Postanowienia końcowe </b><br /><br />1. Informacje o produktach zamieszczone na stronach Sklepu Internetowego nadodatek.pl nie stanowią oferty w rozumieniu kodeksu cywilnego. <br /><br />2. Firma dokłada wszelkich starań by świadczone usługi w ramach Sklepu Internetowego nadodatek.pl były na najwyższym poziomie, jednakże Firma nie wyklucza możliwości czasowego zawieszenia dostępności Sklepu Internetowego nadodatek.pl w przypadku konieczności przeprowadzenia konserwacji, przeglądu, wymiany sprzętu lub też w związku z koniecznością modernizacji lub rozbudowy Sklepu Internetowego nadodatek.pl. <br /><br />3. W najszerszym dopuszczalnym przez prawo zakresie Firma nie ponosi odpowiedzialności za blokowanie przez administratorów serwerów pocztowych przesyłania wiadomości na adres e-mail wskazany przez Klienta oraz za usuwanie i blokowanie e-maili przez oprogramowanie zainstalowane na komputerze używanym przez Klienta. <br /><br />4. Indywidualne ustawienia komputera mogą powodować różnice pomiędzy wizualizacją produktu na komputerze Klienta a rzeczywistym wyglądem produktu (kolor, proporcje itp.). Klientowi, o którym mowa w § 11 ust. 2 regulaminu, przysługuje uprawnienie do odstąpienia od umowy zgodnie z postanowieniami § 11 regulaminu. <br /><br />5. W sprawach nieuregulowanych w regulaminie mają zastosowanie przepisy prawa polskiego, a zwłaszcza Kodeksu cywilnego oraz przepisy Ustawy o szczególnych warunkach sprzedaży konsumenckiej oraz zmianie Kodeksu cywilnego (Dz. U. Nr 141 z 2002 r. poz. 1176 z późn. zm.) i Ustawy o ochronie niektórych praw konsumentów oraz o odpowiedzialności za szkodę wyrządzoną przez produkt niebezpieczny (Dz. U. Nr 22 z 2000 r. poz. 271 z późn. zm.). <br /><br />6. Wszystkie nazwy produktów zamieszczone na stronie Sklepu Internetowego nadodatek.pl używane są w celach identyfikacyjnych i mogą być chronione i zastrzeżone na podstawie przepisów Ustawy Prawo własności przemysłowej (Dz. U. Nr 119 z 2003 r. poz. 1117). <br /><br />7. Klient akceptując niniejszy regulamin zgadza się na zbieranie i udostępnianie Firmie statystyk swojej obecności i aktywności w Sklepie Internetowym nadodatek.pl. Dane są zbierane automatycznie ale nie są wykorzystywane do analizy aktywności Klientów. <br /><br />8. W celu zapewnienia jak najwyższej jakości usług Sklep Internetowy nadodatek.pl korzysta z informacji zapisywanych przez serwer na urządzeniu końcowym Klienta, które następnie są odczytywane przy każdorazowym połączeniu się przeglądarki internetowej (tzw. cookies). Klient może w dowolnym momencie zmienić ustawienia przeglądarki, by nie akceptowała takich plików lub informowała o ich przesyłaniu. Należy jednak pamiętać, iż nieakceptowanie plików cookie może spowodować utrudnienia w korzystaniu z Sklepu Internetowego nadodatek.pl. Korzystanie przez Klienta z przeglądarki, której ustawienia zezwalają na zapisywanie plików cookie na urządzeniu Klienta, oznacza wyrażenie zgody na zapisywanie powyższych plików na tym urządzeniu Klienta. Więcej informacji w tym zakresie znajduje się w Polityce Prywatności. <br /><br />9. Wszelkie spory wynikające z umów zawieranych pomiędzy Sklepem internetowym nadodatek.pl a Kupującym, lub w związku z nimi, będą przedmiotem mediacji. Gdyby w terminie 30 dni od wyznaczenia mediatora lub w innym dodatkowym terminie uzgodnionym przez strony mediacja nie doprowadziła do zawarcia ugody, spór powstały między Klientem niebędącym konsumentem w rozumieniu przepisów Kodeksu cywilnego a Firmą rozstrzygane będą przez sąd miejscowo właściwy. <br /><br />10. Firma zastrzega sobie prawo do zmiany regulaminu z ważnych przyczyn technicznych, prawnych lub/i organizacyjnych. Zmiana regulaminu staje się skuteczna w terminie wskazanym przez Firmę, nie krótszym niż 14 dni od momentu udostępnienia na stronie Sklepu Internetowego nadodatek.pl zmienionego regulaminu. Zamówienia złożone przez Klientów przed wejściem w życie zmian regulaminu są realizowane według dotychczasowych postanowień regulaminu. Kupujący może go utrwalić w pamięci swojego komputera lub wydrukować.</div>','regulamin'),
-(4,1,1,'O nas','','Dowiedz się więcej o nas','about us, informations','<p><span style=\"color:#000000;\">Jesteśmy jedną z pierwszych pasmanterii internetowych w Polsce. </span><br /><br /><span style=\"color:#000000;\">Od ponad dekady służymy polskim rękodzielniczkom i rękodzielnikom. </span><br /><span style=\"color:#000000;\">Z pasją i zaangażowaniem tworzymy przyjazne miejsce, w którym osoby twórcze zaopatrują się w potrzebne produkty oszczędzając pieniądze i czas. </span><br /><br /><span style=\"color:#000000;\">Naszą misją jest oferowanie najlepszych produktów renomowanych producentów. </span><br /><span style=\"color:#000000;\">Zaopatrujemy klientów w produkty z kluczowych kategorii takich jak haft, dziewiarstwo, filcowanie i szycie.</span><br /><span style=\"color:#000000;\">Koncentrujemy się na potrzebach naszych klientów służąc im radą i pomocą. </span><br /><br /><span style=\"color:#000000;\">Naszym celem jest tworzenie innowacyjnych rozwiązań łączących rękodzieło i technologię. </span><br /><br /><span style=\"color:#000000;\">Rozwijamy się by zasłużyć na zaufanie i uznanie naszych klientów.</span></p>','o-nas'),
-(5,1,1,'Zwroty i reklamacje','','Informacje o zwrotach i reklamacjach','secure payment, ssl, visa, mastercard, paypal','<p><span style=\"color:#000000;\">W celu złożenia reklamacji lub zwrotu towaru pobierz nastepujące dokumenty:</span></p>\n<p><span style=\"color:#000000;\"><b><a href=\"https://nadodatek.pl/documents/reklamacja.png\" style=\"color:#000000;\">Wzór dokumentu reklamacji</a> </b> </span></p>\n<p><span style=\"color:#000000;\"><b><a href=\"https://nadodatek.pl/documents/oswiadczenie_o_odstapieniu.odt\" style=\"color:#000000;\">Wzór dokumentu oświadczenie o odstąpieniu</a> </b> </span></p>','zwroty-i-reklamacje'),
-(6,1,1,'Działania eco','','Jak nasz sklep przyczynia się do ochrony planety','','<p><span style=\"color:#000000;\">Od samego początku podejmujemy śmiałe decyzje.</span><br /><br /><span style=\"color:#000000;\">W trosce o środowisko, świadomie, nie wprowadzamy do obiegu nowych kartonów i wypełniaczy.</span><br /><span style=\"color:#000000;\">Wszystkie nasze opakowania wysyłkowe pochodzą z odzysku.</span><br /><br /><span style=\"color:#000000;\">Ich pozyskiwanie wymaga od nas kreatywności w pozyskiwaniu i zaangażowania w przygotowaniu. </span><br /><span style=\"color:#000000;\">Dzięki temu, przez ponad dekadę, zdobyliśmy i wysłaliśmy do Was kilkanaście tysięcy kartonów.</span><br /><br /><span style=\"color:#000000;\">Dlatego, uważamy, że warto.</span></p>','eco'),
-(7,1,1,'Adres i dane','','Adres sklepu oraz dane dotyczące działalności gospodarczej','','<p><span style=\"color:#000000;\">Testcom Dariusz Szyfelbein </span><br /><span style=\"color:#000000;\"> Otomin, ul. Polna 6 </span><br /><span style=\"color:#000000;\"> 80-174 Gdańsk </span><br /><br /><span style=\"color:#000000;\"> <strong>REGON:</strong> 220661599</span><br /><span style=\"color:#000000;\"> <strong>NIP:</strong> 957-042-97-79 </span><br /><span style=\"color:#000000;\"> <strong>Nr wpisu do do ewidencji działalności gospodarczej:</strong> 139299 </span><br /><span style=\"color:#000000;\"> <strong>Organ rejestrujący:</strong> Prezydent Miasta Gdańska</span></p>','dane');
+(1,1,1,'Delivery','','Our terms and conditions of delivery','conditions, delivery, delay, shipment, pack','<h2>Shipments and returns</h2>\n<h3>Your pack shipment</h3>\n<p>Packages are generally dispatched within 2 days after receipt of payment and are shipped via UPS with tracking and drop-off without signature. If you prefer delivery by UPS Extra with required signature, an additional cost will be applied, so please contact us before choosing this method. Whichever shipment choice you make, we will provide you with a link to track your package online.</p>\n<p>Shipping fees include handling and packing fees as well as postage costs. Handling fees are fixed, whereas transport fees vary according to total weight of the shipment. We advise you to group your items in one order. We cannot group two distinct orders placed separately, and shipping fees will apply to each of them. Your package will be dispatched at your own risk, but special care is taken to protect fragile objects.<br /><br />Boxes are amply sized and your items are well-protected.</p>','delivery'),
+(2,1,1,'Legal Notice','','Legal notice','notice, legal, credits','<h2>Legal</h2><h3>Credits</h3><p>Concept and production:</p><p>This Web site was created using <a href=\"http://www.prestashop.com\">PrestaShop</a>&trade; open-source software.</p>','legal-notice'),
+(3,1,1,'Terms and conditions of use','','Our terms and conditions of use','conditions, terms, use, sell','<h2>Your terms and conditions of use</h2><h3>Rule 1</h3><p>Here is the rule 1 content</p>\r\n<h3>Rule 2</h3><p>Here is the rule 2 content</p>\r\n<h3>Rule 3</h3><p>Here is the rule 3 content</p>','terms-and-conditions-of-use'),
+(4,1,1,'About us','','Learn more about us','about us, informations','<h2>About us</h2>\r\n<h3>Our company</h3><p>Our company</p>\r\n<h3>Our team</h3><p>Our team</p>\r\n<h3>Informations</h3><p>Informations</p>','about-us'),
+(5,1,1,'Secure payment','','Our secure payment mean','secure payment, ssl, visa, mastercard, paypal','<h2>Secure payment</h2>\r\n<h3>Our secure payment</h3><p>With SSL</p>\r\n<h3>Using Visa/Mastercard/Paypal</h3><p>About this services</p>','secure-payment'),
+(6,1,1,'Promocje','','','','<p>tutaj jest strona z promocjami</p>','promocje'),
+(7,1,1,'Nowości','','','','<p>tutaj jest strona z nowościami</p>','nowosci'),
+(8,1,1,'Wzory do pobrania','','','','<p>tutaj jest strona ze wzorami do pobrania</p>','wzory-do-pobrania'),
+(9,1,1,'Blog','','','','<p>tutaj jest strona z blogiem</p>','blog'),
+(10,1,1,'Zmiana hasła','','','','<p>to jest strona do zmiany hasła</p>','zmiana-hasla'),
+(11,1,1,'Książka adresowa','','','','<p>to jest strona książki adresowej</p>','ksiazka-adresowa');
 /*!40000 ALTER TABLE `ps_cms_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40572,7 +40825,11 @@ INSERT INTO `ps_cms_shop` VALUES
 (4,1),
 (5,1),
 (6,1),
-(7,1);
+(7,1),
+(8,1),
+(9,1),
+(10,1),
+(11,1);
 /*!40000 ALTER TABLE `ps_cms_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40595,7 +40852,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=389 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=500 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40608,7 +40865,7 @@ INSERT INTO `ps_configuration` VALUES
 (1,NULL,NULL,'PS_LANG_DEFAULT','1','2024-11-23 21:27:31','2024-11-23 21:27:31'),
 (2,NULL,NULL,'PS_VERSION_DB','1.7.8.11','2024-11-23 21:27:31','2024-11-23 21:27:31'),
 (3,NULL,NULL,'PS_INSTALL_VERSION','1.7.8.11','2024-11-23 21:27:31','2024-11-23 21:27:31'),
-(4,NULL,NULL,'PS_CARRIER_DEFAULT','1','2024-11-23 21:27:32','2024-11-23 21:27:32'),
+(4,NULL,NULL,'PS_CARRIER_DEFAULT','5','2024-11-23 21:27:32','2024-12-01 18:32:33'),
 (5,NULL,NULL,'PS_GROUP_FEATURE_ACTIVE','1','2024-11-23 21:27:32','2024-11-23 21:27:32'),
 (6,NULL,NULL,'PS_CURRENCY_DEFAULT','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (7,NULL,NULL,'PS_COUNTRY_DEFAULT','14','0000-00-00 00:00:00','2024-11-23 21:27:32'),
@@ -40626,8 +40883,8 @@ INSERT INTO `ps_configuration` VALUES
 (19,NULL,NULL,'PS_PRODUCTS_ORDER_WAY','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (20,NULL,NULL,'PS_PRODUCTS_ORDER_BY','4','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (21,NULL,NULL,'PS_DISPLAY_QTIES','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(22,NULL,NULL,'PS_SHIPPING_HANDLING','2','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(23,NULL,NULL,'PS_SHIPPING_FREE_PRICE','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(22,NULL,NULL,'PS_SHIPPING_HANDLING','0','0000-00-00 00:00:00','2024-12-01 18:31:00'),
+(23,NULL,NULL,'PS_SHIPPING_FREE_PRICE','2000','0000-00-00 00:00:00','2024-12-01 18:31:00'),
 (24,NULL,NULL,'PS_SHIPPING_FREE_WEIGHT','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (25,NULL,NULL,'PS_SHIPPING_METHOD','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (26,NULL,NULL,'PS_TAX','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40691,11 +40948,11 @@ INSERT INTO `ps_configuration` VALUES
 (84,NULL,NULL,'PS_STOCK_MVT_REASON_DEFAULT','3','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (85,NULL,NULL,'PS_SPECIFIC_PRICE_PRIORITIES','id_shop;id_currency;id_country;id_group','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (86,NULL,NULL,'PS_TAX_DISPLAY','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','2','0000-00-00 00:00:00','2024-11-30 20:10:56'),
+(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','1','0000-00-00 00:00:00','2024-11-30 11:46:28'),
 (88,NULL,NULL,'PS_DISTANCE_UNIT','km','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (89,NULL,NULL,'PS_STORES_DISPLAY_CMS','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(90,NULL,NULL,'SHOP_LOGO_WIDTH','100','0000-00-00 00:00:00','2024-11-23 21:27:32'),
-(91,NULL,NULL,'SHOP_LOGO_HEIGHT','28','0000-00-00 00:00:00','2024-11-23 21:27:32'),
+(90,NULL,NULL,'SHOP_LOGO_WIDTH','215','0000-00-00 00:00:00','2024-11-30 13:57:56'),
+(91,NULL,NULL,'SHOP_LOGO_HEIGHT','224','0000-00-00 00:00:00','2024-11-30 13:57:56'),
 (92,NULL,NULL,'EDITORIAL_IMAGE_WIDTH','530','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (93,NULL,NULL,'EDITORIAL_IMAGE_HEIGHT','228','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (94,NULL,NULL,'PS_STATSDATA_CUSTOMER_PAGESVIEWS','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40707,7 +40964,7 @@ INSERT INTO `ps_configuration` VALUES
 (100,NULL,NULL,'PS_LOCALE_LANGUAGE','pl','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (101,NULL,NULL,'PS_LOCALE_COUNTRY','pl','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (102,NULL,NULL,'PS_ATTACHMENT_MAXIMUM_SIZE','8','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(103,NULL,NULL,'PS_SMARTY_CACHE',NULL,'0000-00-00 00:00:00','2024-11-30 20:10:56'),
+(103,NULL,NULL,'PS_SMARTY_CACHE',NULL,'0000-00-00 00:00:00','2024-11-30 12:42:59'),
 (104,NULL,NULL,'PS_DIMENSION_UNIT','cm','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (105,NULL,NULL,'PS_GUEST_CHECKOUT_ENABLED','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (106,NULL,NULL,'PS_DISPLAY_SUPPLIERS','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40720,7 +40977,7 @@ INSERT INTO `ps_configuration` VALUES
 (113,NULL,NULL,'PS_COOKIE_SAMESITE','Lax','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (114,NULL,NULL,'PS_USE_ECOTAX','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (115,NULL,NULL,'PS_CANONICAL_REDIRECT','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(116,NULL,NULL,'PS_IMG_UPDATE_TIME','1324977642','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(116,NULL,NULL,'PS_IMG_UPDATE_TIME','1733076255','0000-00-00 00:00:00','2024-12-01 19:04:15'),
 (117,NULL,NULL,'PS_BACKUP_DROP_TABLE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (118,NULL,NULL,'PS_OS_CHEQUE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (119,NULL,NULL,'PS_OS_PAYMENT','2','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40840,12 +41097,12 @@ INSERT INTO `ps_configuration` VALUES
 (233,NULL,NULL,'PS_BASE_DISTANCE_UNIT','m','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (234,NULL,NULL,'PS_SHOP_DOMAIN','localhost','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (235,NULL,NULL,'PS_SHOP_DOMAIN_SSL','localhost','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(236,NULL,NULL,'PS_SHOP_NAME','Nadodatek','0000-00-00 00:00:00','2024-11-30 20:31:13'),
+(236,NULL,NULL,'PS_SHOP_NAME','Pasmanteria','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (237,NULL,NULL,'PS_SHOP_EMAIL','admin@mail.com','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (238,NULL,NULL,'PS_MAIL_METHOD','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (239,NULL,NULL,'PS_SHOP_ACTIVITY','3','0000-00-00 00:00:00','2024-11-23 21:27:32'),
-(240,NULL,NULL,'PS_LOGO','logo.png','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(241,NULL,NULL,'PS_FAVICON','favicon.ico','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(240,NULL,NULL,'PS_LOGO','logo-1732971476.jpg','0000-00-00 00:00:00','2024-11-30 13:57:56'),
+(241,NULL,NULL,'PS_FAVICON','favicon.ico','0000-00-00 00:00:00','2024-12-01 19:04:15'),
 (242,NULL,NULL,'PS_STORES_ICON','logo_stores.png','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (243,NULL,NULL,'PS_ROOT_CATEGORY','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (244,NULL,NULL,'PS_HOME_CATEGORY','2','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40858,7 +41115,7 @@ INSERT INTO `ps_configuration` VALUES
 (251,NULL,NULL,'PS_MAIL_COLOR','#db3484','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (252,NULL,NULL,'NW_SALT','DQRouVnJSr09f8DH','0000-00-00 00:00:00','2024-11-23 21:27:34'),
 (253,NULL,NULL,'PS_PAYMENT_LOGO_CMS_ID','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(254,NULL,NULL,'HOME_FEATURED_NBR','8','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(254,NULL,NULL,'HOME_FEATURED_NBR','11','0000-00-00 00:00:00','2024-11-30 18:29:44'),
 (255,NULL,NULL,'SEK_MIN_OCCURENCES','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (256,NULL,NULL,'SEK_FILTER_KW','','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (257,NULL,NULL,'PS_ALLOW_MOBILE_DEVICE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40870,7 +41127,7 @@ INSERT INTO `ps_configuration` VALUES
 (263,NULL,NULL,'PS_DASHBOARD_SIMULATION','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (264,NULL,NULL,'PS_USE_HTMLPURIFIER','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (265,NULL,NULL,'PS_SMARTY_CACHING_TYPE','filesystem','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(266,NULL,NULL,'PS_SMARTY_LOCAL',NULL,'0000-00-00 00:00:00','2024-11-30 20:10:56'),
+(266,NULL,NULL,'PS_SMARTY_LOCAL',NULL,'0000-00-00 00:00:00','2024-11-30 12:42:59'),
 (267,NULL,NULL,'PS_SMARTY_CLEAR_CACHE','everytime','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (268,NULL,NULL,'PS_DETECT_LANG','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (269,NULL,NULL,'PS_DETECT_COUNTRY','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40975,15 +41232,108 @@ INSERT INTO `ps_configuration` VALUES
 (377,NULL,NULL,'PS_LAYERED_FILTER_BY_DEFAULT_CATEGORY','0','2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (378,NULL,NULL,'PS_LAYERED_INDEXED','1','2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (379,NULL,NULL,'ONBOARDINGV2_SHUT_DOWN','1','2024-11-23 21:28:41','2024-11-23 21:28:41'),
-(380,NULL,NULL,'PS_SHOP_DETAILS',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(381,NULL,NULL,'PS_SHOP_ADDR1',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(382,NULL,NULL,'PS_SHOP_ADDR2',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(383,NULL,NULL,'PS_SHOP_CODE',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(384,NULL,NULL,'PS_SHOP_CITY',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(385,NULL,NULL,'PS_SHOP_COUNTRY_ID','14','2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(386,NULL,NULL,'PS_SHOP_COUNTRY','Polska','2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(387,NULL,NULL,'PS_SHOP_PHONE',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
-(388,NULL,NULL,'PS_SHOP_FAX',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08');
+(380,NULL,NULL,'PS_CCCJS_VERSION','4','2024-11-30 11:46:29','2024-11-30 13:35:30'),
+(381,NULL,NULL,'PS_CCCCSS_VERSION','4','2024-11-30 11:46:29','2024-11-30 13:35:30'),
+(382,NULL,NULL,'PS_LOGO_MAIL','logo_mail-1732971476.jpg','2024-11-30 13:57:56','2024-11-30 13:57:56'),
+(383,NULL,NULL,'CONF_PAYPAL_FIXED','0.2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(384,NULL,NULL,'CONF_PAYPAL_VAR','2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(385,NULL,NULL,'CONF_PAYPAL_FIXED_FOREIGN','0.2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(386,NULL,NULL,'CONF_PAYPAL_VAR_FOREIGN','2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(387,NULL,NULL,'PAYPAL_MODULE_NAME','paypal','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(388,NULL,NULL,'PAYPAL_DIAGNOSTIC_MODULE_NAME','paypal','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(389,NULL,NULL,'PAYPAL_OS_WAITING','14','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(390,NULL,NULL,'PAYPAL_MERCHANT_ID_SANDBOX',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(391,NULL,NULL,'PAYPAL_MERCHANT_ID_LIVE',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(392,NULL,NULL,'PAYPAL_USERNAME_SANDBOX',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(393,NULL,NULL,'PAYPAL_PSWD_SANDBOX',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(394,NULL,NULL,'PAYPAL_SIGNATURE_SANDBOX',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(395,NULL,NULL,'PAYPAL_SANDBOX_ACCESS','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(396,NULL,NULL,'PAYPAL_USERNAME_LIVE',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(397,NULL,NULL,'PAYPAL_PSWD_LIVE',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(398,NULL,NULL,'PAYPAL_SIGNATURE_LIVE',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(399,NULL,NULL,'PAYPAL_LIVE_ACCESS','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(400,NULL,NULL,'PAYPAL_SANDBOX',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:30'),
+(401,NULL,NULL,'PAYPAL_API_INTENT','sale','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(402,NULL,NULL,'PAYPAL_API_ADVANTAGES','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(403,NULL,NULL,'PAYPAL_API_CARD','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(404,NULL,NULL,'PAYPAL_METHOD',NULL,'2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(405,NULL,NULL,'PAYPAL_CRON_TIME','2024-12-01 18:12:14','2024-12-01 18:46:13','2024-12-01 18:46:14'),
+(406,NULL,NULL,'PAYPAL_BY_BRAINTREE','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(407,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_IN_CONTEXT','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(408,NULL,NULL,'PAYPAL_VAULTING','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(409,NULL,NULL,'PAYPAL_REQUIREMENTS','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(410,NULL,NULL,'PAYPAL_MB_EC_ENABLED','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(411,NULL,NULL,'PAYPAL_CUSTOMIZE_ORDER_STATUS','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(412,NULL,NULL,'PAYPAL_OS_REFUNDED','7','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(413,NULL,NULL,'PAYPAL_OS_CANCELED','6','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(414,NULL,NULL,'PAYPAL_OS_ACCEPTED','2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(415,NULL,NULL,'PAYPAL_OS_CAPTURE_CANCELED','6','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(416,NULL,NULL,'PAYPAL_OS_ACCEPTED_TWO','2','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(417,NULL,NULL,'PAYPAL_OS_WAITING_VALIDATION','14','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(418,NULL,NULL,'PAYPAL_OS_PROCESSING','14','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(419,NULL,NULL,'PAYPAL_OS_VALIDATION_ERROR','6','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(420,NULL,NULL,'PAYPAL_OS_REFUNDED_PAYPAL','7','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(421,NULL,NULL,'PAYPAL_ENABLE_BNPL','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(422,NULL,NULL,'PAYPAL_BNPL_CART_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(423,NULL,NULL,'PAYPAL_BNPL_PAYMENT_STEP_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(424,NULL,NULL,'PAYPAL_BNPL_CHECKOUT_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(425,NULL,NULL,'PAYPAL_BNPL_PRODUCT_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(426,NULL,NULL,'PAYPAL_INSTALLMENT_PRODUCT_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(427,NULL,NULL,'PAYPAL_INSTALLMENT_CATEGORY_PAGE','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(428,NULL,NULL,'PAYPAL_INSTALLMENT_HOME_PAGE','0','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(429,NULL,NULL,'PAYPAL_INSTALLMENT_CHECKOUT_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(430,NULL,NULL,'PAYPAL_INSTALLMENT_CART_PAGE','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(431,NULL,NULL,'PAYPAL_ENABLE_INSTALLMENT','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(432,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_SHORTCUT','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(433,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_SHORTCUT_CART','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(434,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_SHORTCUT_SIGNUP','1','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(435,NULL,NULL,'PAYPAL_NOT_SHOW_PS_CHECKOUT','[\"6.4.2\",0]','2024-12-01 18:46:13','2024-12-01 18:46:13'),
+(436,NULL,NULL,'PAYPAL_ENABLE_WEBHOOK','1','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(437,NULL,NULL,'PAYPAL_SHOW_MODAL_CONFIGURATION','0','2024-12-01 18:46:14','2024-12-01 18:46:30'),
+(438,NULL,NULL,'PAYPAL_PUI_ENABLED','1','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(439,NULL,NULL,'PAYPAL_SEPA_ENABLED','1','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(440,NULL,NULL,'PAYPAL_ACDC_OPTION','1','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(441,NULL,NULL,'PAYPAL_USE_CARD_FIELDS','1','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(442,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_SHORTCUT_HOOK_PRODUCT','displayProductActions','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(443,NULL,NULL,'PAYPAL_EXPRESS_CHECKOUT_SHORTCUT_HOOK_CART','displayExpressCheckout','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(444,NULL,NULL,'PAYPAL_PREVIOUS_VERSION','6.4.2','2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(445,NULL,NULL,'PAYPAL_EC_CLIENTID_SANDBOX',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(446,NULL,NULL,'PAYPAL_EC_SECRET_SANDBOX',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(447,NULL,NULL,'PAYPAL_EC_MERCHANT_ID_SANDBOX',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(448,NULL,NULL,'PAYPAL_CONNECTION_EC_CONFIGURED','0','2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(449,NULL,NULL,'PAYPAL_EC_CLIENTID_LIVE',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(450,NULL,NULL,'PAYPAL_EC_SECRET_LIVE',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(451,NULL,NULL,'PAYPAL_EC_MERCHANT_ID_LIVE',NULL,'2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(452,NULL,NULL,'PAYPAL_WEBHOOK_AVAILABLE','0','2024-12-01 18:46:26','2024-12-01 18:46:26'),
+(453,NULL,NULL,'PAYPAL_WHITE_LIST_ENABLED','0','2024-12-01 18:46:30','2024-12-01 18:46:30'),
+(454,NULL,NULL,'PAYPAL_WHITE_LIST_IP','[\"\"]','2024-12-01 18:46:30','2024-12-01 18:46:30'),
+(455,NULL,NULL,'CONF_PS_CASHONDELIVERY_FIXED','0.2','2024-12-01 18:48:37','2024-12-01 18:48:37'),
+(456,NULL,NULL,'CONF_PS_CASHONDELIVERY_VAR','2','2024-12-01 18:48:37','2024-12-01 18:48:37'),
+(457,NULL,NULL,'CONF_PS_CASHONDELIVERY_FIXED_FOREIGN','0.2','2024-12-01 18:48:37','2024-12-01 18:48:37'),
+(458,NULL,NULL,'CONF_PS_CASHONDELIVERY_VAR_FOREIGN','2','2024-12-01 18:48:37','2024-12-01 18:48:37'),
+(459,NULL,NULL,'CONF_PS_CHECKOUT_FIXED','0.2','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(460,NULL,NULL,'CONF_PS_CHECKOUT_VAR','2','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(461,NULL,NULL,'CONF_PS_CHECKOUT_FIXED_FOREIGN','0.2','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(462,NULL,NULL,'CONF_PS_CHECKOUT_VAR_FOREIGN','2','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(480,NULL,NULL,'PS_CHECKOUT_STATE_COMPLETED','2','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(481,NULL,NULL,'PS_CHECKOUT_STATE_CANCELED','6','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(482,NULL,NULL,'PS_CHECKOUT_STATE_ERROR','8','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(483,NULL,NULL,'PS_CHECKOUT_STATE_REFUNDED','7','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(484,NULL,NULL,'PS_CHECKOUT_STATE_PENDING','15','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(485,NULL,NULL,'PS_CHECKOUT_STATE_PARTIALLY_REFUNDED','16','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(486,NULL,NULL,'PS_CHECKOUT_STATE_PARTIALLY_PAID','17','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(487,NULL,NULL,'PS_CHECKOUT_STATE_AUTHORIZED','18','2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(488,NULL,NULL,'PS_ACCOUNTS_ACCOUNTS_CLIENT_FAILURE_COUNT','0','2024-12-01 18:52:49','2024-12-01 18:52:49'),
+(489,NULL,NULL,'PS_ACCOUNTS_ACCOUNTS_CLIENT_LAST_FAILURE_TIME',NULL,'2024-12-01 18:52:49','2024-12-01 18:52:49'),
+(491,NULL,NULL,'PS_ACCOUNTS_RSA_PRIVATE_KEY','-----BEGIN RSA PRIVATE KEY-----\r\nMIICXQIBAAKBgQDZHsJrAKm4xHOjrh+NkSB7jM0I0+eVsL/B5xW+19OZ78LrfJFF\r\n1IMx8x1mozQYx/iZtXysBM786bDnx8JT2RVjK0ZyJQPtTi/1ABvGtBa9UjYhmjAM\r\nvE8vi0Rq0Zr38Qzu1wiGwtkFGjOftlpvdISWXJO78pPkFfkVYJG0XFQg4QIDAQAB\r\nAoGAA9zmPJ0gZ+cm34yjhxND7q7MnxGWFzWz07FW07RnUV/QqfvnYcSsKOFYbpEM\r\nxjwYkjOGalETlbBas2T8ch10oeymYhFQloH4H1olR6X11TcarCMtazmkWhnpy/Y+\r\nPmYCJKefS4oVDZsOjJnRXjQ1OPzkx6u/DkAT3HZUnkAuBqECQQD47O+2aOa6MVZs\r\nlCKqG4r36nXk/7YxO7wNhwAobQ6Nk/Jj2qV6CbgJ7jg/iEROk4oBchc7/fS61DBV\r\ni92mvlzVAkEA30psGpeNQw90XPESbAQo7Pt6/+9C/VZAfxRjL/C8GuaeF9sSmeon\r\ntxkhIFLSip+M/TaYveQY0o6Z6do9SRCJ3QJBALWMaRCK1ax6i2PJbrbOO76w26dW\r\n8NRbkr3y9iSF1ZVgj+pP71xgdj+X5KJBikAczwxa36M7hyAz3cSmq9QPBrkCQFKJ\r\nbvZRaN0N/GRSlA2rZ/lZZ/js1yVP2Z1fyt4wrUeAUZXd271bCX0r48vP8ZVeLr52\r\njPU8OFS0c342toqoe10CQQC5A0X1yXHRim9rtrR89kTIVSeNfbj3ueCw3FO45fxv\r\n6GHYh19085RevYnhPQNngbMVzBhsgRd6ZcEn/bdt+oxH\r\n-----END RSA PRIVATE KEY-----','2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(492,NULL,NULL,'PS_ACCOUNTS_RSA_PUBLIC_KEY','-----BEGIN RSA PUBLIC KEY-----\r\nMIGJAoGBANkewmsAqbjEc6OuH42RIHuMzQjT55Wwv8HnFb7X05nvwut8kUXUgzHz\r\nHWajNBjH+Jm1fKwEzvzpsOfHwlPZFWMrRnIlA+1OL/UAG8a0Fr1SNiGaMAy8Ty+L\r\nRGrRmvfxDO7XCIbC2QUaM5+2Wm90hJZck7vyk+QV+RVgkbRcVCDhAgMBAAE=\r\n-----END RSA PUBLIC KEY-----','2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(493,NULL,NULL,'PS_ACCOUNTS_LAST_UPGRADE','7.0.8','2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(494,NULL,NULL,'PS_PSX_FIREBASE_ID_TOKEN',NULL,'2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(495,NULL,NULL,'PS_PSX_FIREBASE_REFRESH_DATE','2024-12-01 18:52:59','2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(496,NULL,NULL,'PS_ACCOUNTS_FIREBASE_ID_TOKEN',NULL,'2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(497,NULL,NULL,'PS_ACCOUNTS_ACCESS_TOKEN',NULL,'2024-12-01 18:52:59','2024-12-01 18:52:59'),
+(498,NULL,NULL,'PS_ACCOUNTS_FIREBASE_REFRESH_TOKEN',NULL,'2024-12-01 18:53:01','2024-12-01 18:53:01'),
+(499,NULL,NULL,'PS_MBO_SHOP_ADMIN_UUID','39a5331c-816f-4979-ab0b-24a3fb1ae18f','2024-12-01 18:53:41','2024-12-01 18:54:32');
 /*!40000 ALTER TABLE `ps_configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41006,7 +41356,7 @@ CREATE TABLE `ps_configuration_kpi` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41051,7 +41401,31 @@ INSERT INTO `ps_configuration_kpi` VALUES
 (33,NULL,NULL,'DASHGOALS_AVG_CART_VALUE_11_2024','80','2024-11-23 21:27:34','2024-11-23 21:27:34'),
 (34,NULL,NULL,'DASHGOALS_TRAFFIC_12_2024','600','2024-11-23 21:27:34','2024-11-23 21:27:34'),
 (35,NULL,NULL,'DASHGOALS_CONVERSION_12_2024','2','2024-11-23 21:27:34','2024-11-23 21:27:34'),
-(36,NULL,NULL,'DASHGOALS_AVG_CART_VALUE_12_2024','80','2024-11-23 21:27:34','2024-11-23 21:27:34');
+(36,NULL,NULL,'DASHGOALS_AVG_CART_VALUE_12_2024','80','2024-11-23 21:27:34','2024-11-23 21:27:34'),
+(37,NULL,NULL,'DISABLED_CATEGORIES','0','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(38,NULL,NULL,'DISABLED_CATEGORIES_EXPIRE','1733074298','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(39,NULL,NULL,'TOP_CATEGORY',NULL,'2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(40,NULL,NULL,'TOP_CATEGORY_EXPIRE',NULL,'2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(41,NULL,NULL,'PRODUCTS_PER_CATEGORY','2','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(42,NULL,NULL,'PRODUCTS_PER_CATEGORY_EXPIRE','1733070698','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(43,NULL,NULL,'EMPTY_CATEGORIES','0','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(44,NULL,NULL,'EMPTY_CATEGORIES_EXPIRE','1733074298','2024-12-01 16:31:38','2024-12-01 16:31:38'),
+(45,NULL,NULL,'ORDERS_PER_CUSTOMER','0','2024-12-01 17:13:28','2024-12-01 17:13:28'),
+(46,NULL,NULL,'ORDERS_PER_CUSTOMER_EXPIRE','1733156008','2024-12-01 17:13:28','2024-12-01 17:13:28'),
+(47,NULL,NULL,'AVG_CUSTOMER_AGE',NULL,'2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(48,NULL,NULL,'AVG_CUSTOMER_AGE_EXPIRE',NULL,'2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(49,NULL,NULL,'CUSTOMER_MAIN_GENDER',NULL,'2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(50,NULL,NULL,'CUSTOMER_MAIN_GENDER_EXPIRE',NULL,'2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(51,NULL,NULL,'NEWSLETTER_REGISTRATIONS','1','2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(52,NULL,NULL,'NEWSLETTER_REGISTRATIONS_EXPIRE','1733091209','2024-12-01 17:13:29','2024-12-01 17:13:29'),
+(53,NULL,NULL,'ABANDONED_CARTS','0','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(54,NULL,NULL,'ABANDONED_CARTS_EXPIRE','1733079512','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(55,NULL,NULL,'CONVERSION_RATE','0%','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(56,NULL,NULL,'CONVERSION_RATE_EXPIRE','1733094000','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(57,NULL,NULL,'NETPROFIT_VISIT','0,00 zł','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(58,NULL,NULL,'NETPROFIT_VISIT_EXPIRE','1733094000','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(59,NULL,NULL,'AVG_ORDER_VALUE','0,00 zł','2024-12-01 18:58:32','2024-12-01 18:58:32'),
+(60,NULL,NULL,'AVG_ORDER_VALUE_EXPIRE','1733094000','2024-12-01 18:58:32','2024-12-01 18:58:32');
 /*!40000 ALTER TABLE `ps_configuration_kpi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41077,6 +41451,13 @@ CREATE TABLE `ps_configuration_kpi_lang` (
 
 LOCK TABLES `ps_configuration_kpi_lang` WRITE;
 /*!40000 ALTER TABLE `ps_configuration_kpi_lang` DISABLE KEYS */;
+INSERT INTO `ps_configuration_kpi_lang` VALUES
+(39,1,'Clothes','2024-12-01 16:31:38'),
+(40,1,'1733153498','2024-12-01 16:31:38'),
+(47,1,'55 lat','2024-12-01 17:13:29'),
+(48,1,'1733156009','2024-12-01 17:13:29'),
+(49,1,'100% Klientów Mężczyzn','2024-12-01 17:13:29'),
+(50,1,'1733156009','2024-12-01 17:13:29');
 /*!40000 ALTER TABLE `ps_configuration_kpi_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41143,7 +41524,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41155,12 +41536,59 @@ LOCK TABLES `ps_connections` WRITE;
 INSERT INTO `ps_connections` VALUES
 (1,1,1,1,1,2130706433,'2024-11-23 21:27:58','https://www.prestashop.com'),
 (2,1,1,3,1,2886860801,'2024-11-23 21:29:35',''),
-(3,1,1,5,1,2886860801,'2024-11-30 19:47:42',''),
-(4,1,1,4,1,2886860801,'2024-11-30 20:04:15',''),
-(5,1,1,6,2,2886860801,'2024-11-30 20:11:45',''),
-(6,1,1,7,2,2886860801,'2024-11-30 20:13:38',''),
-(7,1,1,5,3,2886860801,'2024-11-30 20:18:27',''),
-(8,1,1,8,4,2886860801,'2024-11-30 21:19:04','');
+(3,1,1,4,1,2886926337,'2024-11-30 11:40:54',''),
+(4,1,1,4,1,2886926337,'2024-11-30 12:34:36',''),
+(5,1,1,4,1,2886926337,'2024-11-30 13:05:51',''),
+(6,1,1,4,1,2886926337,'2024-11-30 13:39:23',''),
+(7,1,1,4,1,2886926337,'2024-11-30 14:10:06',''),
+(8,1,1,4,2,2886926337,'2024-11-30 14:46:14',''),
+(9,1,1,5,2,2886926337,'2024-11-30 15:12:16',''),
+(10,1,1,4,2,2886926337,'2024-11-30 15:18:46',''),
+(11,1,1,4,2,2886926337,'2024-11-30 15:50:13',''),
+(12,1,1,4,2,2886926337,'2024-11-30 16:21:40',''),
+(13,1,1,4,2,2886926337,'2024-11-30 16:52:49',''),
+(14,1,1,4,3,2886926337,'2024-11-30 17:32:59',''),
+(15,1,1,4,2,2886926337,'2024-11-30 18:12:14',''),
+(16,1,1,6,1,2886926337,'2024-11-30 18:20:33',''),
+(17,1,1,4,2,2886926337,'2024-11-30 18:43:30',''),
+(18,1,1,4,1,2886926337,'2024-11-30 19:14:08',''),
+(19,1,1,4,1,2886926337,'2024-11-30 19:46:25',''),
+(20,1,1,6,1,2886926337,'2024-11-30 19:46:31',''),
+(21,1,1,6,1,2886926337,'2024-11-30 20:20:15',''),
+(22,1,1,6,2,2886926337,'2024-11-30 20:51:49',''),
+(23,1,1,6,1,2886926337,'2024-11-30 21:24:40',''),
+(24,1,1,4,1,2886926337,'2024-11-30 21:51:54',''),
+(25,1,1,6,2,2886926337,'2024-11-30 22:00:56',''),
+(26,1,1,4,1,2886926337,'2024-11-30 22:45:22',''),
+(27,1,1,6,1,2886926337,'2024-11-30 22:47:40',''),
+(28,1,1,7,2,2886926337,'2024-11-30 23:09:01',''),
+(29,1,1,8,2,2886926337,'2024-11-30 23:09:01',''),
+(30,1,1,4,1,2886926337,'2024-11-30 23:16:11',''),
+(31,1,1,6,1,2886926337,'2024-11-30 23:19:50',''),
+(32,1,1,6,1,2886926337,'2024-12-01 00:06:14',''),
+(33,1,1,6,1,2886926337,'2024-12-01 00:40:18',''),
+(34,1,1,6,1,2886926337,'2024-12-01 01:30:18',''),
+(35,1,1,4,1,2886926337,'2024-12-01 01:55:38',''),
+(36,1,1,4,1,2886926337,'2024-12-01 03:11:05',''),
+(37,1,1,4,1,2886926337,'2024-12-01 14:33:06',''),
+(38,1,1,4,2,2886926337,'2024-12-01 15:27:16',''),
+(39,1,1,4,2,2886926337,'2024-12-01 15:59:54',''),
+(40,1,1,4,2,2886926337,'2024-12-01 16:31:07',''),
+(41,1,1,4,2,2886926337,'2024-12-01 17:02:27',''),
+(42,1,1,9,4,2886926337,'2024-12-01 17:27:33',''),
+(43,1,1,10,2,2886926337,'2024-12-01 17:45:09',''),
+(44,1,1,11,2,2886926337,'2024-12-01 17:45:09',''),
+(45,1,1,12,2,2886926337,'2024-12-01 17:45:16',''),
+(46,1,1,13,2,2886926337,'2024-12-01 17:45:16',''),
+(47,1,1,9,2,2886926337,'2024-12-01 17:59:54',''),
+(48,1,1,4,5,2886926337,'2024-12-01 18:55:17',''),
+(49,1,1,4,2,2886926337,'2024-12-01 19:27:47',''),
+(50,1,1,15,2,2886926337,'2024-12-01 19:44:18',''),
+(51,1,1,16,2,2886926337,'2024-12-01 19:44:18',''),
+(52,1,1,17,2,2886926337,'2024-12-01 19:44:18',''),
+(53,1,1,4,1,2886926337,'2024-12-01 20:09:05',''),
+(54,1,1,4,2,2886926337,'2024-12-01 20:40:25',''),
+(55,1,1,18,4,2886926337,'2024-12-01 20:45:29','');
 /*!40000 ALTER TABLE `ps_connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42248,7 +42676,7 @@ CREATE TABLE `ps_customer` (
   KEY `id_gender` (`id_gender`),
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42259,7 +42687,8 @@ LOCK TABLES `ps_customer` WRITE;
 /*!40000 ALTER TABLE `ps_customer` DISABLE KEYS */;
 INSERT INTO `ps_customer` VALUES
 (1,1,1,1,3,1,0,'','','','John','DOE','pub@prestashop.com','069a85c92e2602cff82eb2fbbe57f4dd','2024-11-23 15:27:58','1970-01-15',1,'','2013-12-13 08:19:15',1,'',0.000000,0,0,'e78428e6e6946a83e2df69e7f797cbfb','',1,0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58','','0000-00-00 00:00:00'),
-(2,1,1,1,3,1,0,'','','','aa','aaa','admin@mail.com','$2y$10$spQVRBBrfs.Zvs1hbO6YWuZkNRh1MSnMdKubf7jhZeqjOx7jRWnC2','2024-11-30 14:30:43','0000-00-00',0,'','0000-00-00 00:00:00',1,'',0.000000,0,0,'e0542d94774ef8b6744f7e7e900edbfe','',1,0,0,'2024-11-30 20:30:43','2024-11-30 20:30:43','','0000-00-00 00:00:00');
+(2,1,1,1,3,1,0,'','','','test','test','test@gmail.com','$2y$10$ESxo12agYOiknqyb3JBfH.pGEQsqdLyHSWSjMZtFfcBkCbymcp5F2','2024-12-01 11:14:08','2001-01-01',0,'','0000-00-00 00:00:00',0,'',0.000000,0,0,'b24937cafb3f85d3a16414b8ca5dc693','',1,0,0,'2024-12-01 17:14:08','2024-12-01 17:14:08','','0000-00-00 00:00:00'),
+(3,1,1,1,2,1,0,'','','','test','test','karina.woloszyn@wp.pl','$2y$10$3.6SpT4YvYOzHQcnIRv8lelQEV.3DoF7A.wxF2iY3q6jARWtOLR2y','2024-12-01 12:38:04','0000-00-00',0,'','0000-00-00 00:00:00',0,'',0.000000,0,0,'8e989466c1223b233093ccac9f65ab15','',1,1,0,'2024-12-01 18:38:04','2024-12-01 18:38:04','','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `ps_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42286,6 +42715,7 @@ CREATE TABLE `ps_customer_group` (
 LOCK TABLES `ps_customer_group` WRITE;
 /*!40000 ALTER TABLE `ps_customer_group` DISABLE KEYS */;
 INSERT INTO `ps_customer_group` VALUES
+(3,2),
 (1,3),
 (2,3);
 /*!40000 ALTER TABLE `ps_customer_group` ENABLE KEYS */;
@@ -42359,7 +42789,7 @@ CREATE TABLE `ps_customer_session` (
   `id_customer` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_customer_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42572,7 +43002,7 @@ CREATE TABLE `ps_delivery` (
   KEY `id_carrier` (`id_carrier`,`id_zone`),
   KEY `id_range_price` (`id_range_price`),
   KEY `id_range_weight` (`id_range_weight`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42597,8 +43027,91 @@ INSERT INTO `ps_delivery` VALUES
 (13,NULL,NULL,4,0,3,1,2.000000),
 (14,NULL,NULL,4,0,3,2,3.000000),
 (15,NULL,NULL,4,0,4,1,5.000000),
-(16,NULL,NULL,4,0,4,2,6.000000);
+(16,NULL,NULL,4,0,4,2,6.000000),
+(19,NULL,NULL,6,NULL,5,1,5.000000),
+(20,NULL,NULL,6,NULL,5,2,5.000000),
+(22,NULL,NULL,7,NULL,6,1,5.000000),
+(23,NULL,NULL,7,NULL,6,2,5.000000),
+(25,NULL,NULL,8,NULL,7,1,8.990000),
+(27,NULL,NULL,9,NULL,8,1,14.990000),
+(29,NULL,NULL,10,NULL,9,1,12.900000),
+(31,NULL,NULL,11,NULL,10,1,11.500000),
+(33,NULL,NULL,12,NULL,11,1,12.190000),
+(35,NULL,NULL,13,NULL,12,1,7.310000);
 /*!40000 ALTER TABLE `ps_delivery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_dhlexpresscommerce`
+--
+
+DROP TABLE IF EXISTS `ps_dhlexpresscommerce`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_dhlexpresscommerce` (
+  `id_dhlexpresscommerce` int(11) NOT NULL AUTO_INCREMENT,
+  `id_carrier` int(10) DEFAULT NULL,
+  `carrier_code` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_dhlexpresscommerce`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_dhlexpresscommerce`
+--
+
+LOCK TABLES `ps_dhlexpresscommerce` WRITE;
+/*!40000 ALTER TABLE `ps_dhlexpresscommerce` DISABLE KEYS */;
+INSERT INTO `ps_dhlexpresscommerce` VALUES
+(1,6,'dhlexpress'),
+(2,7,'dhlexpress'),
+(3,8,'dhlexpress'),
+(4,9,'dhlexpress'),
+(5,10,'dhlexpress'),
+(6,11,'dhlexpress');
+/*!40000 ALTER TABLE `ps_dhlexpresscommerce` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_dhlexpresscommerce_service`
+--
+
+DROP TABLE IF EXISTS `ps_dhlexpresscommerce_service`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_dhlexpresscommerce_service` (
+  `id_dhlexpresscommerce_service` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_carrier` int(10) unsigned DEFAULT NULL,
+  `global_product_code` varchar(1) NOT NULL,
+  `global_product_name` varchar(35) NOT NULL,
+  `product_content_code` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_dhlexpresscommerce_service`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_dhlexpresscommerce_service`
+--
+
+LOCK TABLES `ps_dhlexpresscommerce_service` WRITE;
+/*!40000 ALTER TABLE `ps_dhlexpresscommerce_service` DISABLE KEYS */;
+INSERT INTO `ps_dhlexpresscommerce_service` VALUES
+(1,28,'I','DOMESTIC EXPRESS 9:00','DOK'),
+(2,28,'K','EXPRESS 9:00','TDK'),
+(3,28,'E','EXPRESS 9:00','TDE'),
+(4,7,'O','DOMESTIC EXPRESS 10:30','DOL'),
+(5,7,'L','EXPRESS 10:30','TDL'),
+(6,7,'M','EXPRESS 10:30','TDM'),
+(7,8,'1','DOMESTIC EXPRESS 12:00','DOT'),
+(8,8,'T','EXPRESS 12:00','TDT'),
+(9,8,'Y','EXPRESS 12:00','TDY'),
+(10,9,'N','DOMESTIC EXPRESS','DOM'),
+(11,9,'U','EXPRESS WORLDWIDE','ECX'),
+(12,9,'P','EXPRESS WORLDWIDE','WPX'),
+(13,12,'H','ECONOMY SELECT','ESI'),
+(14,12,'W','ECONOMY SELECT','ESU'),
+(15,11,'','Flat Rate','FAIL-OVER');
+/*!40000 ALTER TABLE `ps_dhlexpresscommerce_service` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -42682,8 +43195,35 @@ CREATE TABLE `ps_employee` (
 LOCK TABLES `ps_employee` WRITE;
 /*!40000 ALTER TABLE `ps_employee` DISABLE KEYS */;
 INSERT INTO `ps_employee` VALUES
-(1,1,1,'Root','Root','admin@mail.com','$2y$10$559K.1E7asSDxTuHx/iY1uwNqHceG55wBx8rog/GpKLjy1r/cQntS','2024-11-23 15:27:32','2024-10-23','2024-11-23','0000-00-00','0000-00-00',1,NULL,NULL,'default','theme.css',1,0,1,1,NULL,0,0,0,'2024-11-30',NULL,'0000-00-00 00:00:00',0);
+(1,1,1,'Root','Root','admin@mail.com','$2y$10$559K.1E7asSDxTuHx/iY1uwNqHceG55wBx8rog/GpKLjy1r/cQntS','2024-11-23 15:27:32','2024-10-23','2024-11-23','0000-00-00','0000-00-00',1,NULL,NULL,'default','theme.css',1,0,1,1,NULL,0,0,0,'2024-12-01',NULL,'0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `ps_employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_employee_account`
+--
+
+DROP TABLE IF EXISTS `ps_employee_account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_employee_account` (
+  `id_employee_account` int(11) NOT NULL AUTO_INCREMENT,
+  `id_employee` int(11) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `uid` varchar(64) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_employee_account`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_employee_account`
+--
+
+LOCK TABLES `ps_employee_account` WRITE;
+/*!40000 ALTER TABLE `ps_employee_account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_employee_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -42698,7 +43238,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42708,7 +43248,8 @@ CREATE TABLE `ps_employee_session` (
 LOCK TABLES `ps_employee_session` WRITE;
 /*!40000 ALTER TABLE `ps_employee_session` DISABLE KEYS */;
 INSERT INTO `ps_employee_session` VALUES
-(2,1,'405e26dea981ab1c32a54dd2bae02cb08b321e93');
+(6,1,'0d0fa6560e813f238021aae655358d53ef7222a0'),
+(8,1,'d93bc51ea2a88952ccc318335427c39d5d6a636c');
 /*!40000 ALTER TABLE `ps_employee_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42736,6 +43277,157 @@ LOCK TABLES `ps_employee_shop` WRITE;
 INSERT INTO `ps_employee_shop` VALUES
 (1,1);
 /*!40000 ALTER TABLE `ps_employee_shop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_eventbus_deleted_objects`
+--
+
+DROP TABLE IF EXISTS `ps_eventbus_deleted_objects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_eventbus_deleted_objects` (
+  `type` varchar(50) NOT NULL,
+  `id_object` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`type`,`id_object`,`id_shop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_eventbus_deleted_objects`
+--
+
+LOCK TABLES `ps_eventbus_deleted_objects` WRITE;
+/*!40000 ALTER TABLE `ps_eventbus_deleted_objects` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_eventbus_deleted_objects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_eventbus_incremental_sync`
+--
+
+DROP TABLE IF EXISTS `ps_eventbus_incremental_sync`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_eventbus_incremental_sync` (
+  `type` varchar(50) NOT NULL,
+  `id_object` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `lang_iso` varchar(3) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`type`,`id_object`,`id_shop`,`lang_iso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_eventbus_incremental_sync`
+--
+
+LOCK TABLES `ps_eventbus_incremental_sync` WRITE;
+/*!40000 ALTER TABLE `ps_eventbus_incremental_sync` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_eventbus_incremental_sync` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_eventbus_job`
+--
+
+DROP TABLE IF EXISTS `ps_eventbus_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_eventbus_job` (
+  `job_id` varchar(200) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_eventbus_job`
+--
+
+LOCK TABLES `ps_eventbus_job` WRITE;
+/*!40000 ALTER TABLE `ps_eventbus_job` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_eventbus_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_eventbus_live_sync`
+--
+
+DROP TABLE IF EXISTS `ps_eventbus_live_sync`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_eventbus_live_sync` (
+  `shop_content` varchar(50) NOT NULL,
+  `last_change_at` datetime NOT NULL,
+  PRIMARY KEY (`shop_content`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_eventbus_live_sync`
+--
+
+LOCK TABLES `ps_eventbus_live_sync` WRITE;
+/*!40000 ALTER TABLE `ps_eventbus_live_sync` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_eventbus_live_sync` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_eventbus_type_sync`
+--
+
+DROP TABLE IF EXISTS `ps_eventbus_type_sync`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_eventbus_type_sync` (
+  `type` varchar(50) NOT NULL,
+  `offset` int(10) unsigned NOT NULL DEFAULT 0,
+  `id_shop` int(10) unsigned NOT NULL,
+  `lang_iso` varchar(3) DEFAULT NULL,
+  `full_sync_finished` tinyint(1) NOT NULL DEFAULT 0,
+  `last_sync_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_eventbus_type_sync`
+--
+
+LOCK TABLES `ps_eventbus_type_sync` WRITE;
+/*!40000 ALTER TABLE `ps_eventbus_type_sync` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_eventbus_type_sync` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_fb_category_match`
+--
+
+DROP TABLE IF EXISTS `ps_fb_category_match`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_fb_category_match` (
+  `id_category` int(11) NOT NULL,
+  `google_category_id` int(64) NOT NULL,
+  `google_category_name` varchar(255) NOT NULL,
+  `google_category_parent_id` int(64) NOT NULL,
+  `google_category_parent_name` varchar(255) NOT NULL,
+  `is_parent_category` tinyint(1) DEFAULT NULL,
+  `id_shop` int(11) NOT NULL,
+  PRIMARY KEY (`id_category`,`id_shop`),
+  KEY `id_category` (`id_category`,`google_category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_fb_category_match`
+--
+
+LOCK TABLES `ps_fb_category_match` WRITE;
+/*!40000 ALTER TABLE `ps_fb_category_match` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_fb_category_match` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -43188,7 +43880,7 @@ CREATE TABLE `ps_guest` (
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43201,11 +43893,20 @@ INSERT INTO `ps_guest` VALUES
 (1,0,0,1,0,0,0,0,0,0,0,0,0,0,'',0),
 (2,0,0,0,0,0,0,0,0,0,0,0,0,0,'',0),
 (3,7,1,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
-(4,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
-(5,6,3,2,0,0,0,0,0,0,0,0,0,0,'pl',0),
-(6,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
-(7,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
-(8,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0);
+(4,6,11,2,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(5,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(6,6,11,0,0,0,0,0,0,0,0,0,0,0,'en',0),
+(7,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(8,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(9,6,11,3,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(10,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(11,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(12,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(13,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(15,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(16,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(17,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(18,6,11,0,0,0,0,0,0,0,0,0,0,0,'pl',0);
 /*!40000 ALTER TABLE `ps_guest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43230,9 +43931,7 @@ CREATE TABLE `ps_homeslider` (
 LOCK TABLES `ps_homeslider` WRITE;
 /*!40000 ALTER TABLE `ps_homeslider` DISABLE KEYS */;
 INSERT INTO `ps_homeslider` VALUES
-(1,1),
-(2,1),
-(3,1);
+(1,1);
 /*!40000 ALTER TABLE `ps_homeslider` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43258,9 +43957,7 @@ CREATE TABLE `ps_homeslider_slides` (
 LOCK TABLES `ps_homeslider_slides` WRITE;
 /*!40000 ALTER TABLE `ps_homeslider_slides` DISABLE KEYS */;
 INSERT INTO `ps_homeslider_slides` VALUES
-(1,1,1),
-(2,2,1),
-(3,3,1);
+(1,1,1);
 /*!40000 ALTER TABLE `ps_homeslider_slides` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43290,9 +43987,7 @@ CREATE TABLE `ps_homeslider_slides_lang` (
 LOCK TABLES `ps_homeslider_slides_lang` WRITE;
 /*!40000 ALTER TABLE `ps_homeslider_slides_lang` DISABLE KEYS */;
 INSERT INTO `ps_homeslider_slides_lang` VALUES
-(1,1,'Sample 1','<h3>EXCEPTEUR OCCAECAT</h3>\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit</p>','sample-1','https://www.prestashop-project.org?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-PL&utm_content=download','sample-1.jpg'),
-(2,1,'Sample 2','<h3>EXCEPTEUR OCCAECAT</h3>\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit</p>','sample-2','https://www.prestashop-project.org?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-PL&utm_content=download','sample-2.jpg'),
-(3,1,'Sample 3','<h3>EXCEPTEUR OCCAECAT</h3>\n                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tristique in tortor et dignissim. Quisque non tempor leo. Maecenas egestas sem elit</p>','sample-3','https://www.prestashop-project.org?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-PL&utm_content=download','sample-3.jpg');
+(1,1,'','','','https://www.prestashop-project.org?utm_source=back-office&utm_medium=v17_homeslider&utm_campaign=back-office-PL&utm_content=download','e0e5cbb2100a5b0cc6cf8f4c12f3ae5892764b54_baner009.jpg');
 /*!40000 ALTER TABLE `ps_homeslider_slides_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43312,7 +44007,7 @@ CREATE TABLE `ps_hook` (
   `position` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_hook`),
   UNIQUE KEY `hook_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=741 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=764 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44058,7 +44753,30 @@ INSERT INTO `ps_hook` VALUES
 (737,'displayAdminAfterHeader','displayAdminAfterHeader','',1,1),
 (738,'displayFooterAfter','displayFooterAfter','',1,1),
 (739,'displayReassurance','displayReassurance','',1,1),
-(740,'displayCrossSellingShoppingCart','','',1,1);
+(740,'displayCrossSellingShoppingCart','','',1,1),
+(741,'actionPaypalGetConflicts','actionPaypalGetConflicts','',1,1),
+(742,'actionPaypalGetConflictsAction','actionPaypalGetConflictsAction','',1,1),
+(743,'actionPaypalFixModuleTables','actionPaypalFixModuleTables','',1,1),
+(744,'actionCartUpdateQuantityBefore','actionCartUpdateQuantityBefore','',1,1),
+(745,'displayAdminCartsView','displayAdminCartsView','',1,1),
+(746,'displayOrderPreview','displayOrderPreview','',1,1),
+(747,'actionAdminOrdersTrackingNumberUpdate','actionAdminOrdersTrackingNumberUpdate','',1,1),
+(748,'displayExpressCheckout','displayExpressCheckout','',1,1),
+(749,'displayAdminOrderLeft','displayAdminOrderLeft','',1,1),
+(750,'actionObjectShopAddAfter','actionObjectShopAddAfter','',1,1),
+(751,'actionObjectShopDeleteAfter','actionObjectShopDeleteAfter','',1,1),
+(752,'actionObjectOrderPaymentAddAfter','actionObjectOrderPaymentAddAfter','',1,1),
+(753,'actionObjectOrderPaymentUpdateAfter','actionObjectOrderPaymentUpdateAfter','',1,1),
+(754,'displayAccountUpdateWarning','Display account update warning','Show a warning message when the user wants to update his shop configuration',1,1),
+(755,'actionShopAccountLinkAfter','Shop linked event','Shop linked with PrestaShop Account',1,1),
+(756,'actionShopAccountUnlinkAfter','Shop unlinked event','Shop unlinked with PrestaShop Account',1,1),
+(757,'actionShopAccessTokenRefreshAfter','Shop access token refreshed event','Shop access token refreshed event',1,1),
+(758,'actionObjectEmployeeDeleteAfter','actionObjectEmployeeDeleteAfter','',1,1),
+(759,'actionObjectShopDeleteBefore','actionObjectShopDeleteBefore','',1,1),
+(760,'actionObjectShopUpdateAfter','actionObjectShopUpdateAfter','',1,1),
+(761,'actionObjectShopUrlUpdateAfter','actionObjectShopUrlUpdateAfter','',1,1),
+(762,'displayBackOfficeEmployeeMenu','displayBackOfficeEmployeeMenu','',1,1),
+(763,'actionObjectEmployeeUpdateAfter','actionObjectEmployeeUpdateAfter','',1,1);
 /*!40000 ALTER TABLE `ps_hook` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44228,8 +44946,6 @@ INSERT INTO `ps_hook_module` VALUES
 (11,1,695,1),
 (12,1,696,1),
 (13,1,14,1),
-(14,1,7,1),
-(14,1,697,1),
 (15,1,698,1),
 (15,1,701,1),
 (16,1,69,1),
@@ -44271,6 +44987,8 @@ INSERT INTO `ps_hook_module` VALUES
 (29,1,732,1),
 (30,1,733,1),
 (31,1,58,1),
+(35,1,7,1),
+(35,1,697,1),
 (44,1,18,1),
 (44,1,24,1),
 (44,1,734,1),
@@ -44310,6 +45028,44 @@ INSERT INTO `ps_hook_module` VALUES
 (55,1,713,1),
 (55,1,714,1),
 (55,1,715,1),
+(56,1,33,1),
+(56,1,36,1),
+(56,1,37,1),
+(56,1,39,1),
+(56,1,43,1),
+(56,1,46,1),
+(56,1,50,1),
+(56,1,51,1),
+(56,1,143,1),
+(56,1,208,1),
+(56,1,328,1),
+(56,1,412,1),
+(56,1,418,1),
+(56,1,419,1),
+(56,1,741,1),
+(56,1,742,1),
+(56,1,743,1),
+(56,1,744,1),
+(56,1,745,1),
+(56,1,746,1),
+(56,1,747,1),
+(56,1,748,1),
+(59,1,115,1),
+(59,1,140,1),
+(59,1,171,1),
+(59,1,750,1),
+(59,1,751,1),
+(59,1,754,1),
+(59,1,755,1),
+(59,1,756,1),
+(59,1,758,1),
+(59,1,759,1),
+(59,1,760,1),
+(59,1,761,1),
+(59,1,762,1),
+(61,1,144,1),
+(61,1,335,1),
+(61,1,763,1),
 (3,1,682,2),
 (4,1,688,2),
 (5,1,689,2),
@@ -44328,11 +45084,20 @@ INSERT INTO `ps_hook_module` VALUES
 (26,1,706,2),
 (29,1,82,2),
 (30,1,25,2),
-(35,1,7,2),
-(35,1,697,2),
 (36,1,55,2),
 (53,1,71,2),
 (55,1,14,2),
+(56,1,26,2),
+(56,1,49,2),
+(56,1,58,2),
+(56,1,69,2),
+(56,1,207,2),
+(56,1,697,2),
+(56,1,739,2),
+(57,1,46,2),
+(61,1,140,2),
+(61,1,323,2),
+(61,1,761,2),
 (4,1,682,3),
 (5,1,688,3),
 (6,1,689,3),
@@ -44346,6 +45111,9 @@ INSERT INTO `ps_hook_module` VALUES
 (33,1,707,3),
 (37,1,55,3),
 (55,1,82,3),
+(56,1,31,3),
+(57,1,697,3),
+(59,1,71,3),
 (1,1,41,4),
 (5,1,682,4),
 (6,1,688,4),
@@ -44356,7 +45124,9 @@ INSERT INTO `ps_hook_module` VALUES
 (54,1,683,4),
 (7,1,682,5),
 (39,1,55,5),
+(56,1,16,5),
 (40,1,55,6),
+(61,1,682,6),
 (41,1,55,7),
 (42,1,55,8),
 (43,1,55,9),
@@ -45002,7 +45772,14 @@ LOCK TABLES `ps_layered_filter_block` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter_block` DISABLE KEYS */;
 INSERT INTO `ps_layered_filter_block` VALUES
 ('1a53abdd3ceb679028d32b737d3bcbdf','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:1;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:1;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:1;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:30;s:3:\"min\";d:23;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:1;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"1\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:1;}}}'),
-('49fe8498c58dfc48a60ed6c25cb40b6e','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:2;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:2;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:2;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:23;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:2;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:2:{i:4;a:2:{s:4:\"name\";s:3:\"Men\";s:3:\"nbr\";s:1:\"1\";}i:5;a:2:{s:4:\"name\";s:5:\"Women\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:2:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"2\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"2\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:2;}}}');
+('27cdba5da74c4fba5d6d0761625b4fa2','a:1:{s:7:\"filters\";a:9:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:7;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:7;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:44;s:3:\"min\";d:11;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:7;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:6;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:10:\"Matt paper\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:2;a:2:{s:4:\"name\";s:14:\"Graphic Corner\";s:3:\"nbr\";s:1:\"6\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"7\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:7;}i:8;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"3\";s:4:\"name\";s:9:\"Dimension\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:3:{i:19;a:4:{s:4:\"name\";s:7:\"40x60cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:20;a:4:{s:4:\"name\";s:7:\"60x90cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:21;a:4:{s:4:\"name\";s:8:\"80x120cm\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}'),
+('49fe8498c58dfc48a60ed6c25cb40b6e','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:2;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:2;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:2;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:23;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:2;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:2:{i:4;a:2:{s:4:\"name\";s:3:\"Men\";s:3:\"nbr\";s:1:\"1\";}i:5;a:2:{s:4:\"name\";s:5:\"Women\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:2:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"2\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"2\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:2;}}}'),
+('4f506c74799abd07a45a0b42bb6ada24','a:1:{s:7:\"filters\";a:8:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:4;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:4;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:44;s:3:\"min\";d:14;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:4;s:5:\"value\";a:2:{i:0;s:2:\"14\";i:1;s:2:\"21\";}}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:3;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:7:\"Ceramic\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"4\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"4\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:4;}}}'),
+('a48a8491e3c6098bf5297a05f762aa65','a:1:{s:7:\"filters\";a:10:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:8;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:8;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:44;s:3:\"min\";d:14;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:8;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:2:{i:3;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:7:\"Ceramic\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:1;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"Poliester\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:9;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:15:\"Removable cover\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"7\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"8\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:8;}}}'),
+('c3eaa4a60d9807441019a11dbd71a470','a:1:{s:7:\"filters\";a:0:{}}'),
+('d09c9a59a8c5442bf92fd6bfac2a47a1','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:11;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:11;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:44;s:3:\"min\";d:14;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:11;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:2:{i:7;a:2:{s:4:\"name\";s:10:\"Stationery\";s:3:\"nbr\";s:1:\"3\";}i:8;a:2:{s:4:\"name\";s:16:\"Home Accessories\";s:3:\"nbr\";s:1:\"8\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:3:{i:3;a:4:{s:3:\"nbr\";s:1:\"4\";s:4:\"name\";s:7:\"Ceramic\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:1;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"Poliester\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:5;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:18:\"Recycled cardboard\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:2:{i:10;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"120 pages\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:9;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:15:\"Removable cover\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:2:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"7\";}i:2;a:2:{s:4:\"name\";s:14:\"Graphic Corner\";s:3:\"nbr\";s:1:\"3\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:2:\"11\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:11;}i:10;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"4\";s:4:\"name\";s:10:\"Paper Type\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:22;a:4:{s:4:\"name\";s:5:\"Ruled\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:23;a:4:{s:4:\"name\";s:5:\"Plain\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:24;a:4:{s:4:\"name\";s:8:\"Squarred\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:25;a:4:{s:4:\"name\";s:5:\"Doted\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}'),
+('d40da7ef44aaf6cc7547b00007e5a04b','a:1:{s:7:\"filters\";a:10:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:3;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:3;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:16;s:3:\"min\";d:15;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:3;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:5;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:18:\"Recycled cardboard\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:10;a:4:{s:3:\"nbr\";s:1:\"3\";s:4:\"name\";s:9:\"120 pages\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:2;a:2:{s:4:\"name\";s:14:\"Graphic Corner\";s:3:\"nbr\";s:1:\"3\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"3\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:3;}i:9;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"4\";s:4:\"name\";s:10:\"Paper Type\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:22;a:4:{s:4:\"name\";s:5:\"Ruled\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:23;a:4:{s:4:\"name\";s:5:\"Plain\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:24;a:4:{s:4:\"name\";s:8:\"Squarred\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:25;a:4:{s:4:\"name\";s:5:\"Doted\";s:3:\"nbr\";s:1:\"3\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}}}'),
+('f2619c289a72ef0027dfb8d3c9ffa28a','a:1:{s:7:\"filters\";a:10:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:1;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:1;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:1;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:35;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:1;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"1\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:1;}}}');
 /*!40000 ALTER TABLE `ps_layered_filter_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45456,7 +46233,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45688,16 +46465,50 @@ INSERT INTO `ps_log` VALUES
 (220,1,0,'Protect vendor folder in module ps_facetedsearch','',0,1,NULL,1,0,1,'2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (221,1,0,'Module ps_facetedsearch has no vendor folder','',0,1,NULL,1,0,1,'2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (222,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-23 21:28:38','2024-11-23 21:28:38'),
-(223,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 19:48:22','2024-11-30 19:48:22'),
-(224,1,0,'usunięcie Store','Store',1,1,NULL,1,0,1,'2024-11-30 20:28:44','2024-11-30 20:28:44'),
-(225,1,0,'usunięcie Store','Store',5,1,NULL,1,0,1,'2024-11-30 20:28:49','2024-11-30 20:28:49'),
-(226,1,0,'usunięcie Store','Store',4,1,NULL,1,0,1,'2024-11-30 20:28:52','2024-11-30 20:28:52'),
-(227,1,0,'usunięcie Store','Store',3,1,NULL,1,0,1,'2024-11-30 20:28:55','2024-11-30 20:28:55'),
-(228,1,0,'usunięcie Store','Store',2,1,NULL,1,0,1,'2024-11-30 20:28:59','2024-11-30 20:28:59'),
-(229,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:30:43','2024-11-30 20:30:43'),
-(230,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37'),
-(231,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37'),
-(232,1,0,'Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart',6,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37');
+(223,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 11:46:12','2024-11-30 11:46:12'),
+(224,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 15:34:30','2024-11-30 15:34:30'),
+(225,1,0,'Protect vendor folder in module statssearch','',0,1,NULL,1,0,1,'2024-11-30 15:47:35','2024-11-30 15:47:35'),
+(226,1,0,'Module statssearch has no vendor folder','',0,1,NULL,1,0,1,'2024-11-30 15:47:35','2024-11-30 15:47:35'),
+(227,1,0,'Protect vendor folder in module ps_searchbar','',0,1,NULL,1,0,1,'2024-11-30 16:39:51','2024-11-30 16:39:51'),
+(228,1,0,'Module ps_searchbar has no vendor folder','',0,1,NULL,1,0,1,'2024-11-30 16:39:51','2024-11-30 16:39:51'),
+(229,1,0,'Protect vendor folder in module ps_searchbar','',0,1,NULL,1,0,1,'2024-11-30 16:40:17','2024-11-30 16:40:17'),
+(230,1,0,'Module ps_searchbar has no vendor folder','',0,1,NULL,1,0,1,'2024-11-30 16:40:17','2024-11-30 16:40:17'),
+(231,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 17:37:09','2024-11-30 17:37:09'),
+(232,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 19:46:52','2024-11-30 19:46:52'),
+(233,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-12-01 00:04:45','2024-12-01 00:04:45'),
+(234,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-12-01 02:57:37','2024-12-01 02:57:37'),
+(235,1,0,'Połączenie z panelem administracyjnym z 172.19.0.1','',0,NULL,NULL,1,1,1,'2024-12-01 15:33:43','2024-12-01 15:33:43'),
+(236,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-12-01 17:14:09','2024-12-01 17:14:09'),
+(237,1,0,'usunięcie Carrier','Carrier',4,1,NULL,1,0,1,'2024-12-01 18:43:19','2024-12-01 18:43:19'),
+(238,1,0,'Protect vendor folder in module paypal','',0,1,NULL,1,0,1,'2024-12-01 18:46:14','2024-12-01 18:46:14'),
+(239,1,0,'Protect vendor folder in module ps_cashondelivery','',0,1,NULL,1,0,1,'2024-12-01 18:48:37','2024-12-01 18:48:37'),
+(240,1,0,'Protect vendor folder in module ps_checkout','',0,1,NULL,1,0,1,'2024-12-01 18:52:24','2024-12-01 18:52:24'),
+(241,1,0,'Protect vendor folder in module ps_accounts','',0,1,NULL,1,0,1,'2024-12-01 18:52:49','2024-12-01 18:52:49'),
+(242,1,0,'Protect vendor folder in module ps_mbo','',0,1,NULL,1,0,1,'2024-12-01 18:52:55','2024-12-01 18:52:55'),
+(243,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:02','2024-12-01 18:53:02'),
+(244,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:04','2024-12-01 18:53:04'),
+(245,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:16','2024-12-01 18:53:16'),
+(246,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:22','2024-12-01 18:53:22'),
+(247,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:34','2024-12-01 18:53:34'),
+(248,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:37','2024-12-01 18:53:37'),
+(249,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:40','2024-12-01 18:53:40'),
+(250,1,0,'Protect vendor folder in module ps_mbo','',0,1,NULL,1,0,1,'2024-12-01 18:53:41','2024-12-01 18:53:41'),
+(251,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:45','2024-12-01 18:53:45'),
+(252,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:53:47','2024-12-01 18:53:47'),
+(253,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:25','2024-12-01 18:54:25'),
+(254,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:26','2024-12-01 18:54:26'),
+(255,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:27','2024-12-01 18:54:27'),
+(256,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:28','2024-12-01 18:54:28'),
+(257,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:28','2024-12-01 18:54:28'),
+(258,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:29','2024-12-01 18:54:29'),
+(259,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:31','2024-12-01 18:54:31'),
+(260,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:54:32','2024-12-01 18:54:32'),
+(261,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-12-01 18:55:17','2024-12-01 18:55:17'),
+(262,1,0,'Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart',8,1,NULL,1,0,0,'2024-12-01 18:55:17','2024-12-01 18:55:17'),
+(263,1,0,'Exporting mail with theme modern for language Polski (Polish)','',0,1,NULL,1,0,1,'2024-12-01 18:57:29','2024-12-01 18:57:29'),
+(264,1,0,'Core output folder: /var/www/html/mails','',0,1,NULL,1,0,1,'2024-12-01 18:57:29','2024-12-01 18:57:29'),
+(265,1,0,'Modules output folder: /var/www/html/modules/','',0,1,NULL,1,0,1,'2024-12-01 18:57:29','2024-12-01 18:57:29'),
+(266,3,0,'Data from PrestaShop Addons is invalid, and cannot fallback on cache.','',0,1,NULL,1,0,1,'2024-12-01 18:58:46','2024-12-01 18:58:46');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45911,7 +46722,7 @@ CREATE TABLE `ps_meta` (
   `configurable` tinyint(1) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_meta`),
   UNIQUE KEY `page` (`page`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45954,13 +46765,14 @@ INSERT INTO `ps_meta` VALUES
 (31,'module-bankwire-validation',0),
 (32,'module-bankwire-payment',0),
 (33,'module-cashondelivery-validation',0),
-(34,'module-ps_checkpayment-payment',1),
-(35,'module-ps_checkpayment-validation',1),
 (36,'module-ps_emailsubscription-verification',1),
 (37,'module-ps_emailsubscription-subscription',1),
 (38,'module-ps_shoppingcart-ajax',1),
 (39,'module-ps_wirepayment-payment',1),
-(40,'module-ps_wirepayment-validation',1);
+(40,'module-ps_wirepayment-validation',1),
+(41,'module-paypal-payment',1),
+(42,'module-paypal-validation',1),
+(43,'module-ps_cashondelivery-validation',1);
 /*!40000 ALTER TABLE `ps_meta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46017,13 +46829,14 @@ INSERT INTO `ps_meta_lang` VALUES
 (23,1,1,'Sklepy','','','nasze-sklepy'),
 (24,1,1,'Śledzenie zamówień gości','','','sledzenie-zamowien-gosci'),
 (25,1,1,'Potwierdzenie zamówienia','','','potwierdzenie-zamowienia'),
-(34,1,1,'','','',''),
-(35,1,1,'','','',''),
 (36,1,1,'','','',''),
 (37,1,1,'','','',''),
 (38,1,1,'','','',''),
 (39,1,1,'','','',''),
-(40,1,1,'','','','');
+(40,1,1,'','','',''),
+(41,1,1,'','','',''),
+(42,1,1,'','','',''),
+(43,1,1,'','','','');
 /*!40000 ALTER TABLE `ps_meta_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46042,7 +46855,7 @@ CREATE TABLE `ps_module` (
   PRIMARY KEY (`id_module`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46065,7 +46878,6 @@ INSERT INTO `ps_module` VALUES
 (11,'productcomments',1,'6.0.2'),
 (12,'ps_banner',1,'2.1.2'),
 (13,'ps_categorytree',1,'2.0.3'),
-(14,'ps_checkpayment',1,'2.1.0'),
 (15,'ps_contactinfo',1,'3.3.2'),
 (16,'ps_crossselling',1,'2.0.2'),
 (17,'ps_currencyselector',1,'2.1.1'),
@@ -46105,7 +46917,11 @@ INSERT INTO `ps_module` VALUES
 (52,'statsstock',1,'2.0.1'),
 (53,'welcome',1,'6.0.9'),
 (54,'blockreassurance',1,'5.1.4'),
-(55,'ps_facetedsearch',1,'3.14.1');
+(55,'ps_facetedsearch',1,'3.14.1'),
+(56,'paypal',1,'6.4.2'),
+(57,'ps_cashondelivery',1,'2.0.1'),
+(59,'ps_accounts',1,'7.0.8'),
+(61,'ps_mbo',1,'3.2.0');
 /*!40000 ALTER TABLE `ps_module` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46182,10 +46998,6 @@ INSERT INTO `ps_module_access` VALUES
 (1,550),
 (1,551),
 (1,552),
-(1,553),
-(1,554),
-(1,555),
-(1,556),
 (1,557),
 (1,558),
 (1,559),
@@ -46345,7 +47157,23 @@ INSERT INTO `ps_module_access` VALUES
 (1,741),
 (1,742),
 (1,743),
-(1,744);
+(1,744),
+(1,745),
+(1,746),
+(1,747),
+(1,748),
+(1,765),
+(1,766),
+(1,767),
+(1,768),
+(1,797),
+(1,798),
+(1,799),
+(1,800),
+(1,849),
+(1,850),
+(1,851),
+(1,852);
 /*!40000 ALTER TABLE `ps_module_access` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46371,14 +47199,14 @@ CREATE TABLE `ps_module_carrier` (
 LOCK TABLES `ps_module_carrier` WRITE;
 /*!40000 ALTER TABLE `ps_module_carrier` DISABLE KEYS */;
 INSERT INTO `ps_module_carrier` VALUES
-(14,1,1),
-(14,1,2),
-(14,1,3),
-(14,1,4),
 (35,1,1),
 (35,1,2),
 (35,1,3),
-(35,1,4);
+(56,1,1),
+(56,1,2),
+(56,1,3),
+(57,1,1),
+(57,1,2);
 /*!40000 ALTER TABLE `ps_module_carrier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46404,8 +47232,9 @@ CREATE TABLE `ps_module_country` (
 LOCK TABLES `ps_module_country` WRITE;
 /*!40000 ALTER TABLE `ps_module_country` DISABLE KEYS */;
 INSERT INTO `ps_module_country` VALUES
-(14,1,14),
-(35,1,14);
+(35,1,14),
+(56,1,14),
+(57,1,14);
 /*!40000 ALTER TABLE `ps_module_country` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46432,8 +47261,9 @@ CREATE TABLE `ps_module_currency` (
 LOCK TABLES `ps_module_currency` WRITE;
 /*!40000 ALTER TABLE `ps_module_currency` DISABLE KEYS */;
 INSERT INTO `ps_module_currency` VALUES
-(14,1,1),
-(35,1,1);
+(35,1,1),
+(56,1,1),
+(57,1,1);
 /*!40000 ALTER TABLE `ps_module_currency` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46498,9 +47328,6 @@ INSERT INTO `ps_module_group` VALUES
 (13,1,1),
 (13,1,2),
 (13,1,3),
-(14,1,1),
-(14,1,2),
-(14,1,3),
 (15,1,1),
 (15,1,2),
 (15,1,3),
@@ -46620,7 +47447,19 @@ INSERT INTO `ps_module_group` VALUES
 (54,1,3),
 (55,1,1),
 (55,1,2),
-(55,1,3);
+(55,1,3),
+(56,1,1),
+(56,1,2),
+(56,1,3),
+(57,1,1),
+(57,1,2),
+(57,1,3),
+(59,1,1),
+(59,1,2),
+(59,1,3),
+(61,1,1),
+(61,1,2),
+(61,1,3);
 /*!40000 ALTER TABLE `ps_module_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46638,7 +47477,7 @@ CREATE TABLE `ps_module_history` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46647,6 +47486,10 @@ CREATE TABLE `ps_module_history` (
 
 LOCK TABLES `ps_module_history` WRITE;
 /*!40000 ALTER TABLE `ps_module_history` DISABLE KEYS */;
+INSERT INTO `ps_module_history` VALUES
+(1,1,14,'2024-12-01 18:43:31','2024-12-01 18:43:31'),
+(2,1,56,'2024-12-01 18:46:25','2024-12-01 18:46:25'),
+(3,1,58,'2024-12-01 18:52:30','2024-12-01 18:52:30');
 /*!40000 ALTER TABLE `ps_module_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46711,15 +47554,12 @@ INSERT INTO `ps_module_shop` VALUES
 (9,1,7),
 (10,1,7),
 (11,1,7),
-(12,1,3),
 (13,1,7),
-(14,1,7),
 (15,1,7),
 (16,1,7),
 (17,1,7),
 (18,1,7),
 (19,1,7),
-(20,1,7),
 (21,1,7),
 (22,1,7),
 (24,1,7),
@@ -46753,7 +47593,11 @@ INSERT INTO `ps_module_shop` VALUES
 (52,1,7),
 (53,1,7),
 (54,1,7),
-(55,1,7);
+(55,1,7),
+(56,1,7),
+(57,1,7),
+(59,1,7),
+(61,1,7);
 /*!40000 ALTER TABLE `ps_module_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46826,7 +47670,7 @@ INSERT INTO `ps_order_carrier` VALUES
 (3,3,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
 (4,4,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
 (5,5,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
-(6,6,1,0,0.300000,0.000000,0.000000,'','2024-11-30 20:31:37');
+(6,6,12,0,0.600000,12.190000,14.990000,'','2024-12-01 18:55:17');
 /*!40000 ALTER TABLE `ps_order_carrier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46925,7 +47769,7 @@ CREATE TABLE `ps_order_detail` (
   KEY `product_attribute_id` (`product_attribute_id`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_order_id_order_detail` (`id_order`,`id_order_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46942,7 +47786,8 @@ INSERT INTO `ps_order_detail` VALUES
 (5,3,0,0,1,16,28,0,'Mountain fox notebook Style : Ruled',1,1,0,0,0,12.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_8','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',12.900000,12.900000,12.900000,12.900000,0.000000,0.000000,0.000000,12.900000,0.000000,0.000000,0.000000),
 (6,4,0,0,1,16,29,0,'Mountain fox notebook Style : Plain',1,1,0,0,0,12.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_8','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',12.900000,12.900000,12.900000,12.900000,0.000000,0.000000,0.000000,12.900000,0.000000,0.000000,0.000000),
 (7,5,0,0,1,10,25,0,'Brown bear cushion Color : Black',1,1,0,0,0,18.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_16','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',18.900000,18.900000,18.900000,18.900000,0.000000,0.000000,0.000000,18.900000,0.000000,0.000000,0.000000),
-(8,6,0,0,1,1,1,0,'Hummingbird printed t-shirt (Rozmiar: S - Kolor: Biały)',1,1,0,0,0,19.120000,20.00,0.000000,0.000000,0.000000,0.00,24.750000,'','','','','demo_1','demo_1_46',0.300000,1,0,'PTU PL 23%',23.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',23.520000,19.120000,23.517600,19.120000,0.000000,0.000000,5.490000,23.900000,0.000000,0.000000,0.000000);
+(8,6,0,0,1,2,9,0,'Hummingbird printed sweater (Rozmiar: S)',1,1,0,0,0,28.720000,20.00,0.000000,0.000000,0.000000,0.00,36.560000,'','','','','demo_3','demo_3_62',0.300000,1,0,'PTU PL 23%',23.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',35.330000,28.720000,35.325600,28.720000,0.000000,0.000000,5.490000,35.900000,0.000000,0.000000,0.000000),
+(9,6,0,0,1,4,16,0,'The adventure begins Framed poster (Dimension: 40x60cm)',1,1,0,0,0,29.000000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_5','demo_5_73',0.300000,1,0,'PTU PL 23%',23.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',35.670000,29.000000,35.670000,29.000000,0.000000,0.000000,5.490000,29.000000,0.000000,0.000000,0.000000);
 /*!40000 ALTER TABLE `ps_order_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46970,7 +47815,8 @@ CREATE TABLE `ps_order_detail_tax` (
 LOCK TABLES `ps_order_detail_tax` WRITE;
 /*!40000 ALTER TABLE `ps_order_detail_tax` DISABLE KEYS */;
 INSERT INTO `ps_order_detail_tax` VALUES
-(8,1,4.397600,4.400000);
+(9,1,6.670000,6.670000),
+(8,1,6.605600,6.610000);
 /*!40000 ALTER TABLE `ps_order_detail_tax` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47008,7 +47854,7 @@ INSERT INTO `ps_order_history` VALUES
 (5,0,5,10,'2024-11-23 21:27:58'),
 (6,1,1,6,'2024-11-23 21:27:58'),
 (7,1,3,8,'2024-11-23 21:27:58'),
-(8,0,6,1,'2024-11-30 20:31:37');
+(8,0,6,13,'2024-12-01 18:55:17');
 /*!40000 ALTER TABLE `ps_order_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47396,7 +48242,7 @@ CREATE TABLE `ps_order_state` (
   `deleted` tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_order_state`),
   KEY `module_name` (`module_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47418,7 +48264,12 @@ INSERT INTO `ps_order_state` VALUES
 (10,0,1,'ps_wirepayment','#34209E',1,0,0,0,0,0,0,0,0),
 (11,1,1,'','#3498D8',1,0,1,0,0,1,0,0,0),
 (12,0,1,'','#34209E',1,0,0,0,0,0,0,0,0),
-(13,0,0,'ps_cashondelivery','#34209E',1,0,0,0,0,0,0,0,0);
+(13,0,0,'ps_cashondelivery','#34209E',1,0,0,0,0,0,0,0,0),
+(14,0,0,'paypal','#4169E1',0,0,0,0,0,0,0,0,0),
+(15,0,0,'ps_checkout','#34209E',1,0,0,0,0,0,0,0,0),
+(16,0,0,'ps_checkout','#01B887',1,0,0,0,0,0,0,0,0),
+(17,0,0,'ps_checkout','#3498D8',1,0,0,0,0,0,0,0,0),
+(18,0,0,'ps_checkout','#3498D8',1,0,0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `ps_order_state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47457,7 +48308,12 @@ INSERT INTO `ps_order_state_lang` VALUES
 (10,1,'Oczekiwanie na płatność przelewem','bankwire'),
 (11,1,'Płatność przyjęta','payment'),
 (12,1,'Zamówienie oczekujące (nieopłacone)','outofstock'),
-(13,1,'Oczekiwanie na płatność przy odbiorze','cashondelivery');
+(13,1,'Oczekiwanie na płatność przy odbiorze','cashondelivery'),
+(14,1,'Awaiting for PayPal payment',''),
+(15,1,'Oczekiwanie na płatność',''),
+(16,1,'Częściowy zwrot',''),
+(17,1,'Częściowa płatność',''),
+(18,1,'Pomyślna autoryzacja. Transfer do przeprowadzenia przez sklep','');
 /*!40000 ALTER TABLE `ps_order_state_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47545,7 +48401,7 @@ INSERT INTO `ps_orders` VALUES
 (3,'UOYEVOLI',1,1,2,1,1,3,1,4,4,8,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,14.900000,21.300000,19.900000,0.000000,12.900000,12.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
 (4,'FFATNOMMJ',1,1,2,1,1,4,1,4,4,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,14.900000,21.300000,19.900000,0.000000,12.900000,12.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
 (5,'KHWLILZLL',1,1,2,1,1,5,1,4,4,10,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Bank wire',1.000000,'ps_wirepayment',0,0,'',0,'',0.000000,0.000000,0.000000,20.900000,27.300000,25.900000,0.000000,18.900000,18.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
-(6,'WIDJYHLAM',1,1,1,1,2,6,1,6,6,1,'e0542d94774ef8b6744f7e7e900edbfe','Czek',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,23.520000,23.520000,19.120000,0.000000,19.120000,23.520000,0.000000,0.000000,0.000000,23.000,0.000000,0.000000,0.000000,2,2,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-30 20:31:37','2024-11-30 20:31:37','');
+(6,'ATMSQVRXS',1,1,12,1,3,8,1,6,6,13,'8e989466c1223b233093ccac9f65ab15','Płatność przy odbiorze',1.000000,'ps_cashondelivery',0,0,'',0,'',0.000000,0.000000,0.000000,85.990000,85.990000,69.910000,0.000000,57.720000,71.000000,14.990000,14.990000,12.190000,23.000,0.000000,0.000000,0.000000,2,2,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-12-01 18:55:17','2024-12-01 18:55:17','');
 /*!40000 ALTER TABLE `ps_orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47592,7 +48448,7 @@ CREATE TABLE `ps_page` (
   PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47604,8 +48460,9 @@ LOCK TABLES `ps_page` WRITE;
 INSERT INTO `ps_page` VALUES
 (1,1,NULL),
 (2,2,NULL),
-(3,3,NULL),
-(4,4,3);
+(3,3,2),
+(4,4,NULL),
+(5,5,NULL);
 /*!40000 ALTER TABLE `ps_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47621,7 +48478,7 @@ CREATE TABLE `ps_page_type` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47631,10 +48488,11 @@ CREATE TABLE `ps_page_type` (
 LOCK TABLES `ps_page_type` WRITE;
 /*!40000 ALTER TABLE `ps_page_type` DISABLE KEYS */;
 INSERT INTO `ps_page_type` VALUES
-(4,'category'),
-(2,'cms'),
+(4,'authentication'),
+(3,'category'),
 (1,'index'),
-(3,'pagenotfound');
+(5,'orderconfirmation'),
+(2,'pagenotfound');
 /*!40000 ALTER TABLE `ps_page_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47690,6 +48548,189 @@ CREATE TABLE `ps_pagenotfound` (
 LOCK TABLES `ps_pagenotfound` WRITE;
 /*!40000 ALTER TABLE `ps_pagenotfound` DISABLE KEYS */;
 /*!40000 ALTER TABLE `ps_pagenotfound` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_capture`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_capture`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_capture` (
+  `id_paypal_capture` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_capture` varchar(255) NOT NULL,
+  `id_paypal_order` int(10) unsigned NOT NULL,
+  `capture_amount` decimal(10,2) NOT NULL,
+  `result` varchar(255) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_capture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_capture`
+--
+
+LOCK TABLES `ps_paypal_capture` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_capture` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_capture` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_ipn`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_ipn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_ipn` (
+  `id_paypal_ipn` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_transaction` varchar(255) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `response` mediumtext NOT NULL,
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_ipn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_ipn`
+--
+
+LOCK TABLES `ps_paypal_ipn` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_ipn` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_ipn` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_order`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_order` (
+  `id_paypal_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_transaction` varchar(50) NOT NULL,
+  `id_payment` varchar(50) NOT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  `intent` varchar(20) NOT NULL,
+  `total_paid` decimal(10,2) NOT NULL,
+  `payment_status` varchar(50) NOT NULL,
+  `total_prestashop` decimal(10,2) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `payment_tool` varchar(50) NOT NULL,
+  `sandbox` tinyint(1) unsigned NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_order`
+--
+
+LOCK TABLES `ps_paypal_order` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_processlogger`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_processlogger`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_processlogger` (
+  `id_paypal_processlogger` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order` int(10) unsigned NOT NULL,
+  `id_cart` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_transaction` varchar(50) NOT NULL,
+  `log` varchar(1000) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `sandbox` tinyint(1) unsigned NOT NULL,
+  `tools` varchar(50) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_transaction` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_processlogger`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_processlogger`
+--
+
+LOCK TABLES `ps_paypal_processlogger` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_processlogger` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_processlogger` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_vaulting`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_vaulting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_vaulting` (
+  `id_paypal_vaulting` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned NOT NULL,
+  `rememberedCards` varchar(255) NOT NULL,
+  `vault_id` varchar(255) NOT NULL,
+  `paypal_customer_id` varchar(255) NOT NULL,
+  `profile_key` varchar(255) NOT NULL,
+  `sandbox` tinyint(1) unsigned NOT NULL,
+  `payment_source` varchar(50) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_vaulting`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_vaulting`
+--
+
+LOCK TABLES `ps_paypal_vaulting` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_vaulting` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_vaulting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_paypal_webhook`
+--
+
+DROP TABLE IF EXISTS `ps_paypal_webhook`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_paypal_webhook` (
+  `id_paypal_webhook` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_paypal_order` int(10) unsigned NOT NULL,
+  `id_webhook` varchar(50) NOT NULL,
+  `event_type` varchar(50) NOT NULL,
+  `data` mediumtext NOT NULL,
+  `id_state` int(10) unsigned NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_completed` datetime NOT NULL,
+  PRIMARY KEY (`id_paypal_webhook`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_paypal_webhook`
+--
+
+LOCK TABLES `ps_paypal_webhook` WRITE;
+/*!40000 ALTER TABLE `ps_paypal_webhook` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_paypal_webhook` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -48770,6 +49811,189 @@ INSERT INTO `ps_profile_lang` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ps_pscheckout_cart`
+--
+
+DROP TABLE IF EXISTS `ps_pscheckout_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_pscheckout_cart` (
+  `id_pscheckout_cart` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned NOT NULL,
+  `paypal_intent` varchar(20) DEFAULT 'CAPTURE',
+  `paypal_order` varchar(20) DEFAULT NULL,
+  `paypal_status` varchar(20) DEFAULT NULL,
+  `paypal_funding` varchar(20) DEFAULT NULL,
+  `paypal_token` text DEFAULT NULL,
+  `paypal_token_expire` datetime DEFAULT NULL,
+  `paypal_authorization_expire` datetime DEFAULT NULL,
+  `environment` varchar(20) DEFAULT NULL,
+  `isExpressCheckout` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `isHostedFields` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_pscheckout_cart`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_pscheckout_cart`
+--
+
+LOCK TABLES `ps_pscheckout_cart` WRITE;
+/*!40000 ALTER TABLE `ps_pscheckout_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_pscheckout_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_pscheckout_funding_source`
+--
+
+DROP TABLE IF EXISTS `ps_pscheckout_funding_source`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_pscheckout_funding_source` (
+  `name` varchar(20) NOT NULL,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `position` tinyint(2) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`name`,`id_shop`),
+  KEY `id_shop` (`id_shop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_pscheckout_funding_source`
+--
+
+LOCK TABLES `ps_pscheckout_funding_source` WRITE;
+/*!40000 ALTER TABLE `ps_pscheckout_funding_source` DISABLE KEYS */;
+INSERT INTO `ps_pscheckout_funding_source` VALUES
+('bancontact',1,4,1),
+('blik',1,10,1),
+('card',1,3,1),
+('eps',1,5,1),
+('giropay',1,6,1),
+('ideal',1,7,1),
+('mybank',1,8,1),
+('p24',1,9,1),
+('paylater',1,2,1),
+('paypal',1,1,1);
+/*!40000 ALTER TABLE `ps_pscheckout_funding_source` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_pscheckout_order_matrice`
+--
+
+DROP TABLE IF EXISTS `ps_pscheckout_order_matrice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_pscheckout_order_matrice` (
+  `id_order_matrice` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_order_prestashop` int(10) unsigned NOT NULL,
+  `id_order_paypal` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_order_matrice`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_pscheckout_order_matrice`
+--
+
+LOCK TABLES `ps_pscheckout_order_matrice` WRITE;
+/*!40000 ALTER TABLE `ps_pscheckout_order_matrice` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_pscheckout_order_matrice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_psgdpr_consent`
+--
+
+DROP TABLE IF EXISTS `ps_psgdpr_consent`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_psgdpr_consent` (
+  `id_gdpr_consent` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_module` int(10) unsigned NOT NULL,
+  `active` int(10) NOT NULL,
+  `error` int(10) DEFAULT NULL,
+  `error_message` text DEFAULT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_gdpr_consent`,`id_module`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_psgdpr_consent`
+--
+
+LOCK TABLES `ps_psgdpr_consent` WRITE;
+/*!40000 ALTER TABLE `ps_psgdpr_consent` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_psgdpr_consent` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_psgdpr_consent_lang`
+--
+
+DROP TABLE IF EXISTS `ps_psgdpr_consent_lang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_psgdpr_consent_lang` (
+  `id_gdpr_consent` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_lang` int(10) unsigned NOT NULL,
+  `message` text DEFAULT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_gdpr_consent`,`id_lang`,`id_shop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_psgdpr_consent_lang`
+--
+
+LOCK TABLES `ps_psgdpr_consent_lang` WRITE;
+/*!40000 ALTER TABLE `ps_psgdpr_consent_lang` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ps_psgdpr_consent_lang` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ps_psgdpr_log`
+--
+
+DROP TABLE IF EXISTS `ps_psgdpr_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ps_psgdpr_log` (
+  `id_gdpr_log` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `id_guest` int(10) unsigned DEFAULT NULL,
+  `client_name` varchar(250) DEFAULT NULL,
+  `id_module` int(10) unsigned NOT NULL,
+  `request_type` int(10) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `date_upd` datetime NOT NULL,
+  PRIMARY KEY (`id_gdpr_log`),
+  KEY `id_customer` (`id_customer`),
+  KEY `idx_id_customer` (`id_customer`,`id_guest`,`client_name`,`id_module`,`date_add`,`date_upd`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ps_psgdpr_log`
+--
+
+LOCK TABLES `ps_psgdpr_log` WRITE;
+/*!40000 ALTER TABLE `ps_psgdpr_log` DISABLE KEYS */;
+INSERT INTO `ps_psgdpr_log` VALUES
+(1,3,0,'test test',0,1,'2024-11-10 18:40:33','2024-11-10 18:40:33'),
+(2,4,0,'Karina test',0,1,'2024-11-19 15:50:45','2024-11-19 15:50:45');
+/*!40000 ALTER TABLE `ps_psgdpr_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ps_psreassurance`
 --
 
@@ -48940,7 +50164,7 @@ CREATE TABLE `ps_range_weight` (
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_weight`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48953,7 +50177,15 @@ INSERT INTO `ps_range_weight` VALUES
 (1,2,0.000000,10000.000000),
 (2,4,0.000000,1.000000),
 (3,4,1.000000,3.000000),
-(4,4,3.000000,10000.000000);
+(4,4,3.000000,10000.000000),
+(5,6,0.000000,10000.000000),
+(6,7,0.000000,50.000000),
+(7,8,0.000000,50.000000),
+(8,9,0.000000,50.000000),
+(9,10,0.000000,50.000000),
+(10,11,0.000000,50.000000),
+(11,12,0.000000,50.000000),
+(12,13,0.000000,50.000000);
 /*!40000 ALTER TABLE `ps_range_weight` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50887,7 +52119,7 @@ CREATE TABLE `ps_statssearch` (
   `results` int(6) NOT NULL DEFAULT 0,
   `date_add` datetime NOT NULL,
   PRIMARY KEY (`id_statssearch`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50896,6 +52128,87 @@ CREATE TABLE `ps_statssearch` (
 
 LOCK TABLES `ps_statssearch` WRITE;
 /*!40000 ALTER TABLE `ps_statssearch` DISABLE KEYS */;
+INSERT INTO `ps_statssearch` VALUES
+(1,1,1,'sdsd',4,'2024-11-30 13:49:08'),
+(2,1,1,'sdsd',4,'2024-11-30 13:49:09'),
+(3,1,1,'mug',5,'2024-11-30 13:49:11'),
+(4,1,1,'printed',5,'2024-11-30 14:52:41'),
+(5,1,1,'printed',5,'2024-11-30 14:53:14'),
+(6,1,1,'shirt',1,'2024-11-30 15:40:34'),
+(7,1,1,'shirt',1,'2024-11-30 15:40:40'),
+(8,1,1,'shirt',1,'2024-11-30 15:40:49'),
+(9,1,1,'shirt',1,'2024-11-30 15:41:58'),
+(10,1,1,'shirt',1,'2024-11-30 15:42:03'),
+(11,1,1,'shirt',1,'2024-11-30 15:42:44'),
+(12,1,1,'sweater',1,'2024-11-30 15:44:21'),
+(13,1,1,'shirt',1,'2024-11-30 15:46:45'),
+(14,1,1,'shirt',1,'2024-11-30 15:49:27'),
+(15,1,1,'shirt',1,'2024-11-30 15:49:40'),
+(16,1,1,'shirt',1,'2024-11-30 15:49:44'),
+(17,1,1,'shirt',1,'2024-11-30 15:49:53'),
+(18,1,1,'shirt',1,'2024-11-30 15:52:48'),
+(19,1,1,'shirt',1,'2024-11-30 15:52:55'),
+(20,1,1,'shit',1,'2024-11-30 15:55:19'),
+(21,1,1,'shirt',1,'2024-11-30 15:55:25'),
+(22,1,1,'sweater',1,'2024-11-30 15:55:30'),
+(23,1,1,'sweater',1,'2024-11-30 15:55:57'),
+(24,1,1,'sweater',1,'2024-11-30 15:56:05'),
+(25,1,1,'sweater',1,'2024-11-30 15:56:55'),
+(26,1,1,'shirt',1,'2024-11-30 15:57:53'),
+(27,1,1,'sweater',1,'2024-11-30 15:58:21'),
+(28,1,1,'shirt',1,'2024-11-30 15:58:26'),
+(29,1,1,'shirt',1,'2024-11-30 15:58:38'),
+(30,1,1,'shirt',1,'2024-11-30 15:58:45'),
+(31,1,1,'shirt',1,'2024-11-30 16:01:04'),
+(32,1,1,'shirt',1,'2024-11-30 16:01:21'),
+(33,1,1,'shirt',1,'2024-11-30 16:04:54'),
+(34,1,1,'shirt',1,'2024-11-30 16:05:34'),
+(35,1,1,'sweater',1,'2024-11-30 20:39:36'),
+(36,1,1,'shirt',1,'2024-11-30 21:45:27'),
+(37,1,1,'sweater',1,'2024-12-01 01:06:09'),
+(38,1,1,'sweater',1,'2024-12-01 16:37:53'),
+(39,1,1,'sweater',1,'2024-12-01 16:38:02'),
+(40,1,1,'sweater',1,'2024-12-01 17:04:29'),
+(41,1,1,'sweater',1,'2024-12-01 17:07:08'),
+(42,1,1,'sweater',1,'2024-12-01 17:07:24'),
+(43,1,1,'sweater',1,'2024-12-01 17:08:25'),
+(44,1,1,'sweater',1,'2024-12-01 17:09:14'),
+(45,1,1,'sweater',1,'2024-12-01 17:09:29'),
+(46,1,1,'sweater',1,'2024-12-01 17:09:41'),
+(47,1,1,'sweater',1,'2024-12-01 17:10:03'),
+(48,1,1,'sweater',1,'2024-12-01 17:11:27'),
+(49,1,1,'sweater',1,'2024-12-01 17:11:49'),
+(50,1,1,'sweater',1,'2024-12-01 17:12:58'),
+(51,1,1,'sweater',1,'2024-12-01 17:13:12'),
+(52,1,1,'sweater',1,'2024-12-01 18:11:41'),
+(53,1,1,'sweater',1,'2024-12-01 19:14:26'),
+(54,1,1,'sweater',1,'2024-12-01 19:28:55'),
+(55,1,1,'sweater',1,'2024-12-01 19:29:03'),
+(56,1,1,'shirt',1,'2024-12-01 19:29:06'),
+(57,1,1,'shirt',1,'2024-12-01 19:29:28'),
+(58,1,1,'shirt',1,'2024-12-01 19:32:16'),
+(59,1,1,'shirt',1,'2024-12-01 19:34:25'),
+(60,1,1,'shirt',1,'2024-12-01 19:34:36'),
+(61,1,1,'shirt',1,'2024-12-01 19:34:45'),
+(62,1,1,'shirt',1,'2024-12-01 19:35:30'),
+(63,1,1,'shirt',1,'2024-12-01 19:35:32'),
+(64,1,1,'shirt',1,'2024-12-01 19:36:07'),
+(65,1,1,'shirt',1,'2024-12-01 19:36:27'),
+(66,1,1,'sweater',1,'2024-12-01 19:36:31'),
+(67,1,1,'shirt',1,'2024-12-01 19:41:26'),
+(68,1,1,'shirt',1,'2024-12-01 19:42:03'),
+(69,1,1,'shirt',1,'2024-12-01 19:43:19'),
+(70,1,1,'shirt',1,'2024-12-01 19:43:21'),
+(71,1,1,'shirt',1,'2024-12-01 19:43:23'),
+(72,1,1,'shirt',1,'2024-12-01 19:43:24'),
+(73,1,1,'shirt',1,'2024-12-01 19:43:26'),
+(74,1,1,'sweater',1,'2024-12-01 19:43:28'),
+(75,1,1,'printed',5,'2024-12-01 19:43:40'),
+(76,1,1,'printed',5,'2024-12-01 19:43:44'),
+(77,1,1,'printed',5,'2024-12-01 19:43:51'),
+(78,1,1,'shirt',1,'2024-12-01 19:44:56'),
+(79,1,1,'shirt',1,'2024-12-01 19:46:28'),
+(80,1,1,'shirt',1,'2024-12-01 19:48:58');
 /*!40000 ALTER TABLE `ps_statssearch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50970,10 +52283,10 @@ CREATE TABLE `ps_stock_available` (
 LOCK TABLES `ps_stock_available` WRITE;
 /*!40000 ALTER TABLE `ps_stock_available` DISABLE KEYS */;
 INSERT INTO `ps_stock_available` VALUES
-(1,1,0,1,0,2399,2399,0,0,2,''),
-(2,2,0,1,0,2100,0,0,0,2,''),
+(1,1,0,1,0,2400,0,0,0,2,''),
+(2,2,0,1,0,2099,2099,0,0,2,''),
 (3,3,0,1,0,1500,0,0,0,2,''),
-(4,4,0,1,0,1500,0,0,0,2,''),
+(4,4,0,1,0,1499,1499,0,0,2,''),
 (5,5,0,1,0,900,0,0,0,2,''),
 (6,6,0,1,0,300,0,0,0,2,''),
 (7,7,0,1,0,300,0,0,0,2,''),
@@ -50989,24 +52302,24 @@ INSERT INTO `ps_stock_available` VALUES
 (17,17,0,1,0,1200,0,0,0,2,''),
 (18,18,0,1,0,1200,0,0,0,2,''),
 (19,19,0,1,0,300,0,0,0,2,''),
-(20,1,1,1,0,299,300,1,0,2,''),
-(21,1,2,1,0,300,300,0,0,2,''),
-(22,1,3,1,0,300,300,0,0,2,''),
-(23,1,4,1,0,300,300,0,0,2,''),
-(24,1,5,1,0,300,300,0,0,2,''),
-(25,1,6,1,0,300,300,0,0,2,''),
-(26,1,7,1,0,300,300,0,0,2,''),
-(27,1,8,1,0,300,300,0,0,2,''),
-(28,2,9,1,0,1200,0,0,0,2,''),
-(29,2,10,1,0,300,0,0,0,2,''),
-(30,2,11,1,0,300,0,0,0,2,''),
-(31,2,12,1,0,300,0,0,0,2,''),
+(20,1,1,1,0,300,0,0,0,2,''),
+(21,1,2,1,0,300,0,0,0,2,''),
+(22,1,3,1,0,300,0,0,0,2,''),
+(23,1,4,1,0,300,0,0,0,2,''),
+(24,1,5,1,0,300,0,0,0,2,''),
+(25,1,6,1,0,300,0,0,0,2,''),
+(26,1,7,1,0,300,0,0,0,2,''),
+(27,1,8,1,0,300,0,0,0,2,''),
+(28,2,9,1,0,1199,1200,1,0,2,''),
+(29,2,10,1,0,300,300,0,0,2,''),
+(30,2,11,1,0,300,300,0,0,2,''),
+(31,2,12,1,0,300,300,0,0,2,''),
 (32,3,13,1,0,900,0,0,0,2,''),
 (33,3,14,1,0,300,0,0,0,2,''),
 (34,3,15,1,0,300,0,0,0,2,''),
-(35,4,16,1,0,900,0,0,0,2,''),
-(36,4,17,1,0,300,0,0,0,2,''),
-(37,4,18,1,0,300,0,0,0,2,''),
+(35,4,16,1,0,899,900,1,0,2,''),
+(36,4,17,1,0,300,300,0,0,2,''),
+(37,4,18,1,0,300,302,2,0,2,''),
 (38,5,19,1,0,300,0,0,0,2,''),
 (39,5,20,1,0,300,0,0,0,2,''),
 (40,5,21,1,0,300,0,0,0,2,''),
@@ -51176,6 +52489,12 @@ CREATE TABLE `ps_store` (
 
 LOCK TABLES `ps_store` WRITE;
 /*!40000 ALTER TABLE `ps_store` DISABLE KEYS */;
+INSERT INTO `ps_store` VALUES
+(1,21,12,'Miami','33135',25.76500500,-80.24379700,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
+(2,21,12,'Miami','33304',26.13793600,-80.13943500,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
+(3,21,12,'Miami','33026',26.00998700,-80.29447200,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
+(4,21,12,'Miami','33133',25.73629600,-80.24479700,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
+(5,21,12,'Miami','33181',25.88674000,-80.16329200,'','','',1,'2024-11-23 21:27:59','2024-11-23 21:27:59');
 /*!40000 ALTER TABLE `ps_store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51204,6 +52523,12 @@ CREATE TABLE `ps_store_lang` (
 
 LOCK TABLES `ps_store_lang` WRITE;
 /*!40000 ALTER TABLE `ps_store_lang` DISABLE KEYS */;
+INSERT INTO `ps_store_lang` VALUES
+(1,1,'Dade County','3030 SW 8th St Miami','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
+(2,1,'E Fort Lauderdale','1000 Northeast 4th Ave Fort Lauderdale','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
+(3,1,'Pembroke Pines','11001 Pines Blvd Pembroke Pines','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
+(4,1,'Coconut Grove','2999 SW 32nd Avenue','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
+(5,1,'N Miami/Biscayne','12055 Biscayne Blvd','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]','');
 /*!40000 ALTER TABLE `ps_store_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51228,6 +52553,12 @@ CREATE TABLE `ps_store_shop` (
 
 LOCK TABLES `ps_store_shop` WRITE;
 /*!40000 ALTER TABLE `ps_store_shop` DISABLE KEYS */;
+INSERT INTO `ps_store_shop` VALUES
+(1,1),
+(2,1),
+(3,1),
+(4,1),
+(5,1);
 /*!40000 ALTER TABLE `ps_store_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51558,7 +52889,7 @@ CREATE TABLE `ps_tab` (
   `wording` varchar(255) DEFAULT NULL,
   `wording_domain` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_tab`)
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51611,22 +52942,22 @@ INSERT INTO `ps_tab` VALUES
 (41,33,3,NULL,'AdminStockConfiguration',NULL,1,1,0,'','Configuration','Admin.Navigation.Menu'),
 (42,0,2,NULL,'IMPROVE',NULL,1,1,0,'','Improve','Admin.Navigation.Menu'),
 (43,42,0,NULL,'AdminParentModulesSf',NULL,1,1,0,'extension','Modules','Admin.Navigation.Menu'),
-(44,43,0,NULL,'AdminModulesSf',NULL,1,1,0,'','Module Manager','Admin.Navigation.Menu'),
-(45,44,0,NULL,'AdminModulesManage',NULL,1,1,0,'','Modules','Admin.Navigation.Menu'),
-(46,44,1,NULL,'AdminModulesNotifications',NULL,1,1,0,'','Alerts','Admin.Navigation.Menu'),
-(47,44,2,NULL,'AdminModulesUpdates',NULL,1,1,0,'','Updates','Admin.Navigation.Menu'),
-(48,43,1,NULL,'AdminParentModulesCatalog',NULL,1,1,0,'','Module Catalog','Admin.Navigation.Menu'),
-(49,48,0,NULL,'AdminModulesCatalog',NULL,1,1,0,'','Module Catalog','Admin.Navigation.Menu'),
-(50,48,1,NULL,'AdminAddonsCatalog',NULL,1,1,0,'','Module Selections','Admin.Navigation.Menu'),
+(44,43,1,'','AdminModulesSf','',1,1,0,'','Module Manager','Admin.Navigation.Menu'),
+(45,44,1,NULL,'AdminModulesManage',NULL,1,1,0,'','Modules','Admin.Navigation.Menu'),
+(46,44,3,NULL,'AdminModulesNotifications',NULL,1,1,0,'','Alerts','Admin.Navigation.Menu'),
+(47,44,4,NULL,'AdminModulesUpdates',NULL,1,1,0,'','Updates','Admin.Navigation.Menu'),
+(48,43,0,'','AdminParentModulesCatalog','',1,1,0,'','Marketplace','Modules.Mbo.Global'),
+(49,48,3,'','AdminModulesCatalog','',0,1,0,'','Marketplace','Modules.Mbo.Global'),
+(50,48,4,'','AdminAddonsCatalog','',0,1,0,'','Modules in the spotlight','Modules.Mbo.Modulesselection'),
 (51,43,2,NULL,'AdminModules',NULL,0,1,0,'','',''),
 (52,42,1,NULL,'AdminParentThemes',NULL,1,1,0,'desktop_mac','Design','Admin.Navigation.Menu'),
 (53,130,1,'','AdminThemes','',1,1,0,'','Theme & Logo','Admin.Navigation.Menu'),
-(54,52,1,NULL,'AdminThemesCatalog',NULL,1,1,0,'','Theme Catalog','Admin.Navigation.Menu'),
-(55,52,2,NULL,'AdminParentMailTheme',NULL,1,1,0,'','Email Theme','Admin.Navigation.Menu'),
+(54,52,3,'','AdminThemesCatalog','',0,1,0,'','Theme Catalog','Admin.Navigation.Menu'),
+(55,52,4,NULL,'AdminParentMailTheme',NULL,1,1,0,'','Email Theme','Admin.Navigation.Menu'),
 (56,55,0,NULL,'AdminMailTheme',NULL,1,1,0,'','Email Theme','Admin.Navigation.Menu'),
-(57,52,3,NULL,'AdminCmsContent',NULL,1,1,0,'','Pages','Admin.Navigation.Menu'),
-(58,52,4,NULL,'AdminModulesPositions',NULL,1,1,0,'','Positions','Admin.Navigation.Menu'),
-(59,52,5,NULL,'AdminImages',NULL,1,1,0,'','Image Settings','Admin.Navigation.Menu'),
+(57,52,5,NULL,'AdminCmsContent',NULL,1,1,0,'','Pages','Admin.Navigation.Menu'),
+(58,52,6,NULL,'AdminModulesPositions',NULL,1,1,0,'','Positions','Admin.Navigation.Menu'),
+(59,52,7,NULL,'AdminImages',NULL,1,1,0,'','Image Settings','Admin.Navigation.Menu'),
 (60,42,2,NULL,'AdminParentShipping',NULL,1,1,0,'local_shipping','Shipping','Admin.Navigation.Menu'),
 (61,60,0,NULL,'AdminCarriers',NULL,1,1,0,'','Carriers','Admin.Navigation.Menu'),
 (62,60,1,NULL,'AdminShipping',NULL,1,1,0,'','Preferences','Admin.Navigation.Menu'),
@@ -51688,20 +53019,34 @@ INSERT INTO `ps_tab` VALUES
 (118,103,9,NULL,'AdminShopGroup',NULL,0,1,0,'','Multistore','Admin.Navigation.Menu'),
 (119,103,10,NULL,'AdminShopUrl',NULL,0,1,0,'','Multistore','Admin.Navigation.Menu'),
 (120,103,11,NULL,'AdminFeatureFlag',NULL,1,1,0,'','Experimental Features','Admin.Navigation.Menu'),
-(121,-1,0,NULL,'AdminQuickAccesses',NULL,1,1,0,'','Quick Access','Admin.Navigation.Menu'),
+(121,-1,2,NULL,'AdminQuickAccesses',NULL,1,1,0,'','Quick Access','Admin.Navigation.Menu'),
 (122,0,4,NULL,'DEFAULT',NULL,1,1,0,'','More','Admin.Navigation.Menu'),
-(123,-1,1,NULL,'AdminPatterns',NULL,1,1,0,'','',''),
+(123,-1,3,NULL,'AdminPatterns',NULL,1,1,0,'','',''),
 (124,43,3,'blockwishlist','WishlistConfigurationAdminParentController','',0,1,0,'',NULL,NULL),
 (125,124,1,'blockwishlist','WishlistConfigurationAdminController','',1,1,0,'',NULL,NULL),
 (126,124,2,'blockwishlist','WishlistStatisticsAdminController','',1,1,0,'',NULL,NULL),
-(127,-1,2,'dashgoals','AdminDashgoals','',1,1,0,'',NULL,NULL),
-(128,-1,3,'ps_faviconnotificationbo','AdminConfigureFaviconBo','',1,1,0,'',NULL,NULL),
-(129,52,6,'ps_linklist','AdminLinkWidget','admin_link_block_list',1,1,0,'','Link List','Modules.Linklist.Admin'),
-(130,52,0,'','AdminThemesParent','',1,1,0,'','Theme & Logo','Admin.Navigation.Menu'),
+(127,-1,4,'dashgoals','AdminDashgoals','',1,1,0,'',NULL,NULL),
+(128,-1,5,'ps_faviconnotificationbo','AdminConfigureFaviconBo','',1,1,0,'',NULL,NULL),
+(129,52,8,'ps_linklist','AdminLinkWidget','admin_link_block_list',1,1,0,'','Link List','Modules.Linklist.Admin'),
+(130,52,2,'','AdminThemesParent','',1,1,0,'','Theme & Logo','Admin.Navigation.Menu'),
 (131,130,2,'ps_themecusto','AdminPsThemeCustoConfiguration','',1,1,0,'',NULL,NULL),
 (132,130,3,'ps_themecusto','AdminPsThemeCustoAdvanced','',1,1,0,'',NULL,NULL),
 (133,0,5,'welcome','AdminWelcome','',1,1,0,'',NULL,NULL),
-(134,0,6,'blockreassurance','AdminBlockListing','',0,1,0,'',NULL,NULL);
+(134,0,6,'blockreassurance','AdminBlockListing','',0,1,0,'',NULL,NULL),
+(135,42,5,'paypal','paypal','',0,1,0,'',NULL,NULL),
+(136,135,1,'paypal','AdminPaypalConfiguration','',1,1,0,'',NULL,NULL),
+(137,0,7,'paypal','AdminPaypalProcessLogger','',1,1,0,'',NULL,NULL),
+(138,136,1,'paypal','AdminPaypalDiagnostic','',1,1,0,'',NULL,NULL),
+(141,0,8,'ps_accounts','AdminAjaxPsAccounts','',0,1,0,'',NULL,NULL),
+(142,0,9,'ps_accounts','AdminDebugPsAccounts','',0,1,0,'',NULL,NULL),
+(143,0,10,'ps_accounts','AdminOAuth2PsAccounts','',0,1,0,'',NULL,NULL),
+(144,0,11,'ps_accounts','AdminLoginPsAccounts','',0,1,0,'',NULL,NULL),
+(145,0,12,'ps_accounts','AdminLogin','',0,1,0,'',NULL,NULL),
+(151,48,1,'ps_mbo','AdminPsMboModule','',1,1,0,'',NULL,NULL),
+(152,48,2,'ps_mbo','AdminPsMboAddons','',1,1,0,'','Modules in the spotlight','Modules.Mbo.Modulesselection'),
+(153,-1,0,'ps_mbo','AdminPsMboRecommended','',1,1,0,'','Recommended Modules and Services','Modules.Mbo.Recommendedmodulesandservices'),
+(154,52,0,'ps_mbo','AdminPsMboTheme','',1,1,0,'',NULL,NULL),
+(155,44,2,'ps_mbo','AdminPsMboUninstalledModules','',1,1,0,'','Uninstalled modules','Modules.Mbo.Modulesselection');
 /*!40000 ALTER TABLE `ps_tab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51774,9 +53119,9 @@ INSERT INTO `ps_tab_lang` VALUES
 (45,1,'Moduły'),
 (46,1,'Powiadomienia'),
 (47,1,'Aktualizacje'),
-(48,1,'Katalog'),
-(49,1,'Katalog'),
-(50,1,'Module Selections'),
+(48,1,'Marketplace'),
+(49,1,'Marketplace'),
+(50,1,'Modules in the spotlight'),
 (52,1,'Wygląd'),
 (53,1,'Szablony'),
 (54,1,'Katalog'),
@@ -51858,7 +53203,21 @@ INSERT INTO `ps_tab_lang` VALUES
 (131,1,'Pages Configuration'),
 (132,1,'Advanced Customization'),
 (133,1,'Welcome'),
-(134,1,'AdminBlockListing');
+(134,1,'AdminBlockListing'),
+(135,1,'PayPal'),
+(136,1,'Configuration'),
+(137,1,'Logger'),
+(138,1,'Diagnostic'),
+(141,1,'AdminAjaxPsAccounts (Konto PrestaShop)'),
+(142,1,'AdminDebugPsAccounts (Konto PrestaShop)'),
+(143,1,'AdminOAuth2PsAccounts (Konto PrestaShop)'),
+(144,1,'AdminLoginPsAccounts (Konto PrestaShop)'),
+(145,1,'AdminLogin'),
+(151,1,'Marketplace'),
+(152,1,'Modules in the spotlight'),
+(153,1,'Recommended Modules and Services'),
+(154,1,'Katalog'),
+(155,1,'Odinstalowane moduły');
 /*!40000 ALTER TABLE `ps_tab_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53144,7 +54503,7 @@ CREATE TABLE `ps_wishlist` (
   `date_upd` datetime NOT NULL,
   `default` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`id_wishlist`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53153,6 +54512,8 @@ CREATE TABLE `ps_wishlist` (
 
 LOCK TABLES `ps_wishlist` WRITE;
 /*!40000 ALTER TABLE `ps_wishlist` DISABLE KEYS */;
+INSERT INTO `ps_wishlist` VALUES
+(1,2,1,1,'EC912AD556658194','Moja lista życzeń',NULL,'2024-12-01 20:32:01','2024-12-01 20:32:01',1);
 /*!40000 ALTER TABLE `ps_wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53312,4 +54673,4 @@ USE `prestashop`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-30 20:22:15
+-- Dump completed on 2024-12-01 19:56:25
