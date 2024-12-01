@@ -72,14 +72,6 @@
     </div>
 </div>
 
-<!-- <div class="card-deck products{if !empty($cssClass)} {$cssClass}{/if}">
-    <div class="product">
-        {foreach from=$products|@array_slice:3:6 item="product" key="position"}
-            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
-        {/foreach}
-    </div>
-</div> -->
-
 <div class="row">
     <div class="card-deck recommended-products">
         <!-- Pierwszy rząd -->
@@ -113,8 +105,6 @@
         {/foreach}
     </div>
 </div>
-
-
 
 <div class="col-sm-12 cm-i-customer-greeting">
     <div class="text-center">

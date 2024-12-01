@@ -8,7 +8,7 @@
         <div class="shopping-cart-nav">
           <i class="fas fa-shopping-cart fa-fw"></i>
           <span class="cart-products-count">{$cart.products_count} szt.</span>
-          <i class="material-icons icons-navigation-bar">arrow_drop_down</i>
+          <i class="material-icons icons-navigation-bar">&#xe5c5</i>
         </div>
       </a>
 

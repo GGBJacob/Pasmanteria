@@ -23,6 +23,11 @@
 	width: 1rem;
 }
 
+.hidden-sm-down.text-navigation-bar {
+    font-weight: bold;
+    color: gray;
+}
+
 /*zostaje przy scrollowaniu*/
 @supports ((position:-webkit-sticky) or (position:sticky)) {
     .sticky-top {
@@ -31,6 +36,10 @@
         top: 0;
         z-index: 1050;
     }
+}
+
+.cart-products-count {
+    text-decoration: none;
 }
 
 /*LOG IN*/
@@ -324,6 +333,34 @@
 }
 
 /*MENU*/
+/*KATEGORIE PRODUKTÓW MENU*/
+
+/*nazwy kategorii*/
+.dropdown-item {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.dropdown-item:hover{
+    background-color: #e9ecef;
+    color: #495057  !important;
+}
+
+/*dropdown menu*/
+.popover.sub-menu.js-sub-menu.collapse {
+    top: 44px;
+    background-color: white;
+    min-width: 120%;
+    left: -120px;
+    border-radius: 5px;
+}
+
+ul.top-menu {
+    display: flex;
+    justify-content: center;
+}
+
+
 
 
 
@@ -477,7 +514,6 @@ body.page-index #wrapper #custom-text {
 }
 
 /*BODY*/
-
 /*NAGŁÓWEK1 - Zamówienia telefoniczne*/
 
 body {
