@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
- {if not isset($category)}
+{if {$page.page_name} =='index'}
 <div class="card-deck">
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
@@ -134,7 +134,7 @@
         </div>
     </div>
 </div>
-{else}
+{elseif {$page.page_name} != 'cart'}
 
 {capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
 
@@ -143,4 +143,6 @@
         {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
     {/foreach}
 </div>
+{else}
+
 {/if}

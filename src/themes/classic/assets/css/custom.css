@@ -595,19 +595,6 @@ h4 {
 
 /*PRODUKTY BODY - /root/biznes/src/themes/classic/templates/catalog/_partials/productlist.tpl*/
 /* /root/biznes/src/themes/classic/modules/ps_featuredproducts/views/templates/hook/ps_featuredproducts.tpl */
-.products {
-    display: flex;
-    flex-wrap: wrap; /* Ustaw produkty w nowym rzędzie, gdy nie mieszczą się w jednym */
-    gap: 16px; /* Odstępy między produktami */
-}
-
-.product {
-    flex: 1 1 calc(33.333% - 16px); /* Ustaw szerokość na jedną trzecią (z uwzględnieniem odstępów) */
-    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
-    padding: 10px; /* Opcjonalne stylowanie */
-    background: #f9f9f9; /* Opcjonalne tło */
-    border: 1px solid #ddd; /* Opcjonalne obramowanie */
-}
 
 .card-deck {
     width: 160%;
