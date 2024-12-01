@@ -351,23 +351,47 @@ public class SeleniumTester {
     @Test
     public void testInvoice()
     {
-        try{
+        try {
             driver.get(shopURL);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link"))).click();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account")))
+                    .click(); // Navigate to the account page
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link")))
+                    .click(); // Open order history
 
             WebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("table.table-labeled")));
-            WebElement referenceCell = table.findElement(By.cssSelector("tbody tr th[scope='row']"));
-            String orderReference = referenceCell.getText();
-            changeOrderStatus(orderReference, "2");
+            if (table == null) {
+                fail("Order history table not found. Ensure the user has orders and the table is visible.");
+            }
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Pobierz fakturę proforma w pliku PDF"))).click();
-        }catch (Exception e)
-        {
-            fail("Exception occured: " + e.getMessage());
+            WebElement referenceCell = table.findElement(By.cssSelector("tbody tr th[scope='row']"));
+            if (referenceCell == null) {
+                fail("Order reference cell not found. Ensure that orders are listed correctly in the table.");
+            }
+
+            String orderReference = referenceCell.getText();
+            if (orderReference == null || orderReference.isEmpty()) {
+                fail("Order reference could not be retrieved. Ensure the table structure and content are correct.");
+            }
+
+            changeOrderStatus(orderReference, "2"); // Change the order status to the desired value
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły")))
+                    .click(); // Navigate to the order details page
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Pobierz fakturę proforma w pliku PDF")))
+                    .click(); // Download the invoice
+        } catch (TimeoutException te) {
+            fail("A timeout occurred while waiting for an element. Check if the page loaded correctly and all expected elements are present: " + te.getMessage());
+        } catch (NoSuchElementException nse) {
+            fail("An expected element was not found. Verify the locator strategy and ensure the page structure hasn't changed: " + nse.getMessage());
+        } catch (IllegalStateException ise) {
+            fail("The application state is inconsistent. This could be due to navigation issues or missing data: " + ise.getMessage());
+        } catch (Exception e) {
+            fail("An unexpected exception occurred: " + e.getMessage());
         }
     }
 }

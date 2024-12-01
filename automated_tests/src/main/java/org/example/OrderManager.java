@@ -43,8 +43,8 @@ public class OrderManager {
         String updateOrderUrl = shopURL + "/api/orders/" + orderId;
         String updateResponse = sendHttpRequest(updateOrderUrl, "PUT", authHeader, updatedOrderDetails);
 
-        System.out.println("Update response:");
-        System.out.println(updateResponse);
+        //System.out.println("Update response:");
+        //System.out.println(updateResponse);
     }
 
     private static String sendHttpRequest(String urlString, String method, String authHeader, String body) throws IOException {
