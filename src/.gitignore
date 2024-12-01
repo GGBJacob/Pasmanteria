@@ -53,7 +53,8 @@
 !/img/l/index.php
 !/img/m/index.php
 !/img/os/index.php
-!/img/p/*
+!/img/p/
+!/img/p/**
 !/img/s/index.php
 !/img/scenes
 !/img/st/index.php
