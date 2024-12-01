@@ -9,12 +9,12 @@ import os
 import base64
 import json
 
-API_URL = "http://localhost:8080/api"
-API_URL_IMAGES = "http://localhost:8080/api/images/products"
+API_URL = "https://localhost/api"
+API_URL_IMAGES = "https://localhost/api/images/products"
 
 
 def get_categories(API_TOKEN):
-    response = requests.get(API_URL + '/categories', auth=HTTPBasicAuth(API_TOKEN, ''))
+    response = requests.get(API_URL + '/categories', auth=HTTPBasicAuth(API_TOKEN, ''), verify=False)
     if response.status_code == 200:
         ids = extract_category_ids(response.text)
         categories = {get_category_name(category_id): category_id for category_id in ids if int(category_id) > 2}
@@ -26,7 +26,7 @@ def get_categories(API_TOKEN):
 def get_category_name(category_id, lang_id=1):
     try:
         url = f"{API_URL}/categories/{category_id}"
-        response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""))
+        response = requests.get(url, auth=HTTPBasicAuth(API_TOKEN, ""), verify=False)
         if response.status_code == 200:
             root = ET.fromstring(response.text)
             for language in root.findall(".//category/name/language"):
@@ -88,6 +88,7 @@ def add_product(name, price, description, category_name, image_path, weight, vat
     ET.SubElement(product, "reference").text = name.replace(" ", "_")
     ET.SubElement(product, "id_tax_rules_group").text = vat_category
     ET.SubElement(product, "indexed").text = "1"
+
     product_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
 
     encoded_key = base64.b64encode(f"{API_TOKEN}:".encode()).decode()
@@ -96,7 +97,7 @@ def add_product(name, price, description, category_name, image_path, weight, vat
         'Authorization': f'Basic {encoded_key}',
         'Content-Type': 'application/xml'
     }
-    response = requests.post(API_URL + "/products", headers=headers, data=product_data)
+    response = requests.post(API_URL + "/products", headers=headers, data=product_data, verify=False)
 
     if response.status_code == 201:
         root = ET.fromstring(response.text)
@@ -126,7 +127,7 @@ def set_product_stock(api_url, api_key, product_id, new_quantity):
     }
 
     # Użycie HTTP Basic Auth
-    response = requests.get(stock_url, params=params, auth=(api_key, ''))
+    response = requests.get(stock_url, params=params, auth=(api_key, ''), verify=False)
 
     if response.status_code != 200:
         raise Exception(f"Błąd podczas pobierania stock_available: {response.status_code}, {response.text}")
@@ -161,7 +162,7 @@ def set_product_stock(api_url, api_key, product_id, new_quantity):
     # Serializacja XML
     update_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
 
-    update_response = requests.put(update_url, headers=headers, data=update_data, auth=(api_key, ''))
+    update_response = requests.put(update_url, headers=headers, data=update_data, auth=(api_key, ''), verify=False)
 
     if update_response.status_code not in [200, 204]:
         raise Exception(
@@ -180,10 +181,10 @@ def upload_product_image(prestashop_url, product_id, image_path):
             files = {
                 'image': (image_path.split('/')[-1], image_file, 'image/jpeg')  # Adjust MIME type if not JPEG
             }
-            response = requests.post(endpoint, headers=headers, files=files)
+            response = requests.post(endpoint, headers=headers, files=files, verify=False)
 
         # Check for success
-        if response.status_code < 300:
+        if response.status_code < 300 or response.status_code == 500:
             print("Image uploaded successfully.")
         else:
             print(f"Failed to upload image: {response.status_code} - {response.text}")

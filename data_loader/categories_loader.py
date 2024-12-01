@@ -5,11 +5,11 @@ import json
 import re
 
 # Replace these variables with your API details
-API_URL = "http://localhost:8080/api/categories"
+API_URL = "https://localhost/api/categories"
 
 
 def get_highest_category_id():
-    response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''))
+    response = requests.get(API_URL, auth=HTTPBasicAuth(API_TOKEN, ''), verify=False)
     if response.status_code == 200:
         print("Odpowiedź API:", response.text)
         try:
@@ -61,7 +61,8 @@ def create_category(url, api_key, category_name, parent_category_id):
         url,
         headers=headers,
         data=category_data,
-        auth=(api_key, '')
+        auth=(api_key, ''),
+        verify=False
     )
 
     # Sprawdzenie, czy kategoria została utworzona pomyślnie
