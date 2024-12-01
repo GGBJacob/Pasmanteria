@@ -15,17 +15,17 @@
       <!-- Dropdown content -->
       <div class="cart-dropdown-content hidden" id="cartDropdown">
         <b>
-          <div class="cart-summary">
             <a href="{$urls.pages.cart}?action=show" class="cart-summary-link">
-              W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price} zł
+              <div class="cart-summary">
+                W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price} zł
+              </div>
             </a>
-          </div>
           <div class="cart-products">
             <ul>
               {if $cart.products_count > 0}
                 <div class="dropdown-divider"></div>
                 {foreach $cart.products as $product}
-                  <li>
+                  <li class="product-in-cart">
                     <a href="{$product.link}" class="cart-product-link">
                       {$product.quantity} x {$product.name}
                     </a>

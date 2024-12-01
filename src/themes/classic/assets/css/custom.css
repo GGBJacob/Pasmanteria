@@ -88,7 +88,7 @@
     right: 2rem;
 }
 
-.cart-products:hover, .cart-summary:hover{
+.product-in-cart:hover, .cart-summary:hover{
     background-color: #e4e4e4;
 }
 
@@ -306,8 +306,19 @@
 	font-size: 18px;
 }
 
+.cm-header-search .input-group button i:hover {
+    font-size: 18px;
+    color: #6b3454;
+    background-color: #c99cb6;
+    font-size: 18px;
+}
+
 .input-group-append .btn.btn-info {
 	background-color: #e9ecef;
+}
+
+.cm-header-search .input-group:hover button i {
+    background-color: #ddb4cc !important;
 }
 
 /* Round the corners of the search submit button */
