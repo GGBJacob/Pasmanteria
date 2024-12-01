@@ -38,9 +38,8 @@
     </div>
 </div>
 
-<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+<div class="card-deck products{if !empty($cssClass)} {$cssClass}{/if}">
     <div class="product">
-
         {foreach from=$products|@array_slice:3:6 item="product" key="position"}
             {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
         {/foreach}

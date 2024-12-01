@@ -16,8 +16,7 @@
       <div class="cart-dropdown-content hidden" id="cartDropdown">
         <b>
           <div class="cart-summary">
-
-            W TWOIM KOSZYKU: {$cart.products_count} szt., x
+            W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price}
             zł
           </div>
           <div class="cart-products">
