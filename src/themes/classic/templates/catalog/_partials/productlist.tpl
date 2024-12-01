@@ -22,7 +22,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-
 {if {$page.page_name} =='index'}
 <div class="card-deck">
     <div class="card text-center border-1 orders-main-page">
@@ -134,7 +133,7 @@
         </div>
     </div>
 </div>
-{elseif {$page.page_name} != 'cart'}
+{elseif {$page.page_name} != 'cart' && {$page.page_name} != 'order-confirmation'}
 
 {capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
 
@@ -143,6 +142,7 @@
         {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
     {/foreach}
 </div>
+
 {else}
 
 {/if}
