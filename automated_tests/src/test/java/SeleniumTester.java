@@ -14,7 +14,12 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+
+import static org.example.OrderManager.changeOrderStatus;
 import static org.junit.jupiter.api.Assertions.*;
+
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 
 public class SeleniumTester {
@@ -22,6 +27,7 @@ public class SeleniumTester {
     private static WebDriver driver;
     private static WebDriverWait wait;
     private final String userMail;
+    private static String shopURL;
 
 
     public static final String YELLOW = "\u001B[33m"; // Used for warnings
@@ -53,7 +59,9 @@ public class SeleniumTester {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.get("https://localhost");
+        Dotenv dotenv = Dotenv.load();
+        shopURL = dotenv.get("SHOP_URL");
+        driver.get(shopURL);
     }
 
     @AfterAll
@@ -87,7 +95,7 @@ public class SeleniumTester {
     public void testSignUp()
     {
         try{
-            driver.get("https://localhost/logowanie?create_account");
+            driver.get(shopURL + "/logowanie?create_account");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("authentication")));
 
             // Select gender
@@ -139,7 +147,7 @@ public class SeleniumTester {
     public void testProductAdding()
     {
         try{
-        driver.get("https://localhost");
+        driver.get(shopURL);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
 
         List<WebElement> categories = driver.findElements(By.cssSelector("ul#top-menu > li.category a.dropdown-submenu"));
@@ -192,7 +200,7 @@ public class SeleniumTester {
     public void testProductSearch()
     {
         try {
-            driver.get("https://localhost");
+            driver.get(shopURL);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
             List<WebElement> products = driver.findElements(By.className("product-title"));
             List<String> productNames = new ArrayList<>();
@@ -245,7 +253,7 @@ public class SeleniumTester {
     public void testProductRemoval()
     {
         try {
-            driver.get("https://localhost/koszyk");
+            driver.get(shopURL + "/koszyk");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
             int productsToRemove = 3, productsRemoved = 0;
@@ -266,7 +274,7 @@ public class SeleniumTester {
     public void logIn()
     {
         try {
-            driver.get("https://localhost");
+            driver.get(shopURL);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
         }
         catch (Exception e)
@@ -303,7 +311,7 @@ public class SeleniumTester {
     {
         logIn();
         try{
-            driver.get("https://localhost/koszyk?action=show");
+            driver.get(shopURL + "/koszyk?action=show");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
             List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
             if (!disabledButton.isEmpty()) {
@@ -326,7 +334,7 @@ public class SeleniumTester {
     public void testOrderStatus()
     {
         try{
-            driver.get("https://localhost/");
+            driver.get(shopURL + "/");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
             logIn();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
@@ -340,10 +348,26 @@ public class SeleniumTester {
         }
     }
 
+    @Test
     public void testInvoice()
     {
-        // TODO: Generate an invoice @IVOBOT
+        try{
+            driver.get(shopURL);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            logIn();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link"))).click();
+
+            WebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("table.table-labeled")));
+            WebElement referenceCell = table.findElement(By.cssSelector("tbody tr th[scope='row']"));
+            String orderReference = referenceCell.getText();
+            changeOrderStatus(orderReference, "2");
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Pobierz fakturę proforma w pliku PDF"))).click();
+        }catch (Exception e)
+        {
+            fail("Exception occured: " + e.getMessage());
+        }
     }
-
-
 }

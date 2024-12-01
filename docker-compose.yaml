@@ -8,9 +8,10 @@ services:
             MYSQL_DATABASE: prestashop
         volumes:
             - ./db:/var/lib/mysql
+            - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
         networks:
             - psnet
-        platform: linux/x86_64 # Apple Silicon Macs only
+        # platform: linux/x86_64 # Apple Silicon Macs only
     ps: # PrestaShop container
         container_name: ps
         image: prestashop/prestashop:1.7.8
@@ -23,14 +24,18 @@ services:
             DB_PASSWD: root
             PS_INSTALL_AUTO: 0
         ports:
-            - 8080:80
+            - 80:80   # HTTP
+            - 443:443 # HTTPS
         volumes:
             - ./src:/var/www/html
+            - ./ssl:/etc/ssl/certs
+            - ./config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
         networks:
             - psnet
         depends_on:
             - db
-        platform: linux/x86_64 # Apple Silicon Macs only
+        # platform: linux/x86_64 # Apple Silicon Macs only
+        command: /bin/bash -c "a2enmod ssl && apache2-foreground"
     pma: # phpMyAdmin container
         container_name: pma
         image: phpmyadmin/phpmyadmin:5.2.1
@@ -44,6 +49,6 @@ services:
             - 8081:80
         networks:
             - psnet
-        platform: linux/x86_64 # Apple Silicon Macs only
+        # platform: linux/x86_64 # Apple Silicon Macs only
 networks:
     psnet:
