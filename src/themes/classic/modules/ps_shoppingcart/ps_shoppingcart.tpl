@@ -16,25 +16,32 @@
       <div class="cart-dropdown-content hidden" id="cartDropdown">
         <b>
           <div class="cart-summary">
-            W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price}
-            zł
+            <a href="{$urls.pages.cart}?action=show" class="cart-summary-link">
+              W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price} zł
+            </a>
           </div>
           <div class="cart-products">
             <ul>
               {if $cart.products_count > 0}
                 <div class="dropdown-divider"></div>
                 {foreach $cart.products as $product}
-                  <li>{$product.quantity} x {$product.name}</li>
+                  <li>
+                    <a href="{$product.link}" class="cart-product-link">
+                      {$product.quantity} x {$product.name}
+                    </a>
+                  </li>
                 {/foreach}
               {/if}
             </ul>
           </div>
           {if $cart.products_count > 0}
-            <div class="dropdown-divider"></div>
-            <a class="cart-order" href="{$urls.pages.cart}?action=show">
+          <div class="dropdown-divider"></div>
+          <a href="{$urls.pages.cart}?action=show" class="cart-summary-link">
+            <div class="cart-summary">
               <i class="fas fa-angle-right fa-fw"></i>
               Zamów
-            </a>
+            </div>
+          </a>
           {/if}
         </b>
       </div>

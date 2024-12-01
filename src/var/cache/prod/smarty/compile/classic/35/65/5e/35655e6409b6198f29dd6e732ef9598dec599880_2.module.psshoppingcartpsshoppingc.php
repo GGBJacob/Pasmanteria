@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-12-01 17:05:50
+/* Smarty version 3.1.48, created on 2024-12-01 18:03:11
   from 'module:psshoppingcartpsshoppingc' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674c895e6215d0_25891488',
+  'unifunc' => 'content_674c96cfce69e9_05701215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '35655e6409b6198f29dd6e732ef9598dec599880' => 
     array (
       0 => 'module:psshoppingcartpsshoppingc',
-      1 => 1733069149,
+      1 => 1733072589,
       2 => 'module',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674c895e6215d0_25891488 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674c96cfce69e9_05701215 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="_desktop_cart">
   <div class="blockcart cart-preview" data-refresh-url="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['refresh_url']->value, ENT_QUOTES, 'UTF-8');?>
 ">
@@ -42,10 +42,12 @@ function content_674c895e6215d0_25891488 (Smarty_Internal_Template $_smarty_tpl)
       <div class="cart-dropdown-content hidden" id="cartDropdown">
         <b>
           <div class="cart-summary">
-            W TWOIM KOSZYKU: <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['cart']->value['products_count'], ENT_QUOTES, 'UTF-8');?>
+            <a href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['urls']->value['pages']['cart'], ENT_QUOTES, 'UTF-8');?>
+?action=show" class="cart-summary-link">
+              W TWOIM KOSZYKU: <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['cart']->value['products_count'], ENT_QUOTES, 'UTF-8');?>
  szt., <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['cart']->value['total_price'], ENT_QUOTES, 'UTF-8');?>
-
-            zł
+ zł
+            </a>
           </div>
           <div class="cart-products">
             <ul>
@@ -57,9 +59,14 @@ $_smarty_tpl->tpl_vars['product']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value) {
 $_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
-                  <li><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['quantity'], ENT_QUOTES, 'UTF-8');?>
+                  <li>
+                    <a href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['link'], ENT_QUOTES, 'UTF-8');?>
+" class="cart-product-link">
+                      <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['quantity'], ENT_QUOTES, 'UTF-8');?>
  x <?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['name'], ENT_QUOTES, 'UTF-8');?>
-</li>
+
+                    </a>
+                  </li>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -67,12 +74,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </ul>
           </div>
           <?php if ($_smarty_tpl->tpl_vars['cart']->value['products_count'] > 0) {?>
-            <div class="dropdown-divider"></div>
-            <a class="cart-order" href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['urls']->value['pages']['cart'], ENT_QUOTES, 'UTF-8');?>
-?action=show">
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['urls']->value['pages']['cart'], ENT_QUOTES, 'UTF-8');?>
+?action=show" class="cart-summary-link">
+            <div class="cart-summary">
               <i class="fas fa-angle-right fa-fw"></i>
               Zamów
-            </a>
+            </div>
+          </a>
           <?php }?>
         </b>
       </div>

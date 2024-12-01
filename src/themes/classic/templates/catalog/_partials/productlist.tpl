@@ -37,7 +37,7 @@
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
             <!--href i src ma być koraliki - TOHO zdjęcie kategorii produktu-->
-            <a class="stretched-link" href="#"></a>
+            <a class="stretched-link" href=""></a>
             <img src="/img/logo.jpg" alt="koraliki - TOHO" title="koraliki - TOHO" width="300" height="300" class="img-fluid">
             <div class="card-img-overlay d-flex">
                 <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">koraliki - TOHO</h4>
