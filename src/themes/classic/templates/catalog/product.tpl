@@ -102,7 +102,7 @@
           {block name='product_description_short'}
             <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
           {/block}
-          
+
           {block name='hook_display_reassurance'}
             {hook h='displayReassurance'}
           {/block}
@@ -124,6 +124,8 @@
         </section>
       {/if}
     {/block}
+
+    <a id="btn2" href="javascript:history.back(1)" class="btn btn-info btn-lg btn-block"> <span class="fas fa-angle-left" aria-hidden="true"></span> Powrót</a>
 
     {block name='product_footer'}
       {hook h='displayFooterProduct' product=$product category=$category}
