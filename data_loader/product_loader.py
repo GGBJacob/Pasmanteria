@@ -56,7 +56,9 @@ def add_product(name, price, description, category_name, image_path, weight, vat
 
     if weight is not None:
         ET.SubElement(product, "weight").text = weight
-
+    else:
+        weight_str = str(round(random.uniform(0.1, 1), 2))
+        ET.SubElement(product, "weight").text = weight_str
     description_elem = ET.SubElement(product, "description")
     description_lang = ET.SubElement(description_elem, "language", {"id": lang})
     description_lang.text = description
