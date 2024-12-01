@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-11-23 21:28:39
+/* Smarty version 3.1.48, created on 2024-12-01 17:25:16
   from '/var/www/html/modules/welcome/views/navbar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_67423af73195e3_85750644',
+  'unifunc' => 'content_674c8dec410ab0_40036214',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1049272142a34294234f8aecdff2e5eb3b48a6b5' => 
     array (
       0 => '/var/www/html/modules/welcome/views/navbar.tpl',
-      1 => 1676360366,
+      1 => 1733069219,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67423af73195e3_85750644 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674c8dec410ab0_40036214 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="onboarding-navbar bootstrap">
   <div class="row text">

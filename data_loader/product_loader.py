@@ -1,3 +1,4 @@
+import copy
 import random
 
 import requests
@@ -44,8 +45,10 @@ def extract_category_ids(response_text):
     return category_ids
 
 
-def add_product(name, price, description, category_name, image_path, weight, vat_category="1", lang="1"):
-    category_id = categories[category_name]
+def add_product(name, price, description, categories_names, image_path, weight, vat_category="1", lang="1"):
+    categories_ids = [1, 2]
+    for category_name in categories_names:
+         categories_ids.append(categories[category_name])
     prestashop = ET.Element("prestashop", {"xmlns:xlink": "http://www.w3.org/1999/xlink"})
     product = ET.SubElement(prestashop, "product")
 
@@ -75,11 +78,12 @@ def add_product(name, price, description, category_name, image_path, weight, vat
     meta_title_lang = ET.SubElement(meta_title_elem, "language", {"id": lang})
     meta_title_lang.text = "title"
 
-    ET.SubElement(product, "id_category_default").text = str(category_id)
+    ET.SubElement(product, "id_category_default").text = str(categories_ids[len(categories_ids)-1])
     associations = ET.SubElement(product, "associations")
     categoriess = ET.SubElement(associations, "categories")
-    category = ET.SubElement(categoriess, "category")
-    ET.SubElement(category, "id").text = str(category_id)
+    for category_id in categories_ids:
+        category = ET.SubElement(categoriess, "category")
+        ET.SubElement(category, "id").text = str(category_id)
 
     ET.SubElement(product, "active").text = "1"
     ET.SubElement(product, "visibility").text = "both"
@@ -199,8 +203,11 @@ def upload_product_image(prestashop_url, product_id, image_path):
         print(f"An error occurred: {e}")
 
 
-def add_products(directory, images_directory):
+def add_products(directory, images_directory, categories_names):
     files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+    category_name = os.path.basename(directory)
+    if category_name != 'data':
+        categories_names.append(category_name)
     for file_name in files:
         file_path = os.path.join(directory, file_name)
         with open(file_path, 'r', encoding='utf-8') as file:
@@ -211,7 +218,6 @@ def add_products(directory, images_directory):
                 continue
             # hardcoded vat conditions:
             product_name = data.get("title", "").strip()
-            category_name = os.path.basename(directory)
             vat_category = "1"
             if category_name.startswith("książki"):
                 vat_category = "3"
@@ -242,16 +248,16 @@ def add_products(directory, images_directory):
                 weight = None
             image_name = file_name.replace('.json', '_0.jpg')
             image_directory = os.path.join(images_directory, image_name)
-            add_product(product_name, price, description, category_name, image_directory, weight, vat_category, "1")
+            add_product(product_name, price, description, categories_names, image_directory, weight, vat_category, "1")
     sub_directories = [f for f in os.listdir(directory) if os.path.isdir(os.path.join(directory, f))]
     for sub_directory in sub_directories:
         sub_directory_path = os.path.join(directory, sub_directory)
         images_sub_directory_path = os.path.join(images_directory, sub_directory)
-        add_products(sub_directory_path, images_sub_directory_path)
+        add_products(sub_directory_path, images_sub_directory_path, copy.deepcopy(categories_names))
 
 
 base_data_dir = r"..\scrapedData\data"
 base_images_dir = r"..\scrapedData\images"
 API_TOKEN = input("Enter the token:")
 categories = get_categories(API_TOKEN)
-add_products(base_data_dir, base_images_dir)
+add_products(base_data_dir, base_images_dir, [])
