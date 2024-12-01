@@ -1,4 +1,5 @@
 import org.example.MailGenerator;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,22 +12,18 @@ import java.time.Duration;
 import java.util.*;
 import java.util.NoSuchElementException;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-
 import static org.example.OrderManager.changeOrderStatus;
 import static org.junit.jupiter.api.Assertions.*;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SeleniumTester {
 
     private static WebDriver driver;
     private static WebDriverWait wait;
-    private final String userMail;
+    private static String userMail;
     private static String shopURL;
 
 
@@ -46,8 +43,6 @@ public class SeleniumTester {
 
     public SeleniumTester()
     {
-        MailGenerator mailGenerator = new MailGenerator();
-        userMail = mailGenerator.generateEmail();
     }
 
 
@@ -62,6 +57,8 @@ public class SeleniumTester {
         Dotenv dotenv = Dotenv.load();
         shopURL = dotenv.get("SHOP_URL");
         driver.get(shopURL);
+        MailGenerator mailGenerator = new MailGenerator();
+        userMail = mailGenerator.generateEmail();
     }
 
     @AfterAll
@@ -92,6 +89,7 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(4)
     public void testSignUp()
     {
         try{
@@ -144,6 +142,7 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(1)
     public void testProductAdding()
     {
         try{
@@ -197,11 +196,12 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(2)
     public void testProductSearch()
     {
         try {
             driver.get(shopURL);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             List<WebElement> products = driver.findElements(By.className("product-title"));
             List<String> productNames = new ArrayList<>();
             // Add all product words (e.g. T-Shirt) to array
@@ -250,11 +250,12 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(3)
     public void testProductRemoval()
     {
         try {
             driver.get(shopURL + "/koszyk");
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
             int productsToRemove = 3, productsRemoved = 0;
             for (int i = 0; i < productsToRemove; i++) {
@@ -275,7 +276,7 @@ public class SeleniumTester {
     {
         try {
             driver.get(shopURL);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
         }
         catch (Exception e)
         {
@@ -296,7 +297,7 @@ public class SeleniumTester {
 
         // Enter email
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
-        emailField.sendKeys("user@gmail.com");
+        emailField.sendKeys(this.userMail);
 
         // Enter password
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
@@ -307,18 +308,32 @@ public class SeleniumTester {
 
 
     @Test
+    @Order(5)
     public void testOrder()
     {
         logIn();
         try{
             driver.get(shopURL + "/koszyk?action=show");
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
             if (!disabledButton.isEmpty()) {
                 testProductSearch();
                 testOrder();
             }
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='btn btn-primary' and contains(text(),'Przejdź do realizacji zamówienia')]"))).click();
+
+            // Enter address
+            WebElement addressField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("field-address1")));
+            addressField.sendKeys("AAAAAAAAAAA");
+
+            // Enter zip code
+            WebElement zipCodeField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("field-postcode")));
+            zipCodeField.sendKeys("00-000");
+
+            // Enter city
+            WebElement cityField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("field-city")));
+            cityField.sendKeys("Gdańsk");
+
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirm-addresses"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirmDeliveryOption"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=payment-option-2]"))).click();
@@ -331,11 +346,12 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(6)
     public void testOrderStatus()
     {
         try{
             driver.get(shopURL + "/");
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for page to load
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link"))).click();
@@ -349,6 +365,7 @@ public class SeleniumTester {
     }
 
     @Test
+    @Order(7)
     public void testInvoice()
     {
         try {
