@@ -1,26 +1,18 @@
 <?php
-<<<<<<< HEAD
-/* Smarty version 3.1.48, created on 2024-12-01 03:08:34
-=======
-/* Smarty version 3.1.48, created on 2024-12-01 01:41:41
->>>>>>> refs/remotes/origin/frontend-actual
+/* Smarty version 3.1.48, created on 2024-12-01 04:22:25
   from 'module:psshoppingcartpsshoppingc' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-<<<<<<< HEAD
-  'unifunc' => 'content_674bc5226a1b08_70865669',
-=======
-  'unifunc' => 'content_674bb0c52f5112_03475228',
->>>>>>> refs/remotes/origin/frontend-actual
+  'unifunc' => 'content_674bd6719acfd2_87704238',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '35655e6409b6198f29dd6e732ef9598dec599880' => 
     array (
       0 => 'module:psshoppingcartpsshoppingc',
-      1 => 1733013697,
+      1 => 1733019170,
       2 => 'module',
     ),
   ),
@@ -28,11 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD
-function content_674bc5226a1b08_70865669 (Smarty_Internal_Template $_smarty_tpl) {
-=======
-function content_674bb0c52f5112_03475228 (Smarty_Internal_Template $_smarty_tpl) {
->>>>>>> refs/remotes/origin/frontend-actual
+function content_674bd6719acfd2_87704238 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="_desktop_cart">
   <div class="blockcart cart-preview" data-refresh-url="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['refresh_url']->value, ENT_QUOTES, 'UTF-8');?>
 ">

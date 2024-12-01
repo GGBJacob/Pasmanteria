@@ -1,26 +1,18 @@
 <?php
-<<<<<<< HEAD
-/* Smarty version 3.1.48, created on 2024-12-01 03:08:34
-=======
-/* Smarty version 3.1.48, created on 2024-11-30 23:21:14
->>>>>>> refs/remotes/origin/frontend-actual
+/* Smarty version 3.1.48, created on 2024-12-01 04:22:25
   from 'module:pscustomersigninpscustome' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-<<<<<<< HEAD
-  'unifunc' => 'content_674bc52269bd07_14146481',
-=======
-  'unifunc' => 'content_674b8fda5849c4_34613691',
->>>>>>> refs/remotes/origin/frontend-actual
+  'unifunc' => 'content_674bd6719a5966_56222347',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd5f8f570180f74d1dbdd1a1d2af0445e90a6650c' => 
     array (
       0 => 'module:pscustomersigninpscustome',
-      1 => 1733005272,
+      1 => 1733019170,
       2 => 'module',
     ),
   ),
@@ -28,12 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-<<<<<<< HEAD
-function content_674bc52269bd07_14146481 (Smarty_Internal_Template $_smarty_tpl) {
-?><div id="_desktop_user_info">
-  <div class="user-info">
-=======
-function content_674b8fda5849c4_34613691 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674bd6719a5966_56222347 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <div id="_desktop_user_info" class="user-info dropdown">
   <a
     href="#"
@@ -42,7 +29,6 @@ function content_674b8fda5849c4_34613691 (Smarty_Internal_Template $_smarty_tpl)
     onclick="toggleDropdown(event, '#loginDropdown')"
   >
   <div class="my-account-nav">
->>>>>>> refs/remotes/origin/frontend-actual
     <?php if ($_smarty_tpl->tpl_vars['logged']->value) {?>
       <i class="fas fa-user fa-fw"></i>
       <span class="hidden-sm-down text-navigation-bar logout"><?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['l'][0], array( array('s'=>'Wyloguj się','d'=>'Shop.Theme.Actions'),$_smarty_tpl ) );?>

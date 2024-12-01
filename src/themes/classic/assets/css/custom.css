@@ -896,10 +896,10 @@ padding-right: 10px!important;
 .product-container{
   height: 600px;
   padding-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 130px;
 }
 
-
+/*cena*/
 .product-discount{
   display: inline-block;  /* Ustawienie elementu jako inline-block */
   padding-top: 8px;
@@ -921,6 +921,7 @@ padding-right: 10px!important;
   color: #212529;
 }
 
+/*opis*/
 .product-description p{
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: 1rem;
@@ -928,4 +929,46 @@ padding-right: 10px!important;
   line-height: 1.5;
   color: #212529;
   text-align: left;
+}
+
+/*button powrotu*/
+.btn.btn-info{
+  background-color: #e9ecef !important;
+  color: #6b3454 !important;
+  border-radius: .25rem !important;
+  border: 0px !important;
+  box-shadow: none !important;
+  width: fit-content !important;
+  margin: auto !important;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  float: left;
+}
+
+#btn2{
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 9px;
+}
+
+.back-button{
+  bottom: 0;
+  margin-top: 80px;
+  align-self: end;
+}
+
+.btn-info:hover{
+  background-color: #d6b1c5 !important;
+  border-color: #c5dbec;
+  color: #6b3454 !important;
+  border-radius: .25rem !important;
+  border: 0px !important;
+  width: fit-content !important;
+  margin: auto !important;
 }

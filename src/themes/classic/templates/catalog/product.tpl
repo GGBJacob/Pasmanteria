@@ -99,14 +99,15 @@
           </div>
 
           <div class="product-information">
-          {block name='product_description_short'}
-            <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
-          {/block}
+            {block name='product_description_short'}
+              <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
+            {/block}
 
-          {block name='hook_display_reassurance'}
-            {hook h='displayReassurance'}
-          {/block}
-        </div>
+            {block name='hook_display_reassurance'}
+              {hook h='displayReassurance'}
+            {/block}
+          </div>
+          <div class="back-button">{block name='button'}<a id="btn2" href="javascript:history.back(1)" class="btn btn-info btn-lg btn-block"> <span class="fas fa-angle-left" aria-hidden="true"></span> Powrót</a>{/block}</div>
       </div>
     </div>
 
@@ -125,7 +126,6 @@
       {/if}
     {/block}
 
-    <a id="btn2" href="javascript:history.back(1)" class="btn btn-info btn-lg btn-block"> <span class="fas fa-angle-left" aria-hidden="true"></span> Powrót</a>
 
     {block name='product_footer'}
       {hook h='displayFooterProduct' product=$product category=$category}
