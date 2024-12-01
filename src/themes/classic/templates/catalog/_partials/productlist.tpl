@@ -22,6 +22,8 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+
+ {if not isset($category)}
 <div class="card-deck">
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
@@ -132,4 +134,13 @@
         </div>
     </div>
 </div>
+{else}
 
+{capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
+
+<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+    {foreach from=$products item="product" key="position"}
+        {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+    {/foreach}
+</div>
+{/if}
