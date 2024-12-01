@@ -90,6 +90,10 @@ body.page-index #wrapper #custom-text {
 
 /*HEADER SEARCH*/
 
+.header-nav.navbar.bg-white.navbar-light.sticky-top.navbar-expand.cm-navbar .header_logo_search .container {
+	width: 2301px;
+}
+
 #search_widget {
 	padding: 30px;
 }
@@ -100,12 +104,23 @@ body.page-index #wrapper #custom-text {
 
 .cm-header-search-input {
     width: 85%;
-    margin: auto;
+}
+
+.header_logo_search .container {
+	width: 100%;
+}
+
+.header_logo_search .container .row {
+	width: 102%;
+	align-items: center;
+	display: flex;
+
 }
 
 .input-group {
-	width: 160%;
+	width: 100%;
 }
+
 
 /* Ensure the search icon is aligned to the right */
 .cm-header-search .input-group {
@@ -531,9 +546,17 @@ padding-right: 10px!important;
 	color: white;
 }
 
-/*STRONY DODATKOWE W STOPCE*/
-#content .page-content.page-cms {
-  padding: 1.25rem;
-  text-align: justify;
-  background: rgb(205, 46, 46) !important;
+/*STRONA PRODUKTU*/
+.product-header .h1{
+  font-weight: bold !important;
+  font-size: 1.7rem;
+  color: #212529;
+  text-align: left;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  text-transform: none;
+  line-height: 32.6333px;
+}
+
+.container{ /*UWAGA TU TEN CONTAINER KTÓRY MOŻE SPRAWIĆ PROBLEM OBY NIEEE*/
+  width: 1763.12px;
 }
