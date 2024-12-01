@@ -38015,7 +38015,7 @@ CREATE TABLE `ps_address` (
   KEY `id_manufacturer` (`id_manufacturer`),
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38029,7 +38029,8 @@ INSERT INTO `ps_address` VALUES
 (2,21,35,0,0,1,0,'supplier','Fashion','supplier','supplier','767 Fifth Ave.','','10153','New York','','(212) 336-1440','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
 (3,21,35,0,1,0,0,'manufacturer','Fashion','manufacturer','manufacturer','767 Fifth Ave.','','10154','New York','','(212) 336-1666','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
 (4,21,12,1,0,0,0,'My address','My Company','DOE','John','16, Main street','2nd floor','33133','Miami','','0102030405','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
-(5,8,0,0,0,2,0,'accessories_supplier','Accessories and Co','accessories','accessories','42 Avenue Maréchal Soult','','64990','Bayonne','','0102030405','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0);
+(5,8,0,0,0,2,0,'accessories_supplier','Accessories and Co','accessories','accessories','42 Avenue Maréchal Soult','','64990','Bayonne','','0102030405','','','','2024-11-23 21:27:58','2024-11-23 21:27:58',1,0),
+(6,14,0,2,0,0,0,'Mój adres','','aaa','aa','aaaaaaa','','45-444','sdf','','','','','','2024-11-30 20:31:01','2024-11-30 20:31:01',1,0);
 /*!40000 ALTER TABLE `ps_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -38315,7 +38316,7 @@ CREATE TABLE `ps_admin_filter` (
   `filter_id` varchar(191) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_filter_search_id_idx` (`employee`,`shop`,`controller`,`action`,`filter_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38324,6 +38325,9 @@ CREATE TABLE `ps_admin_filter` (
 
 LOCK TABLES `ps_admin_filter` WRITE;
 /*!40000 ALTER TABLE `ps_admin_filter` DISABLE KEYS */;
+INSERT INTO `ps_admin_filter` VALUES
+(1,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page_category'),
+(2,1,1,'','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page');
 /*!40000 ALTER TABLE `ps_admin_filter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39717,7 +39721,7 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39731,7 +39735,8 @@ INSERT INTO `ps_cart` VALUES
 (2,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (3,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
 (4,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
-(5,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL);
+(5,1,1,2,'{\"3\":\"2,\"}',1,4,4,1,1,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1',0,0,'',0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58',NULL),
+(6,1,1,1,'{\"6\":\"1,\"}',1,6,6,1,2,5,'e0542d94774ef8b6744f7e7e900edbfe',0,0,'',0,0,'2024-11-30 20:30:21','2024-11-30 20:31:28','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"4b01a1212a59bd19cd301ffc4668b067d4073015\"}');
 /*!40000 ALTER TABLE `ps_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -39794,7 +39799,8 @@ INSERT INTO `ps_cart_product` VALUES
 (2,8,3,1,0,0,1,'0000-00-00 00:00:00'),
 (3,16,3,1,28,0,1,'0000-00-00 00:00:00'),
 (4,16,3,1,29,0,1,'0000-00-00 00:00:00'),
-(5,10,3,1,25,0,1,'0000-00-00 00:00:00');
+(5,10,3,1,25,0,1,'0000-00-00 00:00:00'),
+(6,1,6,1,1,0,1,'2024-11-30 20:30:21');
 /*!40000 ALTER TABLE `ps_cart_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40337,7 +40343,7 @@ CREATE TABLE `ps_cms` (
   `active` tinyint(1) unsigned NOT NULL DEFAULT 0,
   `indexation` tinyint(1) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_cms`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40351,7 +40357,9 @@ INSERT INTO `ps_cms` VALUES
 (2,1,1,1,0),
 (3,1,2,1,0),
 (4,1,3,1,0),
-(5,1,4,1,0);
+(5,1,4,1,0),
+(6,1,5,1,0),
+(7,1,6,1,0);
 /*!40000 ALTER TABLE `ps_cms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40473,11 +40481,13 @@ CREATE TABLE `ps_cms_lang` (
 LOCK TABLES `ps_cms_lang` WRITE;
 /*!40000 ALTER TABLE `ps_cms_lang` DISABLE KEYS */;
 INSERT INTO `ps_cms_lang` VALUES
-(1,1,1,'Delivery','','Our terms and conditions of delivery','conditions, delivery, delay, shipment, pack','<h2>Shipments and returns</h2><h3>Your pack shipment</h3><p>Packages are generally dispatched within 2 days after receipt of payment and are shipped via UPS with tracking and drop-off without signature. If you prefer delivery by UPS Extra with required signature, an additional cost will be applied, so please contact us before choosing this method. Whichever shipment choice you make, we will provide you with a link to track your package online.</p><p>Shipping fees include handling and packing fees as well as postage costs. Handling fees are fixed, whereas transport fees vary according to total weight of the shipment. We advise you to group your items in one order. We cannot group two distinct orders placed separately, and shipping fees will apply to each of them. Your package will be dispatched at your own risk, but special care is taken to protect fragile objects.<br /><br />Boxes are amply sized and your items are well-protected.</p>','delivery'),
-(2,1,1,'Legal Notice','','Legal notice','notice, legal, credits','<h2>Legal</h2><h3>Credits</h3><p>Concept and production:</p><p>This Web site was created using <a href=\"http://www.prestashop.com\">PrestaShop</a>&trade; open-source software.</p>','legal-notice'),
-(3,1,1,'Terms and conditions of use','','Our terms and conditions of use','conditions, terms, use, sell','<h2>Your terms and conditions of use</h2><h3>Rule 1</h3><p>Here is the rule 1 content</p>\r\n<h3>Rule 2</h3><p>Here is the rule 2 content</p>\r\n<h3>Rule 3</h3><p>Here is the rule 3 content</p>','terms-and-conditions-of-use'),
-(4,1,1,'About us','','Learn more about us','about us, informations','<h2>About us</h2>\r\n<h3>Our company</h3><p>Our company</p>\r\n<h3>Our team</h3><p>Our team</p>\r\n<h3>Informations</h3><p>Informations</p>','about-us'),
-(5,1,1,'Secure payment','','Our secure payment mean','secure payment, ssl, visa, mastercard, paypal','<h2>Secure payment</h2>\r\n<h3>Our secure payment</h3><p>With SSL</p>\r\n<h3>Using Visa/Mastercard/Paypal</h3><p>About this services</p>','secure-payment');
+(1,1,1,'Wysyłka','','Nasze warunki dostawy','conditions, delivery, delay, shipment, pack','<p><span style=\"color:#000000;\"><b>DOSTĘPNE SPOSOBY DOSTAWY: </b></span></p>\n<ul>\n<li><span style=\"color:#000000;\">InPost Paczkomaty 24/7: <b>16,00 zł.</b></span></li>\n<li><span style=\"color:#000000;\">Pocztex Kurier 48 (Poczta Polska): <b>19,00 zł.</b></span></li>\n<li><span style=\"color:#000000;\">Pocztex Kurier 48 POBRANIE (Poczta Polska): <b>22,00 zł. </b></span></li>\n<li><span style=\"color:#000000;\">Przesyłka zagraniczna (Poczta Polska): <b>65.00 zł</b> do 2kg. Powyżej 2 kg cena ustalana indywidualnie telefonicznie lub e-mailem.</span></li>\n<li><span style=\"color:#000000;\">Zakupy powyżej <b>300.00 zł</b> wysyłamy GRATIS.</span></li>\n</ul>\n<p><span style=\"color:#000000;\">Jeśli <b>NIE wybierasz PRZESYŁKI POBRANIOWEJ</b>, należy dokonać przedpłaty na nasze konto. </span><br /><br /><span style=\"color:#000000;\">Można to zrobić na dwa sposoby:</span></p>\n<ul>\n<li><span style=\"color:#000000;\">PRZELEW TRADYCYJNY można zrealizować za pośrednictwem banku, poczty, internetu lub w inny, dogodny dla Ciebie sposób.</span></li>\n<li><span style=\"color:#000000;\">PRZELEW ON_LINE na naszej stronie, za pomocą płatności on-line <b>tpay.com</b>.</span></li>\n</ul>\n<p><br /><span style=\"color:#000000;\"><b>Nr konta:</b> 32 1140 2017 0000 4902 0849 4991</span><br /><br /><span style=\"color:#000000;\"><b>Nazwa konta:</b> Testcom - Dariusz Szyfelbein, ul. Polna 6, 80-174 Otomin </span><br /><br /><span style=\"color:#000000;\"><b>Nazwa banku:</b> mBank</span><br /><br /><span style=\"color:#000000;\"><b>Nr IBAN:</b> PL 32 1140 2017 0000 4902 0849 4991</span><br /><br /><span style=\"color:#000000;\"><b>Nr BIC:</b> BREXPLPWMUL</span><br /><br /><br /><span style=\"color:#000000;\">Po złożeniu zamówienia, otrzymasz od nas te dane na Twój adres mailowy. </span><br /><br /><span style=\"color:#000000;\">Towar wysyłamy dopiero po wpłynięciu należności na konto.</span><br /><br /><span style=\"color:#000000;\">Termin wysyłki - od momentu wpłynięcia pieniędzy na konto - do realizacji - wynosi około 3 dni roboczych. </span><br /><br /><br /><span style=\"color:#000000;\"><b>STATUSY ZAMÓWIEŃ:<br /><br /></b></span></p>\n<ul>\n<li><span style=\"color:#000000;\"><b>\"ZAMÓWIENIE PRZYJĘTE\"</b> takie potwierdzenie otrzymasz automatycznie po złożeniu zamówienia.</span></li>\n<li><span style=\"color:#000000;\"><b>\"W TRAKCIE REALIZACJI\"</b> taką informację otrzymasz po złożeniu zamówienia z przesyłką pobraniową.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"KWOTA WPŁYNĘŁA - REALIZACJA\"</b> taką informację otrzymasz po wpłynięciu należności na nasze konto.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"GOTOWA DO WYSYŁKI\"</b> taką informację otrzymasz, gdy Twoje zamówienie zostanie skompletowane.</span></li>\n<li class=\"col order-1 order-md-6\"><span style=\"color:#000000;\"><b>\"WYSŁANE\"</b> taką informację otrzymasz, gdy wyślemy do Ciebie przesyłkę.</span></li>\n</ul>','wysylka'),
+(2,1,1,'RODO, Polityka prywatności i polityka Cookies','','Przepisy ochrony danych','notice, legal, credits','<p><span style=\"color:#000000;\"><b> I. DEFINICJE </b></span><br /><span style=\"color:#000000;\">1. Administrator - Administratorem danych osobowych jest: Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk, Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. </span><br /><br /><span style=\"color:#000000;\">2. Użytkownik - osoba fizyczna odwiedzająca sklep internetowy <b>nadodatek.pl</b>.</span><br /><br /><span style=\"color:#000000;\">3. Sklep - sklep internetowy <b>nadodatek.pl</b>.</span><br /><br /><span style=\"color:#000000;\">4. Dane osobowe - wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej.</span><br /><br /><span style=\"color:#000000;\">5. Polityka - niniejsza Polityka prywatności i polityka Cookies. </span><br /><br /><span style=\"color:#000000;\"><b> II. PRZETWARZANIE DANYCH W SKLEPIE</b></span><br /><span style=\"color:#000000;\">1. Dane osobowe Użytkownika przetwarzane są w celach związanych z zawarciem, realizacją lub rozwiązania umowy sprzedaży opisanej w Regulaminie pomiędzy firmą Testcom Dariusz Szyfelbein a Użytkownikiem, w celach wynikających z prawnie uzasadnionych interesów realizowanych przez Administratora danych osobowych, a także na podstawie zgody Użytkownika w celach zgodnych z treścią udzielonej zgody. </span><br /><br /><span style=\"color:#000000;\">2. Podane dane są przetwarzane na podstawie art.6 ust. 1 lit. a), lit. b) i lit. f) Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenia o ochronie danych osobowych). </span><br /><br /><span style=\"color:#000000;\">3. Dane osobowe Użytkownika są przechowywane w czasie realizacji zamówienia, a także po zakończeniu jego realizacji na czas zgodny z przepisami prawa, a w przypadku prawnie usprawiedliwionych celów Administratora oraz na podstawie zgody udzielonej przez Użytkownika - do czasu wygaśniecia zgody. </span><br /><br /><span style=\"color:#000000;\">4. Użytkownikowi przysługuje prawo żądania od Administratora dostępu do danych osobowych dotyczących jego osoby, ich sprostowania, usunięcia lub ograniczenia przetwarzania. </span><br /><br /><span style=\"color:#000000;\">5. Użytkownikowi przysługuje prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem. </span><br /><br /><span style=\"color:#000000;\">6. Użytkownikowi przysługuje prawo wniesienia skargi do GIODO (od dnia 25 maja 2018 roku do Prezesa Urzędu Ochrony Danych Osobowych), gdy uzna, że przetrwarzanie danych osobowych jego dotyczących narusza przepisy prawa. </span><br /><br /><span style=\"color:#000000;\">7. Użytkownikowi przysługuje prawo do informacji o przetwarzaniu danych osobowych - na podstawie żądania osoby zgłaszającej Administrator danych osobowych przekazuje informację o przetwarzaniu danych osobowych, w tym przede wszystkim o celach i podstawach prawnych przetwarzania, zakresie posiadanych danych, podmiotach, którym dane osobowe są ujawniane i planowanym terminie ich usunięcia; </span><br /><br /><span style=\"color:#000000;\">8. Użytkownikowi przysługuje prawo uzyskania kopii danych - na podstawie żądania osoby zgłaszającej Administrator przekazuje kopię przetwarzanych danych, dotyczących osoby zgłaszającej żądanie; </span><br /><br /><span style=\"color:#000000;\">9. Użytkownikowi przysługuje prawo do przenoszenia danych - na podstawie żądania osoby zgłaszającej, w zakresie w jakim dane są przetwarzane w związku z zawartą umową lub wyrażoną zgodę, Administrator wydaje dane dostarczone przez osobę, której one dotyczą, w formacie pozwalającym na ich odczyt przez komputer. Możliwe jest także zażądanie przesłania tych danych innemu podmiotowi, jednak pod warunkiem, że istnieją w tym zakresie techniczne możliwości zarówno po stronie Administratora jak i tego innego podmiotu; </span><br /><br /><span style=\"color:#000000;\">10. Użytkownikowi przysługuje prawo sprzeciwu wobec przetwarzania danych w celach marketingowych - osoba, której dane dotyczą, może w każdym czasie sprzeciwią się przetwarzaniu danych osobowych w celach marketingowych, bez konieczności uzasadnienia takiego sprzeciwu; </span><br /><br /><span style=\"color:#000000;\">11. Użytkownikowi przysługuje prawo sprzeciwu wobec innych celów przetwarzania danych - osoba, której dane dotyczą, może w każdym czasie sprzeciwią się przetwarzaniu danych osobowych na podstawie uzasadnionego interesu Administratora (np. dla celów analitycznych lub statystycznych lub ze względów związanych z ochroną mienia). Sprzeciw w tym zakresie powinien zawierać uzasadnienie oraz podlega ocenie Administratora; </span><br /><br /><span style=\"color:#000000;\">12. Dane osobowe pochodzą od osoby, której dotyczą. </span><br /><br /><span style=\"color:#000000;\">13. Podanie danych osobowych przez Użytkownika Sklepu oraz zgoda na ich przetwarzanie są dobrowolne, lecz niezbędne do realizacji zamówienia. Brak podania danych osobowych uniemożliwia zrealizowanie złożonego w sklepie zamówienia. </span><br /><br /><span style=\"color:#000000;\">14. Możliwy jest kontakt z Administatorem danych telefonicznie 663-656-888 i drogą mailową e-mail: sklep@nadodatek.pl </span><br /><br /><span style=\"color:#000000;\">15. żądanie zmiany przetwarzania danych powinno zostać wysłane e-mailem na adres <b>sklep@nadodatek.pl</b>. </span><br /><br /><span style=\"color:#000000;\"><b>III. ODBIORCY DANYCH</b></span><br /><span style=\"color:#000000;\">1. Dane osobowe będą ujawniane zewnętrznym podmiotom, w zakresie niezbędnym w związku z realizacją usług. </span><br /><br /><span style=\"color:#000000;\">2. Do podmiotów tych należą:</span><br /><span style=\"color:#000000;\">  a) Dostawcy odpowiedzialni za obsługę systemów informatycznych w tym firma hostingowa,</span><br /><span style=\"color:#000000;\">  b) Podmioty dostarczające przesyłki: Poczta Polska oraz firmy kurierskie.</span><br /><br /><span style=\"color:#000000;\"><b>IV. RODZAJE ZBIERANYCH DANYCH </b></span><br /><span style=\"color:#000000;\">1. W celu rejetracji (założenia konta) Użytkownika zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  c) nr telefonu do kontaktu sklepu z Użytkownikiem - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  d) adres Użytkownika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  e) NIP w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  f) nazwa firmy w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe.</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu założenia konta Użytkownika, a ich niepodanie skutkuje brakiem możliwości założenia konta.</span><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi konta wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">2. W celu realizacji zamówienia zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  c) nr telefonu do kontaktu sklepu z Użytkownikiem - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  d) adres do wysyłki - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  e) adres płatnika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  f) NIP w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  g) nazwa firmy w przypadku, gdy Użytkownik prowadzi działalność gospodarczą - dane nieobowiązkowe.</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu realizacji zamówienia, a ich niepodanie skutkuje brakiem możliwości realizacji zamówienia.</span><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi realizacji zamówienia wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">3. W celu obsługi zapytania Użytkownika zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) imię i nazwisko Użytkownika - dane nieobowiązkowe,</span><br /><span style=\"color:#000000;\">  b) adres e-mail do kontaktu sklepu z Użytkownikiem - dane niebowiązkowe,</span><br /><br /><span style=\"color:#000000;\">  Użytkownik może podać dane nieobowiązkowe w celu ułatwienia obsługi zapytania Użytkownika wyrażając tym samym zgodę na ich przetwarzanie.</span><br /><span style=\"color:#000000;\">  Podanie nieobowiązkowych danych jest dobrowolne.</span><br /><br /><span style=\"color:#000000;\">4. W celu obsługi wysyłki newslettera oraz informacji o produktach zbierane i przetwarzane są następujące dane osobowe:</span><br /><span style=\"color:#000000;\">  a) adres e-mail wysyłki newslettera oraz informacji o produktach - dane obowiązkowe,</span><br /><span style=\"color:#000000;\">  b) zgoda na wysyłkę - dane obowiązkowe,</span><br /><br /><span style=\"color:#000000;\">  Podanie danych oznaczonych jako obowiązkowe jest wymagane w celu wysyłki newslettera oraz informacji o produktach, a ich niepodanie skutkuje brakiem</span><br /><span style=\"color:#000000;\">  możliwości wysyłki newslettera oraz informacji o produktach.</span><br /><span style=\"color:#000000;\">  Zgoda na wysyłkę newslettera oraz informacji o produktach jest nieobowiązkowa i dobrowolna. Użytkownik może w każdej chwili cofnąć zgodę .</span><br /><br /><br /><span style=\"color:#000000;\"><b>V. POLITYKA COOKIES </b></span><br /><span style=\"color:#000000;\">1. Sklep nadodatek.pl nie zbiera w sposób automatyczny żadnych informacji, z wyjątkiem informacji zawartych w plikach cookies.</span><br /><br /><span style=\"color:#000000;\">2. Pliki cookies (tzw. \"ciasteczka\") stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika sklepu i przeznaczone są do korzystania ze stron internetowych sklepu. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer. </span><br /><br /><span style=\"color:#000000;\">3. Podmiotem zamieszczającym na urządzeniu końcowym Użytkownika sklepu pliki cookies oraz uzyskującym do nich dostęp jest operator sklepu nadodatek.pl z siedzibą pod adresem ul. Polna 6 Otomin, 80-174 Gdańsk.</span><br /><br /><span style=\"color:#000000;\">4. Pliki cookies wykorzystywane są w celu: </span><br /><span style=\"color:#000000;\">a) dostosowania zawartości stron internetowych sklepu do preferencji Użytkownika oraz optymalizacji korzystania ze stron internetowych; w szczególności pliki te pozwalają rozpoznać urządzenie Użytkownika sklepu i odpowiednio wyświetlić stronę internetowa, dostosowaną do jego indywidualnych potrzeb,</span><br /><span style=\"color:#000000;\">b) tworzenia statystyk, które pomagają zrozumieć, w jaki sposób Użytkownicy sklepu korzystają ze stron internetowych, co umożliwia ulepszanie ich struktury i zawartości,</span><br /><span style=\"color:#000000;\">c) utrzymanie sesji Użytkownika sklepu (po zalogowaniu), dzięki której Użytkownik nie musi na każdej podstronie sklepu ponownie wpisywać loginu i hasła,</span><br /><br /><span style=\"color:#000000;\">5. W ramach sklepu stosowane są dwa zasadnicze rodzaje plików cookies: \"sesyjne\" - (session cookies) oraz \"stałe\" - (persistent cookies). Cookies \"sesyjne\" są plikami tymczasowymi, które przechowywane są w urządzeniu końcowym Użytkownika do czasu wylogowania, opuszczenia strony internetowej lub wyłączenia oprogramowania (przeglądarki internetowej). \"Stałe\" pliki cookies przechowywane są w urządzeniu końcowym Użytkownika przez czas określony w parametrach plików cookies lub do czasu ich usunięcia przez Użytkownika, </span><br /><br /><span style=\"color:#000000;\">6. W wielu przypadkach oprogramowanie służące do przeglądania stron internetowych (przeglądarka internetowa) domyślnie dopuszcza przechowywanie plików cookies w urządzeniu końcowym Użytkownika. Użytkownicy sklepu mogą dokonać w każdym czasie zmiany ustawień dotyczących plików cookies. Ustawienia te mogą zostać zmienione w szczególności w taki sposób, aby blokować automatyczną obsługę plików cookies w ustawieniach przeglądarki internetowej będą informować o ich każdorazowym zamieszczeniu w urządzeniu Użytkownika sklepu. Szczegółowe informacje o możliwości i sposobach obsługi plików cookies dostępne są w ustawieniach oprogramowania (przeglądarki internetowej). </span><br /><br /><span style=\"color:#000000;\">7. Operator sklepu informuje, że ograniczenia stosowania plików cookies mogą wpłynąć na niektóre funkcjonalności dostępne na stronach internetowych sklepu.</span><br /><br /><br /><span style=\"color:#000000;\"><b>VI. ZMIANY POLITYKI</b></span><br /><span style=\"color:#000000;\">1. Polityka jest na bieżąco weryfikowana i w razie potrzeby aktualizowana .</span></p>','rodo'),
+(3,1,1,'Regulamin','','Regulamin sklepu','conditions, terms, use, sell','<div id=\"bodyContent\" class=\"col order-1 order-md-6\"><b>REGULAMIN Sklepu Internetowego nadodatek.pl</b><br />Regulamin wchodzący w życie w dniu 30.07.2019 dostępny jest poniżej.<br /><br /><b>Sklep internetowy nadodatek.pl jest prowadzony przez: </b><br />Firmę Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. <br /><br /><b>SŁOWNICZEK:</b><br /><br /><b>Firma</b> - Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska.<br /><br /><b>Sklep Internetowy nadodatek.pl</b> prowadzony przez firmę Testcom, dostępny pod domeną internetową www.nadodatek.pl<br /><br /><b>Klient</b> - osoba fizyczna posiadająca pełną lub ograniczona zdolność do czynności prawnych, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej ale posiadająca zdolność prawną, korzystająca ze Sklepu Internetowego nadodatek.pl, w tym w szczególności dokonująca zakupów.<br /><br /><b>Koszyk</b> - funkcjonalność Sklepu Internetowego nadodatek.pl, w której widoczne są wybrane przez Klienta produkty do zakupu oraz umożliwiająca ustalenie i modyfikację danych zamówienia, w szczególności: ilość produktów, adres dostawy, dane do faktury, sposób dostawy, formy płatności.<br /><br /><b>Strona produktowa</b> - strona w Sklepie Internetowym nadodatek.pl, na której przedstawione są informacje na temat produktu.<br /><br /><b>Centrum Wsparcia Klienta</b> - biuro obsługi Klienta dostępne pod numerem telefonu +48 697 61 57 53 oraz przez formularz kontakowy za pośrednictwem sieci Internet pod adresem http://nadodatek.pl/contact_us.php.<br /><br /><br /><b>§1 Postanowienia ogólne</b> <br /><br />1. Niniejszy regulamin określa zasady korzystania ze Sklepu Internetowego nadodatek.pl, składania zamówień na produkty dostępne w Sklepie Internetowym nadodatek.pl, dostarczania zamówionych produktów Klientowi, uiszczania przez Klienta ceny sprzedaży produktów, uprawnienia Klienta do anulowania zamówienia i odstąpienia od umowy oraz zasady składania i rozpatrywania reklamacji. <br /><br />2. Do korzystania ze Sklepu Internetowego nadodatek.pl, w tym przeglądania asortymentu Sklepu Internetowego nadodatek.pl oraz składania zamówień na produkty, niezbędny jest: a) komputer z dostępem do sieci Internet i przeglądarką internetową typu Internet Explorer, Google Chrome, Mozilla Firefox, Opera, Safari; b) aktywne konto poczty elektronicznej (e-mail). <br /><br />3. Klient uprawniony jest zobowiązany do korzystania ze Sklepu Internetowego nadodatek.pl zgodnie z jego przeznaczeniem. <br /><br />4. Klient zobowiązany jest do powstrzymywania się od jakiejkolwiek aktywnoąci, która mogłaby wpłynąć na prawidłowe funkcjonowanie Sklepu Internetowego nadodatek.pl, w tym w szczególności od jakiegokolwiek ingerowania w zawartość Sklepu Internetowego nadodatek.pl lub jego elementy techniczne, w tym od dostarczania treści o charakterze bezprawnym. Zabronione jest wykorzystywanie Sklepu Internetowego nadodatek.pl do celów innych niż jego przeznaczenie, w tym w szczególności rozsyłanie spamu, prowadzenie na stronach internetowych Sklepu Internetowego nadodatek.pl jakiejkolwiek działalności komercyjnej, reklamowej, promocyjnej itp. <br /><br />5. Firma Testcom w najszerszym dopuszczalnym przez prawo zakresie nie ponosi odpowiedzialności za zakłócenia, w tym przerwy, w funkcjonowaniu Sklepu Internetowego nadodatek.pl spowodowane siłą wyższą, niedozwolonym działaniem osób trzecich lub niekompatybilność Sklepu Internetowego nadodatek.pl z infrastrukturą techniczną Klienta. <br /><br />6. Przeglądanie asortymentu Sklep Internetowego nadodatek.pl nie wymaga rejestracji. Samodzielne składanie zamówień przez Klienta na produkty znajdujące się w asortymencie Sklepu Internetowego nadodatek.pl nie wymaga zarejestrowania się. Rejestracja jest możliwa i odbywa zgodnie z postanowieniami § 2 regulaminu. <br /><br /><b> § 2 Rejestracja</b> <br /><br />1. W celu rejestracji w Sklepie Internetowym nadodatek.pl (założenia konta Klienta) należy wypełnić formularz rejestracyjny, podając imię i nazwisko, adres, nr telefonu, adres e-mail oraz hasło, zaakceptował regulamin Sklepu Internetowego nadodatek.pl oraz wyrazić zgodę na przetwarzanie danych osobowych w zakresie niezbędnym do nawiązania, ukształtowania treści, zmiany, rozwiązania i prawidłowej realizacji zamówień Klienta. <br /><br />2. Rejestracja w Sklepie Internetowym nadodatek.pl, jak również korzystanie z funkcjonalności Sklepu Internetowego nadodatek.pl, są nieodpłatne. <br /><br />3. Po zarejestrowaniu się w Sklepie Internetowym nadodatek.pl każdorazowe logowanie odbywa się przy użyciu danych podanych w formularzu rejestracyjnym. <br /><br />4. W celu usunięcia konta Klienta ze Sklepu Internetowego nadodatek.pl należy wysłać wiadomość elektroniczną z prośbą o usunięcie konta za pośrednictwem Centrum Wsparcia Klienta wraz z podaniem adresu poczty elektronicznej, aktualnie zarejestrowanego w Sklepie Internetowym nadodatek.pl <br /><br /><b> § 3 Zasady korzystania ze Sklepu Internetowego nadodatek.pl</b> <br /><br />1. Logowanie do Sklepu Internetowego nadodatek.pl odbywa się poprzez wpisanie w formularzu logowania adresu e-mail oraz hasła podanych przy rejestracji konta Klienta. Dane podane przy rejestracji konta mogą został zmienione po zalogowaniu się na konto Klienta (zakładka \"Twoje konto\"). <br /><br />2. Klient, który zarejestrował konto, może korzystać ze wszystkich dostępnych funkcjonalności Sklepu Internetowego nadodatek.pl, w tym składać zamówienia na produkty dostępne w asortymencie Sklepu Internetowego nadodatek.pl . <br /><br />3. Firma uprawniona jest do zablokowania konta Klienta, jeżeli uzna jego działanie w ramach Sklepu Internetowego nadodatek.pl za naruszające powszechnie obowiązujące przepisy prawa lub postanowienia niniejszego regulaminu. O zamiarze zablokowania konta Klienta Klient zostanie powiadomiony na adres poczty elektronicznej aktualnie zarejestrowany w Sklepie Internetowym nadodatek.pl. Zablokowanie konta oznacza rozwiązanie umowy z Klientem o świadczenie usług drogą elektronicznej w trybie natychmiastowym. <br /><br />4. Wszelkie nieprawidłowości w działaniu Sklepu Internetowego nadodatek.pl mogą być zgłaszane Firmie za pośrednictwem Centrum Wsparcia Klienta. Reklamacje dotyczące produktów mogą być zgłaszane stosownie do postanowień § 9 regulaminu. <br /><br />5. Zgłoszenia, o których mowa w ust. 4 niniejszego paragrafu, będą rozpatrywane w terminie 14 dni od dnia zgłoszenia. <br /><br />6. Klient zobowiązany jest do zachowania w tajemnicy loginu i hasła do swojego konta w Sklepie Internetowym nadodatek.pl. W granicach wynikających z powszechnie obowiązujących przepisów prawa odpowiedzialnym za wszelkie działania związane z posługiwaniem się loginem i hasłem do danego konta w Sklepie Internetowym nadodatek.pl jest Klient, przy czym hasło stanowi informację poufną do wyłącznej wiadomości Klienta. <br /><br /><b> § 4 Informacje o produktach</b> <br /><br />1. Informacje o produktach dostępnych w asortymencie Sklepu Internetowego nadodatek.pl stanowią zaproszenie do zawarcia umowy w rozumieniu art. 71 Kodeksu cywilnego. <br /><br />2. Ceny produktów wskazanych na stronach internetowych Sklepu Internetowego nadodatek.pl: <br />a) zawierają podatek VAT i podawane są w złotych polskich;<br />b) nie zawierają kosztów dostawy. Koszty dostawy zależą od sposobu dostarczenia produktu do Klienta, od wartości oraz wielkości zamówienia i podawane są przy wyborze sposobu dostawy produktu przez Klienta. Całkowity koszt (tj. cena produktów wraz z kosztami dostawy) wskazany jest przed złożeniem zamówienia przez Klienta. <br /><br />3. Firma zastrzega sobie prawo do dokonywania na bieżąco zmian w cenach produktów oraz do przeprowadzania i odwoływania wszelkiego rodzaju akcji promocyjnych oraz wyprzedaży. Uprawnienie, o którym mowa w poprzednim zdaniu, nie ma wpływu na zamówienia złożone przed datą wejścia w życie zmiany ceny, warunków akcji promocyjnych lub wyprzedaży. <br /><br /><b> § 5 Warunki realizacji zamówień</b> <br /><br />1. Klient może składać zamówienia na produkty dostępne w asortymencie Sklepu Internetowego nadodatek.pl przez 7 (siedem) dni w tygodniu i 24 (dwadzieścia cztery) godziny na dobę. <br /><br />2. W celu złożenia zamówienia Klient zarejestrowany powinien:<br />a) zalogować się do Sklepu Internetowego nadodatek.pl;<br />b) wybrać produkt będący przedmiotem zamówienia, a następnie kliknąć przycisk \"Do koszyka\" (lub równoznaczny);<br />c) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />d) wpisać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />e) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />f) kliknąć przycisk \"Zakończ - złóż zamówienie\";<br /><br />3. W celu złożenia zamówienia Klient niezarejestrowany powinien: <br />a) wybrać produkt będący przedmiotem zamówienia, a następnie kliknąć przycisk \"Do koszyka\" (lub równoznaczny);<br />b) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />c) wpisać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />d) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />e) kliknąć przycisk \"Zakończ - złóż zamówienie\";<br /><br />4. W celu złożenia zamówienia drogą mailową na adres sklep@nadodatek.pl należy: <br />a) wypisać produkty będące przedmiotem zamówienia;<br />b) podać rodzaj przesyłki (sposób dostarczenia produktu);<br />c) podać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />d) wpisać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />e) wysłać maila;<br /><br />5. W celu złożenia zamówienia telefonicznie w godzinach 9-18 w dni robocze należy:<br />a) zadzwonić pod numer 69 761 57 53;<br />b) podać listę wybranych produktów;<br />c) wybrać rodzaj przesyłki (sposób dostarczenia produktu);<br />d) podać dane odbiorcy zamówienia oraz adres, na który ma nastąpić dostawa produktu. <br />e) podać dane do faktury, jeśli są inne niż dane do odbioru zamówienia, jeżeli Klientowi ma został wystawiona faktura VAT;<br />f) dane do przelewu zostaną przesłane pocztą mailową zgodnie z ustaleniami;<br /><br />6. W przypadku płatności z góry - opłacić zamówienie w jeden z dostępnych sposobów płatności. Przedmiot zamówienia może być dostarczony Klientowi na adres wskazany przez Klienta w zamówieniu (kurierem, pocztą lub do paczkomatu).<br /><br />7. Złożenie zamówienia przez Klienta oznacza złożenie Firmie oferty zawarcia umowy sprzedaży (kupna) zamówionego produktu. <br /><br />8. Po złożeniu zamówienia na adres poczty elektronicznej Klienta wskazany w koncie Klienta zostanie wysłane potwierdzenie otrzymania przez Firmę zamówienia złożonego przez Klienta. Jeżeli realizacja zamówienia jest możliwa, na adres poczty elektronicznej Klienta wysłana zostanie wiadomość elektroniczna z potwierdzeniem przyjęcia zamówienia do realizacji. Potwierdzenie przyjęcia zamówienia jest oświadczeniem Firmy o przyjęciu oferty, o której mowa w ust. 4 powyżej. <br /><br />9. Firma zastrzega sobie prawo ograniczenia sposobów dostawy oraz form płatności w odniesieniu do danych produktów, kategorii produktowych lub liczby zamawianych produktów. <br /><br />10. Firma zastrzega sobie prawo do ograniczenia sposobów dostawy oraz form płatności w stosunku do Klienta, który: <br />a) co najmniej trzykrotnie nie odebrał przedmiotu zamówienia dostarczanego za pośrednictwem Poczty Polskiej, płatnego przy odbiorze, w terminie 14 dni od dnia dostarczenia go do właściwej placówki Poczty Polskiej;<br />b) co najmniej trzykrotnie nie odebrał przedmiotu zamówienia przesłanego przesyłkę kurierską.<br /><br />11. W przypadku braku w magazynie zamówionego produktu lub braku możliwości realizacji zamówienia Klienta z innych przyczyn, w tym także, jeśli zakup ich od dostawców Firmy nie będzie możliwy w czasie przewidzianym na realizację zamówienia, Firma poinformuje Klienta o zaistniałej sytuacji wysyłając wiadomość na wskazany przez Klienta adres e-mail lub przekaże informację drogą telefoniczną na numer wskazany przez Klienta, w terminie wynikającym z powszechnie obowiązujących przepisów prawa. <br /><br />12. W przypadku, gdy realizacja części zamówienia nie będzie możliwa, Firma może zaproponować Klientowi: <br />a) anulowanie całości zamówienia (w przypadku wyboru tej opcji przez Klienta Firma będzie zwolniona z obowiązku realizacji zamówienia); <br />b) anulowanie zamówienia w części, w której realizacja nie jest możliwa w wyznaczonym terminie (w przypadku wyboru tej opcji przez Klienta zamówienie zostanie zrealizowane w części, przy czym Firma będzie zwolniona z obowiązku jego realizacji w pozostałym zakresie);<br />c) podział zamówienia i wyznaczenie nowego terminu realizacji w odniesieniu do tej części zamówienia, której realizacja nie jest możliwa w pierwotnie wyznaczonym terminie (w przypadku wyboru tej opcji przez Klienta wysłanie składających się na zamówienie produktów zostanie dokonane w kilku odrębnych przesyłkach, zaś Klient nie będzie ponosił dodatkowych kosztów związanych z podziałem zamówienia na kilka wysyłek). <br />13. W przypadku gdy Klient nie wybierze żadnego ze sposobów realizacji zamówienia w sytuacji, o której mowa w ust. 9 niniejszego paragrafu (w tym również w przypadku braku możliwości nawiązania kontaktu z Klientem z przyczyn nie leżących po stronie Firmy), Firma dostarczy Klientowi produkty, co do których zamówienie może być zrealizowane w terminie, w pozostałym zakresie zamówienie zostanie anulowane, o czym Klient zostanie powiadomiony na adres poczty elektronicznej wskazany w koncie Klienta. Klient może odstąpić od umowy w zakresie, w jakim została zrealizowana, na zasadach określonych w § 11 regulaminu. <br /><br />14. W przypadku gdy Klient nie podejmie żadnej decyzji w sytuacji, o której mowa w ust. 9 niniejszego paragrafu (w tym również w przypadku braku możliwości nawiązania kontaktu z Klientem z przyczyn nieleżących po stronie Firmy), Firma może anulować zamówienie w całości. <br /><br />15. W przypadku anulowania zamówienia w sytuacji wskazanej w ust. 13-14 niniejszego paragrafu, jeśli zapłata za przedmiot zamówienia została dokonana z góry, Firma zwróci Klientowi zapłaconą kwotę (lub jej części w przypadku realizacji zamówienia w części) zgodnie z powszechnie obowiązującymi przepisami prawa. Zasady zwrotu należności zostały szczegółowo opisane w § 12 regulaminu. <br /><br />16. Pod pojęciem anulowania zamówienia przez Firmę, o którym mowa w ust. 14-15 niniejszego paragrafu, należy rozumieć przysługujące Firmie umowne prawo odstąpienia, z którego Firma może skorzystać w terminie odpowiadającym terminowi, o którym mowa w § 8 ust. 1 niniejszego regulaminu. W przypadku gdy termin, o którym mowa w § 8 ust. 1 niniejszego regulaminu, jest krótszy niż 30 dni, Firma może wykonać umowne prawo odstąpienia w terminie 30 dni od dnia zawarcia umowy z Klientem. <br /><br />17. W przypadku podania przez Klienta błędnych lub niedokładnych danych, w tym w szczególności błędnego lub niedokładnego adresu, Firma nie ponosi odpowiedzialności za niedostarczenie lub opóźnienie w dostarczeniu przedmiotu zamówienia w najszerszym dopuszczalnym przez prawo zakresie. <br /><br /><b> § 6 Modyfikacje zamówienia</b><br /><br />1. Klient może dokonywać zmian w zamówieniu aż do momentu nadania przez Firmę przesyłki z przedmiotem zamówienia do Klienta (status realizacji zamówienia widoczny jest w koncie Klienta w zakładce \"Twoje konto\"). Zmiany mogą dotyczyć rezygnacji z całości będą z części produktów składających się na zamówienie, zmiany w adresie dostawy lub zmiany danych na fakturze. W przypadku rezygnacji z zamówienia (zarówno w całości jak i w części), jeżeli zapłata została dokonana z góry, zwrot ceny sprzedaży (odpowiedniej części ceny sprzedaży) nastąpi w terminie 14 (czternaście) dni od dnia otrzymania rezygnacji Klienta przez Firmę. Zasady zwrotu należności Klientom zostały szczegółowo opisane w § 12 regulaminu. <br /><br />2. Zmian w zamówieniu można dokonywać kontaktując się z Centrum Wsparcia Klienta. <br /><br />3. Klient otrzyma potwierdzenie dokonania zmian lub anulowania zamówienia na adres poczty elektronicznej wskazany przez Klienta w procesie składania zamówienia. <br /><br /><b> § 7 Formy płatności i rozpoczęcie realizacji zamówienia</b><br /><br />1. W przypadku gdy przedmiot zamówienia ma być dostarczony na terenie Polski zapłaty można dokonać:<br />a) podczas odbioru przedmiotu zamówienia po dostarczeniu go przez Pocztę Polską - gotówkę. W tym przypadku realizacja zamówienia zostanie rozpoczęta po zakończeniu przez Klienta procesu składania zamówienia na stronie Sklepu Internetowego nadodatek.pl;<br />b) przed odbiorem przedmiotu zamówienia (płatność z góry) - przelewem bankowym lub za pomocą płatności tpay.com. W tym przypadku realizacja zamówienia nastąpi po otrzymaniu przez Firmę potwierdzenia wpłynięcia należności na podane konto. <br /><br />2. W przypadku gdy przedmiot zamówienia ma być dostarczony poza granicami Polski, zapłaty można dokonać przelewem bankowym. W tym przypadku realizacja zamówienia nastąpi po otrzymaniu przez Firmę potwierdzenia wpłynięcia należności na podane konto. <br /><br />3. Klient nie ma możliwości zapłacić za część zamówienia z góry a za część zamówienia przy odbiorze. Forma płatności może być uzależniona od rodzaju produktu i/lub miejsca odbioru zamówienia. <br /><br /><b> § 8 Czas realizacji zamówień</b><br /><br />1. 3 dni robocze ( tj. dni tygodnia od poniedziałku do piątku z wyłączeniem dni ustawowo wolnych od pracy, w ciągu których nastąpi nadanie przesyłki z przedmiotem zamówienia) to orientacyjny czas liczony od momentu przyjęcia zamówienia do realizacji do chwili wysłania przedmiotu zamówienia do Klienta za pośrednictwem Poczty Polskiej lub firmy kurierskiej. Czas realizacji zamówienia jest podawany z uwzględnieniem terminu skompletowania wszystkich zamówionych produktów. Czas realizacji zamówienia uzależniony jest od dostępności danego produktu. <br /><br />2. Na terenie Polski przedmiot zamówienia może być dostarczony za pośrednictwem Poczty Polskiej lub firmy kurierskiej pod wskazany przez Klienta adres. <br /><br />3. Poza terenem Polski przedmiot zamówienia jest dostarczany za pośrednictwem Poczty Polskiej. <br /><br />4. Firma nie ponosi odpowiedzialności za wydłużony czas dostawy lub brak dostawy z powodu podania przez Klienta nieprawidłowych lub niepełnych danych, w tym nieprawidłowego lub niepełnego adresu dostawy. <br /><br /><b> § 9 Warunki reklamacji</b><br /><br />1. Klient, nabywający produkt w celu niezwiązanym z działalnością zawodową lub gospodarczą, ma prawo do złożenia reklamacji w ciągu 2 (dwóch) lat od daty wydania mu danego towaru, o ile w terminie dwóch miesięcy od dnia, w którym stwierdził niezgodności dostarczonych produktów z umową, zawiadomi Firmę o stwierdzonej niezgodności. <br /><br />2. Firma w ciągu 14 (czternaście) dni kalendarzowych ustosunkuje się do reklamacji Klienta i powiadomi go o sposobie dalszego postępowania. <br /><br />3. Warunkiem koniecznym, aby Firma rozpatrzyła reklamację, jest dostarczenie jej przez Klienta reklamowanego produktu lub produktów wraz z dowodem zakupu tego produktu (produktów) od Firmy i opisem reklamacji (wzór dokumentu reklamacji znajduje się na stronie nadodatek.pl w zakładce \"Dokumenty\"). <br /><br />4. W przypadku gdy produkt być dostarczany za pośrednictwem Poczty Polskiej lub firmy kurierskiej, reklamację (tj. reklamowany produkt, dowód zakupu i opis reklamacji) należy odesłać na adres Firmy (rekomendujemy wysyłkę za pośrednictwem Poczty Polskiej listem poleconym lub paczką ekonomiczną). W przypadku dostarczenia Klientowi produktu przesyłkę opłacaną za pobraniem, zwrot kosztów zamówienia nastąpi zgodnie z zasadami opisanymi w § 12 poniżej. <br /><br />5. W przypadku rozpatrzenia reklamacji na korzyść Klienta Firma naprawi lub wymieni Klientowi reklamowany produkt na pełnowartościowy lub jeżeli wymiana nie będzie możliwa zwróci należność za reklamowany produkt w ciągu 14 (czternaście) dni od daty rozpatrzenia reklamacji. <br /><br />6. Klient nabywający produkt w celu związanym z działalnością zawodową lub gospodarczą (Klient nie będący konsumentem) ma prawo złożyć reklamację stosownie do obowiązujących w tej mierze przepisów prawa, przy czym odpowiedzialność Firmyz tytulu rękojmi za wady fizyczne produktów ogranicza się do kwoty, jaką Klient zapłacił Firmie za nabycie danego produktu. <br /><br /><b> § 10 Warunki gwarancji </b><br /><br />1. Produkty sprzedawane przez Firmę mogą być objęte gwarancję udzieloną przez producenta będą dystrybutora. Firma nie udziela żadnej gwarancji na jakiekolwiek sprzedawane produkty. <br /><br />2. W przypadku produktu, na który producent lub dystrybutor udzielił gwarancji, Klient może reklamować produkt posiadający wady: <br />a) korzystając z uprawnień wynikających z udzielonej gwarancji - w tym wypadku Klient reklamuje produkt bezpośrednio do gwaranta (podmiotu udzielającego gwarancji), a Firma może być tylko pośrednikiem przekazującym reklamację. Klient według swego wyboru może zgłosić się bezpośrednio do serwisu gwarancyjnego albo do Firmy; <br />b) korzystając z uprawnień przysługujących mu od sprzedawcy w związku z niezgodnością produktu z umową - w takim przypadku należy złożyć reklamację stosownie do postanowień § 9 regulaminu. <br /><br /><b> § 11 Rezygnacja z zamówienia oraz odstąpienie od umowy </b><br /><br />1. Klient może zrezygnować z zamówienia, jeśli składające się na nie produkty nie zostały jeszcze przygotowane do wysyłki: <br />a) kontaktując się z Centrum Wsparcia Klienta; <br />b) samodzielnie wysyłając e-maila na adres sklep@nadodatek.pl. <br /><br />2. Klient będący osobą fizyczn, dokonujący zakupów w Sklepie Internetowym nadodatek.pl w zakresie niezwiązanym z jego działalnością gospodarczą lub zawodową (konsument) może odstąpić od umowy sprzedaży produktu zakupionego w Sklepie Internetowym nadodatek.pl bez podawania przyczyny w ciągu 14 (czternastu) dni kalendarzowych od dnia otrzymania zrealizowanego zamówienia (wydania produktu), za wyjątkiem (stosownie do art. 10 ust. 3 ustawy z dnia 2 marca 2000 r. o ochronie niektórych praw konsumentów oraz odpowiedzialności za produkt niebezpieczny (tekst jednolity z dnia 14 września 2012 r., Dz. U. z 2012 r., poz. 1225): <br />a) prasy; <br />b) produktów, których stan po odbiorze przez Klienta uległ zmianie, chyba że zmiana konieczna była w granicach zwykłego zarządu. <br /><br />3. Odstąpienie od umowy zgodnie z ust. 2 powyżej wymaga złożenia oświadczenia na piśmie w terminie wskazanym w ust. 2 powyżej (Klient może skorzystać z wzoru oświadczenia znajdującego się na stronie nadodatek.pl w zakładce \"Dokumenty\"). W takim przypadku Klient zobowiązany jest do zwrotu Firmie produktu w stanie niezmienionym, chyba że zmiana była konieczna w granicach zwykłego zarządu, zgodnie z postanowieniami ust. 4 niniejszego paragrafu w terminie wynikającym z obwiązujących przepisów prawa. Koszt zwrotu produktu w wyniku odstąpienia ponosi Klient. Firma zwróci Klientowi w terminie 14 dni uiszczoną przez Klienta należność zgodnie z postanowieniami § 12 regulaminu. <br /><br />4. Klient, który odstąpił od umowy zgodnie z ust. 2 powyżej, może zwrócić przedmiot zamówienia w całości lub części po odebraniu przesyłki dostarczonej Pocztą Polską lub do paczkomatu w terminie wskazanym w ust. 3 powyżej. Wówczas produkty, co do których Klient odstąpił od umowy, należy odesłać do Firmy. <br /><br />5. Firma nie odbiera kierowanych do niej przesyłek odesłanych za pobraniem i nie odpowiada za koszty związane z takimi przesyłkami. <br /><br /><b> § 12 Zwrot należności Klientom </b><br /><br />1. Firma dokona zwrotu należności w ciągu 14 dni kalendarzowych w przypadku: <br />a) anulowania zamówienia lub części zamówienia (w takim przypadku zwrotowi podlega odpowiednia część ceny) opłaconego z góry przed jego realizacją; <br />b) zwrotu produktu (odstąpienia od umowy) z zamówienia, które zostało dostarczone za pośrednictwem Poczty Polskiej lub firmy kurierskiej;<br />c) uznania reklamacji i braku możliwości naprawy uszkodzonego produktu lub wymiany na nowy. <br /><br />2. Firma dokona zwrotu pieniędzy na: <br />a) rachunek bankowy Klienta, jeśli zamówienie było opłacone: <br />- z góry za pomocą przelewu lub za pomocą płatności tpay.com, <br />- przy odbiorze u kuriera lub na poczcie.<br />Klient może wyrazić zgodę na ekspresowy zwrot pieniędzy poprzez złożenie właściwej dyspozycji za pośrednictwem Centrum Wsparcia Klienta. W takim wypadku zwrot pieniędzy następuje jedynie bezpośrednio na rachunek bankowy Klienta. Z ekspresowego zwrotu pieniędzy mogą skorzystać tylko Klienci, którzy dokonali płatności za zamówienie z góry za pomocą przelewu lub za pomocą płatności tpay.com. <br /><br />3. W najszerszym dopuszczalnym przez prawo zakresie Firma nie ponosi odpowiedzialności za brak zwrotu wpłaconych kwot lub opóźnienie zwrotu, jeżeli pomimo skierowania do Klienta na podany przez niego adres mailowy wezwania do przesłania Firmie numeru rachunku bankowego Klienta, Klient nie prześle Firmie takiego numeru rachunku bankowego lub gdy odpowiedź nie będzie zawierać danych umożliwiających dokonanie zwrotu. Firma nie ponosi odpowiedzialności za brak zwrotu wpłaconych kwot lub opóźnienie zwrotu, jeżeli są one wynikiem podania przez Klienta błędnych danych adresowych, imiennych lub błędnego numeru rachunku bankowego. <br /><br />4. W przypadku gdy Klient dokonał płatności za zamówienie z nienależącego do niego rachunku bankowego zwrot nastąpi bezpośrednio na rzecz posiadacza tego rachunku bankowego. <br /><br /><b> § 13 Promocje </b><br /><br />1. Na stronach Sklepu Internetowego nadodatek.pl mogą znajdować się informacje o promocjach (zwanych dalej \"Promocjami\"). Promocje dzielą się na: <br />a) promocje produktowe - obniżające cenę produktu zgodnie z rabatem kwotowym lub procentowym, określonym każdorazowo na stronie produktu;<br />b) promocje wartościowe - obniżające cenę Koszyka zawierającego produkty objęte promocją o rabat kwotowy lub procentowy określony każdorazowo po dodaniu produktów do Koszyka i spełnieniu szczegółowych warunków promocji umieszczonych na stronie Promocji lub w newsletterze.<br /><br /><b> § 14 Dane osobowe </b><br /><br />1. Klient wyraża zgodą na przetwarzanie przez Firmę danych osobowych podanych przez niego w procesie rejestracji konta w Sklepie Internetowym nadodatek.pl jak również podczas korzystania ze Sklepu Internetowego nadodatek.pl, w tym dokonywania zakupów w Sklepie Internetowym nadodatek.pl. Podanie danych osobowych przez Klienta jest dobrowolne, jednakże brak zgody na przetwarzanie przez Firmę danych osobowych może uniemożliwiać dokonywanie przez Klienta zakupów w Sklepie Internetowym nadodatek.pl <br /><br />2. Dane osobowe przetwarzane są przez Firmę Testcom Dariusz Szyfelbein - osoba fizyczna prowadząca działalność gospodarczą, z siedzibą w Otominie, ul. Polna 6, 80-174 Gdańsk. Nr REGON 220661599, NIP 957-042-97-79. Firma uzyskała wpis do ewidencji działalności gospodarczej pod numerem 139299. Organem rejestrującym jest Prezydent Miasta Gdańska. <br /><br />3. Firma przetwarza dane osobowe w celu świadczenia usług zawierania z Klientem i wykonywania umów sprzedaży produktów zamówionych przez Klienta w Sklepie Internetowym nadodatek.pl, a w przypadku wyrażenia przez Klienta zgody, o której mowa w § 15 regulaminu, również w celach marketingowych, w tym w szczególności w celu przesyłania Klientowi informacji handlowych drogą elektroniczną. <br /><br />4. Klient ma prawo dostępu do swoich danych osobowych oraz do ich poprawiania i usunięcia. Dane osobowe mogą być poprawiane lub usuwane po zalogowaniu się na konto Klienta (zakładka \"Twoje konto\"). <br /><br />5. Klient oświadcza, iż podane przez niego dane osobowe są danymi Klienta. <br /><br />6. Szczegółowe postanowienia dotyczące ochrony danych osobowych Klienta znajdują się na stronie internetowej Sklepu Internetowego nadodatek.pl poświęconej polityce prywatności. <br /><br /><b> § 15 RODO </b><br /><br />1. Dane osobowe Klienta przetwarzane są w celach związanych z realizacją złożonego w sklepie zamówienia, w celach wynikających z prawnie uzasadnionych interesów realizowanych przez Administratora danych osobowych, a także na podstawie zgody Klienta w celach zgodnych z treścią udzielonej zgody. <br /><br />2. Podane dane są przetwarzane na podstawie art.6 ust. 1 lit. a), lit. b) i lit. f) Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenia o ochronie danych osobowych). <br /><br />3. Dane osobowe Klienta są przechowywane w czasie realizacji zamówienia, a także po zakończeniu jego realizacji na czas zgodny z przepisami prawa, a w przypadku prawnie usprawiedliwionych celów Administratora oraz na podstawie zgody udzielonej przez Klienta - do czasu wygaśniecia zgody. <br /><br />4. Klientowi przysługuje prawo żądania od Administratora dostępu do danych osobowych dotyczących jego osoby, ich sprostowania, usunięcia lub ograniczenia przetwarzania. <br /><br />5. Klientowi przysługuje prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej cofnięciem. <br /><br />6. Klientowi przysługuje prawo wniesienia skargi do GIODO (od dnia 25 maja 2018 roku do Prezesa Urzędu Ochrony Danych Osobowych), gdy uzna, że przetrwarzanie danych osobowych jego dotyczących narusza przepisy prawa. <br /><br />7. Dane osobowe pochodzą od osoby, której dotyczą. <br /><br />8. Podanie danych jest dobrowolne, lecz niezbędne do realizacji zamówienia. Brak podania danych osobowych uniemożliwia zrealizowanie złożonego w sklepie zamówienia. <br /><br />9. Możliwy jest kontakt z Administatorem danych telefonicznie 663-656-888 i drogą mailową e-mail: sklep@nadodatek.pl <br /><br /><b> § 16 Postanowienia końcowe </b><br /><br />1. Informacje o produktach zamieszczone na stronach Sklepu Internetowego nadodatek.pl nie stanowią oferty w rozumieniu kodeksu cywilnego. <br /><br />2. Firma dokłada wszelkich starań by świadczone usługi w ramach Sklepu Internetowego nadodatek.pl były na najwyższym poziomie, jednakże Firma nie wyklucza możliwości czasowego zawieszenia dostępności Sklepu Internetowego nadodatek.pl w przypadku konieczności przeprowadzenia konserwacji, przeglądu, wymiany sprzętu lub też w związku z koniecznością modernizacji lub rozbudowy Sklepu Internetowego nadodatek.pl. <br /><br />3. W najszerszym dopuszczalnym przez prawo zakresie Firma nie ponosi odpowiedzialności za blokowanie przez administratorów serwerów pocztowych przesyłania wiadomości na adres e-mail wskazany przez Klienta oraz za usuwanie i blokowanie e-maili przez oprogramowanie zainstalowane na komputerze używanym przez Klienta. <br /><br />4. Indywidualne ustawienia komputera mogą powodować różnice pomiędzy wizualizacją produktu na komputerze Klienta a rzeczywistym wyglądem produktu (kolor, proporcje itp.). Klientowi, o którym mowa w § 11 ust. 2 regulaminu, przysługuje uprawnienie do odstąpienia od umowy zgodnie z postanowieniami § 11 regulaminu. <br /><br />5. W sprawach nieuregulowanych w regulaminie mają zastosowanie przepisy prawa polskiego, a zwłaszcza Kodeksu cywilnego oraz przepisy Ustawy o szczególnych warunkach sprzedaży konsumenckiej oraz zmianie Kodeksu cywilnego (Dz. U. Nr 141 z 2002 r. poz. 1176 z późn. zm.) i Ustawy o ochronie niektórych praw konsumentów oraz o odpowiedzialności za szkodę wyrządzoną przez produkt niebezpieczny (Dz. U. Nr 22 z 2000 r. poz. 271 z późn. zm.). <br /><br />6. Wszystkie nazwy produktów zamieszczone na stronie Sklepu Internetowego nadodatek.pl używane są w celach identyfikacyjnych i mogą być chronione i zastrzeżone na podstawie przepisów Ustawy Prawo własności przemysłowej (Dz. U. Nr 119 z 2003 r. poz. 1117). <br /><br />7. Klient akceptując niniejszy regulamin zgadza się na zbieranie i udostępnianie Firmie statystyk swojej obecności i aktywności w Sklepie Internetowym nadodatek.pl. Dane są zbierane automatycznie ale nie są wykorzystywane do analizy aktywności Klientów. <br /><br />8. W celu zapewnienia jak najwyższej jakości usług Sklep Internetowy nadodatek.pl korzysta z informacji zapisywanych przez serwer na urządzeniu końcowym Klienta, które następnie są odczytywane przy każdorazowym połączeniu się przeglądarki internetowej (tzw. cookies). Klient może w dowolnym momencie zmienić ustawienia przeglądarki, by nie akceptowała takich plików lub informowała o ich przesyłaniu. Należy jednak pamiętać, iż nieakceptowanie plików cookie może spowodować utrudnienia w korzystaniu z Sklepu Internetowego nadodatek.pl. Korzystanie przez Klienta z przeglądarki, której ustawienia zezwalają na zapisywanie plików cookie na urządzeniu Klienta, oznacza wyrażenie zgody na zapisywanie powyższych plików na tym urządzeniu Klienta. Więcej informacji w tym zakresie znajduje się w Polityce Prywatności. <br /><br />9. Wszelkie spory wynikające z umów zawieranych pomiędzy Sklepem internetowym nadodatek.pl a Kupującym, lub w związku z nimi, będą przedmiotem mediacji. Gdyby w terminie 30 dni od wyznaczenia mediatora lub w innym dodatkowym terminie uzgodnionym przez strony mediacja nie doprowadziła do zawarcia ugody, spór powstały między Klientem niebędącym konsumentem w rozumieniu przepisów Kodeksu cywilnego a Firmą rozstrzygane będą przez sąd miejscowo właściwy. <br /><br />10. Firma zastrzega sobie prawo do zmiany regulaminu z ważnych przyczyn technicznych, prawnych lub/i organizacyjnych. Zmiana regulaminu staje się skuteczna w terminie wskazanym przez Firmę, nie krótszym niż 14 dni od momentu udostępnienia na stronie Sklepu Internetowego nadodatek.pl zmienionego regulaminu. Zamówienia złożone przez Klientów przed wejściem w życie zmian regulaminu są realizowane według dotychczasowych postanowień regulaminu. Kupujący może go utrwalić w pamięci swojego komputera lub wydrukować.</div>','regulamin'),
+(4,1,1,'O nas','','Dowiedz się więcej o nas','about us, informations','<p><span style=\"color:#000000;\">Jesteśmy jedną z pierwszych pasmanterii internetowych w Polsce. </span><br /><br /><span style=\"color:#000000;\">Od ponad dekady służymy polskim rękodzielniczkom i rękodzielnikom. </span><br /><span style=\"color:#000000;\">Z pasją i zaangażowaniem tworzymy przyjazne miejsce, w którym osoby twórcze zaopatrują się w potrzebne produkty oszczędzając pieniądze i czas. </span><br /><br /><span style=\"color:#000000;\">Naszą misją jest oferowanie najlepszych produktów renomowanych producentów. </span><br /><span style=\"color:#000000;\">Zaopatrujemy klientów w produkty z kluczowych kategorii takich jak haft, dziewiarstwo, filcowanie i szycie.</span><br /><span style=\"color:#000000;\">Koncentrujemy się na potrzebach naszych klientów służąc im radą i pomocą. </span><br /><br /><span style=\"color:#000000;\">Naszym celem jest tworzenie innowacyjnych rozwiązań łączących rękodzieło i technologię. </span><br /><br /><span style=\"color:#000000;\">Rozwijamy się by zasłużyć na zaufanie i uznanie naszych klientów.</span></p>','o-nas'),
+(5,1,1,'Zwroty i reklamacje','','Informacje o zwrotach i reklamacjach','secure payment, ssl, visa, mastercard, paypal','<p><span style=\"color:#000000;\">W celu złożenia reklamacji lub zwrotu towaru pobierz nastepujące dokumenty:</span></p>\n<p><span style=\"color:#000000;\"><b><a href=\"https://nadodatek.pl/documents/reklamacja.png\" style=\"color:#000000;\">Wzór dokumentu reklamacji</a> </b> </span></p>\n<p><span style=\"color:#000000;\"><b><a href=\"https://nadodatek.pl/documents/oswiadczenie_o_odstapieniu.odt\" style=\"color:#000000;\">Wzór dokumentu oświadczenie o odstąpieniu</a> </b> </span></p>','zwroty-i-reklamacje'),
+(6,1,1,'Działania eco','','Jak nasz sklep przyczynia się do ochrony planety','','<p><span style=\"color:#000000;\">Od samego początku podejmujemy śmiałe decyzje.</span><br /><br /><span style=\"color:#000000;\">W trosce o środowisko, świadomie, nie wprowadzamy do obiegu nowych kartonów i wypełniaczy.</span><br /><span style=\"color:#000000;\">Wszystkie nasze opakowania wysyłkowe pochodzą z odzysku.</span><br /><br /><span style=\"color:#000000;\">Ich pozyskiwanie wymaga od nas kreatywności w pozyskiwaniu i zaangażowania w przygotowaniu. </span><br /><span style=\"color:#000000;\">Dzięki temu, przez ponad dekadę, zdobyliśmy i wysłaliśmy do Was kilkanaście tysięcy kartonów.</span><br /><br /><span style=\"color:#000000;\">Dlatego, uważamy, że warto.</span></p>','eco'),
+(7,1,1,'Adres i dane','','Adres sklepu oraz dane dotyczące działalności gospodarczej','','<p><span style=\"color:#000000;\">Testcom Dariusz Szyfelbein </span><br /><span style=\"color:#000000;\"> Otomin, ul. Polna 6 </span><br /><span style=\"color:#000000;\"> 80-174 Gdańsk </span><br /><br /><span style=\"color:#000000;\"> <strong>REGON:</strong> 220661599</span><br /><span style=\"color:#000000;\"> <strong>NIP:</strong> 957-042-97-79 </span><br /><span style=\"color:#000000;\"> <strong>Nr wpisu do do ewidencji działalności gospodarczej:</strong> 139299 </span><br /><span style=\"color:#000000;\"> <strong>Organ rejestrujący:</strong> Prezydent Miasta Gdańska</span></p>','dane');
 /*!40000 ALTER TABLE `ps_cms_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40560,7 +40570,9 @@ INSERT INTO `ps_cms_shop` VALUES
 (2,1),
 (3,1),
 (4,1),
-(5,1);
+(5,1),
+(6,1),
+(7,1);
 /*!40000 ALTER TABLE `ps_cms_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -40583,7 +40595,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=380 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=389 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40679,7 +40691,7 @@ INSERT INTO `ps_configuration` VALUES
 (84,NULL,NULL,'PS_STOCK_MVT_REASON_DEFAULT','3','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (85,NULL,NULL,'PS_SPECIFIC_PRICE_PRIORITIES','id_shop;id_currency;id_country;id_group','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (86,NULL,NULL,'PS_TAX_DISPLAY','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(87,NULL,NULL,'PS_SMARTY_FORCE_COMPILE','2','0000-00-00 00:00:00','2024-11-30 20:10:56'),
 (88,NULL,NULL,'PS_DISTANCE_UNIT','km','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (89,NULL,NULL,'PS_STORES_DISPLAY_CMS','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (90,NULL,NULL,'SHOP_LOGO_WIDTH','100','0000-00-00 00:00:00','2024-11-23 21:27:32'),
@@ -40695,7 +40707,7 @@ INSERT INTO `ps_configuration` VALUES
 (100,NULL,NULL,'PS_LOCALE_LANGUAGE','pl','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (101,NULL,NULL,'PS_LOCALE_COUNTRY','pl','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (102,NULL,NULL,'PS_ATTACHMENT_MAXIMUM_SIZE','8','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(103,NULL,NULL,'PS_SMARTY_CACHE','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(103,NULL,NULL,'PS_SMARTY_CACHE',NULL,'0000-00-00 00:00:00','2024-11-30 20:10:56'),
 (104,NULL,NULL,'PS_DIMENSION_UNIT','cm','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (105,NULL,NULL,'PS_GUEST_CHECKOUT_ENABLED','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (106,NULL,NULL,'PS_DISPLAY_SUPPLIERS','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40828,7 +40840,7 @@ INSERT INTO `ps_configuration` VALUES
 (233,NULL,NULL,'PS_BASE_DISTANCE_UNIT','m','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (234,NULL,NULL,'PS_SHOP_DOMAIN','localhost','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (235,NULL,NULL,'PS_SHOP_DOMAIN_SSL','localhost','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(236,NULL,NULL,'PS_SHOP_NAME','Pasmanteria','0000-00-00 00:00:00','2024-11-23 21:27:32'),
+(236,NULL,NULL,'PS_SHOP_NAME','Nadodatek','0000-00-00 00:00:00','2024-11-30 20:31:13'),
 (237,NULL,NULL,'PS_SHOP_EMAIL','admin@mail.com','0000-00-00 00:00:00','2024-11-23 21:27:32'),
 (238,NULL,NULL,'PS_MAIL_METHOD','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (239,NULL,NULL,'PS_SHOP_ACTIVITY','3','0000-00-00 00:00:00','2024-11-23 21:27:32'),
@@ -40858,7 +40870,7 @@ INSERT INTO `ps_configuration` VALUES
 (263,NULL,NULL,'PS_DASHBOARD_SIMULATION','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (264,NULL,NULL,'PS_USE_HTMLPURIFIER','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (265,NULL,NULL,'PS_SMARTY_CACHING_TYPE','filesystem','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-(266,NULL,NULL,'PS_SMARTY_LOCAL','0','0000-00-00 00:00:00','0000-00-00 00:00:00'),
+(266,NULL,NULL,'PS_SMARTY_LOCAL',NULL,'0000-00-00 00:00:00','2024-11-30 20:10:56'),
 (267,NULL,NULL,'PS_SMARTY_CLEAR_CACHE','everytime','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (268,NULL,NULL,'PS_DETECT_LANG','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 (269,NULL,NULL,'PS_DETECT_COUNTRY','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -40962,7 +40974,16 @@ INSERT INTO `ps_configuration` VALUES
 (376,NULL,NULL,'PS_LAYERED_FILTER_SHOW_OUT_OF_STOCK_LAST','0','2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (377,NULL,NULL,'PS_LAYERED_FILTER_BY_DEFAULT_CATEGORY','0','2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (378,NULL,NULL,'PS_LAYERED_INDEXED','1','2024-11-23 21:28:00','2024-11-23 21:28:00'),
-(379,NULL,NULL,'ONBOARDINGV2_SHUT_DOWN','1','2024-11-23 21:28:41','2024-11-23 21:28:41');
+(379,NULL,NULL,'ONBOARDINGV2_SHUT_DOWN','1','2024-11-23 21:28:41','2024-11-23 21:28:41'),
+(380,NULL,NULL,'PS_SHOP_DETAILS',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(381,NULL,NULL,'PS_SHOP_ADDR1',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(382,NULL,NULL,'PS_SHOP_ADDR2',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(383,NULL,NULL,'PS_SHOP_CODE',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(384,NULL,NULL,'PS_SHOP_CITY',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(385,NULL,NULL,'PS_SHOP_COUNTRY_ID','14','2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(386,NULL,NULL,'PS_SHOP_COUNTRY','Polska','2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(387,NULL,NULL,'PS_SHOP_PHONE',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08'),
+(388,NULL,NULL,'PS_SHOP_FAX',NULL,'2024-11-30 20:29:08','2024-11-30 20:29:08');
 /*!40000 ALTER TABLE `ps_configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41122,7 +41143,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41133,7 +41154,13 @@ LOCK TABLES `ps_connections` WRITE;
 /*!40000 ALTER TABLE `ps_connections` DISABLE KEYS */;
 INSERT INTO `ps_connections` VALUES
 (1,1,1,1,1,2130706433,'2024-11-23 21:27:58','https://www.prestashop.com'),
-(2,1,1,3,1,2886860801,'2024-11-23 21:29:35','');
+(2,1,1,3,1,2886860801,'2024-11-23 21:29:35',''),
+(3,1,1,5,1,2886860801,'2024-11-30 19:47:42',''),
+(4,1,1,4,1,2886860801,'2024-11-30 20:04:15',''),
+(5,1,1,6,2,2886860801,'2024-11-30 20:11:45',''),
+(6,1,1,7,2,2886860801,'2024-11-30 20:13:38',''),
+(7,1,1,5,3,2886860801,'2024-11-30 20:18:27',''),
+(8,1,1,8,4,2886860801,'2024-11-30 21:19:04','');
 /*!40000 ALTER TABLE `ps_connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42221,7 +42248,7 @@ CREATE TABLE `ps_customer` (
   KEY `id_gender` (`id_gender`),
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42231,7 +42258,8 @@ CREATE TABLE `ps_customer` (
 LOCK TABLES `ps_customer` WRITE;
 /*!40000 ALTER TABLE `ps_customer` DISABLE KEYS */;
 INSERT INTO `ps_customer` VALUES
-(1,1,1,1,3,1,0,'','','','John','DOE','pub@prestashop.com','069a85c92e2602cff82eb2fbbe57f4dd','2024-11-23 15:27:58','1970-01-15',1,'','2013-12-13 08:19:15',1,'',0.000000,0,0,'e78428e6e6946a83e2df69e7f797cbfb','',1,0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58','','0000-00-00 00:00:00');
+(1,1,1,1,3,1,0,'','','','John','DOE','pub@prestashop.com','069a85c92e2602cff82eb2fbbe57f4dd','2024-11-23 15:27:58','1970-01-15',1,'','2013-12-13 08:19:15',1,'',0.000000,0,0,'e78428e6e6946a83e2df69e7f797cbfb','',1,0,0,'2024-11-23 21:27:58','2024-11-23 21:27:58','','0000-00-00 00:00:00'),
+(2,1,1,1,3,1,0,'','','','aa','aaa','admin@mail.com','$2y$10$spQVRBBrfs.Zvs1hbO6YWuZkNRh1MSnMdKubf7jhZeqjOx7jRWnC2','2024-11-30 14:30:43','0000-00-00',0,'','0000-00-00 00:00:00',1,'',0.000000,0,0,'e0542d94774ef8b6744f7e7e900edbfe','',1,0,0,'2024-11-30 20:30:43','2024-11-30 20:30:43','','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `ps_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42258,7 +42286,8 @@ CREATE TABLE `ps_customer_group` (
 LOCK TABLES `ps_customer_group` WRITE;
 /*!40000 ALTER TABLE `ps_customer_group` DISABLE KEYS */;
 INSERT INTO `ps_customer_group` VALUES
-(1,3);
+(1,3),
+(2,3);
 /*!40000 ALTER TABLE `ps_customer_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42330,7 +42359,7 @@ CREATE TABLE `ps_customer_session` (
   `id_customer` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_customer_session`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42653,7 +42682,7 @@ CREATE TABLE `ps_employee` (
 LOCK TABLES `ps_employee` WRITE;
 /*!40000 ALTER TABLE `ps_employee` DISABLE KEYS */;
 INSERT INTO `ps_employee` VALUES
-(1,1,1,'Root','Root','admin@mail.com','$2y$10$559K.1E7asSDxTuHx/iY1uwNqHceG55wBx8rog/GpKLjy1r/cQntS','2024-11-23 15:27:32','2024-10-23','2024-11-23','0000-00-00','0000-00-00',1,NULL,NULL,'default','theme.css',1,0,1,1,NULL,0,0,0,'2024-11-23',NULL,'0000-00-00 00:00:00',0);
+(1,1,1,'Root','Root','admin@mail.com','$2y$10$559K.1E7asSDxTuHx/iY1uwNqHceG55wBx8rog/GpKLjy1r/cQntS','2024-11-23 15:27:32','2024-10-23','2024-11-23','0000-00-00','0000-00-00',1,NULL,NULL,'default','theme.css',1,0,1,1,NULL,0,0,0,'2024-11-30',NULL,'0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `ps_employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -42669,7 +42698,7 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42678,6 +42707,8 @@ CREATE TABLE `ps_employee_session` (
 
 LOCK TABLES `ps_employee_session` WRITE;
 /*!40000 ALTER TABLE `ps_employee_session` DISABLE KEYS */;
+INSERT INTO `ps_employee_session` VALUES
+(2,1,'405e26dea981ab1c32a54dd2bae02cb08b321e93');
 /*!40000 ALTER TABLE `ps_employee_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -43157,7 +43188,7 @@ CREATE TABLE `ps_guest` (
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43169,7 +43200,12 @@ LOCK TABLES `ps_guest` WRITE;
 INSERT INTO `ps_guest` VALUES
 (1,0,0,1,0,0,0,0,0,0,0,0,0,0,'',0),
 (2,0,0,0,0,0,0,0,0,0,0,0,0,0,'',0),
-(3,7,1,0,0,0,0,0,0,0,0,0,0,0,'pl',0);
+(3,7,1,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(4,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(5,6,3,2,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(6,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(7,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0),
+(8,6,3,0,0,0,0,0,0,0,0,0,0,0,'pl',0);
 /*!40000 ALTER TABLE `ps_guest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -44964,6 +45000,9 @@ CREATE TABLE `ps_layered_filter_block` (
 
 LOCK TABLES `ps_layered_filter_block` WRITE;
 /*!40000 ALTER TABLE `ps_layered_filter_block` DISABLE KEYS */;
+INSERT INTO `ps_layered_filter_block` VALUES
+('1a53abdd3ceb679028d32b737d3bcbdf','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:1;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:1;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:1;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:30;s:3:\"min\";d:23;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:1;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:0:{}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:1:{i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"1\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:1;}}}'),
+('49fe8498c58dfc48a60ed6c25cb40b6e','a:1:{s:7:\"filters\";a:11:{i:0;a:7:{s:9:\"type_lite\";s:12:\"availability\";s:4:\"type\";s:12:\"availability\";s:6:\"id_key\";i:0;s:4:\"name\";s:13:\"Dostępność\";s:6:\"values\";a:2:{i:2;a:2:{s:4:\"name\";s:11:\"W magazynie\";s:3:\"nbr\";i:2;}i:0;a:2:{s:4:\"name\";s:12:\"Niedostępny\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:1;a:7:{s:9:\"type_lite\";s:6:\"extras\";s:4:\"type\";s:6:\"extras\";s:6:\"id_key\";i:0;s:4:\"name\";s:10:\"Selections\";s:6:\"values\";a:3:{s:4:\"sale\";a:2:{s:4:\"name\";s:7:\"On sale\";s:3:\"nbr\";i:0;}s:3:\"new\";a:2:{s:4:\"name\";s:11:\"New product\";s:3:\"nbr\";i:2;}s:8:\"discount\";a:2:{s:4:\"name\";s:10:\"Discounted\";s:3:\"nbr\";i:2;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:2;a:12:{s:9:\"type_lite\";s:5:\"price\";s:4:\"type\";s:5:\"price\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Cena\";s:3:\"max\";d:45;s:3:\"min\";d:23;s:4:\"unit\";s:3:\"zł\";s:14:\"specifications\";a:11:{s:6:\"symbol\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:12:\"currencyCode\";s:3:\"PLN\";s:14:\"currencySymbol\";s:3:\"zł\";s:13:\"numberSymbols\";a:11:{i:0;s:1:\",\";i:1;s:2:\" \";i:2;s:1:\";\";i:3;s:1:\"%\";i:4;s:1:\"-\";i:5;s:1:\"+\";i:6;s:1:\"E\";i:7;s:2:\"×\";i:8;s:3:\"‰\";i:9;s:3:\"∞\";i:10;s:3:\"NaN\";}s:15:\"positivePattern\";s:12:\"#,##0.00 ¤\";s:15:\"negativePattern\";s:13:\"-#,##0.00 ¤\";s:17:\"maxFractionDigits\";i:2;s:17:\"minFractionDigits\";i:2;s:12:\"groupingUsed\";b:1;s:16:\"primaryGroupSize\";i:3;s:18:\"secondaryGroupSize\";i:3;}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:3:\"nbr\";i:2;s:5:\"value\";N;}i:3;a:7:{s:9:\"type_lite\";s:8:\"category\";s:4:\"type\";s:8:\"category\";s:6:\"id_key\";i:0;s:4:\"name\";s:9:\"Kategorie\";s:6:\"values\";a:2:{i:4;a:2:{s:4:\"name\";s:3:\"Men\";s:3:\"nbr\";s:1:\"1\";}i:5;a:2:{s:4:\"name\";s:5:\"Women\";s:3:\"nbr\";s:1:\"1\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:4;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"1\";s:4:\"name\";s:7:\"Rozmiar\";s:14:\"is_color_group\";b:0;s:6:\"values\";a:4:{i:1;a:4:{s:4:\"name\";s:1:\"S\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:2;a:4:{s:4:\"name\";s:1:\"M\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:3;a:4:{s:4:\"name\";s:1:\"L\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:4;a:4:{s:4:\"name\";s:2:\"XL\";s:3:\"nbr\";s:1:\"2\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:5;a:10:{s:9:\"type_lite\";s:18:\"id_attribute_group\";s:4:\"type\";s:18:\"id_attribute_group\";s:6:\"id_key\";s:1:\"2\";s:4:\"name\";s:5:\"Kolor\";s:14:\"is_color_group\";b:1;s:6:\"values\";a:2:{i:8;a:5:{s:4:\"name\";s:6:\"Biały\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#ffffff\";}i:11;a:5:{s:4:\"name\";s:6:\"czarny\";s:3:\"nbr\";s:1:\"1\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:5:\"color\";s:7:\"#434A54\";}}s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:6;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"1\";s:6:\"values\";a:1:{i:4;a:4:{s:3:\"nbr\";s:1:\"2\";s:4:\"name\";s:8:\"Bawełna\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:11:\"Composition\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:7;a:9:{s:9:\"type_lite\";s:10:\"id_feature\";s:4:\"type\";s:10:\"id_feature\";s:6:\"id_key\";s:1:\"2\";s:6:\"values\";a:2:{i:7;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:12:\"Long sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}i:8;a:4:{s:3:\"nbr\";s:1:\"1\";s:4:\"name\";s:13:\"Short sleeves\";s:8:\"url_name\";N;s:10:\"meta_title\";N;}}s:4:\"name\";s:8:\"Property\";s:8:\"url_name\";N;s:10:\"meta_title\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:8;a:7:{s:9:\"type_lite\";s:12:\"manufacturer\";s:4:\"type\";s:12:\"manufacturer\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Marka\";s:6:\"values\";a:1:{i:1;a:2:{s:4:\"name\";s:13:\"Studio Design\";s:3:\"nbr\";s:1:\"2\";}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:9;a:7:{s:9:\"type_lite\";s:9:\"condition\";s:4:\"type\";s:9:\"condition\";s:6:\"id_key\";i:0;s:4:\"name\";s:5:\"Stan:\";s:6:\"values\";a:3:{s:3:\"new\";a:2:{s:4:\"name\";s:4:\"Nowy\";s:3:\"nbr\";s:1:\"2\";}s:4:\"used\";a:2:{s:4:\"name\";s:8:\"Używany\";s:3:\"nbr\";i:0;}s:11:\"refurbished\";a:2:{s:4:\"name\";s:9:\"Odnowiony\";s:3:\"nbr\";i:0;}}s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";s:1:\"0\";}i:10;a:12:{s:9:\"type_lite\";s:6:\"weight\";s:4:\"type\";s:6:\"weight\";s:6:\"id_key\";i:0;s:4:\"name\";s:4:\"Waga\";s:3:\"max\";d:0.29999999999999999;s:3:\"min\";d:0.29999999999999999;s:4:\"unit\";s:2:\"kg\";s:14:\"specifications\";N;s:17:\"filter_show_limit\";i:0;s:11:\"filter_type\";i:3;s:5:\"value\";N;s:3:\"nbr\";i:2;}}}');
 /*!40000 ALTER TABLE `ps_layered_filter_block` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -45417,7 +45456,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45648,7 +45687,17 @@ INSERT INTO `ps_log` VALUES
 (219,1,0,'Module blockreassurance has no vendor folder','',0,1,NULL,1,0,1,'2024-11-23 21:27:43','2024-11-23 21:27:43'),
 (220,1,0,'Protect vendor folder in module ps_facetedsearch','',0,1,NULL,1,0,1,'2024-11-23 21:28:00','2024-11-23 21:28:00'),
 (221,1,0,'Module ps_facetedsearch has no vendor folder','',0,1,NULL,1,0,1,'2024-11-23 21:28:00','2024-11-23 21:28:00'),
-(222,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-23 21:28:38','2024-11-23 21:28:38');
+(222,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-23 21:28:38','2024-11-23 21:28:38'),
+(223,1,0,'Połączenie z panelem administracyjnym z 172.18.0.1','',0,NULL,NULL,1,1,1,'2024-11-30 19:48:22','2024-11-30 19:48:22'),
+(224,1,0,'usunięcie Store','Store',1,1,NULL,1,0,1,'2024-11-30 20:28:44','2024-11-30 20:28:44'),
+(225,1,0,'usunięcie Store','Store',5,1,NULL,1,0,1,'2024-11-30 20:28:49','2024-11-30 20:28:49'),
+(226,1,0,'usunięcie Store','Store',4,1,NULL,1,0,1,'2024-11-30 20:28:52','2024-11-30 20:28:52'),
+(227,1,0,'usunięcie Store','Store',3,1,NULL,1,0,1,'2024-11-30 20:28:55','2024-11-30 20:28:55'),
+(228,1,0,'usunięcie Store','Store',2,1,NULL,1,0,1,'2024-11-30 20:28:59','2024-11-30 20:28:59'),
+(229,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:30:43','2024-11-30 20:30:43'),
+(230,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37'),
+(231,3,0,'Swift Error: Expected response code 220 but got an empty response','',0,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37'),
+(232,1,0,'Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart',6,1,NULL,1,0,0,'2024-11-30 20:31:37','2024-11-30 20:31:37');
 /*!40000 ALTER TABLE `ps_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46762,7 +46811,7 @@ CREATE TABLE `ps_order_carrier` (
   KEY `id_order` (`id_order`),
   KEY `id_carrier` (`id_carrier`),
   KEY `id_order_invoice` (`id_order_invoice`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46776,7 +46825,8 @@ INSERT INTO `ps_order_carrier` VALUES
 (2,2,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
 (3,3,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
 (4,4,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
-(5,5,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58');
+(5,5,2,0,0.000000,7.000000,8.400000,'','2024-11-23 21:27:58'),
+(6,6,1,0,0.300000,0.000000,0.000000,'','2024-11-30 20:31:37');
 /*!40000 ALTER TABLE `ps_order_carrier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46875,7 +46925,7 @@ CREATE TABLE `ps_order_detail` (
   KEY `product_attribute_id` (`product_attribute_id`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_order_id_order_detail` (`id_order`,`id_order_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46891,7 +46941,8 @@ INSERT INTO `ps_order_detail` VALUES
 (4,2,0,0,1,8,0,0,'Mug Today is a good day',1,1,0,0,0,11.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_13','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',11.900000,11.900000,11.900000,11.900000,0.000000,0.000000,0.000000,11.900000,0.000000,0.000000,0.000000),
 (5,3,0,0,1,16,28,0,'Mountain fox notebook Style : Ruled',1,1,0,0,0,12.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_8','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',12.900000,12.900000,12.900000,12.900000,0.000000,0.000000,0.000000,12.900000,0.000000,0.000000,0.000000),
 (6,4,0,0,1,16,29,0,'Mountain fox notebook Style : Plain',1,1,0,0,0,12.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_8','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',12.900000,12.900000,12.900000,12.900000,0.000000,0.000000,0.000000,12.900000,0.000000,0.000000,0.000000),
-(7,5,0,0,1,10,25,0,'Brown bear cushion Color : Black',1,1,0,0,0,18.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_16','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',18.900000,18.900000,18.900000,18.900000,0.000000,0.000000,0.000000,18.900000,0.000000,0.000000,0.000000);
+(7,5,0,0,1,10,25,0,'Brown bear cushion Color : Black',1,1,0,0,0,18.900000,0.00,0.000000,0.000000,0.000000,0.00,0.000000,'','','','','demo_16','',0.000000,0,0,'',0.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',18.900000,18.900000,18.900000,18.900000,0.000000,0.000000,0.000000,18.900000,0.000000,0.000000,0.000000),
+(8,6,0,0,1,1,1,0,'Hummingbird printed t-shirt (Rozmiar: S - Kolor: Biały)',1,1,0,0,0,19.120000,20.00,0.000000,0.000000,0.000000,0.00,24.750000,'','','','','demo_1','demo_1_46',0.300000,1,0,'PTU PL 23%',23.000,0.000000,0.000,0,'',0,'0000-00-00 00:00:00',23.520000,19.120000,23.517600,19.120000,0.000000,0.000000,5.490000,23.900000,0.000000,0.000000,0.000000);
 /*!40000 ALTER TABLE `ps_order_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46918,6 +46969,8 @@ CREATE TABLE `ps_order_detail_tax` (
 
 LOCK TABLES `ps_order_detail_tax` WRITE;
 /*!40000 ALTER TABLE `ps_order_detail_tax` DISABLE KEYS */;
+INSERT INTO `ps_order_detail_tax` VALUES
+(8,1,4.397600,4.400000);
 /*!40000 ALTER TABLE `ps_order_detail_tax` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46938,7 +46991,7 @@ CREATE TABLE `ps_order_history` (
   KEY `order_history_order` (`id_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_order_state` (`id_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46954,7 +47007,8 @@ INSERT INTO `ps_order_history` VALUES
 (4,0,4,1,'2024-11-23 21:27:58'),
 (5,0,5,10,'2024-11-23 21:27:58'),
 (6,1,1,6,'2024-11-23 21:27:58'),
-(7,1,3,8,'2024-11-23 21:27:58');
+(7,1,3,8,'2024-11-23 21:27:58'),
+(8,0,6,1,'2024-11-30 20:31:37');
 /*!40000 ALTER TABLE `ps_order_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47476,7 +47530,7 @@ CREATE TABLE `ps_orders` (
   KEY `current_state` (`current_state`),
   KEY `id_shop` (`id_shop`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47490,7 +47544,8 @@ INSERT INTO `ps_orders` VALUES
 (2,'OHSATSERP',1,1,2,1,1,2,1,4,4,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,169.900000,169.900000,169.900000,0.000000,169.900000,169.900000,0.000000,0.000000,0.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
 (3,'UOYEVOLI',1,1,2,1,1,3,1,4,4,8,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,14.900000,21.300000,19.900000,0.000000,12.900000,12.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
 (4,'FFATNOMMJ',1,1,2,1,1,4,1,4,4,1,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,14.900000,21.300000,19.900000,0.000000,12.900000,12.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
-(5,'KHWLILZLL',1,1,2,1,1,5,1,4,4,10,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Bank wire',1.000000,'ps_wirepayment',0,0,'',0,'',0.000000,0.000000,0.000000,20.900000,27.300000,25.900000,0.000000,18.900000,18.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58','');
+(5,'KHWLILZLL',1,1,2,1,1,5,1,4,4,10,'b44a6d9efd7a0076a0fbce6b15eaf3b1','Bank wire',1.000000,'ps_wirepayment',0,0,'',0,'',0.000000,0.000000,0.000000,20.900000,27.300000,25.900000,0.000000,18.900000,18.900000,7.000000,8.400000,7.000000,0.000,0.000000,0.000000,0.000000,0,0,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-23 21:27:58','2024-11-23 21:27:58',''),
+(6,'WIDJYHLAM',1,1,1,1,2,6,1,6,6,1,'e0542d94774ef8b6744f7e7e900edbfe','Czek',1.000000,'ps_checkpayment',0,0,'',0,'',0.000000,0.000000,0.000000,23.520000,23.520000,19.120000,0.000000,19.120000,23.520000,0.000000,0.000000,0.000000,23.000,0.000000,0.000000,0.000000,2,2,0,0,'0000-00-00 00:00:00','0000-00-00 00:00:00',0,'2024-11-30 20:31:37','2024-11-30 20:31:37','');
 /*!40000 ALTER TABLE `ps_orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47537,7 +47592,7 @@ CREATE TABLE `ps_page` (
   PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47547,7 +47602,10 @@ CREATE TABLE `ps_page` (
 LOCK TABLES `ps_page` WRITE;
 /*!40000 ALTER TABLE `ps_page` DISABLE KEYS */;
 INSERT INTO `ps_page` VALUES
-(1,1,NULL);
+(1,1,NULL),
+(2,2,NULL),
+(3,3,NULL),
+(4,4,3);
 /*!40000 ALTER TABLE `ps_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47563,7 +47621,7 @@ CREATE TABLE `ps_page_type` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47573,7 +47631,10 @@ CREATE TABLE `ps_page_type` (
 LOCK TABLES `ps_page_type` WRITE;
 /*!40000 ALTER TABLE `ps_page_type` DISABLE KEYS */;
 INSERT INTO `ps_page_type` VALUES
-(1,'index');
+(4,'category'),
+(2,'cms'),
+(1,'index'),
+(3,'pagenotfound');
 /*!40000 ALTER TABLE `ps_page_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50909,7 +50970,7 @@ CREATE TABLE `ps_stock_available` (
 LOCK TABLES `ps_stock_available` WRITE;
 /*!40000 ALTER TABLE `ps_stock_available` DISABLE KEYS */;
 INSERT INTO `ps_stock_available` VALUES
-(1,1,0,1,0,2400,0,0,0,2,''),
+(1,1,0,1,0,2399,2399,0,0,2,''),
 (2,2,0,1,0,2100,0,0,0,2,''),
 (3,3,0,1,0,1500,0,0,0,2,''),
 (4,4,0,1,0,1500,0,0,0,2,''),
@@ -50928,14 +50989,14 @@ INSERT INTO `ps_stock_available` VALUES
 (17,17,0,1,0,1200,0,0,0,2,''),
 (18,18,0,1,0,1200,0,0,0,2,''),
 (19,19,0,1,0,300,0,0,0,2,''),
-(20,1,1,1,0,300,0,0,0,2,''),
-(21,1,2,1,0,300,0,0,0,2,''),
-(22,1,3,1,0,300,0,0,0,2,''),
-(23,1,4,1,0,300,0,0,0,2,''),
-(24,1,5,1,0,300,0,0,0,2,''),
-(25,1,6,1,0,300,0,0,0,2,''),
-(26,1,7,1,0,300,0,0,0,2,''),
-(27,1,8,1,0,300,0,0,0,2,''),
+(20,1,1,1,0,299,300,1,0,2,''),
+(21,1,2,1,0,300,300,0,0,2,''),
+(22,1,3,1,0,300,300,0,0,2,''),
+(23,1,4,1,0,300,300,0,0,2,''),
+(24,1,5,1,0,300,300,0,0,2,''),
+(25,1,6,1,0,300,300,0,0,2,''),
+(26,1,7,1,0,300,300,0,0,2,''),
+(27,1,8,1,0,300,300,0,0,2,''),
 (28,2,9,1,0,1200,0,0,0,2,''),
 (29,2,10,1,0,300,0,0,0,2,''),
 (30,2,11,1,0,300,0,0,0,2,''),
@@ -51115,12 +51176,6 @@ CREATE TABLE `ps_store` (
 
 LOCK TABLES `ps_store` WRITE;
 /*!40000 ALTER TABLE `ps_store` DISABLE KEYS */;
-INSERT INTO `ps_store` VALUES
-(1,21,12,'Miami','33135',25.76500500,-80.24379700,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
-(2,21,12,'Miami','33304',26.13793600,-80.13943500,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
-(3,21,12,'Miami','33026',26.00998700,-80.29447200,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
-(4,21,12,'Miami','33133',25.73629600,-80.24479700,'','','',1,'2024-11-23 21:27:58','2024-11-23 21:27:58'),
-(5,21,12,'Miami','33181',25.88674000,-80.16329200,'','','',1,'2024-11-23 21:27:59','2024-11-23 21:27:59');
 /*!40000 ALTER TABLE `ps_store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51149,12 +51204,6 @@ CREATE TABLE `ps_store_lang` (
 
 LOCK TABLES `ps_store_lang` WRITE;
 /*!40000 ALTER TABLE `ps_store_lang` DISABLE KEYS */;
-INSERT INTO `ps_store_lang` VALUES
-(1,1,'Dade County','3030 SW 8th St Miami','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
-(2,1,'E Fort Lauderdale','1000 Northeast 4th Ave Fort Lauderdale','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
-(3,1,'Pembroke Pines','11001 Pines Blvd Pembroke Pines','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
-(4,1,'Coconut Grove','2999 SW 32nd Avenue','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',''),
-(5,1,'N Miami/Biscayne','12055 Biscayne Blvd','',' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]','');
 /*!40000 ALTER TABLE `ps_store_lang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51179,12 +51228,6 @@ CREATE TABLE `ps_store_shop` (
 
 LOCK TABLES `ps_store_shop` WRITE;
 /*!40000 ALTER TABLE `ps_store_shop` DISABLE KEYS */;
-INSERT INTO `ps_store_shop` VALUES
-(1,1),
-(2,1),
-(3,1),
-(4,1),
-(5,1);
 /*!40000 ALTER TABLE `ps_store_shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53269,4 +53312,4 @@ USE `prestashop`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-23 20:34:44
+-- Dump completed on 2024-11-30 20:22:15

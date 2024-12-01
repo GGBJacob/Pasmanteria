@@ -50,6 +50,8 @@ public $subBlocks = array (
   array (
     0 => 'Block_1498091376674bc5226839a9_59989939',
   ),
+    0 => 'Block_511299880674b733d32ad63_59874212',
+ ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>

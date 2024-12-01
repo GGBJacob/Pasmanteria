@@ -38,9 +38,8 @@
     </div>
 </div>
 
-<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+<div class="card-deck products{if !empty($cssClass)} {$cssClass}{/if}">
     <div class="product">
-
         {foreach from=$products|@array_slice:3:6 item="product" key="position"}
             {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
         {/foreach}
@@ -53,10 +52,24 @@
     </div>
 </div>
 
-<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
-    <div class="product">
-        {foreach from=$products|@array_slice:9:2 item="product" key="position"}
-            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
-        {/foreach}
+<div class="card-deck">
+    <div class="card text-center border-1">
+        <div class="card-body position-relative">
+            <a class="stretched-link" href="{url entity='cms' id=8}"></a>
+            <img src="/img/ren.jpg" alt="wzory do pobrania pdf" title="wzory do pobrania pdf" width="300" height="300" class="img-fluid">
+            <div class="card-img-overlay d-flex">
+                <h4 class="align-self-center mx-auto box-background">wzory do pobrania pdf</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card text-center border-1">
+        <div class="card-body position-relative">
+            <a class="stretched-link" href="{url entity='cms' id=9}" target="_blank" rel="noopener noreferrer"></a>
+            <img src="/img/logo.jpg" alt="BLOG - nadodatek.pl" title="BLOG - nadodatek.pl" width="300" height="300" class="img-fluid">
+            <div class="card-img-overlay d-flex">
+                <h4 class="align-self-center mx-auto box-background">BLOG - nadodatek.pl</h4>
+            </div>
+        </div>
     </div>
 </div>
+
