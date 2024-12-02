@@ -396,9 +396,54 @@
 }
 
 ul.top-menu {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-item.dropdown-submenu {
+    display: flex;
+}
+
+
+.top-menu li.category {
+    display: block;
+    /* text-align: center; */
+    margin-bottom: 5px;
+}
+
+.popover.sub-menu.js-sub-menu.collapse{
+    height: auto;
+    max-height: 500px;
+    grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+    gap: 5px;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.category .popover.sub-menu.js-sub-menu.collapse {
+    align-items: center;
     display: flex;
     justify-content: center;
 }
+
+.top-menu .sub-menu ul[data-depth="1"]>li {
+    float: left;
+    margin: 0.1rem;
+}
+
+[data-depth="2"] {
+    display: block !important;
+}
+
+[data-depth="3"] {
+    display: none !important;
+}
+
 
 /*FIOLOTOWY NAV BAR*/
 .sr-only {
@@ -597,6 +642,11 @@ h4 {
 
 /*PRODUKTY BODY - /root/biznes/src/themes/classic/templates/catalog/_partials/productlist.tpl*/
 /* /root/biznes/src/themes/classic/modules/ps_featuredproducts/views/templates/hook/ps_featuredproducts.tpl */
+
+.wishlist-button-add {
+    display: none;
+
+}
 
 .card-deck {
     width: 160%;

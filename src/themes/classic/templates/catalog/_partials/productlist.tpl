@@ -27,8 +27,12 @@
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
             <a class="stretched-link" href="{url entity='cms' id=6}"></a>
+            {foreach from=$products|@array_slice:0:1 item="product" key="position"}
+                {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+            {/foreach}
+            {assign var="randomProduct" value=$products|@array_rand}
             <!--src ma być losowe zdjęcie produktu-->
-            <img src="/img/logo.jpg" alt="PROMOCJE" title="PROMOCJE" width="300" height="300" class="img-fluid">
+            <!-- <img src="{$randomProduct.cover.bySize.large_default.url}" alt="PROMOCJE" title="PROMOCJE" width="300" height="300" class="img-fluid"> -->
             <div class="card-img-overlay d-flex">
                 <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">PROMOCJE</h4>
             </div>
