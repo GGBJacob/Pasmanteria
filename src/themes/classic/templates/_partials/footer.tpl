@@ -37,12 +37,12 @@
           <nav class="nav nav-pills flex-column content-inside">
             <a class="nav-link" href="https://www.facebook.com/nadodatekpl-225441670823396" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facebook</a>
             <a class="nav-link" href="https://www.instagram.com/manuki_embroidery/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instagram</a>
-            <a class="nav-link" href="https://blog-nadodatek.blogspot.com/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
+            <a class="nav-link" href="https://localhost/content/9-blog" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
           <div class="nadodatek-footer-element nadodatek-footer-element-icon">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://www.facebook.com/nadodatekpl-225441670823396" class="fab fa-facebook nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Facebooku">&nbsp;</a>
             <a href="https://www.instagram.com/manuki_embroidery/" class="fab fa-instagram nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Instagramie">&nbsp;</a>
-            <a href="https://blog-nadodatek.blogspot.com/" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
+            <a href="https://localhost/content/9-blog" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
             </div>
           </nav>
         </div>

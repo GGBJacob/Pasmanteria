@@ -41,7 +41,7 @@
           Wyloguj się
         </a>
         <a href="{$urls.pages.my_account}">Moje konto</a>
-        <a href="{url entity='cms' id=1}">Zamówienia</a>
+        <a href="{url entity='cms' id=5}">Zamówienia</a>
         <a href="{url entity='cms' id=11}">Książka adresowa</a>
         <a href="{url entity='cms' id=10}">Zmiana hasła</a>
       </div>
@@ -62,8 +62,8 @@
           </a>
           <a href="{$urls.pages.my_account}">Moje konto</a>
           <a href="{$urls.pages.my_account}">Zamówienia</a>
-          <a href="{$urls.pages.register}">Książka adresowa</a>
-          <a href="{$urls.pages.register}">Zmiana hasła</a>
+          <a href="{$urls.pages.my_account}">Książka adresowa</a>
+          <a href="{$urls.pages.my_account}">Zmiana hasła</a>
         </div>
       </div>
     {/if}

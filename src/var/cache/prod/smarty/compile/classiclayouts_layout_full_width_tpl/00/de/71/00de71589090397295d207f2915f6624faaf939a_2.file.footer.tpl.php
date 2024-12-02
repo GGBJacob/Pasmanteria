@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-12-02 14:21:26
+/* Smarty version 3.1.48, created on 2024-12-02 14:56:02
   from '/var/www/html/themes/classic/templates/_partials/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674db4566d63f7_39005082',
+  'unifunc' => 'content_674dbc727e4546_23842497',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '00de71589090397295d207f2915f6624faaf939a' => 
     array (
       0 => '/var/www/html/themes/classic/templates/_partials/footer.tpl',
-      1 => 1733140158,
+      1 => 1733147755,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674db4566d63f7_39005082 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674dbc727e4546_23842497 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <!-- Główna stopka -->
@@ -60,12 +60,12 @@ function content_674db4566d63f7_39005082 (Smarty_Internal_Template $_smarty_tpl)
           <nav class="nav nav-pills flex-column content-inside">
             <a class="nav-link" href="https://www.facebook.com/nadodatekpl-225441670823396" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facebook</a>
             <a class="nav-link" href="https://www.instagram.com/manuki_embroidery/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instagram</a>
-            <a class="nav-link" href="https://blog-nadodatek.blogspot.com/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
+            <a class="nav-link" href="https://localhost/content/9-blog" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
           <div class="nadodatek-footer-element nadodatek-footer-element-icon">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://www.facebook.com/nadodatekpl-225441670823396" class="fab fa-facebook nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Facebooku">&nbsp;</a>
             <a href="https://www.instagram.com/manuki_embroidery/" class="fab fa-instagram nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Instagramie">&nbsp;</a>
-            <a href="https://blog-nadodatek.blogspot.com/" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
+            <a href="https://localhost/content/9-blog" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
             </div>
           </nav>
         </div>
