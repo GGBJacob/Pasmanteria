@@ -100,7 +100,7 @@
 
           <div class="product-information">
             {block name='product_description_short'}
-              <div id="product-description-short-{$product.id}" class="product-description">{$product.description_short nofilter}</div>
+              <div id="product-description-short-{$product.id}" class="product-description">{$product.description nofilter}</div>
             {/block}
 
             {block name='hook_display_reassurance'}

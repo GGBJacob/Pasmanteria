@@ -26,24 +26,21 @@
 <div class="card-deck">
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
+        {foreach from=$products|@array_slice:0:1 item="product" key="position"}
             <a class="stretched-link" href="{url entity='cms' id=6}"></a>
-            {foreach from=$products|@array_slice:0:1 item="product" key="position"}
-                {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
-            {/foreach}
-            {assign var="randomProduct" value=$products|@array_rand}
-            <!--src ma być losowe zdjęcie produktu-->
-            <!-- <img src="{$randomProduct.cover.bySize.large_default.url}" alt="PROMOCJE" title="PROMOCJE" width="300" height="300" class="img-fluid"> -->
+                <img src={$product.cover.bySize.large_default.url} alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
             <div class="card-img-overlay d-flex">
                 <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">PROMOCJE</h4>
             </div>
+            {/foreach}
         </div>
     </div>
 
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
             <!--href i src ma być koraliki - TOHO zdjęcie kategorii produktu-->
-            <a class="stretched-link" href=""></a>
-            <img src="/img/logo.jpg" alt="koraliki - TOHO" title="koraliki - TOHO" width="300" height="300" class="img-fluid">
+            <a class="stretched-link" href="https://localhost/150-koraliki-toho"></a>
+            <img src="/img/toho11kol86.jpg" alt="koraliki - TOHO" title="koraliki - TOHO" width="300" height="300" class="img-fluid">
             <div class="card-img-overlay d-flex">
                 <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">koraliki - TOHO</h4>
             </div>
@@ -52,13 +49,14 @@
 
     <div class="card text-center border-1 orders-main-page">
         <div class="card-body position-relative">
-            <a class="stretched-link" href="{url entity='cms' id=7}" target="_blank" rel="noopener noreferrer"></a>
-            <!--src ma być losowe zdjęcie produktu-->
-            <img src="/img/logo.jpg" alt="NOWOŚCI" title="NOWOŚCI" width="300" height="300" class="img-fluid">
-            <div class="card-img-overlay d-flex">
-                <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">NOWOŚCI</h4>
+            {foreach from=$products|@array_slice:1:1 item="product" key="position"}
+                <a class="stretched-link" href="{url entity='cms' id=7}"></a>
+                    <img src={$product.cover.bySize.large_default.url} alt="Nowości" title="Nowości" width="300" height="300" class="img-fluid">
+                <div class="card-img-overlay d-flex">
+                    <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">NOWOŚCI</h4>
+                </div>
+                {/foreach}
             </div>
-        </div>
     </div>
 </div>
 
@@ -80,12 +78,11 @@
 <div class="row">
     <div class="card-deck recommended-products">
         <!-- Pierwszy rząd -->
-        {foreach from=$products|@array_slice:0:3 item="product" key="position"}
+        {foreach from=$products|@array_slice:2:3 item="product" key="position"}
         <div class="card text-center border-1 orders-main-page">
             <div class="card-body position-relative">
                 <a class="stretched-link" href="{$product.link}"></a>
-                <!-- src={$product.cover.bySize.large_default.url} -->
-                <img src="/img/logo.jpg" alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
+                <img src={$product.cover.bySize.large_default.url} alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
                 <div class="card-img-overlay d-flex">
                     <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">{$product.name}</h4>
                 </div>
@@ -96,12 +93,11 @@
 
     <div class="card-deck recommended-products">
         <!-- Drugi rząd -->
-        {foreach from=$products|@array_slice:3:3 item="product" key="position"}
+        {foreach from=$products|@array_slice:5:3 item="product" key="position"}
         <div class="card text-center border-1 orders-main-page">
             <div class="card-body position-relative">
                 <a class="stretched-link" href="{$product.link}"></a>
-                <!-- src={$product.cover.bySize.large_default.url} -->
-                <img src="/img/logo.jpg" alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
+                <img src={$product.cover.bySize.large_default.url} alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
                 <div class="card-img-overlay d-flex">
                     <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">{$product.name}</h4>
                 </div>

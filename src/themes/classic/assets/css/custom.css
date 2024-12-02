@@ -637,7 +637,7 @@ h4 {
 }
 
 .orders-main-page-text-1 {
-    margin-top: 50% !important;
+    margin-top: 45% !important;
 }
 
 /*PRODUKTY BODY - /root/biznes/src/themes/classic/templates/catalog/_partials/productlist.tpl*/
@@ -1342,4 +1342,11 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-left: 18%;
     list-style: none;
     padding-bottom: 120px;
+}
+
+/*hiding wishlist button*/
+.wishlist-button-add
+{
+    display: none !important;
+    visibility: hidden !important;
 }
