@@ -1,6 +1,5 @@
 import org.example.MailGenerator;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.aggregator.AggregateWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,7 +52,7 @@ public class SeleniumTester {
         options.addArguments("--ignore-certificate-errors");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Dotenv dotenv = Dotenv.load();
         shopURL = dotenv.get("SHOP_URL");
         driver.get(shopURL);
@@ -69,11 +68,21 @@ public class SeleniumTester {
         }
     }
 
-    private boolean addProduct()// function called from a product page
+    private boolean addProduct() throws Exception// function called from a product page
     {
-        // Wait for add to cart button to load
-        WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("add-to-cart")));
-
+        System.out.println("Entered product page.");
+        int productStockCount;
+        try {
+            WebElement productCountText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(), 'Dostępne na magazynie:')]")));
+            productStockCount = Integer.parseInt(productCountText.getText().split(":")[1].strip());
+            // Wait for add to cart button to load
+        }
+        catch (Exception e)
+        {
+            printWarning("Product unavailable!");
+            return false;
+        }
+        WebElement addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity")));
         // Check if the button is clickable
 
        if (addToCartButton.getAttribute("disabled") != null)
@@ -82,26 +91,35 @@ public class SeleniumTester {
            return false;
        }
 
-        // Add random count
-        WebElement quantityField = driver.findElement(By.id("quantity_wanted"));
-        int quantity = new Random().nextInt(3) + 1;
-//        quantityField.sendKeys(Keys.CONTROL + "a");
-//        quantityField.sendKeys(String.valueOf(quantity));
+        // Generate random product quantity
+        int quantity = Integer.min(new Random().nextInt(3) + 1, productStockCount);
 
         for (int i =0; i<quantity; i++) {
             try {
-                // Find the button again and click it
-                addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.className("add-to-cart")));
-                assertNotNull(addToCartButton, "Add to cart button not found!");
-                addToCartButton.click();
 
-                // Wait for continue button to load
-                WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cart-content-btn .btn-secondary")));
-                assertNotNull(continueButton, "Continue button not found!");
-                continueButton.click();
+                // Find the button again and click it
+                addToCartButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity")));
+                assertNotNull(addToCartButton, "Add to cart button not found!");
+
+                // Wait for the button to be available (weird fix)
+                //WebElement finalAddToCartButton = addToCartButton;
+                wait.until(_ -> {
+                    WebElement finalAddToCartButton = driver.findElement(By.className("js-increase-product-quantity"));
+                    return finalAddToCartButton.isEnabled(); // Sprawdzenie, czy przycisk jest aktywny
+                });
+                //wait.until(!ExpectedConditions.attributeContains("disabled"));
+
+                System.out.println("Adding product...");
+                Thread.sleep(2000);
+
+                WebElement buttonSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'fas fa-plus plus-minus')]")));
+                buttonSpan.click();
+                System.out.println("Added product.");
             }
             catch (TimeoutException e) {
                 printWarning("Product unavailable in such quantity! ("+quantity+")");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
 
@@ -113,32 +131,47 @@ public class SeleniumTester {
     public void testSignUp()
     {
         try{
+            System.out.println("Entering sign up...");
             driver.get(shopURL + "/logowanie?create_account");
+
+            System.out.println("Page loaded");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("authentication")));
 
             // Select gender
+            System.out.println("Selecting gender...");
             WebElement genderRadioButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for='field-id_gender-1']")));
             genderRadioButton.click();
+            System.out.println("Gender set.");
 
             // Enter name
+            System.out.println("Entering name...");
             WebElement firstNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-firstname")));
             firstNameField.sendKeys("John");
+            System.out.println("Name entered.");
 
             // Enter surname
+            System.out.println("Entering surname...");
             WebElement lastNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-lastname")));
             lastNameField.sendKeys("Smith");
+            System.out.println("Surname entered.");
 
             // Enter email
+            System.out.println("Entering email...");
             WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-email")));
             emailField.sendKeys(this.userMail);  // Enter user email
+            System.out.println("Email entered.");
 
             // Enter password
+            System.out.println("Entering password...");
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-password")));
             passwordField.sendKeys("secretPassword123");
+            System.out.println("Password entered.");
 
             // Accept privacy terms
+            System.out.println("Accepting terms...");
             WebElement privacyCheckbox = driver.findElement(By.name("customer_privacy"));
             privacyCheckbox.click();
+            System.out.println("Terms accepted.");
 
             // Accept terms and conditions (only english PrestaShop version)
             //WebElement termsAndConditionsCheckbox = driver.findElement(By.name("psgdpr"));
@@ -146,14 +179,19 @@ public class SeleniumTester {
             //    termsAndConditionsCheckbox.click();
 
             // Submit login
+            System.out.println("Submitting login...");
             WebElement registerButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("footer.form-footer .btn.btn-primary.form-control-submit")));
             registerButton.click();
+            System.out.println("Login submit.");
 
             // Set driver wait time for expected elements
-            WebElement loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("account")));
+            System.out.println("Checking for failures...");
+            WebElement loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav")));
 
             assertNotNull(loggedInElement, "Sign up failed! Account element is NULL!");
+            loggedInElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav")));
             assertTrue(loggedInElement.isDisplayed(), "Sign up failed! Account element is not displayed!");
+            System.out.println("Successfully signed up!");
         }
         catch(Exception e){
             fail("Exception occured: " + e.getMessage());
@@ -187,12 +225,12 @@ public class SeleniumTester {
             List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
 
 
-            for (int j =0; j<productList.size() && addedProducts <maxProductsToAdd; j++) {
+            for (int j =0; addedProducts <maxProductsToAdd; j++) {
 
                 // Open product page
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.product-thumbnail")));
                 productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
-                WebElement product = productList.get(j);
+                WebElement product = productList.get(new Random().nextInt(productList.size()));
                 product.click();
 
                 if(addProduct()) {
@@ -202,8 +240,9 @@ public class SeleniumTester {
                     addedProducts++;
                 }
 
+                int urlNo = new Random().nextInt(categoryUrls.size());
                 // Return to category page
-                driver.get(categoryUrls.get(i));
+                driver.get(categoryUrls.get(urlNo));
             }
         }
 
@@ -223,13 +262,16 @@ public class SeleniumTester {
         try {
             driver.get(shopURL);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
-            List<WebElement> products = driver.findElements(By.className("product-title"));
+            List<WebElement> products = driver.findElements(By.tagName("img"));
             List<String> productNames = new ArrayList<>();
             // Add all product words (e.g. T-Shirt) to array
             for (WebElement product : products) {
-                productNames.addAll(Arrays.asList(product.getText().strip().split(" ")));
+                String title = product.getAttribute("title");
+                if (title != null && !title.isEmpty()) {
+                    productNames.addAll(List.of(title.strip().split(" ")));
+                }
             }
-
+            System.out.println("Added product names to array!");
             assertFalse(productNames.isEmpty(), "Product names list is empty!");
 
             boolean productAdded = false;
@@ -237,10 +279,12 @@ public class SeleniumTester {
                 // Select a random word to search
                 int randomIndex = (new Random()).nextInt(productNames.size());
                 String selectedWord = productNames.get(randomIndex);
+                System.out.println("Selected word: " + selectedWord);
                 productNames.remove(randomIndex);
 
                 // Enter the word into the search bar
-                WebElement searchBar = wait.until(ExpectedConditions.elementToBeClickable(By.className("ui-autocomplete-input")));
+                WebElement searchBar = wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control")));
+                System.out.println("Searching...");
                 searchBar.click();
                 searchBar.clear();
                 searchBar.sendKeys(selectedWord);
@@ -256,8 +300,13 @@ public class SeleniumTester {
                     continue;
                 }
                 // Select random one and enter its page
-                WebElement product = products.get(new Random().nextInt(products.size()));
+                System.out.println("Getting product...");
+                int productNo = new Random().nextInt(products.size());
+                WebElement product = products.get(productNo);
+                System.out.println("Selected random product.");
                 assertNotNull(product, "Product is null!");
+                System.out.println("Entering product page...");
+                product = products.get(productNo);
                 product.click();
                 productAdded = addProduct();
             }
@@ -274,15 +323,18 @@ public class SeleniumTester {
     public void testProductRemoval()
     {
         try {
+            System.out.println("Entering cart...");
             driver.get(shopURL + "/koszyk");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
-            List<WebElement> buttons = driver.findElements(By.className("remove-from-cart"));
+            System.out.println("Entered cart.");
+            List<WebElement> buttons;
             int productsToRemove = 3, productsRemoved = 0;
             for (int i = 0; i < productsToRemove; i++) {
-                WebElement removeButton = buttons.get(i);
-                removeButton.click();
-                productsRemoved++;
+                System.out.println("Removing from cart...");
+                buttons = driver.findElements(By.className("remove-from-cart"));
+                buttons.getFirst().click();
                 printInfo("Removed product #" + (i+1));
+                productsRemoved++;
             }
             assertEquals(productsRemoved, productsToRemove, "The number of products to remove does not match the expected value!");
         }
@@ -305,7 +357,7 @@ public class SeleniumTester {
         }
         WebElement loginButton;
         try {
-             loginButton = driver.findElement(By.cssSelector("a[title='Zaloguj się do swojego konta klienta']"));
+             loginButton = driver.findElement(By.className("fa-sign-in-alt"));
         }
         catch(Exception e)
         {
@@ -313,6 +365,8 @@ public class SeleniumTester {
             return;
         }
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-account-nav"))).click();
+        loginButton = driver.findElement(By.className("fa-sign-in-alt"));
         loginButton.click();
 
         // Enter email
@@ -334,13 +388,26 @@ public class SeleniumTester {
         logIn();
         try{
             driver.get(shopURL + "/koszyk?action=show");
+            System.out.println("Testing ordering...");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
+            System.out.println("Page loaded!");
             List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
             if (!disabledButton.isEmpty()) {
+                System.out.println("No elements in cart, re-running with new products!");
                 testProductSearch();
                 testOrder();
             }
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='btn btn-primary' and contains(text(),'Przejdź do realizacji zamówienia')]"))).click();
+
+            //System.out.println("Loading cart...");
+
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("cart")));
+
+            //System.out.println("Cart loaded.");
+
+            WebElement orderButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='btn btn-primary' and contains(text(),'Przejdź do realizacji zamówienia')]")));
+            orderButton.click();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout")));
 
             // Enter address
             WebElement addressField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("field-address1")));
@@ -355,8 +422,9 @@ public class SeleniumTester {
             cityField.sendKeys("Gdańsk");
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirm-addresses"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=delivery_option_7]"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirmDeliveryOption"))).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=payment-option-2]"))).click();
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=payment-option-2]"))).click(); // TODO: UNCOMMENT AND SET CASH PAYMENT
             // Find the terms and conditions checkbox (there was no other pleasant way)
             List<WebElement> checkboxes = driver.findElements(By.tagName("input"));
             for (WebElement checkbox : checkboxes) {
@@ -380,8 +448,7 @@ public class SeleniumTester {
             driver.get(shopURL + "/");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account"))).click();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link"))).click();
+            driver.get(shopURL + "/historia-zamowien");
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
             WebElement detailsPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("order-detail")));
             assertNotNull(detailsPage, "Order details page is null!");
@@ -400,11 +467,7 @@ public class SeleniumTester {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account")))
-                    .click(); // Navigate to the account page
-
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("history-link")))
-                    .click(); // Open order history
+            driver.get(shopURL + "/historia-zamowien");
 
             WebElement table = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("table.table-labeled")));
             if (table == null) {
