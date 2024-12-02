@@ -24,14 +24,14 @@
  *}
 <div class="images-container js-images-container col-sm-12 pi-gallery">
 
-  {block name='product_images'}
+  {*{block name='product_images'}
     <div class="js-qv-mask mask lass="col-sm-2">
       <ul class="product-images js-qv-product-images">
         {foreach from=$product.images item=image}
           <li class="thumb-container js-thumb-container">
             <img
               class="thumb js-thumb {if $image.id_image == $product.default_image.id_image} selected js-thumb-selected {/if}"
-              data-image-medium-src="{$image.bySize.medium_default.url}"
+
               data-image-large-src="{$image.bySize.large_default.url}"
               src="{$image.bySize.small_default.url}"
               {if !empty($image.legend)}
@@ -48,7 +48,7 @@
         {/foreach}
       </ul>
     </div>
-  {/block}
+  {/block}*}
 
   {block name='product_cover'}
     <div class="col-sm-10">

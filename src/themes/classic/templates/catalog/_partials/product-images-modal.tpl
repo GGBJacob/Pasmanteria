@@ -4,7 +4,7 @@
       <div class="modal-body carousel slide pointer-event" data-ride="carousel" tabindex="-1" id="carousel">
         {assign var=imagesCount value=$product.images|count}
         <figure class="carousel-container">
-        <ol class="carousel-indicators"><li data-target="#carousel" data-slide-to="0" class="pointer"></li><li data-target="#carousel" data-slide-to="1" class="pointer active"></li></ol>
+        <ol class="carousel-indicators"><li data-target="#carousel" data-slide-to="1" class="pointer active"></li></ol>
           <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           </a>
