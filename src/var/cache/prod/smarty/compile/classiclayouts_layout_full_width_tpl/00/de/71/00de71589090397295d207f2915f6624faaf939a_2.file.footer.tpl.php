@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-12-02 19:56:00
+/* Smarty version 3.1.48, created on 2024-12-02 20:17:09
   from '/var/www/html/themes/classic/templates/_partials/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674e02c062fdf9_00191306',
+  'unifunc' => 'content_674e07b55ce5a3_43974999',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674e02c062fdf9_00191306 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674e07b55ce5a3_43974999 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <!-- Główna stopka -->
