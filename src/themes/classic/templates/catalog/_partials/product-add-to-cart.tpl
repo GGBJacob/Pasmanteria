@@ -21,49 +21,59 @@
  * @author    PrestaShop SA and Contributors <contact@prestashop.com>
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+
  *}
+
 <div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
-    <span class="control-label">{l s='Quantity' d='Shop.Theme.Catalog'}</span>
-
+    
     {block name='product_quantity'}
-      <div class="product-quantity clearfix">
-        <div class="qty">
-          <input
-            type="number"
-            name="qty"
-            id="quantity_wanted"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            {if $product.quantity_wanted}
-              value="{$product.quantity_wanted}"
-              min="{$product.minimal_quantity}"
-            {else}
-              value="1"
-              min="1"
-            {/if}
-            class="input-group"
-            aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
-          >
-        </div>
 
-        <div class="add">
-          <button
-            class="btn btn-primary add-to-cart"
-            data-button-action="add-to-cart"
+      <div class="input-group bootstrap-touchspin">
+            
+            <!-- Przycisk - -->
+            <span class="input-group-btn-vertical">
+                <button 
+                    class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-down" 
+                    type="button" 
+                    onclick="updateQuantity({$product.id}, 'decrease')" data-button-action="remove-from-cart" type="submit">
+                    <span class="plus-minus fas fa-minus"></span>
+                </button>
+            </span>
+
+            <!-- Pole ilości produktu -->
+            <input 
+                class="js-cart-line-product-quantity form-control" 
+                type="number" 
+                inputmode="numeric" 
+                pattern="[0-9]*" 
+                value="0"
+                name="product-quantity-spin" 
+                aria-label="Ilość produktu" 
+                min="0" 
+                max="10" 
+                id="product-quantity-1" 
+                style="display: block;"
+            />
+
+            <!-- Przycisk + -->
+            <span class="input-group-btn-vertical">
+                 <button 
+                  class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-up" 
+                  type="button" 
+                  onclick="updateQuantity({$product.id}, 'increase')" data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
               disabled
-            {/if}
-          >
-            <i class="material-icons shopping-cart">&#xE547;</i>
-            {l s='Add to cart' d='Shop.Theme.Actions'}
-          </button>
+            {/if}>
+                  <span class="fas fa-plus plus-minus"></span>
+              </button>
+            </span>
         </div>
+  {/block}
 
-  
-      </div>
-    {/block}
+
+
 
     {block name='product_availability'}
       <span id="product-availability" class="js-product-availability">
