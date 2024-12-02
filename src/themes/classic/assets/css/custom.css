@@ -1277,3 +1277,19 @@ input[type="number"]::-webkit-inner-spin-button {
 .carousel-control-next {
   right: 25px; /* Dostosuj w zależności od potrzeb */
 }
+
+.carousel-indicators {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex !important;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 18%;
+    list-style: none;
+    padding-bottom: 120px;
+}

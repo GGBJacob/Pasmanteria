@@ -30,11 +30,10 @@
         {foreach from=$product.images item=image}
           <li class="thumb-container js-thumb-container">
             <img
-              {*class="thumb js-thumb {if $image.id_image == $product.default_image.id_image} selected js-thumb-selected {/if}"
+              class="thumb js-thumb {if $image.id_image == $product.default_image.id_image} selected js-thumb-selected {/if}"
               data-image-medium-src="{$image.bySize.medium_default.url}"
-              data-image-large-src="{$image.bySize.large_default.url}"*}
-              src="https://img.pakamera.net/i1/1/379/obrazy-i-plakaty-12320957_6788571379.jpg"
-              {*src="{$image.bySize.small_default.url}"*}
+              data-image-large-src="{$image.bySize.large_default.url}"
+              src="{$image.bySize.small_default.url}"
               {if !empty($image.legend)}
                 alt="{$image.legend}"
                 title="{$image.legend}"
@@ -57,8 +56,7 @@
         {if $product.default_image}
           <img
             class="js-qv-product-cover img-fluid"
-            src="https://bimbla.pl/userdata/public/gfx/137/Piesek.jpg"
-            {*src="{$product.default_image.bySize.large_default.url}"*}
+            src="{$product.default_image.bySize.large_default.url}"
             {if !empty($product.default_image.legend)}
               alt="{$product.default_image.legend}"
               title="{$product.default_image.legend}"
