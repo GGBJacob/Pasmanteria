@@ -1,13 +1,16 @@
 # Pasmanteria
 
-Authors: Aleksandra Bujny, Jakub Romanowski, Michał Szyfelbein, Karina Wołoszyn, Karol Zwierz
-
 ## Running
 
-`docker compose up` using Docker Compose V4
+`sh startup`
 
-run `chmod 711 scripts/manage_src.sh` and `./scripts/manage_src.sh` to properly setup src directory for further work 
-(make sure PrestaShop is running)
+It runs docker compose up as well as DB restoration from the dump.sql.
+
+## Stopping
+
+`sh shutdown`
+
+It runs DB backup to the dump.sql as well as docker compose down.
 
 ## DB Backup and Restoration
 
@@ -16,11 +19,7 @@ To make a backup execute `sh scripts/backup.sh`. This will create `dump.sql` in 
 To restore the db execute `sh scripts/restore.sh`. This will take `dump.sql` from the main project directory and resotre database from it.
 
 ## SSL generation
+To generate SSL run `sh scripts/ssl.sh`
 
-```
-cd ssl &&
-openssl req -x509 -out server.crt -keyout server.key \
-  -newkey rsa:2048 -nodes -sha256 \
-  -subj "/C=PL/ST=Pomerania/L=Gdansk/O=Gdansk Tech/OU=WETI/CN=localhost" -extensions EXT -config <( \
-   printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
-```
+## Authors
+Aleksandra Bujny, Jakub Romanowski, Michał Szyfelbein, Karina Wołoszyn, Karol Zwierz

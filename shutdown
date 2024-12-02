@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+ACCENT=$(tput bold)$(tput setaf 3)
+NORMAL=$(tput sgr0)
+
+echo "${ACCENT}Backing MariaDB up...${NORMAL}"
+
+sh ./scripts/backup.sh
+
+echo "${ACCENT}Shutting down the containers...${NORMAL}"
+docker compose down

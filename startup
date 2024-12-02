@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+ACCENT=$(tput bold)$(tput setaf 3)
+NORMAL=$(tput sgr0)
+
+echo "${ACCENT}Running docker-compose in detached mode...${NORMAL}"
+docker compose up -d
+
+echo "${ACCENT}Waiting for MariaDB...${NORMAL}"
+
+until docker compose exec db mariadb --user=root -p'root' -e "SELECT 1" &> /dev/null; do
+    echo "${ACCENT}MariaDB still unavailable...${NORMAL}"
+    sleep 1
+done
+
+echo "${ACCENT}MariaDB available, running the restore script...${NORMAL}"
+
+sh ./scripts/restore.sh

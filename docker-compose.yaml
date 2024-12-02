@@ -4,8 +4,8 @@ services:
         image: mariadb:11.5.2
         restart: unless-stopped
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: prestashop
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_NAME}
         volumes:
             - ./db:/var/lib/mysql
             - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
@@ -19,9 +19,9 @@ services:
         environment:
             PS_DEV_MODE: 1
             DB_SERVER: db
-            DB_NAME: prestashop
-            DB_USER: root
-            DB_PASSWD: root
+            DB_NAME: ${DB_NAME}
+            DB_USER: ${DB_USER}
+            DB_PASSWD: ${DB_PASSWORD}
             PS_INSTALL_AUTO: 0
         ports:
             - 80:80   # HTTP
@@ -42,8 +42,8 @@ services:
         restart: unless-stopped
         environment:
             PMA_HOST: db
-            PMA_USER: root
-            PMA_PASSWORD: root
+            PMA_USER: ${DB_USER}
+            PMA_PASSWORD: ${DB_PASSWORD}
             PMA_PORT: 3306
         ports:
             - 8081:80
