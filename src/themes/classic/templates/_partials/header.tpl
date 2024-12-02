@@ -33,9 +33,9 @@
     <div class="container">
       <div class="row">
         <div class="hidden-sm-down">
-          <div class="col-md-5 col-xs-12">
+          <!--<div class="col-md-5 col-xs-12">
             {hook h='displayNav1'}
-          </div>
+          </div>-->
           <div class="col-md-7 right-nav">
               {hook h='displayNav2'}
           </div>
@@ -54,11 +54,14 @@
   </nav>
 {/block}
 
-{block name='header_top'}
-  <div class="header-top">
+{block name='header_logo_search'}
+  <nav class="header_logo_search">
     <div class="container">
-       <div class="row">
-        <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
+      <div class="row">
+        <!-- PUSTY DIV LEWY -->
+        <div class="col-sm-4 cm-header-logo"> &nbsp;</div>
+        <!-- LOGO DIV ŚRODEK -->
+        <div class="col-sm-4 hidden-sm-down" id="_desktop_logo">
           {if $shop.logo_details}
             {if $page.page_name == 'index'}
               <h1>
@@ -69,6 +72,30 @@
             {/if}
           {/if}
         </div>
+        <!-- SEARCH BAR DIV PRAWY -->
+        <div class="col-sm-4 cm-header-search">
+          <div class="cm-header-search-input">
+            <form name="quick_find" action="//localhost/szukaj" method="get">
+              <div class="input-group">
+                <input type="search" name="s" required aria-required="true" aria-label="Szukaj" placeholder="Szukaj" class="form-control">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-info">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+{/block}
+
+{block name='header_top'}
+  <div class="header-top">
+    <div class="container">
+       <div class="row">
         <div class="header-top-right col-md-10 col-sm-12 position-static">
           {hook h='displayTop'}
         </div>
@@ -82,6 +109,40 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-8 cm-header-breadcrumb">
+      <div class="row-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a class="a-breadcrumb" href="//localhost/">
+                <i class="home">
+                  <i class="material-icons violet-nav-icon">&#xe88a;</i>
+                </i>
+                <span class="sr-only">Home</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="col-sm-4 cm-header-phone text-right">
+      <div class="row-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item-right">
+              <a class="a-breadcrumb-right">
+                <i class="home">
+                  <i class="material-icons violet-nav-icon">&#xe0b0;</i>
+                  <i class="violet-nav-icon phone-text">Zamówienia telefoniczne i pomoc: 739-963-582</i>
+                </i>
+                <span class="sr-only">Phone</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+   </div>
   </div>
   {hook h='displayNavFullWidth'}
 {/block}
