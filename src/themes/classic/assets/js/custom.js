@@ -64,3 +64,43 @@ function updateCart() {
 	}
 
 	updateButtonState($(".js-cart-line-product-quantity"));
+
+/*
+  ///////////////////dd
+  function updateQuantity(productId, action) {
+    // Znajdź odpowiedni input dla danego produktu
+    const quantityInput = document.querySelector(`#product-quantity-${productId}`);
+    if (!quantityInput) return;
+
+    const minQuantity = parseInt(quantityInput.getAttribute('min')) || 1; // Domyślnie minimalna ilość to 1
+    const maxQuantity = parseInt(quantityInput.getAttribute('max')) || Infinity; // Domyślnie brak maksymalnego limitu
+    let currentQuantity = parseInt(quantityInput.value) || 0;
+
+    // Aktualizacja ilości na podstawie akcji
+    if (action === 'increase') {
+        currentQuantity++;
+    } else if (action === 'decrease') {
+        currentQuantity--;
+    }
+
+    // Walidacja ilości
+    if (currentQuantity < minQuantity) {
+        alert(`Minimalna ilość tego produktu to ${minQuantity}.`);
+        return; // Nie pozwól na zmniejszenie poniżej minimalnej ilości
+    }
+
+    if (currentQuantity > maxQuantity) {
+        alert(`Nie możesz dodać więcej niż ${maxQuantity} sztuk tego produktu.`);
+        return; // Nie pozwól na zwiększenie powyżej maksymalnej ilości
+    }
+
+    // Aktualizacja wartości w polu input
+    quantityInput.value = currentQuantity;
+
+    // Dodatkowe akcje, np. wysyłanie żądania AJAX
+    console.log(`Product ID: ${productId}, New Quantity: ${currentQuantity}`);
+
+    // Zaktualizuj stan przycisków (jeśli stosujesz funkcję updateButtonState)
+    updateButtonState($(quantityInput));
+}
+*/

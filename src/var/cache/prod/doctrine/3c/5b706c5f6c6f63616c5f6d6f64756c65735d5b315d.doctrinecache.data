@@ -1,2 +1,2 @@
 0
-a:0:{}
+a:1:{s:10:"call_158_0";a:2:{s:10:"attributes";a:1:{s:7:"warning";s:20:"Invalid module class";}s:4:"disk";a:5:{s:9:"filemtime";i:0;s:10:"is_present";i:0;s:8:"is_valid";i:0;s:7:"version";N;s:4:"path";s:32:"/var/www/html/modules/call_158_0";}}}

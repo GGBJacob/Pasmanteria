@@ -29,6 +29,9 @@
     
     {block name='product_quantity'}
 
+      {if $product.quantity > 0}
+        <p>Dostępne na magazynie: {$product.quantity}</p>
+      {/if}
       <div class="input-group bootstrap-touchspin">
             
             <!-- Przycisk - -->
@@ -51,7 +54,7 @@
                 name="product-quantity-spin" 
                 aria-label="Ilość produktu" 
                 min="0" 
-                max="10" 
+                max="{$product.quantity}" 
                 id="product-quantity-1" 
                 style="display: block;"
             />
@@ -64,6 +67,9 @@
                   onclick="updateQuantity({$product.id}, 'increase')" data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
+              disabled
+            {/if}
+            {if $product.quantity<=0} 
               disabled
             {/if}>
                   <span class="fas fa-plus plus-minus"></span>
