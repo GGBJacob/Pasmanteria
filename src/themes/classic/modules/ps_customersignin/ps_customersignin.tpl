@@ -22,35 +22,51 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_user_info">
-  <div class="user-info">
+ <div id="_desktop_user_info" class="user-info dropdown">
+  <a
+    href="#"
+    title="{l s='Log in or Register' d='Shop.Theme.Customeraccount'}"
+    onclick="toggleDropdown(event, '#loginDropdown')"
+  >
+  <div class="my-account-nav">
     {if $logged}
-      <a
-        class="logout hidden-sm-down"
-        href="{$urls.actions.logout}"
-        rel="nofollow"
-      >
-        <i class="material-icons">&#xE7FF;</i>
-        {l s='Sign out' d='Shop.Theme.Actions'}
-      </a>
-      <a
-        class="account"
-        href="{$urls.pages.my_account}"
-        title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
-        rel="nofollow"
-      >
-        <i class="material-icons hidden-md-up logged">&#xE7FF;</i>
-        <span class="hidden-sm-down">{$customerName}</span>
-      </a>
+      <i class="fas fa-user fa-fw"></i>
+      <span class="hidden-sm-down text-navigation-bar logout" rel="nofollow">{$customerName}</span>
+      <i class="material-icons icons-navigation-bar">&#xe5c5</i>
+
+      <div class="dropdown-content" id="loginDropdown">
+        
+        <a href="{$urls.actions.logout}">
+          <i class="fas fa-sign-out-alt fa-fw"></i>
+          Wyloguj się
+        </a>
+        <a href="{$urls.pages.my_account}">Moje konto</a>
+        <a href="{url entity='cms' id=1}">Zamówienia</a>
+        <a href="{url entity='cms' id=11}">Książka adresowa</a>
+        <a href="{url entity='cms' id=10}">Zmiana hasła</a>
+      </div>
     {else}
-      <a
-        href="{$urls.pages.my_account}"
-        title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
-        rel="nofollow"
-      >
-        <i class="material-icons">&#xE7FF;</i>
-        <span class="hidden-sm-down">{l s='Sign in' d='Shop.Theme.Actions'}</span>
-      </a>
+      <div class="my-account-nav">
+        <i class="fas fa-user fa-fw"></i>
+        <span class="hidden-sm-down text-navigation-bar" href="{$urls.actions.logout}" rel="nofollow">{l s='Moje konto' d='Shop.Theme.Actions'}</span>
+        <i class="material-icons icons-navigation-bar">&#xe5c5</i>
+        
+        <div class="dropdown-content" id="loginDropdown">
+          <a href="{$urls.pages.my_account}">
+            <i class="fas fa-sign-in-alt fa-fw"></i>
+            Zaloguj się
+          </a>
+          <a href="{$urls.pages.register}">
+            <i class="fas fa-fw fa-pencil-alt"></i>
+            Zarejestruj się
+          </a>
+          <a href="{$urls.pages.my_account}">Moje konto</a>
+          <a href="{$urls.pages.my_account}">Zamówienia</a>
+          <a href="{$urls.pages.register}">Książka adresowa</a>
+          <a href="{$urls.pages.register}">Zmiana hasła</a>
+        </div>
+      </div>
     {/if}
+    </a>
   </div>
 </div>
