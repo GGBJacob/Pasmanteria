@@ -7449,7 +7449,46 @@ class appProdProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBundle\R
         }
 
         elseif (0 === strpos($pathinfo, '/modules')) {
-            if (0 === strpos($pathinfo, '/modules/link-widget')) {
+            // blockwishlist_configuration
+            if ('/modules/blockwishlist/configuration' === $pathinfo) {
+                $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::configurationAction',  '_legacy_controller' => 'WishlistConfigurationAdminController',  '_legacy_link' => 'WishlistConfigurationAdminController',  '_route' => 'blockwishlist_configuration',);
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
+                    goto not_blockwishlist_configuration;
+                }
+
+                return $ret;
+            }
+            not_blockwishlist_configuration:
+
+            if (0 === strpos($pathinfo, '/modules/blockwishlist/statistics')) {
+                // blockwishlist_statistics
+                if ('/modules/blockwishlist/statistics' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::statisticsAction',  '_legacy_controller' => 'WishlistStatisticsAdminController',  '_legacy_link' => 'WishlistStatisticsAdminController',  '_route' => 'blockwishlist_statistics',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_blockwishlist_statistics;
+                    }
+
+                    return $ret;
+                }
+                not_blockwishlist_statistics:
+
+                // blockwishlist_statistics_reset
+                if ('/modules/blockwishlist/statistics/reset' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::resetStatisticsCacheAction',  '_route' => 'blockwishlist_statistics_reset',);
+                    if (!in_array($requestMethod, ['POST'])) {
+                        $allow = array_merge($allow, ['POST']);
+                        goto not_blockwishlist_statistics_reset;
+                    }
+
+                    return $ret;
+                }
+                not_blockwishlist_statistics_reset:
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/modules/link-widget')) {
                 // admin_link_block_list
                 if ('/modules/link-widget/list' === $pathinfo) {
                     $ret = array (  '_controller' => 'PrestaShop\\Module\\LinkList\\Controller\\Admin\\Improve\\Design\\LinkBlockController::listAction',  '_legacy_controller' => 'AdminLinkWidget',  '_legacy_link' => 'AdminLinkWidget',  '_route' => 'admin_link_block_list',);
@@ -7539,45 +7578,6 @@ class appProdProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBundle\R
                     return $ret;
                 }
                 not_admin_link_block_update_positions:
-
-            }
-
-            // blockwishlist_configuration
-            if ('/modules/blockwishlist/configuration' === $pathinfo) {
-                $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::configurationAction',  '_legacy_controller' => 'WishlistConfigurationAdminController',  '_legacy_link' => 'WishlistConfigurationAdminController',  '_route' => 'blockwishlist_configuration',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_blockwishlist_configuration;
-                }
-
-                return $ret;
-            }
-            not_blockwishlist_configuration:
-
-            if (0 === strpos($pathinfo, '/modules/blockwishlist/statistics')) {
-                // blockwishlist_statistics
-                if ('/modules/blockwishlist/statistics' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::statisticsAction',  '_legacy_controller' => 'WishlistStatisticsAdminController',  '_legacy_link' => 'WishlistStatisticsAdminController',  '_route' => 'blockwishlist_statistics',);
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_blockwishlist_statistics;
-                    }
-
-                    return $ret;
-                }
-                not_blockwishlist_statistics:
-
-                // blockwishlist_statistics_reset
-                if ('/modules/blockwishlist/statistics/reset' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\BlockWishList\\Controller\\WishlistConfigurationAdminController::resetStatisticsCacheAction',  '_route' => 'blockwishlist_statistics_reset',);
-                    if (!in_array($requestMethod, ['POST'])) {
-                        $allow = array_merge($allow, ['POST']);
-                        goto not_blockwishlist_statistics_reset;
-                    }
-
-                    return $ret;
-                }
-                not_blockwishlist_statistics_reset:
 
             }
 
