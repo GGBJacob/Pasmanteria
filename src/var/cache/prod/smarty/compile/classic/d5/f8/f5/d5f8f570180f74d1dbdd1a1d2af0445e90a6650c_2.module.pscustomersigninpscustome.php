@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.48, created on 2024-12-03 00:16:54
+/* Smarty version 3.1.48, created on 2024-12-03 00:25:08
   from 'module:pscustomersigninpscustome' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.48',
-  'unifunc' => 'content_674e3fe6248938_54707346',
+  'unifunc' => 'content_674e41d4d45983_26870924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674e3fe6248938_54707346 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674e41d4d45983_26870924 (Smarty_Internal_Template $_smarty_tpl) {
 ?> <div id="_desktop_user_info" class="user-info dropdown">
   <a
     href="#"
