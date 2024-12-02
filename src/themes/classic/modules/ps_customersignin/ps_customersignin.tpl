@@ -31,27 +31,25 @@
   <div class="my-account-nav">
     {if $logged}
       <i class="fas fa-user fa-fw"></i>
-      <span class="hidden-sm-down text-navigation-bar logout">{l s='Wyloguj się' d='Shop.Theme.Actions'}</span>
-      <i class="material-icons icons-navigation-bar">arrow_drop_down</i>
+      <span class="hidden-sm-down text-navigation-bar logout" rel="nofollow">{$customerName}</span>
+      <i class="material-icons icons-navigation-bar">&#xe5c5</i>
 
       <div class="dropdown-content" id="loginDropdown">
         
-        <a href="{$urls.pages.my_account}">
+        <a href="{$urls.actions.logout}">
           <i class="fas fa-sign-out-alt fa-fw"></i>
           Wyloguj się
         </a>
         <a href="{$urls.pages.my_account}">Moje konto</a>
-        <a href="{$urls.pages.my_account}">Zamówienia</a>
-        <a href="{$urls.pages.my_account}">Książka adresowa</a>
-        <a href="{$urls.pages.my_account}">Zmiana hasła</a>
+        <a href="{url entity='cms' id=1}">Zamówienia</a>
+        <a href="{url entity='cms' id=11}">Książka adresowa</a>
+        <a href="{url entity='cms' id=10}">Zmiana hasła</a>
       </div>
     {else}
       <div class="my-account-nav">
         <i class="fas fa-user fa-fw"></i>
         <span class="hidden-sm-down text-navigation-bar" href="{$urls.actions.logout}" rel="nofollow">{l s='Moje konto' d='Shop.Theme.Actions'}</span>
-        <a href="{$urls.pages.my_account}" class="account" rel="nofollow">{$customerName}</a>
-        <i class="material-icons icons-navigation-bar">arrow_drop_down</i>
-        
+        <i class="material-icons icons-navigation-bar">&#xe5c5</i>
         
         <div class="dropdown-content" id="loginDropdown">
           <a href="{$urls.pages.my_account}">

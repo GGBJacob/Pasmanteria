@@ -25,7 +25,9 @@
 <section class="featured-products clearfix">
   <div class="col-sm-12 cm-i-customer-greeting">
     <div class="text-center">
-      <h4 class="alert-heading">Zamówienia telefoniczne i pomoc: 739-963-582</h4>
+      {if {$page.page_name} == 'index'}
+        <h4 class="alert-heading">Zamówienia telefoniczne i pomoc: 739-963-582</h4>
+      {/if}
     </div>
     <h4></h4>
   </div>

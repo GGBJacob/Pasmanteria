@@ -25,6 +25,11 @@
 	width: 1rem;
 }
 
+.hidden-sm-down.text-navigation-bar {
+    font-weight: bold;
+    color: gray;
+}
+
 /*zostaje przy scrollowaniu*/
 @supports ((position:-webkit-sticky) or (position:sticky)) {
     .sticky-top {
@@ -33,6 +38,10 @@
         top: 0;
         z-index: 1050;
     }
+}
+
+.cart-products-count {
+    text-decoration: none;
 }
 
 /*LOG IN*/
@@ -65,7 +74,7 @@
 .cart-dropdown #cartDropdown{
 	position: absolute;
 	color:black;
-	background-color: #f0f0f0;
+	background-color: white;
 	border: 1px solid #ffffff;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 10px;
@@ -81,6 +90,10 @@
     right: 2rem;
 }
 
+.product-in-cart:hover, .cart-summary:hover{
+    background-color: #e4e4e4;
+}
+
 .cart-dropdown-content ul {
 	list-style: none;
 	margin: 0;
@@ -93,6 +106,29 @@
 
 .cart-dropdown-content .cart-order {
 	text-align: left;
+}
+
+.cart-dropdown-content{
+    line-height: 1.5;
+	display: none;
+	position: absolute;
+	min-width: 180px;
+	word-wrap: break-word;
+    font-size: 1rem;
+    width: 100%;
+    clear: both;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+	background-color: hsl(0, 0%, 100%);
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+	border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 89%);
+    text-decoration: none;
+	padding: .5rem 0;
 }
  
 /*SIGN IN*/
@@ -251,7 +287,6 @@
     flex: 0 0 33.333333%;
 }
 
-
 /* Ensure the search icon is aligned to the right */
 .cm-header-search .input-group {
 	display: flex; /* Use flexbox to align the input and button properly */
@@ -273,8 +308,19 @@
 	font-size: 18px;
 }
 
+.cm-header-search .input-group button i:hover {
+    font-size: 18px;
+    color: #6b3454;
+    background-color: #c99cb6;
+    font-size: 18px;
+}
+
 .input-group-append .btn.btn-info {
 	background-color: #e9ecef;
+}
+
+.cm-header-search .input-group:hover button i {
+    background-color: #ddb4cc !important;
 }
 
 /* Round the corners of the search submit button */
@@ -324,6 +370,34 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/*MENU*/
+/*KATEGORIE PRODUKTÓW MENU*/
+
+/*nazwy kategorii*/
+.dropdown-item {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.dropdown-item:hover{
+    background-color: #e9ecef;
+    color: #495057  !important;
+}
+
+/*dropdown menu*/
+.popover.sub-menu.js-sub-menu.collapse {
+    top: 44px;
+    background-color: white;
+    min-width: 120%;
+    left: -120px;
+    border-radius: 5px;
+}
+
+ul.top-menu {
+    display: flex;
+    justify-content: center;
 }
 
 /*FIOLOTOWY NAV BAR*/
@@ -397,7 +471,6 @@ body {
 	padding-right: 0px;
 	border-bottom-width: 0px;
 }
-
 
 /*BANNER - ps_imageslider*/
 #wrapper {
@@ -476,7 +549,6 @@ body.page-index #wrapper #custom-text {
 }
 
 /*BODY*/
-
 /*NAGŁÓWEK1 - Zamówienia telefoniczne*/
 
 body {
@@ -514,27 +586,24 @@ h4 {
     font-size: 1.5rem;
 }
 
-/*PRODUKTY BODY - /root/biznes/src/themes/classic/templates/catalog/_partials/productlist.tpl*/
-/* /root/biznes/src/themes/classic/modules/ps_featuredproducts/views/templates/hook/ps_featuredproducts.tpl */
-.products {
-    display: flex;
-    flex-wrap: wrap; /* Ustaw produkty w nowym rzędzie, gdy nie mieszczą się w jednym */
-    gap: 16px; /* Odstępy między produktami */
+.orders-main-page {
+    width: 100%;
+    height: 100%;
 }
 
-.product {
-    flex: 1 1 calc(33.333% - 16px); /* Ustaw szerokość na jedną trzecią (z uwzględnieniem odstępów) */
-    box-sizing: border-box; /* Uwzględnij padding i border w szerokości */
-    padding: 10px; /* Opcjonalne stylowanie */
-    background: #f9f9f9; /* Opcjonalne tło */
-    border: 1px solid #ddd; /* Opcjonalne obramowanie */
+.orders-main-page-text-1 {
+    margin-top: 50% !important;
 }
+
+/*PRODUKTY BODY - /root/biznes/src/themes/classic/templates/catalog/_partials/productlist.tpl*/
+/* /root/biznes/src/themes/classic/modules/ps_featuredproducts/views/templates/hook/ps_featuredproducts.tpl */
 
 .card-deck {
     width: 160%;
     display: flex;
     position: relative;
     left: -21rem;
+
 }
 
 @media (min-width: 576px) {
@@ -588,7 +657,7 @@ h4 {
 }
 
 a:hover {
-    color: #0056b3;
+    color: black;
     text-decoration: underline;
 }
 
@@ -626,6 +695,15 @@ img {
 
 ::after, ::before {
     box-sizing: border-box;
+}
+
+.recommended-products {
+    width: 160%;
+    display: flex;
+    flex-wrap: wrap; 
+    position: relative;
+    left: -21rem;
+    gap: 1.5rem; 
 }
 
 /*napis do zdjęcia*/
@@ -739,66 +817,66 @@ margin-right: 0;
   
 /* 2. Pasek płatności */
 #footer .footer-payments {
-background-color: #072653; /* Granatowe tło */
-padding: 8px 0; /* Padding wokół obrazka */
-width: 100%; /* Rozciąga na całą szerokość */
+    background-color: #072653; /* Granatowe tło */
+    padding: 8px 0; /* Padding wokół obrazka */
+    width: 100%; /* Rozciąga na całą szerokość */
 }
 
 #footer .footer-payments .row {
-display: flex;
-justify-content: center; /* Centrowanie */
+    display: flex;
+    justify-content: center; /* Centrowanie */
 }
 
 #footer .footer-payments .col-12 {
-width: 100%;
+    width: 100%;
 }
 
 #footer .footer-payments .col-md-6 {
-width: 60%; /* Ustawienie szerokości paska tpay na 60% */
+    width: 60%; /* Ustawienie szerokości paska tpay na 60% */
 }
 
 #footer .footer-payments img {
-width: 100%; /* Szerokość obrazka na 100% */
-height: auto; /* Wysokość proporcjonalna do szerokości */
-border: 0;
+    width: 100%; /* Szerokość obrazka na 100% */
+    height: auto; /* Wysokość proporcjonalna do szerokości */
+    border: 0;
 }
 
 /* 3. Prawa autorskie */
 #footer .footer-copyright {
-padding-top: 10px;
-background-color: #86637b; /* Tło dla praw autorskich */
-text-align: center;
-color: #fff; /* Kolor czcionki na biały */
+    padding-top: 10px;
+    background-color: #86637b; /* Tło dla praw autorskich */
+    text-align: center;
+    color: #fff; /* Kolor czcionki na biały */
 }
 
 #footer .footer-copyright a {
-color: #fff; /* Kolor linków na biały */
-text-decoration: none; /* Usunięcie podkreślenia */
+    color: #fff; /* Kolor linków na biały */
+    text-decoration: none; /* Usunięcie podkreślenia */
 }
 
 #footer .footer-copyright a:hover {
-text-decoration: underline; /* Podkreślenie linków po najechaniu */
+    text-decoration: underline; /* Podkreślenie linków po najechaniu */
 }
 
 /* Dodatkowe style */
 #footer .container-fluid {
-max-width: 100%;
-width: 100%;
-box-sizing: border-box;
-padding: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
 }
 
 /* Wyśrodkowanie dla elementów w stopce */
 #footer .footer-column {
-text-align: center;
-margin: 0;
-padding: 0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* Zmiana czcionki we wszystkich elementach */
 #footer a {
-color: #fff;
-text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Przystosowanie stopki do różnych rozdzielczości */
@@ -830,38 +908,38 @@ text-decoration: none;
 
 /* Zmieniamy kolor istniejącej linii (hr) na biały */
 #footer hr {
-border: 0.5px solid #fff; /* Biała linia pod nagłówkiem */
-margin: 8px 0; /* Odstęp nad i pod linią */
+    border: 0.5px solid #fff; /* Biała linia pod nagłówkiem */
+    margin: 8px 0; /* Odstęp nad i pod linią */
 }
 
 /* Stylizacja dla linków w stopce */
 #footer .footer-links {
-color: #fff; /* Biała czcionka */
-text-transform: uppercase; /* Wielkie litery dla nagłówków */
+    color: #fff; /* Biała czcionka */
+    text-transform: uppercase; /* Wielkie litery dla nagłówków */
 }
 
 #footer .footer-links a {
-color: #fff;
-text-decoration: none;
-font-size: 1rem;
-font-weight: 400;
-display: block;
-margin-bottom: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 8px;
 }
 
 #footer .footer-links a:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* Biała linia pod nagłówkami w stopce */
 #footer h4 {
-font-size: 1.5rem;
-padding-bottom: 5px; /* Odstęp między tekstem a linią */
-margin-top: 20px;
-margin-bottom: 20px;
-font-weight: bold;
-padding-left: 10px!important;
-padding-right: 10px!important;
+    font-size: 1.5rem;
+    padding-bottom: 5px; /* Odstęp między tekstem a linią */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    padding-left: 10px!important;
+    padding-right: 10px!important;
 }
 
 .footer-text {
@@ -874,10 +952,10 @@ padding-right: 10px!important;
 
 /*biały tekst na dole*/
 #footer p, #footer .page-content.page-cms ul{
-  font-size: 1rem;
-  margin-bottom: 0.6rem;
-  font-weight: 400;
-	color: white;
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+    color: white;
 }
 
 /*STRONA PRODUKTU*/

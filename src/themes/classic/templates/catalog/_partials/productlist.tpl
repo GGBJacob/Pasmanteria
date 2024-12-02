@@ -22,15 +22,50 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+{if {$page.page_name} =='index'}
+<div class="card-deck">
+    <div class="card text-center border-1 orders-main-page">
+        <div class="card-body position-relative">
+            <a class="stretched-link" href="{url entity='cms' id=6}"></a>
+            <!--src ma być losowe zdjęcie produktu-->
+            <img src="/img/logo.jpg" alt="PROMOCJE" title="PROMOCJE" width="300" height="300" class="img-fluid">
+            <div class="card-img-overlay d-flex">
+                <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">PROMOCJE</h4>
+            </div>
+        </div>
+    </div>
 
-{capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
+    <div class="card text-center border-1 orders-main-page">
+        <div class="card-body position-relative">
+            <!--href i src ma być koraliki - TOHO zdjęcie kategorii produktu-->
+            <a class="stretched-link" href=""></a>
+            <img src="/img/logo.jpg" alt="koraliki - TOHO" title="koraliki - TOHO" width="300" height="300" class="img-fluid">
+            <div class="card-img-overlay d-flex">
+                <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">koraliki - TOHO</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center border-1 orders-main-page">
+        <div class="card-body position-relative">
+            <a class="stretched-link" href="{url entity='cms' id=7}" target="_blank" rel="noopener noreferrer"></a>
+            <!--src ma być losowe zdjęcie produktu-->
+            <img src="/img/logo.jpg" alt="NOWOŚCI" title="NOWOŚCI" width="300" height="300" class="img-fluid">
+            <div class="card-img-overlay d-flex">
+                <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">NOWOŚCI</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- {capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
 <div class="products{if !empty($cssClass)} {$cssClass}{/if}">
     <div class="product">
         {foreach from=$products|@array_slice:0:3 item="product" key="position"}
             {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
         {/foreach}
     </div>
-</div>
+</div> -->
 
 <div class="col-sm-12 cm-i-customer-greeting">
     <div class="text-center">
@@ -38,10 +73,36 @@
     </div>
 </div>
 
-<div class="card-deck products{if !empty($cssClass)} {$cssClass}{/if}">
-    <div class="product">
-        {foreach from=$products|@array_slice:3:6 item="product" key="position"}
-            {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+<div class="row">
+    <div class="card-deck recommended-products">
+        <!-- Pierwszy rząd -->
+        {foreach from=$products|@array_slice:0:3 item="product" key="position"}
+        <div class="card text-center border-1 orders-main-page">
+            <div class="card-body position-relative">
+                <a class="stretched-link" href="{$product.link}"></a>
+                <!-- src={$product.cover.bySize.large_default.url} -->
+                <img src="/img/logo.jpg" alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
+                <div class="card-img-overlay d-flex">
+                    <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">{$product.name}</h4>
+                </div>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+
+    <div class="card-deck recommended-products">
+        <!-- Drugi rząd -->
+        {foreach from=$products|@array_slice:3:3 item="product" key="position"}
+        <div class="card text-center border-1 orders-main-page">
+            <div class="card-body position-relative">
+                <a class="stretched-link" href="{$product.link}"></a>
+                <!-- src={$product.cover.bySize.large_default.url} -->
+                <img src="/img/logo.jpg" alt="{$product.name}" title="{$product.name}" width="300" height="300" class="img-fluid">
+                <div class="card-img-overlay d-flex">
+                    <h4 class="align-self-center mx-auto box-background orders-main-page-text-1">{$product.name}</h4>
+                </div>
+            </div>
+        </div>
         {/foreach}
     </div>
 </div>
@@ -72,4 +133,16 @@
         </div>
     </div>
 </div>
+{elseif {$page.page_name} != 'cart' && {$page.page_name} != 'order-confirmation'}
 
+{capture assign="productClasses"}{if !empty($productClass)}{$productClass}{else}col-xs-12 col-sm-6 col-xl-4{/if}{/capture}
+
+<div class="products{if !empty($cssClass)} {$cssClass}{/if}">
+    {foreach from=$products item="product" key="position"}
+        {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position productClasses=$productClasses}
+    {/foreach}
+</div>
+
+{else}
+
+{/if}

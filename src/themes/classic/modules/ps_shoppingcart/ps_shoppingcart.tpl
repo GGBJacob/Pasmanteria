@@ -8,33 +8,40 @@
         <div class="shopping-cart-nav">
           <i class="fas fa-shopping-cart fa-fw"></i>
           <span class="cart-products-count">{$cart.products_count} szt.</span>
-          <i class="material-icons icons-navigation-bar">arrow_drop_down</i>
+          <i class="material-icons icons-navigation-bar">&#xe5c5</i>
         </div>
       </a>
 
       <!-- Dropdown content -->
       <div class="cart-dropdown-content hidden" id="cartDropdown">
         <b>
-          <div class="cart-summary">
-            W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price}
-            zł
-          </div>
+            <a href="{$urls.pages.cart}?action=show" class="cart-summary-link">
+              <div class="cart-summary">
+                W TWOIM KOSZYKU: {$cart.products_count} szt., {$cart.total_price} zł
+              </div>
+            </a>
           <div class="cart-products">
             <ul>
               {if $cart.products_count > 0}
                 <div class="dropdown-divider"></div>
                 {foreach $cart.products as $product}
-                  <li>{$product.quantity} x {$product.name}</li>
+                  <li class="product-in-cart">
+                    <a href="{$product.link}" class="cart-product-link">
+                      {$product.quantity} x {$product.name}
+                    </a>
+                  </li>
                 {/foreach}
               {/if}
             </ul>
           </div>
           {if $cart.products_count > 0}
-            <div class="dropdown-divider"></div>
-            <a class="cart-order" href="{$urls.pages.cart}?action=show">
+          <div class="dropdown-divider"></div>
+          <a href="{$urls.pages.cart}?action=show" class="cart-summary-link">
+            <div class="cart-summary">
               <i class="fas fa-angle-right fa-fw"></i>
               Zamów
-            </a>
+            </div>
+          </a>
           {/if}
         </b>
       </div>
