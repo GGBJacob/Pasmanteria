@@ -112,7 +112,6 @@ public class SeleniumTester {
                     Thread.sleep(2000);
                 }catch (Exception e)
                 {
-                    printWarning("Overlaying elements!");
                     return false;
                 }
                 System.out.println("Added product.");
@@ -401,8 +400,7 @@ public class SeleniumTester {
             System.out.println("Testing ordering...");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             System.out.println("Page loaded!");
-            List<WebElement> disabledButton = driver.findElements(By.cssSelector("button.btn.btn-primary.disabled"));
-            if (!disabledButton.isEmpty()) {
+            if (!driver.findElements(By.cssSelector("button.btn.btn-primary.disabled")).isEmpty()) {
                 System.out.println("No elements in cart, re-running with new products!");
                 testProductSearch();
                 testOrder();
