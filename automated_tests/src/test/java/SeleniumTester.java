@@ -73,6 +73,7 @@ public class SeleniumTester {
     {
         System.out.println("Entered product page.");
         int productStockCount;
+        Thread.sleep(1750);
         try {
             productStockCount = Integer.parseInt(driver.findElement(By.xpath("//p[contains(text(), 'Dostępne na magazynie:')]")).getText().split(":")[1].strip());
         }
@@ -82,7 +83,8 @@ public class SeleniumTester {
             return false;
         }
         System.out.println("Product stock acquired.");
-       if (wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity"))).getAttribute("disabled") != null)
+        Thread.sleep(1750);
+        if (wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity"))).getAttribute("disabled") != null)
        {
            printWarning("Product unavailable!");
            return false;
@@ -93,7 +95,7 @@ public class SeleniumTester {
 
         for (int i =0; i<quantity; i++) {
             try {
-
+                Thread.sleep(1750);
                 // Find the button again and click it
                 assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity"))), "Add to cart button not found!");
 
@@ -109,7 +111,7 @@ public class SeleniumTester {
                 try{
                     WebElement buttonSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'fas fa-plus plus-minus')]")));
                     buttonSpan.click();
-                    Thread.sleep(2000);
+                    Thread.sleep(1750);
                 }catch (Exception e)
                 {
                     return false;
@@ -131,7 +133,7 @@ public class SeleniumTester {
         try{
             System.out.println("Entering sign up...");
             driver.get(shopURL + "/logowanie?create_account");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
 
             System.out.println("Page loaded");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("authentication")));
@@ -185,9 +187,9 @@ public class SeleniumTester {
 
             // Set driver wait time for expected elements
             System.out.println("Checking for failures...");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav"))), "Sign up failed! Account element is NULL!");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             assertTrue(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav"))).isDisplayed(), "Sign up failed! Account element is not displayed!");
             System.out.println("Successfully signed up!");
         }
@@ -203,7 +205,7 @@ public class SeleniumTester {
     {
         try{
         driver.get(shopURL);
-        Thread.sleep(2000);
+        Thread.sleep(1750);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index")));
 
         List<WebElement> categories = driver.findElements(By.cssSelector("ul#top-menu > li.category a.dropdown-submenu"));
@@ -220,7 +222,7 @@ public class SeleniumTester {
         for (int i =0; i<categoryUrls.size() && addedProducts < 10; i++) {
 
             driver.get(categoryUrls.get(i));
-            Thread.sleep(2000);
+            Thread.sleep(1500);
 
             List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
 
@@ -247,7 +249,7 @@ public class SeleniumTester {
                 int urlNo = new Random().nextInt(categoryUrls.size());
                 // Return to category page
                 driver.get(categoryUrls.get(urlNo));
-                Thread.sleep(2000);
+                Thread.sleep(1750);
             }
         }
 
@@ -266,7 +268,7 @@ public class SeleniumTester {
     {
         try {
             driver.get(shopURL);
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             List<WebElement> products = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("img")));
             System.out.println("Found " + products.size() + " products");
@@ -292,18 +294,18 @@ public class SeleniumTester {
 
                 // Enter the word into the search bar
                 System.out.println("Searching...");
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).click();
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).clear();
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(selectedWord);
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(Keys.ENTER);
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 System.out.println("Waiting for result page to load...");
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
-                Thread.sleep(2000);
+                Thread.sleep(1750);
                 System.out.println("Result page loaded.");
                 // Find all products on the search result page
                 if (!driver.findElements(By.className("product-title")).isEmpty()){
@@ -338,13 +340,13 @@ public class SeleniumTester {
         try {
             System.out.println("Entering cart...");
             driver.get(shopURL + "/koszyk");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             System.out.println("Entered cart.");
             int productsToRemove = 3, productsRemoved = 0;
             for (int i = 0; i < productsToRemove; i++) {
                 System.out.println("Removing from cart...");
-                Thread.sleep(2000);
+                Thread.sleep(3000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("remove-from-cart"))).click();
                 printInfo("Removed product #" + (i+1));
                 productsRemoved++;
@@ -361,7 +363,7 @@ public class SeleniumTester {
     {
         try {
             driver.get(shopURL);
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
         }
         catch (Exception e)
@@ -402,7 +404,7 @@ public class SeleniumTester {
         logIn();
         try{
             driver.get(shopURL + "/koszyk?action=show");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             System.out.println("Testing ordering...");
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             System.out.println("Page loaded!");
@@ -438,7 +440,7 @@ public class SeleniumTester {
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirm-addresses"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=delivery_option_8]"))).click();
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("confirmDeliveryOption"))).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("label[for=payment-option-2]"))).click(); // TODO: UNCOMMENT AND SET CASH PAYMENT
             // Find the terms and conditions checkbox (there was no other pleasant way)
@@ -449,7 +451,7 @@ public class SeleniumTester {
                     break;
                 }
             }
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='btn btn-primary center-block' and contains(text(),'Złóż zamówienie')]"))).click();
         }
         catch(Exception e){
@@ -463,11 +465,11 @@ public class SeleniumTester {
     {
         try{
             driver.get(shopURL + "/");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
             driver.get(shopURL + "/historia-zamowien");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
             WebElement detailsPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("order-detail")));
             assertNotNull(detailsPage, "Order details page is null!");
@@ -483,12 +485,12 @@ public class SeleniumTester {
     {
         try {
             driver.get(shopURL);
-            Thread.sleep(2000);
+            Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
 
             driver.get(shopURL + "/historia-zamowien");
-            Thread.sleep(2000);
+            Thread.sleep(1750);
 
             if (wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("table.table-labeled"))) == null) {
                 fail("Order history table not found. Ensure the user has orders and the table is visible.");
