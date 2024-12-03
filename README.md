@@ -1,13 +1,36 @@
 # Pasmanteria
 
-Authors: Aleksandra Bujny, Jakub Romanowski, Michał Szyfelbein, Karina Wołoszyn, Karol Zwierz
+This project is a recreation of online store `https://nadodatek.pl/`.
+
+## Authors: 
+- Aleksandra Bujny
+- Jakub Romanowski
+- Michał Szyfelbein
+- Karina Wołoszyn
+- Karol Zwierz
+
+## Used Software
+
+- PrestaShop 1.7.8.11
+- MariaDB 11.5.2
+- phpmyadmin 5.2.1
+- Docker V4
 
 ## Running
 
-`docker compose up` using Docker Compose V4
+Set `chmod 777 -R [project_directory]` for whole project directory.
 
-run `chmod 711 scripts/manage_src.sh` and `./scripts/manage_src.sh` to properly setup src directory for further work 
+`docker compose up` - using Docker Compose V4
+
+Run `chmod 711 scripts/manage_src.sh` and `./scripts/manage_src.sh` to properly setup src directory for further work 
 (make sure PrestaShop is running)
+
+Now, you can access project from:
+
+`https://localhost:443/` - front page
+
+`https://localhost:443/admin649wtzb8x` - admin panel
+
 
 ## DB Backup and Restoration
 
