@@ -99,7 +99,7 @@ public class SeleniumTester {
 
                 // Wait for the button to be available (weird fix)
                 //WebElement finalAddToCartButton = addToCartButton;
-                wait.until(_ -> {
+                wait.until(a -> {
                     return driver.findElement(By.className("js-increase-product-quantity")).isEnabled(); // Sprawdzenie, czy przycisk jest aktywny
                 });
                 //wait.until(!ExpectedConditions.attributeContains("disabled"));
@@ -112,7 +112,6 @@ public class SeleniumTester {
                     Thread.sleep(2000);
                 }catch (Exception e)
                 {
-                    printWarning("Overlaying elements!");
                     return false;
                 }
                 System.out.println("Added product.");
@@ -293,12 +292,18 @@ public class SeleniumTester {
 
                 // Enter the word into the search bar
                 System.out.println("Searching...");
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).click();
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).clear();
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(selectedWord);
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(Keys.ENTER);
+                Thread.sleep(2000);
                 System.out.println("Waiting for result page to load...");
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
+                Thread.sleep(2000);
                 System.out.println("Result page loaded.");
                 // Find all products on the search result page
                 if (!driver.findElements(By.className("product-title")).isEmpty()){
