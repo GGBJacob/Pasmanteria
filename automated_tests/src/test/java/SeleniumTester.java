@@ -248,7 +248,7 @@ public class SeleniumTester {
                 int urlNo = new Random().nextInt(categoryUrls.size());
                 // Return to category page
                 driver.get(categoryUrls.get(urlNo));
-                Thread.sleep(1750);
+                Thread.sleep(1500);
             }
         }
 
@@ -293,18 +293,18 @@ public class SeleniumTester {
 
                 // Enter the word into the search bar
                 System.out.println("Searching...");
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).click();
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).clear();
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(selectedWord);
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(Keys.ENTER);
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 System.out.println("Waiting for result page to load...");
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 System.out.println("Result page loaded.");
                 // Find all products on the search result page
                 if (!driver.findElements(By.className("product-title")).isEmpty()){
@@ -464,11 +464,11 @@ public class SeleniumTester {
     {
         try{
             driver.get(shopURL + "/");
-            Thread.sleep(1750);
+            Thread.sleep(1500);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("index"))); // Waiting for the page to load
             logIn();
             driver.get(shopURL + "/historia-zamowien");
-            Thread.sleep(1750);
+            Thread.sleep(1500);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Szczegóły"))).click();
             WebElement detailsPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("order-detail")));
             assertNotNull(detailsPage, "Order details page is null!");
