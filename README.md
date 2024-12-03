@@ -15,6 +15,8 @@ This project is a recreation of online store `https://nadodatek.pl/`.
 - MariaDB 11.5.2
 - phpmyadmin 5.2.1
 - Docker V4
+- JetBrains PyCharm 
+- Intellij IDEA with Oracle OpenJDK 23.0.1
 
 ## Running
 
