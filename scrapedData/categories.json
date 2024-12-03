@@ -86,8 +86,8 @@
             "druty na żyłce PRYM stalowe",
             "druty na żyłce ADDI novel metal"
         ],
-        "DRUTY DO SKARPET ERGO PRYM 5szt.": [
-            "druty do skarpet PRYM ergo 5szt."
+        "DRUTY DO SKARPET ERGO PRYM 5szt": [
+            "druty do skarpet PRYM ergo 5szt"
         ],
         "DRUTY DO WEŁNY DŁUGIE": [
             "druty do wełny PRYM ergo",
@@ -220,22 +220,5 @@
             "filc w arkuszach 30x40cm"
         ],
         "IGŁY DO FILCOWANIA": []
-    },
-    "WYPRZEDAŻ": {
-        "NICI": [
-            "kordonki",
-            "mulina Ariadna",
-            "mulina DMC rayon",
-            "nici"
-        ],
-        "WŁÓCZKI": [],
-        "AKCESORIA": [],
-        "DRUTY I SZYDEŁKA": [],
-        "KSIĄŻKI I ZESTAWY": [
-            "Diamond MOZAIKA"
-        ],
-        "TKANINY": [],
-        "OZDOBY": [],
-        "FILC": []
     }
 }
