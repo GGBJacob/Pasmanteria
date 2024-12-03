@@ -186,9 +186,9 @@ public class SeleniumTester {
 
             // Set driver wait time for expected elements
             System.out.println("Checking for failures...");
-            Thread.sleep(1750);
+            Thread.sleep(1000);
             assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav"))), "Sign up failed! Account element is NULL!");
-            Thread.sleep(1750);
+            Thread.sleep(1000);
             assertTrue(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("my-account-nav"))).isDisplayed(), "Sign up failed! Account element is not displayed!");
             System.out.println("Successfully signed up!");
         }
@@ -293,18 +293,18 @@ public class SeleniumTester {
 
                 // Enter the word into the search bar
                 System.out.println("Searching...");
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).click();
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).clear();
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(selectedWord);
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("form-control"))).sendKeys(Keys.ENTER);
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 System.out.println("Waiting for result page to load...");
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
-                Thread.sleep(1750);
+                Thread.sleep(1500);
                 System.out.println("Result page loaded.");
                 // Find all products on the search result page
                 if (!driver.findElements(By.className("product-title")).isEmpty()){
@@ -345,7 +345,7 @@ public class SeleniumTester {
             int productsToRemove = 3, productsRemoved = 0;
             for (int i = 0; i < productsToRemove; i++) {
                 System.out.println("Removing from cart...");
-                Thread.sleep(3000);
+                Thread.sleep(2000);
                 wait.until(ExpectedConditions.elementToBeClickable(By.className("remove-from-cart"))).click();
                 printInfo("Removed product #" + (i+1));
                 productsRemoved++;
