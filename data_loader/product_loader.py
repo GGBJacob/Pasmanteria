@@ -56,6 +56,7 @@ def add_product(name, price, description, categories_names, image_path, weight, 
     name_lang = ET.SubElement(name_elem, "language", {"id": lang})
     name_lang.text = name
     ET.SubElement(product, "price").text = str(price)
+    ET.SubElement(product, "unit_price").text = str(price)
 
     if weight is not None:
         ET.SubElement(product, "weight").text = weight
@@ -90,10 +91,16 @@ def add_product(name, price, description, categories_names, image_path, weight, 
     ET.SubElement(product, "state").text = "1"
 
     ET.SubElement(product, "available_for_order").text = "1"
+    # ET.SubElement(product, "id_default_combination").text = "1"
+    # ET.SubElement(product, "id_shop_default").text = "1"
     ET.SubElement(product, "minimal_quantity").text = "1"
     ET.SubElement(product, "reference").text = name.replace(" ", "_")
     ET.SubElement(product, "id_tax_rules_group").text = vat_category
     ET.SubElement(product, "indexed").text = "1"
+    ET.SubElement(product, "ean13").text = "1231231231231"
+    ET.SubElement(product, "product_type").text = "standard"
+    ET.SubElement(product, "type").text = "1"
+    ET.SubElement(product, "show_price").text = "1"
 
     product_data = ET.tostring(prestashop, encoding="utf-8", method="xml").decode("utf-8")
 

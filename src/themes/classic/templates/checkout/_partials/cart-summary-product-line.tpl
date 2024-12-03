@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='cart_summary_product_line'}
-  <div class="media-left">
+  /*<div class="media-left">
     <a href="{$product.url}" title="{$product.name}">
       {if $product.default_image}
         <img class="media-object" src="{$product.default_image.small.url}" alt="{$product.name}" loading="lazy">
@@ -46,5 +46,5 @@
         </div>
     {/foreach}
     <br/>
-  </div>
+  </div>*/
 {/block}
