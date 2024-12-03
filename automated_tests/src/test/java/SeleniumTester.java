@@ -95,7 +95,7 @@ public class SeleniumTester {
 
         for (int i =0; i<quantity; i++) {
             try {
-                Thread.sleep(1750);
+                Thread.sleep(2000);
                 // Find the button again and click it
                 assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity"))), "Add to cart button not found!");
 
@@ -111,7 +111,6 @@ public class SeleniumTester {
                 try{
                     WebElement buttonSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'fas fa-plus plus-minus')]")));
                     buttonSpan.click();
-                    Thread.sleep(1750);
                 }catch (Exception e)
                 {
                     return false;
