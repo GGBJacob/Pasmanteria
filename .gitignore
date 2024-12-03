@@ -1,0 +1,8 @@
+# Python environment
+**/.idea
+**/.venv
+
+# Database
+/db/
+
+.DS_Store

@@ -1,0 +1,1 @@
+docker exec db mariadb-dump --ignore-database=#mysql50#.cache --all-databases -u root -p"root" -x -A > dump.sql

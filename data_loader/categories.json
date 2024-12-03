@@ -1,0 +1,224 @@
+{
+    "NICI": {
+        "MULINY DO HAFTU": [
+            "mulina DMC",
+            "mulina DMC coloris",
+            "mulina DMC etoile",
+            "mulina DMC metalizowana"
+        ],
+        "NICI DO HAFTU": [
+            "wełna do haftu DMC gobelinowa"
+        ],
+        "KORDONKI DMC": {
+            "kordonek DMC babylo": [
+                "kordonek DMC babylo coloris",
+                "kordonek DMC babylo 30"
+            ],
+            "kordonek DMC petra gr5": []
+        },
+        "NICI MASZYNOWE": [
+            "nici Amanda"
+        ]
+    },
+    "WŁÓCZKI": {
+        "WŁÓCZKI DMC HAPPY AMIGURUMI": [
+            "włóczka DMC baby cotton",
+            "włóczka DMC happy cotton",
+            "włóczka DMC happy chenille",
+            "szydełka DMC happy",
+            "książki DMC happy"
+        ],
+        "WŁÓCZKI DMC": [],
+        "SZNURKI HOOOKED": [
+            "włóczka hoooked ZPAGETTI",
+            "włóczka hoooked BEBE",
+            "szydełka do hoooked GRUBE",
+            "druty dziewiarskie GRUBE"
+        ]
+    },
+    "AKCESORIA": {
+        "IGŁY": [
+            "igły do haftu DMC",
+            "igły do haftu John James",
+            "igły do haftu Prym",
+            "igła tkacka",
+            "igły do frywolitki"
+        ],
+        "AKCESORIA DO HAFTU": [
+            "akcesoria",
+            "przechowywanie",
+            "nożyczki do haftu"
+        ],
+        "AKCESORIA DZIEWIARSKIE": {
+            "obręcze, kółka do obrabiania": [
+                "kółka szydełkarskie plastikowe",
+                "kółka szydełkarskie drewniane",
+                "obręcze do obrabiania"
+            ],
+            "akcesoria dziewiarskie": []
+        },
+        "AKCESORIA KRAWIECKIE": [
+            "agrafki krawieckie",
+            "miarki i linijki krawieckie",
+            "pisaki, ołówki, kleje",
+            "akcesoria krawieckie"
+        ],
+        "AKCESORIA DO TKANIA": [
+            "przyrządy do bransoletek",
+            "krosno do tkania DMC",
+            "książki o tkaniu"
+        ],
+        "AKCESORIA DO FRYWOLITKI": [],
+        "TAMBORKI HAFCIARSKIE": []
+    },
+    "DRUTY I SZYDEŁKA": {
+        "SZYDEŁKA": [
+            "szydełka CLOVER",
+            "szydełka CLOVER AMOUR",
+            "szydełka PRYM do frywolitki",
+            "szydełka Prym",
+            "szydełka PRYM ergo",
+            "szydełka PRYM plastikowe",
+            "szydełka HOOOKED"
+        ],
+        "DRUTY DO WEŁNY NA ŻYŁCE": [
+            "druty na żyłce PRYM ergo",
+            "druty na żyłce PRYM stalowe",
+            "druty na żyłce ADDI novel metal"
+        ],
+        "DRUTY DO SKARPET ERGO PRYM 5szt": [
+            "druty do skarpet PRYM ergo 5szt"
+        ],
+        "DRUTY DO WEŁNY DŁUGIE": [
+            "druty do wełny PRYM ergo",
+            "druty do wełny PRYM plastikowe",
+            "druty do wełny DMC ROSE GOLD",
+            "druty do wełny PRYM aluminiowe"
+        ],
+        "AKCESORIA DMC": []
+    },
+    "KSIĄŻKI I ZESTAWY": {
+        "KSIĄŻKI": {
+            "książki i publikacje": [],
+            "wzory drukowane": [],
+            "katalogi i karty kolorów": [],
+            "wzory do pobrania pdf": [
+                "dom",
+                "motywy",
+                "motywy",
+                "rośliny",
+                "serca",
+                "święta",
+                "sztuka",
+                "znaki drogowe",
+                "zwierzaki",
+                "inne",
+                "bordiury"
+            ]
+        },
+        "ZESTAWY DO HAFTU DMC": [
+            "zestawy mini",
+            "ozdoby do wyszycia",
+            "zestawy klasyczne"
+        ]
+    },
+    "TKANINY": {
+        "TKANINY DO HAFTU DMC": [
+            "tkanina do haftu AIDA14 BORDIURA",
+            "tkanina do haftu AIDA KAWAŁKI",
+            "tkanina do haftu AIDA14 KAWAŁKI",
+            "tkanina do haftu AIDA14 MAGIC",
+            "tkanina do haftu AIDA14 z metra",
+            "tkanina do haftu AIDA16 z metra",
+            "tkanina do haftu AIDA18 z metra",
+            "tkanina do haftu AIDA18 MAGIC",
+            "tkanina do haftu UNIFIL hardange",
+            "tkanina do haftu OBRUSY"
+        ],
+        "KANWY DO HAFTU DRUKOWANE": [
+            "kanwy do haftu malarstwo",
+            "kanwy do haftu religijne"
+        ],
+        "TKANINY DO SZYCIA": [
+            "tkaniny do szycia kawałki",
+            "lamówki ozdobne",
+            "tkaniny bawełniane naturalne",
+            "tkaniny dekoracyjne organza"
+        ],
+        "ŁATY": [
+            "łaty dziecięce",
+            "tkaniny z klejem",
+            "łaty na spodnie jeansowe",
+            "łaty na spodnie sztruksowe",
+            "łaty na spodnie zamszowe"
+        ],
+        "NASZYWKI": [
+            "naszywki na ubrania",
+            "naszywki komunijne"
+        ],
+        "TASIEMKI I WSTĄŻKI": [
+            "taśma z pomponami",
+            "wstążki na rolce",
+            "wstążki zestawy",
+            "koronka bawełniana",
+            "wstążki kolorowe"
+        ],
+        "RZEPY Z KLEJEM": [],
+        "WYPEŁNIACZ DO MASKOTEK": [],
+        "BARWNIKI DO TKANIN": []
+    },
+    "OZDOBY": {
+        "KORALIKI": [
+            "perełki i cekiny",
+            "bawełniane korale",
+            "koraliki - TOHO",
+            "koraliki szklane",
+            "koraliki szklane mix",
+            "ozdoby metalowe",
+            "IGŁY do koralików"
+        ],
+        "GUZIKI": [
+            "guziki ozdobne na sztuki",
+            "guziki ozdobne zestawy",
+            "guziki ozdobne"
+        ],
+        "CEKINY": [],
+        "KLEJE": [],
+        "STYROPIAN": [
+            "zawieszki do bombek"
+        ],
+        "OZDOBY": [
+            "papier ozdobny",
+            "ozdoby ze sklejki",
+            "ozdoby  do scrapbookingu",
+            "różyczki z materiału",
+            "zaczepy do breloczków",
+            "piórka dekoracyjne",
+            "druciki kreatywne",
+            "stemple HEYDA"
+        ],
+        "SZNURKI": [
+            "sznurek do sutaszu",
+            "sznurek ozdobobny",
+            "sznurek lniany, jutowy",
+            "splatanie sznurków"
+        ],
+        "SZNUROWADŁA": [
+            "sznurowadła do butów 45cm",
+            "sznurowadła do butów 60cm",
+            "sznurowadła do butów 100cm"
+        ]
+    },
+    "FILC": {
+        "WEŁNA CZESANKOWA": [
+            "wełna czesankowa 18 mikronów",
+            "wełna czesankowa 24 mikrony",
+            "wełna czesankowa multikolor"
+        ],
+        "FILC W ARKUSZACH": [
+            "filc w arkuszach 20x30cm",
+            "filc w arkuszach 30x40cm"
+        ],
+        "IGŁY DO FILCOWANIA": []
+    }
+}
