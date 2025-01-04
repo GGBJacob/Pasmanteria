@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - master
+      - image_creation
+      - dev
 
 jobs:
   build-image:
