@@ -23,9 +23,11 @@ services:
             DB_USER: root
             DB_PASSWD: root
             PS_INSTALL_AUTO: 0
+        env_file:
+            - .env
         ports:
             - 80:80   # HTTP
-            - 443:443 # HTTPS
+            - ${PORT}:443 # HTTPS
         volumes:
             - ./src:/var/www/html
             - ./ssl:/etc/ssl/certs
