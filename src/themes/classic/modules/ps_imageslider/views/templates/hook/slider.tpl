@@ -22,7 +22,7 @@
   * @copyright Since 2007 PrestaShop SA and Contributors
   * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
   *}
- 
+
  {if $homeslider.slides}
    <div id="carousel" data-ride="carousel" class="carousel slide" data-interval="{$homeslider.speed}" data-wrap="{(string)$homeslider.wrap}" data-pause="{$homeslider.pause}" data-touch="true">
      <ol class="carousel-indicators">
@@ -33,7 +33,7 @@
      <ul class="carousel-inner" role="listbox" aria-label="{l s='Carousel container' d='Shop.Theme.Global'}">
        {foreach from=$homeslider.slides item=slide name='homeslider'}
          <li class="carousel-item {if $smarty.foreach.homeslider.first}active{/if}" role="option" aria-hidden="{if $smarty.foreach.homeslider.first}false{else}true{/if}">
-           <a href="{$slide.url}">
+           <a href="{$slide.url}" onclick="trackClick('{$slide.url|escape}')">
              <figure>
                <img src="/img/baner.jpg" alt="{$slide.legend|escape}" loading="lazy" width="100%" height="855" class="animate-right">
                {if $slide.title || $slide.description}
@@ -49,4 +49,15 @@
      </ul>
    </div>
  {/if}
- 
+
+<script>
+  function trackClick(bannerLink) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'banner_click', {
+        event_category: 'banner_clicked',
+        destination_url: bannerLink,
+        value: 1
+      });
+    }
+  }
+</script>

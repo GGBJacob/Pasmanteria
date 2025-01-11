@@ -61,6 +61,7 @@
 
             <!-- Przycisk + -->
             <span class="input-group-btn-vertical">
+
                  <button 
                   class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-up" 
                   type="button" 
@@ -77,8 +78,6 @@
             </span>
         </div>
   {/block}
-
-
 
 
     {block name='product_availability'}
