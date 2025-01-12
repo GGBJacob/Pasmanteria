@@ -1,31 +1,32 @@
 services:
-    db: # MariaDB container
-        container_name: db
-        image: mariadb:11.5.2
+    admin-mysql_db: # MariaDB container
+        container_name: 'admin-mysql_db'
+        image: mysql:5.7.41
         restart: unless-stopped
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: prestashop
+            MYSQL_ROOT_PASSWORD: 'student'
+            MYSQL_DATABASE: 'BE_193186'
         volumes:
             - ./db:/var/lib/mysql
-            - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+            # - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
         networks:
             - psnet
-        # platform: linux/x86_64 # Apple Silicon Macs only
+        platform: linux/x86_64 # Apple Silicon Macs only
     ps: # PrestaShop container
         container_name: ps
-        image: prestashop/prestashop:1.7.8
+        #image: prestashop/prestashop:1.7.8
+        build: .
         restart: unless-stopped
         environment:
             PS_DEV_MODE: 1
-            DB_SERVER: db
-            DB_NAME: prestashop
+            DB_SERVER: admin-mysql_db
+            DB_NAME: BE_193186
             DB_USER: root
-            DB_PASSWD: root
+            DB_PASSWD: student
             PS_INSTALL_AUTO: 0
         ports:
             # - 80:80   # HTTP
-            - 443:443 # HTTPS
+            - 19318:443 # HTTPS
         volumes:
             - ./src:/var/www/html
             - ./ssl:/etc/ssl/certs
@@ -33,22 +34,22 @@ services:
         networks:
             - psnet
         depends_on:
-            - db
+            - admin-mysql_db
         # platform: linux/x86_64 # Apple Silicon Macs only
         command: /bin/bash -c "a2enmod ssl && apache2-foreground"
-    pma: # phpMyAdmin container
-        container_name: pma
-        image: phpmyadmin/phpmyadmin:5.2.1
-        restart: unless-stopped
-        environment:
-            PMA_HOST: db
-            PMA_USER: root
-            PMA_PASSWORD: root
-            PMA_PORT: 3306
-        ports:
-            - 8081:80
-        networks:
-            - psnet
+    #pma: # phpMyAdmin container
+    #    container_name: pma
+    #    image: phpmyadmin/phpmyadmin:5.2.1
+    #    restart: unless-stopped
+    #    environment:
+    #        PMA_HOST: admin-mysql_db
+    #        PMA_USER: root
+    #        PMA_PASSWORD: student
+    #        PMA_PORT: 3306
+    #    ports:
+    #        - 8081:80
+    #    networks:
+    #        - psnet
         # platform: linux/x86_64 # Apple Silicon Macs only
 networks:
     psnet:

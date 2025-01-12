@@ -5,7 +5,7 @@
     'database_port' => '3306',
     'database_name' => 'BE_193186',
     'database_user' => 'root',
-    'database_password' => 'studnet',
+    'database_password' => 'student',
     'database_prefix' => 'ps_',
     'database_engine' => 'InnoDB',
     'mailer_transport' => 'smtp',
