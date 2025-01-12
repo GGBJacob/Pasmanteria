@@ -26,9 +26,9 @@ jobs:
     # Build the PrestaShop Docker image
     - name: Build PrestaShop image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.0 -f Dockerfile .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.1 -f Dockerfile .
 
     # Push the image to Docker Hub
     - name: Push PrestaShop image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.0
+        docker push ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.1
