@@ -6,3 +6,7 @@
 /db/
 
 .DS_Store
+
+# Linux files
+
+*:Zone.Identifier
