@@ -1,1 +1,1 @@
-docker exec -i db mariadb --user=root -p'root' < dump.sql
+docker exec -i admin-mysql_db mariadb --user=root -p'root' < dump.sql

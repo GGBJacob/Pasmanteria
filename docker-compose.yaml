@@ -1,11 +1,11 @@
 services:
-    db: # MariaDB container
-        container_name: db
+    admin-mysql_db: # MariaDB container
+        container_name: admin-mysql_db
         image: mariadb:11.5.2
         restart: unless-stopped
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: prestashop
+            MYSQL_DATABASE: BE_193186
+            MYSQL_ROOT_PASSWORD: student
         volumes:
             - ./db:/var/lib/mysql
             - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
@@ -18,10 +18,10 @@ services:
         restart: unless-stopped
         environment:
             PS_DEV_MODE: 1
-            DB_SERVER: db
-            DB_NAME: prestashop
+            DB_SERVER: admin-mysql_db
+            DB_NAME: BE_193186
             DB_USER: root
-            DB_PASSWD: root
+            DB_PASSWD: student
             PS_INSTALL_AUTO: 0
         ports:
             # - 80:80   # HTTP
@@ -33,7 +33,7 @@ services:
         networks:
             - psnet
         depends_on:
-            - db
+            - admin-mysql_db
         # platform: linux/x86_64 # Apple Silicon Macs only
         command: /bin/bash -c "a2enmod ssl && apache2-foreground"
     pma: # phpMyAdmin container
@@ -41,9 +41,9 @@ services:
         image: phpmyadmin/phpmyadmin:5.2.1
         restart: unless-stopped
         environment:
-            PMA_HOST: db
+            PMA_HOST: admin-mysql_db
             PMA_USER: root
-            PMA_PASSWORD: root
+            PMA_PASSWORD: student
             PMA_PORT: 3306
         ports:
             - 8081:80
