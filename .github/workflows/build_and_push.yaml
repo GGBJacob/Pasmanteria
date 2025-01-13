@@ -16,11 +16,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Get the commit hash for the versioning
-    - name: Get commit hash
-      id: get_commit_hash
-      run: echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
     # Log in to Docker Hub
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -31,9 +26,9 @@ jobs:
     # Build the PrestaShop Docker image
     - name: Build PrestaShop image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/prestashop:${{ env.COMMIT_HASH }} -f Dockerfile .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.2 -f Dockerfile .
 
     # Push the image to Docker Hub
     - name: Push PrestaShop image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/prestashop:${{ env.COMMIT_HASH }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/prestashop:1.0.1
