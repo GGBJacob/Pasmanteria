@@ -12,10 +12,10 @@
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbspinformacje</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://localhost/content/1-wysylka">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
-            <a class="nav-link" href="https://localhost/content/3-regulamin">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
-            <a class="nav-link" href="https://localhost/content/12-zwroty-i-reklamacje">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
-            <a class="nav-link" href="https://localhost/content/2-rodo">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
+            <a class="nav-link" href="/content/1-wysylka">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wysyłka</a>
+            <a class="nav-link" href="/content/3-regulamin">&nbsp;&nbsp;&nbsp;&nbsp;&nbspregulamin</a>
+            <a class="nav-link" href="/content/12-zwroty-i-reklamacje">&nbsp;&nbsp;&nbsp;&nbsp;&nbspzwroty i reklamacje</a>
+            <a class="nav-link" href="/content/2-rodo">&nbsp;&nbsp;&nbsp;&nbsp;&nbspRODO, polityka cookies</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;polityka prywatności</a>
           </nav>
         </div>
 
@@ -24,9 +24,9 @@
           <h4 class="footer-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nadodatek.pl</h4>
           <hr class="footer-hr">
           <nav class="nav nav-pills flex-column content-inside">
-            <a class="nav-link" href="https://localhost/content/4-o-nas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
-            <a class="nav-link" href="https://localhost/content/13-adres">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
-            <a class="nav-link" href="https://localhost/content/14-eco">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
+            <a class="nav-link" href="/content/4-o-nas">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o nas</a>
+            <a class="nav-link" href="/content/13-adres">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adres</a>
+            <a class="nav-link" href="/content/14-eco">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;działania eco</a>
           </nav>
         </div>
 
@@ -37,12 +37,12 @@
           <nav class="nav nav-pills flex-column content-inside">
             <a class="nav-link" href="https://www.facebook.com/nadodatekpl-225441670823396" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facebook</a>
             <a class="nav-link" href="https://www.instagram.com/manuki_embroidery/" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instagram</a>
-            <a class="nav-link" href="https://localhost/content/9-blog" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
+            <a class="nav-link" href="/content/9-blog" target="_blank" rel="noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blog</a>
           <div class="nadodatek-footer-element nadodatek-footer-element-icon">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://www.facebook.com/nadodatekpl-225441670823396" class="fab fa-facebook nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Facebooku">&nbsp;</a>
             <a href="https://www.instagram.com/manuki_embroidery/" class="fab fa-instagram nadodatek-social" target="_blank" rel="noreferrer" title="Znajdź nas na Instagramie">&nbsp;</a>
-            <a href="https://localhost/content/9-blog" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
+            <a href="/content/9-blog" class="fab fa-blogger nadodatek-social" target="_blank" rel="noreferrer" title="Przejdź do naszgo bloga">&nbsp;</a>
             </div>
           </nav>
         </div>
