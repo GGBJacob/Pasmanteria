@@ -75,7 +75,7 @@
         <!-- SEARCH BAR DIV PRAWY -->
         <div class="col-sm-4 cm-header-search">
           <div class="cm-header-search-input">
-            <form name="quick_find" action="//localhost/szukaj" method="get">
+            <form name="quick_find" action="/szukaj" method="get">
               <div class="input-group">
                 <input type="search" name="s" required aria-required="true" aria-label="Szukaj" placeholder="Szukaj" class="form-control">
                 <div class="input-group-append">
@@ -114,7 +114,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a class="a-breadcrumb" href="//localhost/">
+              <a class="a-breadcrumb" href="/">
                 <i class="home">
                   <i class="material-icons violet-nav-icon">&#xe88a;</i>
                 </i>
