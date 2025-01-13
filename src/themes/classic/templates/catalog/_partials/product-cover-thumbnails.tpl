@@ -24,7 +24,7 @@
  *}
 <div class="images-container js-images-container col-sm-12 pi-gallery">
 
-  {block name='product_images'}
+  {*{block name='product_images'}
     <div class="js-qv-mask mask lass="col-sm-2">
       <ul class="product-images js-qv-product-images">
         {foreach from=$product.images item=image}
@@ -48,7 +48,7 @@
         {/foreach}
       </ul>
     </div>
-  {/block}
+  {/block}*}
 
   {block name='product_cover'}
     <div class="col-sm-10">
