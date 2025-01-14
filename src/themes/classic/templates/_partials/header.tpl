@@ -75,8 +75,9 @@
         <!-- SEARCH BAR DIV PRAWY -->
         <div class="col-sm-4 cm-header-search">
           <div class="cm-header-search-input">
-            <form name="quick_find" action="/szukaj" method="get">
+            <form name="quick_find" action="/index.php" method="get">
               <div class="input-group">
+                <input type="hidden" name="controller" value="search">
                 <input type="search" name="s" required aria-required="true" aria-label="Szukaj" placeholder="Szukaj" class="form-control">
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-info">
