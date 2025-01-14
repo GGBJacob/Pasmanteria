@@ -21,7 +21,7 @@ services:
             DB_SERVER: admin-mysql_db
             DB_NAME: BE_193186
             DB_USER: root
-            DB_PASSWD: student
+            DB_PASSWD: root
             PS_INSTALL_AUTO: 0
         ports:
             # - 80:80   # HTTP
@@ -43,7 +43,7 @@ services:
         environment:
             PMA_HOST: admin-mysql_db
             PMA_USER: root
-            PMA_PASSWORD: student
+            PMA_PASSWORD: root
             PMA_PORT: 3306
         ports:
             - 8081:80
