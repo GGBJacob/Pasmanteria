@@ -91,11 +91,11 @@ public class SeleniumTester {
        }
 
         // Generate random product quantity
-        int quantity = Integer.min(new Random().nextInt(3) + 1, productStockCount);
+        int quantity = Integer.min(2, productStockCount);
 
         for (int i =0; i<quantity; i++) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1500);
                 // Find the button again and click it
                 assertNotNull(wait.until(ExpectedConditions.presenceOfElementLocated(By.className("js-increase-product-quantity"))), "Add to cart button not found!");
 
@@ -111,6 +111,8 @@ public class SeleniumTester {
                 try{
                     WebElement buttonSpan = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'fas fa-plus plus-minus')]")));
                     buttonSpan.click();
+                    if (quantity == 1)
+                        Thread.sleep(1000); // Don't ask
                 }catch (Exception e)
                 {
                     return false;
@@ -218,38 +220,36 @@ public class SeleniumTester {
 
         int addedProducts = 0;
         int maxProductsToAdd = 10;
-        for (int i =0; i<categoryUrls.size() && addedProducts < 10; i++) {
+        driver.get(categoryUrls.getFirst());
+        Thread.sleep(1500);
 
-            driver.get(categoryUrls.get(i));
+        List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
+
+
+        for (int j =0; addedProducts <maxProductsToAdd; j++) {
+
+            try {
+                // Open product page
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.product-thumbnail")));
+                driver.findElements(By.cssSelector("a.product-thumbnail")).get(new Random().nextInt(productList.size())).click();
+            }
+            catch (Exception e)
+            {
+                continue;
+            }
+
+            if(addProduct()) {
+                printInfo("Added product #" + (addedProducts + 1));
+
+                // Increment added product count
+                addedProducts++;
+            }
+
+            int urlNo = new Random().nextInt(categoryUrls.size());
+            // Return to category page
+            driver.get(categoryUrls.get(urlNo));
             Thread.sleep(1500);
 
-            List<WebElement> productList = driver.findElements(By.cssSelector("a.product-thumbnail"));
-
-
-            for (int j =0; addedProducts <maxProductsToAdd; j++) {
-
-                try {
-                    // Open product page
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.product-thumbnail")));
-                    driver.findElements(By.cssSelector("a.product-thumbnail")).get(new Random().nextInt(productList.size())).click();
-                }
-                catch (Exception e)
-                {
-                    continue;
-                }
-
-                if(addProduct()) {
-                    printInfo("Added product #" + (addedProducts + 1));
-
-                    // Increment added product count
-                    addedProducts++;
-                }
-
-                int urlNo = new Random().nextInt(categoryUrls.size());
-                // Return to category page
-                driver.get(categoryUrls.get(urlNo));
-                Thread.sleep(1500);
-            }
         }
 
         assertEquals(maxProductsToAdd, addedProducts, "The number of added products does not match the expected value!");
@@ -342,11 +342,16 @@ public class SeleniumTester {
             Thread.sleep(1750);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("cart"))); // Waiting for the page to load
             System.out.println("Entered cart.");
-            int productsToRemove = 3, productsRemoved = 0;
-            for (int i = 0; i < productsToRemove; i++) {
+            int productsToRemove = 4, productsRemoved = 0;
+            for (int i = 0; productsRemoved < productsToRemove; i++) {
                 System.out.println("Removing from cart...");
-                Thread.sleep(2000);
-                wait.until(ExpectedConditions.elementToBeClickable(By.className("remove-from-cart"))).click();
+                try {
+                    wait.until(ExpectedConditions.elementToBeClickable(By.className("remove-from-cart"))).click();
+                    Thread.sleep(500);
+                }
+                catch (Exception e){
+                    continue;
+                }
                 printInfo("Removed product #" + (i+1));
                 productsRemoved++;
             }
